@@ -1,0 +1,7 @@
+// Lets `npx wrangler deploy` (run from this folder) update the live site in place.
+// It uploads the site/ folder to the "app" Worker → https://app.cardiacmrihub.workers.dev
+{
+  "name": "app",
+  "compatibility_date": "2026-11-02",
+  "assets": { "directory": "./site" }
+}

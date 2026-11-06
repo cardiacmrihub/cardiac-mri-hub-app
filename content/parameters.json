@@ -1,0 +1,12 @@
+{
+  "title": "LV parameters at a glance",
+  "intro": "Every left ventricle view on one page, compiled from the summary table at the end of each guide.",
+  "views": [
+    { "guide": "lv-2-chamber", "label": "2-chamber" },
+    { "guide": "lv-3-chamber", "label": "3-chamber" },
+    { "guide": "lv-4-chamber", "label": "4-chamber" },
+    { "guide": "lv-short-axis", "label": "Short axis" },
+    { "guide": "lv-coronal-lvot", "label": "Coronal LVOT" }
+  ],
+  "levels": { "guide": "lv-short-axis-samples", "title": "Short-axis slice levels" }
+}

@@ -1,0 +1,43 @@
+{
+  "site": "https://cardiacmrihub.wixsite.com/cardiac-mri-hub",
+  "note": "One-time import map: Wix post address → guide file name in this app, its topics, and its position within the topic.",
+  "posts": [
+    { "wix": "the-beginner-s-guide-to-cardiac-mri-workflow-essential-steps-for-new-technologists", "slug": "beginners-workflow", "topics": ["getting-started"], "startHere": true, "order": 1 },
+
+    { "wix": "left-ventricle-quick-plan", "slug": "lv-quick-plan", "topics": ["left-ventricle", "getting-started"], "order": 1 },
+    { "wix": "understanding-the-left-ventricle-two-chamber-view-comprehensive-cardiac-mri-planning-for-technologi", "slug": "lv-2-chamber", "topics": ["left-ventricle"], "order": 2 },
+    { "wix": "updated-understanding-the-left-ventricle-four-chamber-view-comprehensive-cardiac-mri-planning-for", "slug": "lv-4-chamber", "topics": ["left-ventricle"], "order": 3 },
+    { "wix": "understanding-the-left-ventricle-short-axis-view-comprehensive-cardiac-mri-planning-for-technologis", "slug": "lv-short-axis", "topics": ["left-ventricle"], "order": 4 },
+    { "wix": "understanding-the-left-ventricle-short-axis-sample-view-comprehensive-cardiac-mri-planning-for-tech", "slug": "lv-short-axis-samples", "topics": ["left-ventricle"], "order": 5 },
+    { "wix": "understanding-the-left-ventricle-3-chamber-view-comprehensive-cardiac-mri-planning-for-technologist", "slug": "lv-3-chamber", "topics": ["left-ventricle"], "order": 6 },
+    { "wix": "understanding-the-left-ventricle-coronal-aortic-outflow-tract-view-comprehensive-cardiac-mri-planni", "slug": "lv-coronal-lvot", "topics": ["left-ventricle"], "order": 7 },
+
+    { "wix": "cardiac-mri-planning-right-ventricle", "slug": "rv-overview", "topics": ["right-ventricle"], "order": 1, "optional": true },
+    { "wix": "right-ventricle-axial", "slug": "rv-axial", "topics": ["right-ventricle"], "order": 2 },
+    { "wix": "right-ventricle-2-chamber-view", "slug": "rv-2-chamber", "topics": ["right-ventricle"], "order": 3 },
+    { "wix": "right-ventricle-inflow-view", "slug": "rv-inflow", "topics": ["right-ventricle"], "order": 4 },
+    { "wix": "right-ventricle-3-chamber-view", "slug": "rv-3-chamber", "topics": ["right-ventricle"], "order": 5 },
+    { "wix": "right-ventricular-outflow-tract-view", "slug": "rvot", "topics": ["right-ventricle"], "order": 6 },
+
+    { "wix": "aortic-valve", "slug": "aortic-valve", "topics": ["valves"], "order": 1 },
+    { "wix": "mitral-valve-planning", "slug": "mitral-valve", "topics": ["valves"], "order": 2 },
+    { "wix": "tricuspid-valve", "slug": "tricuspid-valve", "topics": ["valves"], "order": 3 },
+    { "wix": "pulmonary-valve", "slug": "pulmonary-valve", "topics": ["valves"], "order": 4 },
+    { "wix": "gre-vs-true-fisp-aortic-valve-artifacts-a-case-study", "slug": "gre-vs-truefisp-aortic-valve", "topics": ["valves", "technique"], "order": 5 },
+
+    { "wix": "atrial-short-axis", "slug": "atrial-short-axis", "topics": ["special-views"], "order": 1 },
+    { "wix": "bicaval-views", "slug": "bicaval-views", "topics": ["special-views"], "order": 2 },
+
+    { "wix": "cardiac-mri-planning-thoracic-aorta", "slug": "thoracic-aorta", "topics": ["thoracic-aorta"], "order": 1 },
+
+    { "wix": "understanding-phase-contrast-imaging-for-cardiac-mri-technologists-and-its-unique-advantages", "slug": "phase-contrast-basics", "topics": ["phase-contrast", "technique"], "order": 1 },
+    { "wix": "phase-contrast", "slug": "phase-contrast-planning", "topics": ["phase-contrast"], "order": 2 },
+
+    { "wix": "end-expiration-vs-end-inspiration-breathing-techniques-in-cardiac-mri-what-the-evidence-reveals", "slug": "breath-hold-expiration-vs-inspiration", "topics": ["technique"] },
+    { "wix": "choosing-the-right-ti-time-for-psir-imaging-in-cardiac-mri-understanding-lge-and-ege-techniques", "slug": "psir-ti-time", "topics": ["technique"] },
+    { "wix": "understanding-the-variability-in-cardiac-mri-sequences-and-protocol-differences", "slug": "sequence-variability", "topics": ["technique"] },
+    { "wix": "understanding-the-role-of-molli-maps-in-cardiac-mri-and-when-they-are-unnecessary", "slug": "molli-maps", "topics": ["technique"] },
+    { "wix": "tips-for-optimizing-cardiac-mri-scan-protocols", "slug": "protocol-optimization-tips", "topics": ["technique"] },
+    { "wix": "key-resources-for-cardiac-mri-pathology-explained", "slug": "pathology-resources", "topics": ["technique"] }
+  ]
+}

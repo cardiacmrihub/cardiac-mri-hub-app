@@ -1,0 +1,10 @@
+[
+  { "slug": "getting-started", "label": "Getting started", "glyph": "ecg", "description": "Where to begin if you're new to cardiac MRI: the overall exam workflow and how the views build on each other." },
+  { "slug": "left-ventricle", "label": "Left ventricle", "glyph": "lv", "description": "Planning the LV long-axis views, the short-axis stack and the outflow tract." },
+  { "slug": "right-ventricle", "label": "Right ventricle", "glyph": "rv", "description": "RV long-axis, inflow, outflow and axial views." },
+  { "slug": "valves", "label": "Valves", "glyph": "valve", "description": "Aortic, mitral, tricuspid and pulmonary valve planes." },
+  { "slug": "special-views", "label": "Special views", "glyph": "special", "description": "Atrial short axis, bicaval and other less common planes." },
+  { "slug": "thoracic-aorta", "label": "Thoracic aorta", "glyph": "special", "description": "Planning the thoracic aorta." },
+  { "slug": "phase-contrast", "label": "Phase contrast", "glyph": "valve", "description": "Flow imaging: how phase contrast works and how to plan it." },
+  { "slug": "technique", "label": "Technique and sequences", "glyph": "ecg", "description": "Breath-holds, inversion times, mapping, artifacts and protocol choices." }
+]

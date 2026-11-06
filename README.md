@@ -1,0 +1,136 @@
+# Cardiac MRI Hub app
+
+Cardiac MRI planning guides for technologists, as an installable app that works offline.
+It's a set of plain files with no Wix account, server or database behind it. Live at https://app.cardiacmrihub.workers.dev.
+
+## What's here
+
+| Path | What it is |
+|---|---|
+| `content/guides/*.md` | One file per guide, written in Markdown. **This is the content you edit.** |
+| `content/images/` | Every image the guides use (WebP, up to 1600 px) |
+| `content/videos/` | Cine clips the guides play inline (MP4) |
+| `content/previews/` | The picture shown when a guide's link is shared (made by `make_previews.py`) |
+| `content/site-preview.png` | The picture shown when the home page link is shared (1200 × 630) |
+| `content/topics.json` | The topic list (name, description, order) |
+| `content/site.json` | Site settings: address, disclaimer, correction email, analytics and Google codes |
+| `content/parameters.json` | Which guides feed the "LV parameters at a glance" page, and their short labels |
+| `content/cards.json` | Which guides get a printable planning card (`/cards/`), and which of each guide's images it shows, counted from 0 in the order they appear |
+| `content/guides.json` | Generated from the guides. Don't edit it by hand. |
+| `wix-message.txt` | Banner, pinned post and "this guide has moved" links to paste into the old Wix site |
+| `index.html`, `css/`, `js/`, `sw.js`, `manifest.webmanifest`, `icons/` | The app itself (`index.html` is the template every page is built from) |
+| `scripts/build-content.mjs` | Builds everything into `site/`, the folder you upload |
+| `scripts/optimize_images.py` | Shrinks new images to WebP |
+| `scripts/make_previews.py` | Makes the link-preview pictures |
+| `scripts/import_wix.py`, `scripts/fetch-wix-pages.sh`, `content/import/` | One-time import from the old Wix site (done: 29 posts, Nov 2026) |
+| `site/` | Generated. **This is the folder to upload.** Don't edit it by hand. |
+| `wrangler.jsonc` | Tells `npx wrangler deploy` to publish `site/` to the `app` Worker |
+
+## Adding or editing a guide
+
+1. Create or open a file in `content/guides/`. The file name becomes the guide's address (`lv-4-chamber.md` → `/guide/lv-4-chamber/`).
+2. Put the details at the top between `---` lines:
+
+   ```
+   ---
+   title: "Understanding the Left Ventricle Four-Chamber View"
+   summary: "One or two sentences shown in lists, search results, Google and link previews."
+   topics: [left-ventricle]
+   published: 2025-11-25
+   updated: 2026-01-10
+   cover: ../images/lv-4ch-cover.png
+   shortTitle: "LV four-chamber view"   # shorter name for lists (optional)
+   order: 3          # position within the topic (optional)
+   startHere: true   # show under "Start here" on the home screen (optional)
+   quickPlan: false  # leave this guide out of Quick plan (optional; true adds a technique guide)
+   draft: true       # hide it until ready (optional)
+   ---
+   ```
+3. Write the guide below that. Use `#` for section headings, `-` for bullet lists, `1.` for numbered steps, `**bold**`, and images like this:
+
+   ```
+   ![What the image shows, for screen readers and Google](../images/my-image.png "Caption shown under the image")
+   ```
+   A cine clip uses the same pattern with a video file; it plays inline, looping, with controls:
+
+   ```
+   ![RV inflow cine](../videos/rv-inflow.mp4 "RV inflow view shown above.")
+   ```
+4. Put images in `content/images/` and clips in `content/videos/`.
+5. Build (Pillow is needed for the two image steps: `pip install pillow`):
+
+   ```
+   python3 scripts/optimize_images.py   # new images → WebP
+   python3 scripts/make_previews.py     # link-preview pictures
+   node scripts/build-content.mjs       # writes site/
+   ```
+
+Topic names in `topics:` must match a `slug` in `content/topics.json`. The build warns you about a typo or a missing image.
+
+## Quick plan
+
+Every guide in a planning topic gets a swipeable, full-screen deck of its images and cine clips, in order, each labelled
+with the section it sits under. It opens from the **Plan** tab and from the "Quick plan" button on the guide. Guides only in
+"Technique" or "Getting started" are left out unless their front matter says `quickPlan: true`. To change what a deck shows,
+change the guide: the deck follows its images, their captions (or descriptions when there's no caption) and its `#` headings.
+
+## LV parameters at a glance
+
+`/parameters/` is built from the "Summary Table" at the end of each guide listed in `content/parameters.json`. Rows that
+match across views appear once under "Shared settings"; a view that differs or doesn't list a row gets a small note;
+rows that differ for most views (like Orientation) are listed view by view. Edit a guide's table and rebuild to update it.
+
+## Publishing
+
+Everything the website needs is in `site/`; nothing else in the project goes online. Two ways to update the live site in place
+(no need to delete the Worker):
+
+- **Dashboard:** Workers & Pages → `app` → **Upload static files**, then drop in the contents of `site/`.
+- **One command** (needs Node from nodejs.org; the first time, run `npx wrangler login` and approve in the browser):
+
+  ```
+  cd ~/Documents/cardiac-mri-hub-app
+  npx wrangler deploy
+  ```
+  `wrangler.jsonc` points it at the `app` Worker and the `site/` folder. Only changed files are uploaded, and
+  Workers & Pages → `app` → **Deployments** keeps every version so you can roll back.
+
+The site must be served from the root of its address (like `https://app.cardiacmrihub.workers.dev/`), over HTTPS.
+If the address ever changes, update `url` in `content/site.json` and rebuild, since Google, the site map and link previews use it.
+
+When you change the app's own files (`css/`, `js/`, `index.html`), bump `VERSION` in `sw.js` so installed copies pick up the update.
+Changes to guides alone don't need that, because the app checks for new guides each time it opens.
+
+Replacing an image under the same file name is fine: the build adds a fingerprint of each image to its address
+(`…/image.webp?v=1a2b3c4d`), so phones that saved the old picture fetch the new one. Installed copies running an app
+version older than 1.5.2 only pick that up after they take the app update.
+
+## Site settings (`content/site.json`)
+
+| Setting | What it does |
+|---|---|
+| `url` | The site's address. Used for Google, the site map and link previews. |
+| `disclaimer` | Shown under every guide and in Settings → About. |
+| `feedbackEmail` | Where "Suggest a correction" emails go. Leave empty to hide the button. |
+| `analyticsToken` | Cloudflare Web Analytics token (Web Analytics → your site → Manage site). Empty = off. |
+| `googleVerification` | The `content` value from Google Search Console's HTML-tag verification. |
+
+## Google
+
+The build writes `site/sitemap.xml`. In Google Search Console (signed in as cardiacmrihub@gmail.com), open the property for
+`https://app.cardiacmrihub.workers.dev/` → **Sitemaps** → enter `sitemap.xml` → **Submit**. New guides are picked up from it automatically.
+
+## Running it on your computer
+
+```
+node scripts/build-content.mjs
+cd site && python3 -m http.server 8000
+```
+Then open http://localhost:8000. (Safari plays the cine clips only from a server that supports byte ranges, which every
+real host does; Python's simple server doesn't, so check clips in Chrome locally.)
+
+## Re-running the Wix import
+
+Only needed if you edit a post on Wix and want the change here. `python3 scripts/import_wix.py` fetches the posts listed in
+`content/import/wix-posts.json` and **rewrites those guides**, so edits made here (including image descriptions) are lost
+for the guides it re-imports. It reuses images and clips already downloaded. Then run the three build steps above.

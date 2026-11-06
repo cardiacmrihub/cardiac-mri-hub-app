@@ -1,0 +1,9 @@
+{
+  "name": "Cardiac MRI Hub",
+  "url": "https://app.cardiacmrihub.workers.dev",
+  "description": "Step-by-step cardiac MRI planning guides for technologists, with offline reading at the scanner.",
+  "feedbackEmail": "cardiacmrihub@gmail.com",
+  "disclaimer": "For education only. Protocols vary by vendor, scanner and site — always follow your department's protocols and your radiologist or cardiologist. Cardiac MRI Hub is a personal project and isn't affiliated with any employer, hospital or vendor.",
+  "analyticsToken": "2053d206aa234c69881b199948fe7575",
+  "googleVerification": "uk21cSweYbE3o6ntpuBz3_7oOq_kQRX1tj9EEsFuADI"
+}

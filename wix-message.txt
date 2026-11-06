@@ -1,0 +1,168 @@
+CARDIAC MRI HUB — MESSAGES FOR THE OLD WIX SITE
+Copy and paste these into Wix. Three pieces: a banner, a pinned post, and a
+"this guide has moved" line for each post (that last one is for later, once
+Google is showing the new pages).
+
+
+1. BANNER  (one line across the top of every page)
+--------------------------------------------------------------------------
+Cardiac MRI Hub has a new home: app.cardiacmrihub.workers.dev — every guide, updated, and readable offline at the scanner.
+
+Link the banner to: https://app.cardiacmrihub.workers.dev/
+
+
+2. PINNED POST  (publish as a blog post and pin it so it stays first)
+--------------------------------------------------------------------------
+Title:
+Cardiac MRI Hub has moved
+
+Post:
+All the planning guides from this site now live in the Cardiac MRI Hub app:
+
+https://app.cardiacmrihub.workers.dev/
+
+It's free, there's nothing to sign up for, and it works on your phone, tablet or the
+computer at the console. What's new:
+
+- Every guide, with its images and cine clips, in one place
+- Quick plan: swipe through the planning images for any view while you're at the scanner
+- LV parameters at a glance: the settings for every LV view on one page
+- Search across all the guides
+- Works offline: add it to your home screen and save the guides for scan rooms with no signal
+
+How to put it on your phone (takes a minute): https://app.cardiacmrihub.workers.dev/guide/install-the-app/
+
+This site will stay up for now, but new guides and updates will only appear in the app,
+so please update your bookmarks.
+
+Spotted something wrong or out of date? Every guide has a "Suggest a correction" link.
+
+For education only. Always follow your department's protocols and your radiologist or cardiologist.
+
+
+3. "THIS GUIDE HAS MOVED"  (later: add to the top of each Wix post)
+--------------------------------------------------------------------------
+Wait until Google shows the new pages in search (Search Console → Pages), then add this
+line to the top of each old post, with its new link. When every post points to the app,
+the Wix site can go.
+
+Line to add:
+This guide has moved. Read the updated version, with offline access, in the Cardiac MRI Hub app: <new link>
+
+Post → new link
+
+Aortic Valve
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/aortic-valve
+  New:  https://app.cardiacmrihub.workers.dev/guide/aortic-valve/
+
+Atrial Short Axis
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/atrial-short-axis
+  New:  https://app.cardiacmrihub.workers.dev/guide/atrial-short-axis/
+
+The Beginner's Guide to Cardiac MRI Workflow: Essential Steps for New Technologists
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/the-beginner-s-guide-to-cardiac-mri-workflow-essential-steps-for-new-technologists
+  New:  https://app.cardiacmrihub.workers.dev/guide/beginners-workflow/
+
+Bicaval Views
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/bicaval-views
+  New:  https://app.cardiacmrihub.workers.dev/guide/bicaval-views/
+
+End-Expiration vs End-Inspiration Breathing Techniques in Cardiac MRI What the Evidence Reveals
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/end-expiration-vs-end-inspiration-breathing-techniques-in-cardiac-mri-what-the-evidence-reveals
+  New:  https://app.cardiacmrihub.workers.dev/guide/breath-hold-expiration-vs-inspiration/
+
+GRE vs True FISP Aortic Valve Artifacts: A Case Study
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/gre-vs-true-fisp-aortic-valve-artifacts-a-case-study
+  New:  https://app.cardiacmrihub.workers.dev/guide/gre-vs-truefisp-aortic-valve/
+
+Understanding the Left Ventricle Two-Chamber View: Comprehensive Cardiac MRI Planning for Technologists
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-two-chamber-view-comprehensive-cardiac-mri-planning-for-technologi
+  New:  https://app.cardiacmrihub.workers.dev/guide/lv-2-chamber/
+
+Understanding the Left Ventricle 3-Chamber View: Comprehensive Cardiac MRI Planning for Technologists
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-3-chamber-view-comprehensive-cardiac-mri-planning-for-technologist
+  New:  https://app.cardiacmrihub.workers.dev/guide/lv-3-chamber/
+
+Understanding the Left Ventricle Four-Chamber View: Comprehensive Cardiac MRI Planning for Technologists
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/updated-understanding-the-left-ventricle-four-chamber-view-comprehensive-cardiac-mri-planning-for
+  New:  https://app.cardiacmrihub.workers.dev/guide/lv-4-chamber/
+
+Understanding the Left Ventricle Coronal Aortic Outflow Tract View: Comprehensive Cardiac MRI Planning for Technologists
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-coronal-aortic-outflow-tract-view-comprehensive-cardiac-mri-planni
+  New:  https://app.cardiacmrihub.workers.dev/guide/lv-coronal-lvot/
+
+Left Ventricle Quick Plan
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/left-ventricle-quick-plan
+  New:  https://app.cardiacmrihub.workers.dev/guide/lv-quick-plan/
+
+Understanding the Left Ventricle Short Axis Sample View: Comprehensive Cardiac MRI Planning for Technologists
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-short-axis-sample-view-comprehensive-cardiac-mri-planning-for-tech
+  New:  https://app.cardiacmrihub.workers.dev/guide/lv-short-axis-samples/
+
+Understanding the Left Ventricle Short Axis View: Comprehensive Cardiac MRI Planning for Technologists
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-short-axis-view-comprehensive-cardiac-mri-planning-for-technologis
+  New:  https://app.cardiacmrihub.workers.dev/guide/lv-short-axis/
+
+Mitral Valve Scallops
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/mitral-valve-planning
+  New:  https://app.cardiacmrihub.workers.dev/guide/mitral-valve/
+
+Understanding the Role of MOLLI Maps in Cardiac MRI and When They Are Unnecessary
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-role-of-molli-maps-in-cardiac-mri-and-when-they-are-unnecessary
+  New:  https://app.cardiacmrihub.workers.dev/guide/molli-maps/
+
+Key Resources for Cardiac MRI Pathology Explained
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/key-resources-for-cardiac-mri-pathology-explained
+  New:  https://app.cardiacmrihub.workers.dev/guide/pathology-resources/
+
+Understanding Phase Contrast Imaging for Cardiac MRI Technologists and Its Unique Advantages
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-phase-contrast-imaging-for-cardiac-mri-technologists-and-its-unique-advantages
+  New:  https://app.cardiacmrihub.workers.dev/guide/phase-contrast-basics/
+
+Phase Contrast Planning
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/phase-contrast
+  New:  https://app.cardiacmrihub.workers.dev/guide/phase-contrast-planning/
+
+Tips for Optimizing Cardiac MRI Scan Protocols
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/tips-for-optimizing-cardiac-mri-scan-protocols
+  New:  https://app.cardiacmrihub.workers.dev/guide/protocol-optimization-tips/
+
+Choosing the Right TI Time for PSIR Imaging in Cardiac MRI: Understanding LGE and EGE Techniques
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/choosing-the-right-ti-time-for-psir-imaging-in-cardiac-mri-understanding-lge-and-ege-techniques
+  New:  https://app.cardiacmrihub.workers.dev/guide/psir-ti-time/
+
+Pulmonary Valve
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/pulmonary-valve
+  New:  https://app.cardiacmrihub.workers.dev/guide/pulmonary-valve/
+
+Right Ventricle 2 Chamber View
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricle-2-chamber-view
+  New:  https://app.cardiacmrihub.workers.dev/guide/rv-2-chamber/
+
+Right Ventricle 3 Chamber View
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricle-3-chamber-view
+  New:  https://app.cardiacmrihub.workers.dev/guide/rv-3-chamber/
+
+Right Ventricle Axial
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricle-axial
+  New:  https://app.cardiacmrihub.workers.dev/guide/rv-axial/
+
+Right Ventricle Inflow View
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricle-inflow-view
+  New:  https://app.cardiacmrihub.workers.dev/guide/rv-inflow/
+
+Right Ventricular Outflow Tract View
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricular-outflow-tract-view
+  New:  https://app.cardiacmrihub.workers.dev/guide/rvot/
+
+Understanding the Variability in Cardiac MRI Sequences and Protocol Differences
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-variability-in-cardiac-mri-sequences-and-protocol-differences
+  New:  https://app.cardiacmrihub.workers.dev/guide/sequence-variability/
+
+Thoracic Aorta
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/cardiac-mri-planning-thoracic-aorta
+  New:  https://app.cardiacmrihub.workers.dev/guide/thoracic-aorta/
+
+Tricuspid Valve
+  Wix:  https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/tricuspid-valve
+  New:  https://app.cardiacmrihub.workers.dev/guide/tricuspid-valve/
