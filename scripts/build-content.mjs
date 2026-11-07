@@ -486,12 +486,18 @@ if (protocolSource) {
     if (item) {
       if (!group) { group = { label: "", steps: [] }; cur.groups.push(group); }
       const text = item[1].trim();
-      const at = /(\d+)\s*min(?:ute)?s?\s+after\s+(?:the\s+)?(?:contrast|injection)/i.exec(text);
-      group.steps.push({ html: inline(text, lmCtx()), contrast: /\binject/i.test(text), atMin: at ? Number(at[1]) : null });
+      // A timed step says "10 minutes after contrast" (or "after the injection", or "after the stress injection" when
+      // there's a stress and a rest injection). A range like "1–3 minutes" times the step from its first number.
+      const at = /(\d+)(?:\s*[–-]\s*\d+)?\s*min(?:ute)?s?\s+after\s+(?:the\s+)?(?:stress\s+|first\s+)?(?:contrast|injection)/i.exec(text);
+      // The contrast step (where the clock starts) is the first one that mentions the injection itself,
+      // not one timed from it ("after the stress injection").
+      const contrast = !cur.hasContrast && /\binject/i.test(text) && !/after\s+(?:the\s+)?(?:\w+\s+)?inject/i.test(text);
+      if (contrast) cur.hasContrast = true;
+      group.steps.push({ html: inline(text, lmCtx()), contrast, atMin: at ? Number(at[1]) : null });
     }
   }
   const opening = common.groups.map((x) => ({ ...x, label: x.label || "Localizers" }));
-  for (const p of list) p.groups = [...opening, ...p.groups];
+  for (const p of list) { p.groups = [...opening, ...p.groups]; delete p.hasContrast; }
   protocols = { slug: g.slug, flow: examFlow, list: list.filter((p) => p.groups.some((x) => x.steps.length)) };
   if (!protocols.list.length) { warn(`${protocolSource}: protocols: true, but no numbered steps found`); protocols = null; }
 }

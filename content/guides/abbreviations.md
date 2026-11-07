@@ -26,6 +26,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | AHA | American Heart Association | Also the AHA 17-segment model of the LV. |
 | AN | Annulus | The fibrous ring a valve sits in. |
 | APM | Anterior papillary muscle | Also called the anterolateral papillary muscle. |
+| ARVC | Arrhythmogenic right ventricular cardiomyopathy | Now often called arrhythmogenic cardiomyopathy, since it can involve the LV too. |
 | AS | Anteroseptal wall | On labelled images. Elsewhere often aortic stenosis. |
 | ASD | Atrial septal defect | |
 | AV | Aortic valve | |
@@ -70,6 +71,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 |---|---|---|
 | FISP | Fast imaging with steady-state precession | See TrueFISP. |
 | FOV | Field of view | |
+| FSE | Fast spin echo | Black-blood images for anatomy and tissue. Siemens calls it TSE. |
 
 # G
 
@@ -148,6 +150,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | SCMR | Society for Cardiovascular Magnetic Resonance | |
 | SNR | Signal-to-noise ratio | |
 | SSFP | Steady-state free precession | See bSSFP. |
+| STIR | Short-tau inversion recovery | Black-blood T2-weighted images with fat suppressed, used to show edema. |
 | STJ | Sinotubular junction | Where the aortic root meets the ascending aorta. |
 | SV | Stroke volume | EDV minus ESV. |
 | SVC | Superior vena cava | |
@@ -157,9 +160,11 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | Abbreviation | Stands for | Notes |
 |---|---|---|
 | T1, T2 | T1 and T2 relaxation times | The tissue properties that mapping sequences measure. |
+| T2* | T2-star | Measures iron in the heart and liver. Run it before contrast. |
 | TAVI | Transcatheter aortic valve implantation | Also called TAVR. |
 | TI | Inversion time | The delay after the inversion pulse, set so normal myocardium is black on LGE. |
 | TrueFISP | True fast imaging with steady-state precession | Siemens' name for bSSFP. |
+| TSE | Turbo spin echo | Siemens' name for FSE. |
 | TV | Tricuspid valve | |
 
 # V

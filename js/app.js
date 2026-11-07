@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.5.9";
+const APP_VERSION = "1.6.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -405,7 +405,10 @@ function renderFlow() {
   if (!P?.flow) { view.innerHTML = notFoundHtml("This page isn't in the app."); return; }
   const f = flowState();
   const p = flowProtocol(f);
-  const pick = P.list.length > 1
+  // A few protocols fit as chips; a longer list goes in a dropdown so the steps stay near the top.
+  const pick = P.list.length > 6
+    ? `<label class="flow-select"><span>Protocol</span><span class="flow-select-box"><select data-flow-pick>${P.list.map((x) => `<option value="${esc(x.id)}"${x.id === p.id ? " selected" : ""}>${esc(x.name)}</option>`).join("")}</select></span></label>`
+    : P.list.length > 1
     ? `<div class="chips flow-pick">${P.list.map((x) => `<button class="chip" type="button" data-action="flow-pick" data-id="${esc(x.id)}" aria-pressed="${x.id === p.id}">${esc(x.name)}</button>`).join("")}</div>`
     : "";
   let n = 0;
@@ -419,7 +422,7 @@ function renderFlow() {
     let timing = "";
     if (s.atMin) {
       const m = flowMinutes(p, i, s);
-      html = html.replace(new RegExp(`\\b${s.atMin}(\\s*min)`), `${m}$1`);
+      if (m !== s.atMin) html = html.replace(new RegExp(`\\b${s.atMin}(?:\\s*[–-]\\s*\\d+)?(\\s*min)`), `${m}$1`);
       timing = ` <span class="flow-at" data-at="${m}">${m} min</span>` +
         `<div class="flow-adjust" role="group" aria-label="Minutes after contrast"><span class="flow-adjust-label">Change time</span><button class="flow-adj" type="button" data-action="flow-time" data-i="${i}" data-d="-1" aria-label="One minute earlier"${m <= FLOW_MIN ? " disabled" : ""}>−</button>` +
         `<span>${m} min</span>` +
@@ -829,6 +832,13 @@ lightbox.addEventListener("click", (e) => {
     lightbox.querySelector('[data-lb="zoom"]').textContent = zoomed ? "Fit" : "Zoom";
   }
 });
+document.addEventListener("change", (e) => {
+  const sel = e.target.closest?.("select[data-flow-pick]");
+  if (!sel) return;
+  saveFlow({ protocol: sel.value, done: [], contrastAt: null });
+  renderFlow();
+});
+
 document.addEventListener("keydown", (e) => {
   if (!lightbox.hidden) { if (e.key === "Escape") history.back(); return; }
   if (!deck.hidden) {
