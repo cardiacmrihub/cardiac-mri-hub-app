@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.6.1";
+const APP_VERSION = "1.6.2";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -31,6 +31,7 @@ const link = {
   parameters: "/parameters/",
   cards: "/cards/",
   flow: "/flow/",
+  about: "/about/",
 };
 
 const ICON = {
@@ -210,7 +211,7 @@ function renderHome() {
     }
     html += `</div>`;
   }
-  html += recentHtml(d.guides);
+  html += recentHtml(d.guides) + aboutFootHtml();
   view.innerHTML = html;
 }
 
@@ -222,6 +223,10 @@ function recentHtml(guides) {
     return rowHtml(g, { meta: esc([t?.label, g.updated ? `updated ${fmtDate(g.updated)}` : ""].filter(Boolean).join(" · ")) });
   }).join("");
   return `<h2 class="section">Recently updated</h2><ul class="rows">${rows}</ul><a class="btn secondary all-guides" href="${link.topics}#all">Browse all ${guides.length} guides</a>`;
+}
+// About link at the foot of the home page (the build writes the same: aboutFoot).
+function aboutFootHtml() {
+  return state.data?.about ? `<p class="home-foot"><a href="${link.about}">About Cardiac MRI Hub and its sources</a></p>` : "";
 }
 const azHtml = (guides) =>
   `<h2 class="section" id="all">All guides A–Z <small>${guides.length}</small></h2>${rowsHtml([...guides].sort((a, b) => listTitle(a).localeCompare(listTitle(b))))}`;
@@ -523,6 +528,16 @@ function renderParameters() {
   $("#guide-bar-title").textContent = "LV parameters";
 }
 
+function renderAbout() {
+  setTopbar(`${backButton()}<span class="topbar-title" id="guide-bar-title"></span>`);
+  if (!state.data) { view.innerHTML = loadingOrErrorHtml(); return; }
+  const a = state.data.about;
+  if (!a) { view.innerHTML = notFoundHtml("This page isn't in the app."); return; }
+  const disclaimer = state.data.site?.disclaimer;
+  view.innerHTML = `<article><h1 class="guide-title">${esc(a.title)}</h1><div class="prose">${a.html}</div>${disclaimer ? `<aside class="guide-note"><p>${esc(disclaimer)}</p></aside>` : ""}</article>`;
+  $("#guide-bar-title").textContent = "About";
+}
+
 function renderCards() {
   setTopbar(`${backButton()}<span class="topbar-title" id="guide-bar-title"></span>`);
   if (!state.data) { view.innerHTML = loadingOrErrorHtml(); return; }
@@ -577,7 +592,7 @@ function aboutHtml() {
   const contact = site.feedbackEmail
     ? `<p>Spotted an error or have a suggestion? Email <a href="mailto:${esc(site.feedbackEmail)}">${esc(site.feedbackEmail)}</a>.</p>`
     : "";
-  return `<section class="setting"><h2>About</h2>${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${contact}<p class="fine">Cardiac MRI Hub, version ${APP_VERSION}</p></section>`;
+  return `<section class="setting"><h2>About</h2>${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${contact}${state.data?.about ? `<p><a href="${link.about}">About Cardiac MRI Hub and its sources</a></p>` : ""}<p class="fine">Cardiac MRI Hub, version ${APP_VERSION}</p></section>`;
 }
 
 function notFoundHtml(msg) {
@@ -610,13 +625,13 @@ function pageTitle(section, arg) {
   const g = section === "guide" ? state.data?.bySlug.get(arg) : null;
   const t = section === "topic" ? state.data?.topicBySlug.get(arg) : null;
   const label = g ? g.title : t ? t.label
-    : { topics: "Topics", search: "Search", saved: "Saved", settings: "Settings", plan: "Quick plan", flow: "Exam flow", cards: state.data?.cards?.title || "Planning cards", parameters: state.data?.parameters?.title || "LV parameters" }[section];
+    : { topics: "Topics", search: "Search", saved: "Saved", settings: "Settings", plan: "Quick plan", flow: "Exam flow", cards: state.data?.cards?.title || "Planning cards", about: state.data?.about?.title || "About", parameters: state.data?.parameters?.title || "LV parameters" }[section];
   return label ? `${label} | ${name}` : name;
 }
 
 function route() {
   const { section, arg, params } = parseRoute();
-  const tab = { undefined: "home", topics: "topics", topic: "topics", search: "search", saved: "saved", plan: "plan", parameters: "plan", cards: "plan", flow: "plan" }[section] || "";
+  const tab = { undefined: "home", topics: "topics", topic: "topics", search: "search", saved: "saved", plan: "plan", parameters: "plan", cards: "plan", flow: "plan", about: "home" }[section] || "";
   document.querySelectorAll("#tabbar a").forEach((a) => {
     if (a.dataset.tab === tab) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
   });
@@ -631,6 +646,7 @@ function route() {
     case "plan": renderPlan(); break;
     case "parameters": renderParameters(); break;
     case "cards": renderCards(); break;
+    case "about": renderAbout(); break;
     case "flow": renderFlow(); break;
     default: setTopbar(backButton()); view.innerHTML = notFoundHtml("That page doesn't exist.");
   }

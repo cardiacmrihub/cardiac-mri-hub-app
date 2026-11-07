@@ -623,8 +623,17 @@ if (existsSync(cardsPath)) {
   cards = { title: cfg.title, description: cfg.intro || "", html, count };
 }
 
+// ---------- About page (content/about.md) ----------
+let about = null;
+const aboutPath = join(CONTENT, "about.md");
+if (existsSync(aboutPath)) {
+  const { data, body } = parseFrontMatter(readFileSync(aboutPath, "utf8"), "about.md");
+  const actx = { file: "about.md", images: new Set(), videos: new Set(), headings: [], figures: [], section: "" };
+  about = { title: data.title || "About", description: data.summary || "", html: markdownToHtml(body, actx) };
+}
+
 const publicSite = { name: site.name, url: site.url, feedbackEmail: site.feedbackEmail || "", disclaimer: site.disclaimer || "" };
-const out = { generatedAt: new Date().toISOString(), site: publicSite, topics, guides, parameters, cards, glossary, protocols, landmarkGuide: landmarkSource };
+const out = { generatedAt: new Date().toISOString(), site: publicSite, topics, guides, parameters, cards, glossary, protocols, about, landmarkGuide: landmarkSource };
 writeFileSync(join(CONTENT, "guides.json"), JSON.stringify(out));
 
 const imageCount = new Set(guides.flatMap((g) => g.images)).size;
@@ -712,6 +721,9 @@ function pagerHtml(g) {
     : `<span class="pager-link ${cls} none"></span>`;
   return `<nav class="pager" aria-label="Previous and next views">${a(seq[i - 1], "prev", "Previous")}${a(seq[i + 1], "next", "Next")}</nav>`;
 }
+// About link at the foot of the home page (aboutFootHtml in js/app.js).
+const aboutFoot = () => (about ? `<p class="home-foot"><a href="/about/">About Cardiac MRI Hub and its sources</a></p>` : "");
+const aboutView = () => `<article><h1 class="guide-title">${esc(about.title)}</h1><div class="prose">${about.html}</div>${site.disclaimer ? `<aside class="guide-note"><p>${esc(site.disclaimer)}</p></aside>` : ""}</article>`;
 const toolTile = (slug, kind, label, sub) =>
   slug && guides.some((g) => g.slug === slug) ? `<a class="tile" href="/guide/${slug}/">${glyph(kind)}<strong>${label}</strong><span>${sub}</span></a>` : "";
 const atScannerHtml = () =>
@@ -747,7 +759,7 @@ function homeView() {
   const recent = [...guides].sort(byUpdated).slice(0, 5);
   html += `<h2 class="section">Recently updated</h2><ul class="rows">${recent
     .map((g) => rowHtml(g, [topicBySlug.get(g.topics[0])?.label, g.updated ? `updated ${fmtDate(g.updated)}` : ""].filter(Boolean).join(" · ")))
-    .join("")}</ul><a class="btn secondary all-guides" href="/topics/#all">Browse all ${guides.length} guides</a>`;
+    .join("")}</ul><a class="btn secondary all-guides" href="/topics/#all">Browse all ${guides.length} guides</a>${aboutFoot()}`;
   return html;
 }
 const topicsView = () =>
@@ -837,6 +849,9 @@ if (protocols?.flow) {
   const steps = p.groups.map((gr) => `${gr.label ? `<h2 class="flow-group">${esc(gr.label)}</h2>` : ""}<ol class="flow">${gr.steps.map((s) => { const i = n++; return `<li class="flow-step"><span class="tick" aria-hidden="true"></span><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${s.html}${s.atMin ? ` <span class="flow-at">${s.atMin} min</span>` : ""}</div></li>`; }).join("")}</ol>`).join("");
   page({ path: "/flow/", title: "Exam flow", description: "Tick off each step of the exam, with a clock that starts when you inject contrast.", view: `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1></div>${steps}`, noindex: true });
 }
+if (about) {
+  page({ path: "/about/", title: about.title, description: about.description, view: aboutView() });
+}
 if (cards) {
   page({ path: "/cards/", title: cards.title, description: cards.description, view: cards.html, noindex: true });
 }
@@ -873,6 +888,7 @@ const urls = [
   { loc: abs("/") },
   { loc: abs("/topics/") },
   ...(parameters ? [{ loc: abs("/parameters/") }] : []),
+  ...(about ? [{ loc: abs("/about/") }] : []),
   ...liveTopics.map((t) => ({ loc: abs(link.topic(t.slug)) })),
   ...guides.map((g) => ({ loc: abs(link.guide(g.slug)), lastmod: g.updated || g.published })),
 ];
@@ -886,7 +902,7 @@ writeFileSync(join(SITE_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap:
 // Files macOS adds to folders (Finder's .DS_Store and ._ copies) never go online. `npx wrangler deploy` reads this.
 writeFileSync(join(SITE_DIR, ".assetsignore"), ".DS_Store\n._*\n.assetsignore\n");
 
-const pageCount = 6 + (parameters ? 1 : 0) + (cards ? 1 : 0) + liveTopics.length + guides.length;
+const pageCount = 6 + (parameters ? 1 : 0) + (cards ? 1 : 0) + (about ? 1 : 0) + liveTopics.length + guides.length;
 console.log(`Quick plan: ${guides.filter((g) => g.quickPlan).length} guide(s). Parameters page: ${parameters ? `${parameters.perView} per-view setting(s), ${parameters.shared} shared, ${parameters.notes} note(s)` : "off"}.`);
 console.log(`Wrote ${pageCount} page(s), sitemap.xml and robots.txt → site/ (this is the folder to upload)`);
 if (!site.analyticsToken) console.log("  note: no analyticsToken in content/site.json, so visitor counts are off");

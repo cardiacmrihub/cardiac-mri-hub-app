@@ -209,6 +209,7 @@ h2.section small { font: 400 calc(14px * var(--ts))/1 var(--font-body); color: v
 .guide-title { font: 700 calc(30px * var(--ts))/1.08 var(--font-title); margin: 12px 0 8px; text-wrap: balance; }
 .guide-title.long { font-size: calc(24px * var(--ts)); line-height: 1.12; }
 .all-guides { display: block; text-align: center; margin: 14px 0 0; }
+.home-foot { margin: 22px 0 0; text-align: center; color: var(--ink-2); font-size: calc(15px * var(--ts)); }
 .guide-meta { color: var(--ink-2); font-size: calc(14px * var(--ts)); margin: 0; }
 .toc { margin: 16px 0 4px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
 .toc summary {
