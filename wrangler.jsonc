@@ -1,7 +1,10 @@
-// Lets `npx wrangler deploy` (run from this folder) update the live site in place.
-// It uploads the site/ folder to the "app" Worker → https://app.cardiacmrihub.workers.dev
+// Tells Cloudflare how to publish the app. The site/ folder is uploaded to the "app" Worker → https://app.cardiacmrihub.workers.dev
 {
   "name": "app",
   "compatibility_date": "2026-11-02",
-  "assets": { "directory": "./site" }
+  "assets": { "directory": "./site" },
+  // Builds site/ from the guides before each upload, so preview builds of other branches get a fresh copy too.
+  "build": { "command": "node scripts/build-content.mjs" },
+  // Lets branches other than main publish a preview link (npx wrangler preview) instead of going live. Can stay empty.
+  "previews": {}
 }
