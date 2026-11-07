@@ -697,10 +697,25 @@ const planButton = (g) =>
   g.quickPlan ? `<button class="btn plan-btn" type="button" data-action="quick-plan" data-slug="${esc(g.slug)}">${DECK_ICON}Quick plan<span>${figureCount(g)}</span></button>` : "";
 const paramsXref = (g) =>
   parameters?.slugs.includes(g.slug) ? `<p class="guide-xref">See every LV view's settings side by side in <a href="/parameters/">${esc(parameters.title)}</a>.</p>` : "";
+const CLOCK_ICON = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4.5l3 2M9.5 2.5h5"/></svg>`;
+// The app swaps in "Back to your exam" or the last protocol run (flowCardHtml in js/app.js).
+const flowCard = () => `<a class="flow-launch" href="/flow/">${CLOCK_ICON}<span><strong>Exam flow</strong><span>Tick off each step, with a clock that starts when you inject contrast</span></span></a>`;
+// Previous/next planning views, in Plan-tab order (pagerHtml in js/app.js).
+const planSequence = () => liveTopics.filter((t) => !NOT_PLANNING.has(t.slug))
+  .flatMap((t) => inTopic(t.slug).filter((g) => g.quickPlan && planHome(g) === t.slug));
+function pagerHtml(g) {
+  const seq = planSequence();
+  const i = seq.findIndex((x) => x.slug === g.slug);
+  if (i < 0) return "";
+  const a = (x, cls, label) => x
+    ? `<a class="pager-link ${cls}" href="${link.guide(x.slug)}"><span>${label}</span><strong>${esc(listTitle(x))}</strong></a>`
+    : `<span class="pager-link ${cls} none"></span>`;
+  return `<nav class="pager" aria-label="Previous and next views">${a(seq[i - 1], "prev", "Previous")}${a(seq[i + 1], "next", "Next")}</nav>`;
+}
 const toolTile = (slug, kind, label, sub) =>
   slug && guides.some((g) => g.slug === slug) ? `<a class="tile" href="/guide/${slug}/">${glyph(kind)}<strong>${label}</strong><span>${sub}</span></a>` : "";
 const atScannerHtml = () =>
-  `<h2 class="section">At the scanner</h2><div class="tiles"><a class="tile" href="/plan/">${glyph("sax")}<strong>Quick plan</strong><span>Swipe through each view's planning images</span></a>${parameters ? `<a class="tile" href="/parameters/">${glyph("lv")}<strong>LV parameters</strong><span>Every view on one page</span></a>` : ""}${toolTile(landmarkSource, "points", "3-point landmarks", "Where each point goes, view by view")}${toolTile(glossarySource, "abbr", "Abbreviations", "LVOT, VENC, STJ and the rest")}</div>`;
+  `<h2 class="section">At the scanner</h2>${protocols?.flow ? flowCard() : ""}<div class="tiles"><a class="tile" href="/plan/">${glyph("sax")}<strong>Quick plan</strong><span>Swipe through each view's planning images</span></a>${parameters ? `<a class="tile" href="/parameters/">${glyph("lv")}<strong>LV parameters</strong><span>Every view on one page</span></a>` : ""}${toolTile(landmarkSource, "points", "3-point landmarks", "Where each point goes, view by view")}${toolTile(glossarySource, "abbr", "Abbreviations", "LVOT, VENC, STJ and the rest")}</div>`;
 const planHome = (g) => g.topics.find((t) => !NOT_PLANNING.has(t)) || g.topics[0];
 const planGuides = () =>
   liveTopics
@@ -711,9 +726,8 @@ const planRowHtml = (g) => {
   const media = first ? `<img src="${esc(first.src)}" alt="" loading="lazy">` : glyph("sax");
   return `<li><button class="row" type="button" data-action="quick-plan" data-slug="${esc(g.slug)}"><span class="row-media">${media}</span><span><span class="row-title">${esc(listTitle(g))}</span><span class="row-meta">${figureCount(g)}</span></span><span class="row-flag">${DECK_ICON}</span></button></li>`;
 };
-const CLOCK_ICON = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4.5l3 2M9.5 2.5h5"/></svg>`;
 const planView = () =>
-  (protocols?.flow ? `<a class="flow-launch" href="/flow/">${CLOCK_ICON}<span><strong>Exam flow</strong><span>Tick off each step, with a clock that starts when you inject contrast</span></span></a>` : "") +
+  (protocols?.flow ? flowCard() : "") +
   `<p class="lede">Swipe through each view's planning images and cine clips, full screen. Tap an image to zoom.</p>` +
   `<p class="plan-links">${[protocols ? `<a href="/guide/${protocols.slug}/">Protocols</a>` : "", cards ? `<a href="/cards/">Printable planning cards</a>` : "", parameters ? `<a href="/parameters/">LV parameters at a glance</a>` : ""].filter(Boolean).join(" · ")}</p>` +
   planGuides().map(({ t, list }) => `<h2 class="section">${esc(t.label)}</h2><ul class="rows">${list.map(planRowHtml).join("")}</ul>`).join("");
@@ -759,7 +773,7 @@ function guideView(g) {
     const next = [...list.slice(at + 1), ...list.slice(0, Math.max(0, at))].slice(0, 3);
     if (next.length) more = `<div class="guide-foot"><h2 class="section">More in ${esc(gTopics[0].label)}</h2>${rowsHtml(next)}</div>`;
   }
-  return `<article>${gTopics.length ? `<ul class="guide-topics">${gTopics.map((t) => `<li><a href="${link.topic(t.slug)}">${esc(t.label)}</a></li>`).join("")}</ul>` : ""}<h1 class="${titleClass(g)}">${esc(g.title)}</h1><p class="guide-meta">${meta.join(", ")}</p>${planButton(g)}${g.landmarksHtml || ""}${toc}<div class="prose">${g.cover && g.coverWide && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}${g.html}</div>${paramsXref(g)}${guideNoteHtml(g)}${more}</article>`;
+  return `<article>${gTopics.length ? `<ul class="guide-topics">${gTopics.map((t) => `<li><a href="${link.topic(t.slug)}">${esc(t.label)}</a></li>`).join("")}</ul>` : ""}<h1 class="${titleClass(g)}">${esc(g.title)}</h1><p class="guide-meta">${meta.join(", ")}</p>${planButton(g)}${g.landmarksHtml || ""}${toc}<div class="prose">${g.cover && g.coverWide && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}${g.html}</div>${pagerHtml(g)}${paramsXref(g)}${guideNoteHtml(g)}${more}</article>`;
 }
 
 const template = readFileSync(join(ROOT, "index.html"), "utf8");

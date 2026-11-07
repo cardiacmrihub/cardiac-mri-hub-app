@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.6.0";
+const APP_VERSION = "1.6.1";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -169,8 +169,8 @@ function paramsXref(g) {
 }
 const toolTile = (slug, kind, label, sub) =>
   slug && state.data?.bySlug.get(slug) ? `<a class="tile" href="${link.guide(slug)}">${glyph(kind)}<strong>${label}</strong><span>${sub}</span></a>` : "";
-const atScannerHtml = () =>
-  `<h2 class="section">At the scanner</h2><div class="tiles"><a class="tile" href="${link.plan}">${glyph("sax")}<strong>Quick plan</strong><span>Swipe through each view's planning images</span></a>${state.data?.parameters ? `<a class="tile" href="${link.parameters}">${glyph("lv")}<strong>LV parameters</strong><span>Every view on one page</span></a>` : ""}${toolTile(state.data?.landmarkGuide, "points", "3-point landmarks", "Where each point goes, view by view")}${toolTile(state.data?.glossary?.slug, "abbr", "Abbreviations", "LVOT, VENC, STJ and the rest")}</div>`;
+const atScannerHtml = (flowCard = "") =>
+  `<h2 class="section">At the scanner</h2>${flowCard}<div class="tiles"><a class="tile" href="${link.plan}">${glyph("sax")}<strong>Quick plan</strong><span>Swipe through each view's planning images</span></a>${state.data?.parameters ? `<a class="tile" href="${link.parameters}">${glyph("lv")}<strong>LV parameters</strong><span>Every view on one page</span></a>` : ""}${toolTile(state.data?.landmarkGuide, "points", "3-point landmarks", "Where each point goes, view by view")}${toolTile(state.data?.glossary?.slug, "abbr", "Abbreviations", "LVOT, VENC, STJ and the rest")}</div>`;
 /** The abbreviation typed on its own, if the abbreviations guide lists it. */
 function glossaryHit(q) {
   const key = q.trim().toLowerCase().replace(/[\s-]+/g, "");
@@ -189,6 +189,8 @@ function renderHome() {
     view.innerHTML = html + `<div class="empty"><h2>No guides yet</h2><p>Guides added to the app will show up here.</p></div>`;
     return;
   }
+  const exam = flowActive();
+  if (exam) html += flowCardHtml();
   const last = d.bySlug.get(prefs.get("lastGuide", ""));
   if (last) html += `<h2 class="section">Continue reading</h2>${rowsHtml([last])}`;
   const start = d.guides.filter((g) => g.startHere && g !== last).sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
@@ -199,7 +201,7 @@ function renderHome() {
       html += `<a class="feature" href="${link.guide(g.slug)}"><div class="feature-media">${media}</div><h3>${esc(listTitle(g))}</h3><p>${esc(g.summary)}</p></a>`;
     }
   }
-  html += atScannerHtml();
+  html += atScannerHtml(exam ? "" : flowCardHtml());
   const topics = topicsWithGuides();
   if (topics.length) {
     html += `<h2 class="section">Topics</h2><div class="tiles">`;
@@ -294,11 +296,30 @@ function renderGuide(slug) {
       ${g.cover && g.coverWide !== false && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}
       ${g.html}
     </div>
+    ${pagerHtml(g)}
     ${paramsXref(g)}
     ${guideNoteHtml(g)}
     ${more}
   </article>`;
   $("#guide-bar-title").textContent = listTitle(g);
+}
+
+// The planning views in Plan-tab order (Technique and Getting started guides left out), for the
+// previous/next links under each one. The build writes the same links into each guide's page (pagerHtml).
+const NOT_PLANNING = ["technique", "getting-started"];
+function planSequence() {
+  const home = (g) => g.topics.find((t) => !NOT_PLANNING.includes(t)) || g.topics[0];
+  return topicsWithGuides().filter((t) => !NOT_PLANNING.includes(t.slug))
+    .flatMap((t) => guidesInTopic(t.slug).filter((g) => g.quickPlan && home(g) === t.slug));
+}
+function pagerHtml(g) {
+  const seq = planSequence();
+  const i = seq.findIndex((x) => x.slug === g.slug);
+  if (i < 0) return "";
+  const a = (x, cls, label) => x
+    ? `<a class="pager-link ${cls}" href="${link.guide(x.slug)}"><span>${label}</span><strong>${esc(listTitle(x))}</strong></a>`
+    : `<span class="pager-link ${cls} none"></span>`;
+  return `<nav class="pager" aria-label="Previous and next views">${a(seq[i - 1], "prev", "Previous")}${a(seq[i + 1], "next", "Next")}</nav>`;
 }
 
 // Disclaimer and "Suggest a correction" under every guide. The build writes the same markup
@@ -371,7 +392,7 @@ function renderPlan() {
     const media = first ? `<img src="${esc(first.src)}" alt="" loading="lazy">` : glyph("sax");
     return `<li><button class="row" type="button" data-action="quick-plan" data-slug="${esc(g.slug)}"><span class="row-media">${media}</span><span><span class="row-title">${esc(listTitle(g))}</span><span class="row-meta">${figureCount(g)}</span></span><span class="row-flag">${ICON.deck}</span></button></li>`;
   };
-  view.innerHTML = (state.data.protocols?.flow ? `<a class="flow-launch" href="${link.flow}">${ICON.clock}<span><strong>Exam flow</strong><span>Tick off each step, with a clock that starts when you inject contrast</span></span></a>` : "") +
+  view.innerHTML = flowCardHtml() +
     `<p class="lede">Swipe through each view's planning images and cine clips, full screen. Tap an image to zoom.</p>` +
     `<p class="plan-links">${[state.data.protocols ? `<a href="${link.guide(state.data.protocols.slug)}">Protocols</a>` : "", state.data.cards ? `<a href="${link.cards}">Printable planning cards</a>` : "", state.data.parameters ? `<a href="${link.parameters}">LV parameters at a glance</a>` : ""].filter(Boolean).join(" · ")}</p>` +
     groups.map(({ t, list }) => `<h2 class="section">${esc(t.label)}</h2><ul class="rows">${list.map(row).join("")}</ul>`).join("");
@@ -383,10 +404,36 @@ function renderPlan() {
 const FLOW_TTL = 4 * 60 * 60 * 1000;
 function flowState() {
   const f = prefs.get("flow", null);
-  if (!f || Date.now() - (f.updated || 0) > FLOW_TTL) return { protocol: null, done: [], contrastAt: null, updated: Date.now() };
+  // After 4 hours the ticks and clock are cleared, but the flow still opens on the last protocol run.
+  if (!f || Date.now() - (f.updated || 0) > FLOW_TTL) return { protocol: prefs.get("flowLast", null), done: [], contrastAt: null, updated: Date.now() };
   return f;
 }
-function saveFlow(f) { prefs.set("flow", { ...f, updated: Date.now() }); }
+function saveFlow(f) {
+  prefs.set("flow", { ...f, updated: Date.now() });
+  if (f.protocol) prefs.set("flowLast", f.protocol);
+}
+// An exam is in progress once a step is ticked or contrast is in, until the 4 hours run out.
+function flowActive() {
+  const f = prefs.get("flow", null);
+  return !!f && Date.now() - (f.updated || 0) <= FLOW_TTL && (f.done?.length > 0 || !!f.contrastAt);
+}
+// The exam-flow card on Home and in the Plan tab: back to the exam in progress, or the last protocol run.
+function flowCardHtml() {
+  const P = state.data?.protocols;
+  if (!P?.flow) return "";
+  const f = flowState();
+  const p = P.list.find((x) => x.id === f.protocol);
+  let title = "Exam flow";
+  let sub = "Tick off each step, with a clock that starts when you inject contrast";
+  if (p && flowActive()) {
+    const total = p.groups.reduce((n, g) => n + g.steps.length, 0);
+    title = "Back to your exam";
+    sub = `${esc(p.name)} · ${f.done.length} of ${total} steps done${f.contrastAt ? ` · contrast in at ${esc(clockTime(f.contrastAt))}` : ""}`;
+  } else if (p && prefs.get("flowLast", null)) {
+    sub = `Last exam: ${esc(p.name)}. Tick off each step, with a contrast clock.`;
+  }
+  return `<a class="flow-launch${flowActive() ? " active" : ""}" href="${link.flow}">${ICON.clock}<span><strong>${title}</strong><span>${sub}</span></span></a>`;
+}
 function flowProtocol(f = flowState()) {
   const P = state.data?.protocols;
   return P ? P.list.find((x) => x.id === f.protocol) || P.list[0] : null;
@@ -518,7 +565,7 @@ function renderSettings() {
       <button class="btn" data-action="save-offline"${o.running || !guideCount ? " disabled" : ""}>Save everything for offline</button>
       <div class="progress" ${o.running ? "" : "hidden"}><i id="offline-bar" style="width:${o.total ? Math.round((o.done / o.total) * 100) : 0}%"></i></div>
     </section>
-    <section class="setting"><h2>Text size</h2><p>Applies to guide text.</p>${seg("text", prefs.get("text", "m"), [["s", "Small"], ["m", "Medium"], ["l", "Large"], ["xl", "Largest"]])}</section>
+    <section class="setting"><h2>Text size</h2><p>Applies across the app: guides, lists, the exam flow and Quick plan captions. The <strong>Aa</strong> button at the top of a guide changes it too.</p>${seg("text", prefs.get("text", "m"), [["s", "Small"], ["m", "Medium"], ["l", "Large"], ["xl", "Largest"]])}</section>
     <section class="setting"><h2>Appearance</h2><p>Dark is easier on the eyes in a dim control room.</p>${seg("theme", prefs.get("theme", "system"), [["system", "Match device"], ["light", "Light"], ["dark", "Dark"]])}</section>
     <section class="setting"><h2>Install</h2>${install}</section>
     <section class="setting"><h2>Check for new guides</h2><p>${state.data ? `Guides last updated ${fmtDate(state.data.generatedAt)}.` : ""}</p><button class="btn secondary" data-action="refresh">Check now</button></section>
