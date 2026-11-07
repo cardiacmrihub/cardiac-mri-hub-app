@@ -32,7 +32,7 @@ Every exam starts with the same localizers, listed first. The order here runs th
 
 **Contrast**
 
-1. Contrast injection, with rest perfusion on the short-axis samples (optional)
+1. Perfusion: short-axis samples, during the contrast injection
 
 **After contrast**
 
