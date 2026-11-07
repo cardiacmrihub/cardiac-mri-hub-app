@@ -46,8 +46,6 @@ The key difference lies in how the diaphragm and respiratory muscles behave duri
 
 This physiologic behavior underpins the observed improvements in motion artifact scores and radiologist preference for end-expiration.\[ajronline\]
 
-![Decorative illustration of a brain made of glowing network lines, representing AI](../images/51892d_be9d286dcc9d41b0b3afa656b970c463-mv2.webp)
-
 # Role of AI and Compressed Sensing in Breath-Hold Strategy
 
 Advances in compressed sensing (CS) and AI reconstruction are changing how breath-holds are used, particularly for patients who struggle with traditional 10–15 second holds.

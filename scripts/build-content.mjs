@@ -492,7 +492,7 @@ if (protocolSource) {
       // The contrast step (where the clock starts) is the first one that mentions the injection itself,
       // not one timed from it ("after the stress injection").
       const contrast = !cur.hasContrast && /\binject/i.test(text) && !/after\s+(?:the\s+)?(?:\w+\s+)?inject/i.test(text);
-      if (contrast) cur.hasContrast = true;
+      if (contrast) { cur.hasContrast = true; if (/\bstress\b/i.test(text)) cur.clockFrom = "stress agent"; }
       group.steps.push({ html: inline(text, lmCtx()), contrast, atMin: at ? Number(at[1]) : null });
     }
   }

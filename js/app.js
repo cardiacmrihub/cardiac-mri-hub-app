@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.6.2";
+const APP_VERSION = "1.6.3";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -433,7 +433,7 @@ function flowCardHtml() {
   if (p && flowActive()) {
     const total = p.groups.reduce((n, g) => n + g.steps.length, 0);
     title = "Back to your exam";
-    sub = `${esc(p.name)} · ${f.done.length} of ${total} steps done${f.contrastAt ? ` · contrast in at ${esc(clockTime(f.contrastAt))}` : ""}`;
+    sub = `${esc(p.name)} · ${f.done.length} of ${total} steps done${f.contrastAt ? ` · ${clockFrom(p)} in at ${esc(clockTime(f.contrastAt))}` : ""}`;
   } else if (p && prefs.get("flowLast", null)) {
     sub = `Last exam: ${esc(p.name)}. Tick off each step, with a contrast clock.`;
   }
@@ -448,6 +448,9 @@ const FLOW_MIN = 1, FLOW_MAX = 30;
 const flowMinutes = (p, i, step) => prefs.get("flowTimes", {})[`${p.id}:${i}`] ?? step.atMin;
 const mmss = (t) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
 const stepLabel = (html) => html.replace(/<[^>]+>/g, "").split(/[,.:]/)[0].trim();
+// What starts the clock: the contrast injection, or the stress agent in a stress protocol.
+const clockFrom = (p) => p?.clockFrom || "contrast";
+const cap = (w) => w[0].toUpperCase() + w.slice(1);
 const clockTime = (ms) => new Date(ms).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
 function renderFlow() {
@@ -468,7 +471,7 @@ function renderFlow() {
     const i = n++;
     const done = f.done.includes(i);
     const contrast = s.contrast
-      ? `<div class="flow-contrast">${f.contrastAt ? `<span>Contrast in at ${esc(clockTime(f.contrastAt))}</span> · <button class="text-btn flow-restart" type="button" data-action="flow-clock-restart">Restart</button>` : `<button class="btn" type="button" data-action="flow-contrast">${ICON.clock}Contrast in</button>`}</div>`
+      ? `<div class="flow-contrast">${f.contrastAt ? `<span>${cap(clockFrom(p))} in at ${esc(clockTime(f.contrastAt))}</span> · <button class="text-btn flow-restart" type="button" data-action="flow-clock-restart">Restart</button>` : `<button class="btn" type="button" data-action="flow-contrast">${ICON.clock}${cap(clockFrom(p))} in</button>`}</div>`
       : "";
     let html = s.html;
     let timing = "";
@@ -476,14 +479,14 @@ function renderFlow() {
       const m = flowMinutes(p, i, s);
       if (m !== s.atMin) html = html.replace(new RegExp(`\\b${s.atMin}(?:\\s*[–-]\\s*\\d+)?(\\s*min)`), `${m}$1`);
       timing = ` <span class="flow-at" data-at="${m}">${m} min</span>` +
-        `<div class="flow-adjust" role="group" aria-label="Minutes after contrast"><span class="flow-adjust-label">Change time</span><button class="flow-adj" type="button" data-action="flow-time" data-i="${i}" data-d="-1" aria-label="One minute earlier"${m <= FLOW_MIN ? " disabled" : ""}>−</button>` +
+        `<div class="flow-adjust" role="group" aria-label="Minutes after ${clockFrom(p)}"><span class="flow-adjust-label">Change time</span><button class="flow-adj" type="button" data-action="flow-time" data-i="${i}" data-d="-1" aria-label="One minute earlier"${m <= FLOW_MIN ? " disabled" : ""}>−</button>` +
         `<span>${m} min</span>` +
         `<button class="flow-adj" type="button" data-action="flow-time" data-i="${i}" data-d="1" aria-label="One minute later"${m >= FLOW_MAX ? " disabled" : ""}>+</button>` +
         `${m !== s.atMin ? `<button class="text-btn" type="button" data-action="flow-time" data-i="${i}" data-d="reset">Back to ${s.atMin}</button>` : ""}</div>`;
     }
     return `<li class="flow-step${done ? " done" : ""}"><button type="button" class="tick" data-action="flow-tick" data-i="${i}" aria-pressed="${done}" aria-label="Step ${i + 1} done">${ICON.check}</button><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${html}${timing}${contrast}</div></li>`;
   }).join("")}</ol>`).join("");
-  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>Contrast in</strong> when you inject, and the clock counts up to the timed steps.</p></div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${link.guide(P.slug)}#${esc(p.id)}">Protocol notes</a> · <button class="text-btn" type="button" data-action="flow-reset">Start over</button></p>`;
+  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>${cap(clockFrom(p))} in</strong> when you inject, and the clock counts up to the timed steps.</p></div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${link.guide(P.slug)}#${esc(p.id)}">Protocol notes</a> · <button class="text-btn" type="button" data-action="flow-reset">Start over</button></p>`;
   tickFlowClock();
   clearInterval(state.flowTimer);
   state.flowTimer = setInterval(() => {
@@ -507,11 +510,11 @@ function tickFlowClock() {
     status = left > 0 ? `<span>${esc(stepLabel(next.html))} in ${mmss(left)}</span>` : `<span class="due">${esc(stepLabel(next.html))}: now</span>`;
     if (left <= 0 && state.flowAlerted !== `${f.contrastAt}:${next.i}`) {
       state.flowAlerted = `${f.contrastAt}:${next.i}`;
-      if (left > -5) { toast(`${stepLabel(next.html)}: ${next.atMin} minutes since contrast`); navigator.vibrate?.(300); }
+      if (left > -5) { toast(`${stepLabel(next.html)}: ${next.atMin} ${next.atMin === 1 ? "minute" : "minutes"} since ${clockFrom(p)}`); navigator.vibrate?.(300); }
     }
   }
   el.hidden = false;
-  el.innerHTML = `${ICON.clock}<span class="flow-clock-label">Since contrast</span><strong>${mmss(s)}</strong>${status}`;
+  el.innerHTML = `${ICON.clock}<span class="flow-clock-label">Since ${clockFrom(p)}</span><strong>${mmss(s)}</strong>${status}`;
   document.querySelectorAll(".flow-at").forEach((c) => {
     const left = Number(c.dataset.at) * 60 - s;
     c.classList.toggle("due", left <= 0);

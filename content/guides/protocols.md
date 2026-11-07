@@ -9,7 +9,7 @@ protocols: true
 examFlow: true    # true turns on the exam-flow checklist and contrast clock in the Plan tab
 ---
 
-Each protocol lists the sequences in the order you run them, with links to how each view is planned. They follow the Society for Cardiovascular Magnetic Resonance's [standardized protocols (2020 update)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/). Your department's protocol may differ, and it's the one to follow. Stress agents and contrast doses aren't listed here: they follow your department's protocol and the supervising physician.
+Each protocol lists the sequences in the order you run them, with links to how each view is planned. They follow the Society for Cardiovascular Magnetic Resonance's [standardized protocols (2020 update)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/), except amyloidosis, which those don't cover: it follows the [multisociety expert consensus on imaging cardiac amyloidosis](https://doi.org/10.1007/s12350-019-01760-6) that SCMR endorsed. Your department's protocol may differ, and it's the one to follow. Stress agents and contrast doses aren't listed here: they follow your department's protocol and the supervising physician.
 
 Every exam starts with the same localizers, listed first. The order here runs the cines before contrast; some sites give contrast earlier and run the cines while they wait for LGE. At the scanner, open the [exam flow](/flow/) to tick the steps off as you go, with a clock that starts when you inject contrast.
 
@@ -100,25 +100,30 @@ Every exam starts with the same localizers, listed first. The order here runs th
 
 # Stress perfusion
 
+Only the localizers and maps run before the stress injection; the cines fill the wait for LGE. The clock starts at the stress injection. Perfusion timing depends on the stress agent and your site: here it's 1 minute after the stress injection, and you can change it on your device in the exam flow.
+
 **Before stress**
 
-1. Cine [2-chamber](/guide/lv-2-chamber/), [3-chamber](/guide/lv-3-chamber/) and [4-chamber](/guide/lv-4-chamber/). Can also be run in the wait between stress and rest.
-2. Plan the perfusion slices: at least 3 [short-axis samples](/guide/lv-short-axis-samples/) (base, mid, apex)
+1. Plan the perfusion slices from the localizers: at least 3 [short-axis samples](/guide/lv-short-axis-samples/) (base, mid, apex)
+2. T1 map: short-axis samples. See [MOLLI maps](/guide/molli-maps/).
+3. T2 map: short-axis samples
 
 **Stress**
 
-1. Stress agent, given by your department's protocol with the supervising physician
-2. Stress perfusion: short-axis samples, during the contrast injection at peak stress
+1. Stress agent injection, by your department's protocol with the supervising physician
+2. Stress perfusion: short-axis samples, 1 minute after the stress injection, during the contrast injection
 
-**Between stress and rest**
+**After stress perfusion**
 
-1. Cine [short-axis stack](/guide/lv-short-axis/), base to apex, and any long axes not done yet
-2. Rest perfusion: same slices, at least 10 minutes after the stress injection (optional)
+1. Cine [2-chamber](/guide/lv-2-chamber/), [3-chamber](/guide/lv-3-chamber/) and [4-chamber](/guide/lv-4-chamber/)
+2. Cine [short-axis stack](/guide/lv-short-axis/), base to apex
+3. TI scout, 10 minutes after the perfusion contrast (11 minutes after the stress injection). See [choosing the TI time](/guide/psir-ti-time/).
+4. LGE PSIR: short-axis stack, then 2-, 3- and 4-chamber
 
-**After rest**
+**Rest perfusion and flows**
 
-1. TI scout, at least 5 minutes after the rest injection, about 15 minutes after the stress injection
-2. LGE PSIR: short-axis stack, then 2-, 3- and 4-chamber
+1. Rest perfusion: same short-axis samples, during a second contrast injection
+2. Flows (phase contrast), if ordered. See [phase contrast planning](/guide/phase-contrast-planning/).
 
 # Hypertrophic cardiomyopathy
 
@@ -175,6 +180,28 @@ Every exam starts with the same localizers, listed first. The order here runs th
 
 1. TI scout, 10 minutes after contrast. See [choosing the TI time](/guide/psir-ti-time/).
 2. LGE PSIR: short-axis stack, then 2-, 3- and 4-chamber
+
+# Amyloidosis
+
+Use PSIR for LGE. In amyloidosis it's hard to find a TI that nulls the heart muscle, and PSIR doesn't depend on getting it exactly right. The consensus also advises acquiring LGE every other heartbeat, and not using partly protein-bound contrast agents such as gadobenate (MultiHance); which agent to use follows your department.
+
+**Before contrast**
+
+1. Cine [2-chamber](/guide/lv-2-chamber/), [3-chamber](/guide/lv-3-chamber/) and [4-chamber](/guide/lv-4-chamber/)
+2. Cine [short-axis stack](/guide/lv-short-axis/), base to apex
+3. T1 map: base and mid [short-axis samples](/guide/lv-short-axis-samples/) and the 4-chamber. See [MOLLI maps](/guide/molli-maps/).
+4. T2 map: mid short axis (optional)
+
+**Contrast**
+
+1. Contrast injection
+
+**After contrast**
+
+1. TI scout, 10 minutes after contrast. Note whether the heart muscle nulls before the blood pool, a sign of amyloid, and tell the reading physician. See [choosing the TI time](/guide/psir-ti-time/).
+2. LGE PSIR: 2-, 3- and 4-chamber
+3. T1 map: same slices as before contrast, 15 minutes after contrast, for ECV
+4. LGE PSIR: short-axis stack
 
 # Iron overload
 
