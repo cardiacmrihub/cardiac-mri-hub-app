@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.6.3";
+const APP_VERSION = "1.7.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -422,18 +422,76 @@ function flowActive() {
   const f = prefs.get("flow", null);
   return !!f && Date.now() - (f.updated || 0) <= FLOW_TTL && (f.done?.length > 0 || !!f.contrastAt);
 }
+// ---------- My protocol: a device's own version of a protocol ----------
+// Saved in prefs "flowCustom" as { [protocol id]: { name, hidden: [key], added: { key: text }, layout: [{ label, keys }] } }.
+// Steps are matched by key (from their words), so the standard protocol can change underneath without losing much:
+// a step added to it later slots in after its standard neighbour; a step taken out of it just disappears.
+const flowCustomAll = () => prefs.get("flowCustom", {});
+const flowCustom = (id) => flowCustomAll()[id] || null;
+function saveFlowCustom(id, c) {
+  const all = { ...flowCustomAll() };
+  if (c) all[id] = c; else delete all[id];
+  prefs.set("flowCustom", all);
+}
+// Same wording rule as the build: "10 minutes after contrast" times a step.
+const TIMED_STEP = /(\d+)(?:\s*[–-]\s*\d+)?\s*min(?:ute)?s?\s+after\s+(?:the\s+)?(?:stress\s+|first\s+)?(?:contrast|injection)/i;
+function addedStep(key, text) {
+  const at = TIMED_STEP.exec(text);
+  return { key, html: esc(text), added: true, contrast: false, atMin: at ? Number(at[1]) : null };
+}
+function effectiveProtocol(base) {
+  const c = flowCustom(base.id);
+  if (!c) return { ...base, base, edited: false, groups: base.groups.map((g) => ({ ...g, steps: g.steps.map((x) => ({ ...x, hidden: false })) })) };
+  const byKey = new Map();
+  base.groups.forEach((g) => g.steps.forEach((x) => byKey.set(x.key, x)));
+  for (const [k, t] of Object.entries(c.added || {})) byKey.set(k, addedStep(k, t));
+  const used = new Set();
+  const groups = c.layout
+    ? c.layout.map((g) => ({ label: g.label, steps: g.keys.filter((k) => byKey.has(k) && !used.has(k)).map((k) => (used.add(k), byKey.get(k))) }))
+    : base.groups.map((g) => ({ label: g.label, steps: [] }));
+  // Standard steps the saved layout doesn't have yet: after their standard neighbour, or first in their group.
+  base.groups.forEach((bg) => bg.steps.forEach((x, i) => {
+    if (used.has(x.key)) return;
+    used.add(x.key);
+    const prev = i > 0 ? bg.steps[i - 1].key : null;
+    for (const g of groups) {
+      const j = prev ? g.steps.findIndex((y) => y.key === prev) : -1;
+      if (j >= 0) { g.steps.splice(j + 1, 0, x); return; }
+    }
+    let g = groups.find((y) => y.label === bg.label);
+    if (!g) { g = { label: bg.label, steps: [] }; groups.push(g); }
+    if (i === 0) g.steps.unshift(x); else g.steps.push(x);
+  }));
+  const hidden = new Set(c.hidden || []);
+  return {
+    ...base, base, edited: true, name: c.name || base.name,
+    groups: groups.map((g) => ({ ...g, steps: g.steps.map((x) => ({ ...x, hidden: hidden.has(x.key) && !x.contrast })) })),
+  };
+}
+// The visible steps, in order, as the exam runs them.
+const runSteps = (p) => p.groups.flatMap((g) => g.steps.filter((x) => !x.hidden));
+// Saves an edit: the layout as it stands, then the change.
+function editFlowCustom(p, change) {
+  const c = { ...(flowCustom(p.id) || {}) };
+  c.layout = p.groups.map((g) => ({ label: g.label, keys: g.steps.map((x) => x.key) }));
+  change(c);
+  saveFlowCustom(p.id, c);
+}
+
 // The exam-flow card on Home and in the Plan tab: back to the exam in progress, or the last protocol run.
 function flowCardHtml() {
   const P = state.data?.protocols;
   if (!P?.flow) return "";
   const f = flowState();
-  const p = P.list.find((x) => x.id === f.protocol);
+  const base = P.list.find((x) => x.id === f.protocol);
+  const p = base ? effectiveProtocol(base) : null;
   let title = "Exam flow";
   let sub = "Tick off each step, with a clock that starts when you inject contrast";
   if (p && flowActive()) {
-    const total = p.groups.reduce((n, g) => n + g.steps.length, 0);
+    const steps = runSteps(p);
+    const done = steps.filter((x) => f.done.includes(x.key)).length;
     title = "Back to your exam";
-    sub = `${esc(p.name)} · ${f.done.length} of ${total} steps done${f.contrastAt ? ` · ${clockFrom(p)} in at ${esc(clockTime(f.contrastAt))}` : ""}`;
+    sub = `${esc(p.name)} · ${done} of ${steps.length} steps done${f.contrastAt ? ` · ${clockFrom(p)} in at ${esc(clockTime(f.contrastAt))}` : ""}`;
   } else if (p && prefs.get("flowLast", null)) {
     sub = `Last exam: ${esc(p.name)}. Tick off each step, with a contrast clock.`;
   }
@@ -441,58 +499,107 @@ function flowCardHtml() {
 }
 function flowProtocol(f = flowState()) {
   const P = state.data?.protocols;
-  return P ? P.list.find((x) => x.id === f.protocol) || P.list[0] : null;
+  if (!P) return null;
+  const base = P.list.find((x) => x.id === f.protocol) || P.list[0];
+  return effectiveProtocol(base);
 }
 // A timed step's minutes can be changed on the device (each site runs its own timing); kept until changed back.
 const FLOW_MIN = 1, FLOW_MAX = 30;
-const flowMinutes = (p, i, step) => prefs.get("flowTimes", {})[`${p.id}:${i}`] ?? step.atMin;
+const flowMinutes = (p, step) => prefs.get("flowTimes", {})[`${p.id}:${step.key}`] ?? step.atMin;
+// Times saved before steps had keys were saved by position ("cardiomyopathy:10"); move them to the step's key once.
+function migrateFlowTimes() {
+  const times = prefs.get("flowTimes", {});
+  const old = Object.keys(times).filter((k) => /:\d+$/.test(k));
+  if (!old.length) return;
+  const next = { ...times };
+  for (const k of old) {
+    const [id, n] = k.split(":");
+    const base = state.data.protocols.list.find((x) => x.id === id);
+    const step = base?.groups.flatMap((g) => g.steps)[Number(n)];
+    if (step?.atMin) next[`${id}:${step.key}`] = times[k];
+    delete next[k];
+  }
+  prefs.set("flowTimes", next);
+}
 const mmss = (t) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
 const stepLabel = (html) => html.replace(/<[^>]+>/g, "").split(/[,.:]/)[0].trim();
+const plainText = (html) => html.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 // What starts the clock: the contrast injection, or the stress agent in a stress protocol.
 const clockFrom = (p) => p?.clockFrom || "contrast";
 const cap = (w) => w[0].toUpperCase() + w.slice(1);
 const clockTime = (ms) => new Date(ms).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
 function renderFlow() {
-  setTopbar(`${backButton()}<h1 class="topbar-title">Exam flow</h1>`);
-  if (!state.data) { view.innerHTML = loadingOrErrorHtml(); return; }
+  if (!state.data) { setTopbar(`${backButton()}<h1 class="topbar-title">Exam flow</h1>`); view.innerHTML = loadingOrErrorHtml(); return; }
   const P = state.data.protocols;
-  if (!P?.flow) { view.innerHTML = notFoundHtml("This page isn't in the app."); return; }
+  if (!P?.flow) { setTopbar(`${backButton()}<h1 class="topbar-title">Exam flow</h1>`); view.innerHTML = notFoundHtml("This page isn't in the app."); return; }
+  migrateFlowTimes();
   const f = flowState();
   const p = flowProtocol(f);
+  if (state.flowEdit === p.id) { renderFlowEdit(p); return; }
+  setTopbar(`${backButton()}<h1 class="topbar-title">Exam flow</h1>`);
+  const nameOf = (x) => flowCustom(x.id)?.name || x.name;
   // A few protocols fit as chips; a longer list goes in a dropdown so the steps stay near the top.
   const pick = P.list.length > 6
-    ? `<label class="flow-select"><span>Protocol</span><span class="flow-select-box"><select data-flow-pick>${P.list.map((x) => `<option value="${esc(x.id)}"${x.id === p.id ? " selected" : ""}>${esc(x.name)}</option>`).join("")}</select></span></label>`
+    ? `<label class="flow-select"><span>Protocol</span><span class="flow-select-box"><select data-flow-pick>${P.list.map((x) => `<option value="${esc(x.id)}"${x.id === p.id ? " selected" : ""}>${esc(nameOf(x))}</option>`).join("")}</select></span></label>`
     : P.list.length > 1
-    ? `<div class="chips flow-pick">${P.list.map((x) => `<button class="chip" type="button" data-action="flow-pick" data-id="${esc(x.id)}" aria-pressed="${x.id === p.id}">${esc(x.name)}</button>`).join("")}</div>`
+    ? `<div class="chips flow-pick">${P.list.map((x) => `<button class="chip" type="button" data-action="flow-pick" data-id="${esc(x.id)}" aria-pressed="${x.id === p.id}">${esc(nameOf(x))}</button>`).join("")}</div>`
     : "";
   let n = 0;
-  const steps = p.groups.map((gr) => `${gr.label ? `<h2 class="flow-group">${esc(gr.label)}</h2>` : ""}<ol class="flow">${gr.steps.map((s) => {
+  const steps = p.groups.filter((gr) => gr.steps.some((x) => !x.hidden)).map((gr) => `${gr.label ? `<h2 class="flow-group">${esc(gr.label)}</h2>` : ""}<ol class="flow">${gr.steps.filter((x) => !x.hidden).map((s) => {
     const i = n++;
-    const done = f.done.includes(i);
+    const done = f.done.includes(s.key);
     const contrast = s.contrast
       ? `<div class="flow-contrast">${f.contrastAt ? `<span>${cap(clockFrom(p))} in at ${esc(clockTime(f.contrastAt))}</span> · <button class="text-btn flow-restart" type="button" data-action="flow-clock-restart">Restart</button>` : `<button class="btn" type="button" data-action="flow-contrast">${ICON.clock}${cap(clockFrom(p))} in</button>`}</div>`
       : "";
     let html = s.html;
     let timing = "";
     if (s.atMin) {
-      const m = flowMinutes(p, i, s);
+      const m = flowMinutes(p, s);
       if (m !== s.atMin) html = html.replace(new RegExp(`\\b${s.atMin}(?:\\s*[–-]\\s*\\d+)?(\\s*min)`), `${m}$1`);
       timing = ` <span class="flow-at" data-at="${m}">${m} min</span>` +
-        `<div class="flow-adjust" role="group" aria-label="Minutes after ${clockFrom(p)}"><span class="flow-adjust-label">Change time</span><button class="flow-adj" type="button" data-action="flow-time" data-i="${i}" data-d="-1" aria-label="One minute earlier"${m <= FLOW_MIN ? " disabled" : ""}>−</button>` +
+        `<div class="flow-adjust" role="group" aria-label="Minutes after ${clockFrom(p)}"><span class="flow-adjust-label">Change time</span><button class="flow-adj" type="button" data-action="flow-time" data-key="${s.key}" data-d="-1" aria-label="One minute earlier"${m <= FLOW_MIN ? " disabled" : ""}>−</button>` +
         `<span>${m} min</span>` +
-        `<button class="flow-adj" type="button" data-action="flow-time" data-i="${i}" data-d="1" aria-label="One minute later"${m >= FLOW_MAX ? " disabled" : ""}>+</button>` +
-        `${m !== s.atMin ? `<button class="text-btn" type="button" data-action="flow-time" data-i="${i}" data-d="reset">Back to ${s.atMin}</button>` : ""}</div>`;
+        `<button class="flow-adj" type="button" data-action="flow-time" data-key="${s.key}" data-d="1" aria-label="One minute later"${m >= FLOW_MAX ? " disabled" : ""}>+</button>` +
+        `${m !== s.atMin ? `<button class="text-btn" type="button" data-action="flow-time" data-key="${s.key}" data-d="reset">Back to ${s.atMin}</button>` : ""}</div>`;
     }
-    return `<li class="flow-step${done ? " done" : ""}"><button type="button" class="tick" data-action="flow-tick" data-i="${i}" aria-pressed="${done}" aria-label="Step ${i + 1} done">${ICON.check}</button><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${html}${timing}${contrast}</div></li>`;
+    return `<li class="flow-step${done ? " done" : ""}"><button type="button" class="tick" data-action="flow-tick" data-key="${s.key}" aria-pressed="${done}" aria-label="Step ${i + 1} done">${ICON.check}</button><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${html}${timing}${contrast}</div></li>`;
   }).join("")}</ol>`).join("");
-  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>${cap(clockFrom(p))} in</strong> when you inject, and the clock counts up to the timed steps.</p></div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${link.guide(P.slug)}#${esc(p.id)}">Protocol notes</a> · <button class="text-btn" type="button" data-action="flow-reset">Start over</button></p>`;
+  const edited = p.edited ? `<p class="flow-edited">Your version, on this device · <button class="text-btn" type="button" data-action="fe-open">Edit</button></p>` : "";
+  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>${cap(clockFrom(p))} in</strong> when you inject, and the clock counts up to the timed steps.</p>${edited}</div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${link.guide(P.slug)}#${esc(p.id)}">Protocol notes</a> · <button class="text-btn" type="button" data-action="fe-open">Customize</button> · <button class="text-btn" type="button" data-action="flow-reset">Start over</button></p>`;
   tickFlowClock();
   clearInterval(state.flowTimer);
   state.flowTimer = setInterval(() => {
     if (!location.pathname.startsWith("/flow")) { clearInterval(state.flowTimer); return; }
     tickFlowClock();
   }, 1000);
+}
+
+// Edit mode: hide steps, move them (across groups too), add your own, rename, or go back to the standard protocol.
+function renderFlowEdit(p) {
+  clearInterval(state.flowTimer);
+  setTopbar(`${backButton()}<h1 class="topbar-title">Customize</h1>`);
+  const all = p.groups.flatMap((g) => g.steps);
+  const first = all[0]?.key, last = all[all.length - 1]?.key;
+  const groups = p.groups.map((g, gi) => {
+    const rows = g.steps.map((s) => {
+      const showBtn = s.contrast
+        ? `<span class="tick fe-show fixed" title="Starts the clock, so it stays">${ICON.check}</span>`
+        : `<button type="button" class="tick fe-show" data-action="fe-show" data-key="${s.key}" aria-pressed="${!s.hidden}" aria-label="${s.hidden ? "Show" : "Hide"} this step">${ICON.check}</button>`;
+      const tags = (s.added ? `<span class="fe-tag">Added</span>` : "") + (s.contrast ? `<span class="fe-tag">Starts the clock</span>` : "") + (s.hidden ? `<span class="fe-tag off">Hidden</span>` : "");
+      return `<li class="fe-step${s.hidden ? " off" : ""}">${showBtn}<span class="fe-text">${esc(plainText(s.html))}${tags ? `<span class="fe-tags">${tags}</span>` : ""}${s.added ? `<button class="text-btn fe-del" type="button" data-action="fe-del" data-key="${s.key}">Remove</button>` : ""}</span>` +
+        `<span class="fe-move"><button type="button" class="flow-adj" data-action="fe-move" data-key="${s.key}" data-d="-1" aria-label="Move up"${s.key === first ? " disabled" : ""}>↑</button><button type="button" class="flow-adj" data-action="fe-move" data-key="${s.key}" data-d="1" aria-label="Move down"${s.key === last ? " disabled" : ""}>↓</button></span></li>`;
+    }).join("");
+    const add = state.flowAddGroup === gi
+      ? `<div class="fe-add open"><input type="text" data-flow-add="${gi}" maxlength="140" placeholder="New step, e.g. Cine 4-chamber stack" aria-label="New step in ${esc(g.label || "this group")}" enterkeyhint="done"><button class="btn" type="button" data-action="fe-add" data-g="${gi}">Add</button><button class="text-btn" type="button" data-action="fe-add-cancel">Cancel</button></div>`
+      : `<div class="fe-add"><button class="text-btn" type="button" data-action="fe-add-open" data-g="${gi}">+ Add a step here</button></div>`;
+    return `${g.label ? `<h2 class="flow-group">${esc(g.label)}</h2>` : ""}<ol class="fe-list">${rows || `<li class="fe-empty">No steps here</li>`}</ol>${add}`;
+  }).join("");
+  view.innerHTML = `<div class="flow-head fe-head"><div><h1 class="guide-title">${esc(p.base.name)}</h1><p class="guide-meta">Your version stays on this device. Untick steps you don't run, move steps with the arrows, and add your own. To time a step you add, word it like "15 minutes after contrast".</p></div><button class="btn" type="button" data-action="fe-done">Done</button></div>` +
+    `<label class="flow-select fe-name"><span>Name on this device</span><input type="text" data-flow-name value="${esc(p.name)}" placeholder="${esc(p.base.name)}" maxlength="60" autocomplete="off"></label>` +
+    groups +
+    `<div class="fe-foot"><button class="btn" type="button" data-action="fe-done">Done</button>${p.edited ? `<button class="text-btn" type="button" data-action="fe-reset">${state.flowResetArmed ? "Tap again to go back to the standard protocol" : "Back to the standard protocol"}</button>` : ""}</div>`;
+  if (state.flowAddGroup != null) $(`input[data-flow-add="${state.flowAddGroup}"]`)?.focus();
 }
 
 function tickFlowClock() {
@@ -502,14 +609,13 @@ function tickFlowClock() {
   const p = flowProtocol(f);
   if (!f.contrastAt || !p) { el.hidden = true; return; }
   const s = Math.max(0, Math.floor((Date.now() - f.contrastAt) / 1000));
-  const all = p.groups.flatMap((g) => g.steps);
-  const next = all.map((x, i) => ({ ...x, i, atMin: x.atMin ? flowMinutes(p, i, x) : null })).find((x) => x.atMin && !f.done.includes(x.i));
+  const next = runSteps(p).map((x) => ({ ...x, atMin: x.atMin ? flowMinutes(p, x) : null })).find((x) => x.atMin && !f.done.includes(x.key));
   let status = "";
   if (next) {
     const left = next.atMin * 60 - s;
     status = left > 0 ? `<span>${esc(stepLabel(next.html))} in ${mmss(left)}</span>` : `<span class="due">${esc(stepLabel(next.html))}: now</span>`;
-    if (left <= 0 && state.flowAlerted !== `${f.contrastAt}:${next.i}`) {
-      state.flowAlerted = `${f.contrastAt}:${next.i}`;
+    if (left <= 0 && state.flowAlerted !== `${f.contrastAt}:${next.key}`) {
+      state.flowAlerted = `${f.contrastAt}:${next.key}`;
       if (left > -5) { toast(`${stepLabel(next.html)}: ${next.atMin} ${next.atMin === 1 ? "minute" : "minutes"} since ${clockFrom(p)}`); navigator.vibrate?.(300); }
     }
   }
@@ -634,6 +740,8 @@ function pageTitle(section, arg) {
 
 function route() {
   const { section, arg, params } = parseRoute();
+  // Leaving the exam flow closes its edit mode (the name field saves on the way out).
+  if (section !== "flow" && state.flowEdit) { saveFlowName(); state.flowEdit = null; state.flowAddGroup = null; }
   const tab = { undefined: "home", topics: "topics", topic: "topics", search: "search", saved: "saved", plan: "plan", parameters: "plan", cards: "plan", flow: "plan", about: "home" }[section] || "";
   document.querySelectorAll("#tabbar a").forEach((a) => {
     if (a.dataset.tab === tab) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
@@ -764,8 +872,8 @@ document.addEventListener("click", async (e) => {
     }
     case "flow-tick": {
       const f = flowState();
-      const i = Number(btn.dataset.i);
-      f.done = f.done.includes(i) ? f.done.filter((x) => x !== i) : [...f.done, i];
+      const k = btn.dataset.key;
+      f.done = f.done.includes(k) ? f.done.filter((x) => x !== k) : [...f.done.filter((x) => typeof x === "string"), k];
       f.protocol = flowProtocol(f)?.id || null;
       saveFlow(f);
       renderFlow();
@@ -776,21 +884,20 @@ document.addEventListener("click", async (e) => {
       const p = flowProtocol(f);
       f.protocol = p?.id || null;
       f.contrastAt = Date.now();
-      const i = p ? p.groups.flatMap((g) => g.steps).findIndex((x) => x.contrast) : -1;
-      if (i >= 0 && !f.done.includes(i)) f.done.push(i);
+      const c = p ? runSteps(p).find((x) => x.contrast) : null;
+      if (c && !f.done.includes(c.key)) f.done.push(c.key);
       saveFlow(f);
       renderFlow();
       break;
     }
     case "flow-time": {
       const p = flowProtocol();
-      const i = Number(btn.dataset.i);
-      const step = p?.groups.flatMap((g) => g.steps)[i];
+      const step = p ? runSteps(p).find((x) => x.key === btn.dataset.key) : null;
       if (!step?.atMin) break;
       const times = { ...prefs.get("flowTimes", {}) };
-      const key = `${p.id}:${i}`;
+      const key = `${p.id}:${step.key}`;
       if (btn.dataset.d === "reset") delete times[key];
-      else times[key] = Math.min(FLOW_MAX, Math.max(FLOW_MIN, flowMinutes(p, i, step) + Number(btn.dataset.d)));
+      else times[key] = Math.min(FLOW_MAX, Math.max(FLOW_MIN, flowMinutes(p, step) + Number(btn.dataset.d)));
       if (times[key] === step.atMin) delete times[key];
       prefs.set("flowTimes", times);
       state.flowAlerted = null;
@@ -818,6 +925,93 @@ document.addEventListener("click", async (e) => {
     case "flow-pick": {
       saveFlow({ protocol: btn.dataset.id, done: [], contrastAt: null });
       renderFlow();
+      break;
+    }
+    // ----- My protocol (edit mode) -----
+    case "fe-open": {
+      const p = flowProtocol();
+      state.flowEdit = p.id;
+      state.flowAddGroup = null;
+      state.flowResetArmed = false;
+      renderFlow();
+      window.scrollTo(0, 0);
+      break;
+    }
+    case "fe-done": {
+      saveFlowName();
+      state.flowEdit = null;
+      state.flowAddGroup = null;
+      renderFlow();
+      window.scrollTo(0, 0);
+      break;
+    }
+    case "fe-show": {
+      const p = flowProtocol();
+      const k = btn.dataset.key;
+      editFlowCustom(p, (c) => {
+        const hidden = new Set(c.hidden || []);
+        if (hidden.has(k)) hidden.delete(k); else hidden.add(k);
+        c.hidden = [...hidden];
+      });
+      renderFlow();
+      $(`[data-action="fe-show"][data-key="${k}"]`)?.focus({ preventScroll: true });
+      break;
+    }
+    case "fe-move": {
+      // Up from the top of a group moves a step to the end of the group above, and down likewise.
+      const p = flowProtocol();
+      const k = btn.dataset.key;
+      const d = Number(btn.dataset.d);
+      const gi = p.groups.findIndex((g) => g.steps.some((x) => x.key === k));
+      const g = p.groups[gi];
+      const si = g.steps.findIndex((x) => x.key === k);
+      const [step] = g.steps.splice(si, 1);
+      if (d < 0 && si > 0) g.steps.splice(si - 1, 0, step);
+      else if (d < 0) p.groups[gi - 1].steps.push(step);
+      else if (si < g.steps.length) g.steps.splice(si + 1, 0, step);
+      else p.groups[gi + 1].steps.unshift(step);
+      editFlowCustom(p, () => {});
+      renderFlow();
+      const again = $(`[data-action="fe-move"][data-key="${k}"][data-d="${d}"]`);
+      (again && !again.disabled ? again : $(`[data-action="fe-move"][data-key="${k}"][data-d="${-d}"]`))?.focus();
+      break;
+    }
+    case "fe-add-open":
+      state.flowAddGroup = Number(btn.dataset.g);
+      renderFlow();
+      break;
+    case "fe-add-cancel":
+      state.flowAddGroup = null;
+      renderFlow();
+      break;
+    case "fe-add":
+      addFlowStep(Number(btn.dataset.g));
+      break;
+    case "fe-del": {
+      const p = flowProtocol();
+      const k = btn.dataset.key;
+      editFlowCustom(p, (c) => {
+        c.added = { ...(c.added || {}) };
+        delete c.added[k];
+        c.layout = c.layout.map((g) => ({ ...g, keys: g.keys.filter((x) => x !== k) }));
+        c.hidden = (c.hidden || []).filter((x) => x !== k);
+      });
+      renderFlow();
+      toast("Step removed");
+      break;
+    }
+    case "fe-reset": {
+      // Two taps, so a stray one doesn't throw away someone's setup.
+      if (!state.flowResetArmed) {
+        state.flowResetArmed = true;
+        renderFlow();
+        setTimeout(() => { if (state.flowResetArmed) { state.flowResetArmed = false; if (state.flowEdit) renderFlow(); } }, 4000);
+        break;
+      }
+      state.flowResetArmed = false;
+      saveFlowCustom(flowProtocol().id, null);
+      renderFlow();
+      toast("Back to the standard protocol");
       break;
     }
     case "clear-search": {
@@ -898,7 +1092,38 @@ lightbox.addEventListener("click", (e) => {
     lightbox.querySelector('[data-lb="zoom"]').textContent = zoomed ? "Fit" : "Zoom";
   }
 });
+// My protocol: the device's name for a protocol (empty = the standard name).
+function saveFlowName() {
+  const input = $("input[data-flow-name]");
+  if (!input) return;
+  const p = flowProtocol();
+  const name = input.value.trim();
+  if ((name || p.base.name) === p.name) return;
+  editFlowCustom(p, (c) => { if (name && name !== p.base.name) c.name = name; else delete c.name; });
+}
+function addFlowStep(gi) {
+  const input = $(`input[data-flow-add="${gi}"]`);
+  const text = input?.value.trim();
+  if (!text) { input?.focus(); return; }
+  const p = flowProtocol();
+  const key = `c${Date.now().toString(36)}`;
+  editFlowCustom(p, (c) => {
+    c.added = { ...(c.added || {}), [key]: text };
+    c.layout[gi].keys.push(key);
+  });
+  state.flowAddGroup = null;
+  renderFlow();
+  toast("Step added");
+}
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+  const add = e.target.closest?.("input[data-flow-add]");
+  if (add) { e.preventDefault(); addFlowStep(Number(add.dataset.flowAdd)); return; }
+  if (e.target.closest?.("input[data-flow-name]")) { e.preventDefault(); e.target.blur(); }
+});
+
 document.addEventListener("change", (e) => {
+  if (e.target.closest?.("input[data-flow-name]")) { saveFlowName(); return; }
   const sel = e.target.closest?.("select[data-flow-pick]");
   if (!sel) return;
   saveFlow({ protocol: sel.value, done: [], contrastAt: null });

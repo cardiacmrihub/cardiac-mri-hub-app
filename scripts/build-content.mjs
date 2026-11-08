@@ -493,11 +493,25 @@ if (protocolSource) {
       // not one timed from it ("after the stress injection").
       const contrast = !cur.hasContrast && /\binject/i.test(text) && !/after\s+(?:the\s+)?(?:\w+\s+)?inject/i.test(text);
       if (contrast) { cur.hasContrast = true; if (/\bstress\b/i.test(text)) cur.clockFrom = "stress agent"; }
-      group.steps.push({ html: inline(text, lmCtx()), contrast, atMin: at ? Number(at[1]) : null });
+      // A stable key from the step's words, so changes saved on a device (hidden or moved steps, ticks, times)
+      // still find the step after the protocol is edited around it.
+      const plain = text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/\*\*/g, "").trim();
+      const key = createHash("md5").update(plain.toLowerCase()).digest("hex").slice(0, 8);
+      group.steps.push({ key, html: inline(text, lmCtx()), contrast, atMin: at ? Number(at[1]) : null });
     }
   }
   const opening = common.groups.map((x) => ({ ...x, label: x.label || "Localizers" }));
-  for (const p of list) { p.groups = [...opening, ...p.groups]; delete p.hasContrast; }
+  for (const p of list) {
+    p.groups = [...opening, ...p.groups];
+    delete p.hasContrast;
+    // Two steps with the same words in one protocol get distinct keys.
+    const seen = new Map();
+    p.groups = p.groups.map((g) => ({ ...g, steps: g.steps.map((st) => {
+      const n = seen.get(st.key) || 0;
+      seen.set(st.key, n + 1);
+      return n ? { ...st, key: `${st.key}-${n}` } : st;
+    }) }));
+  }
   protocols = { slug: g.slug, flow: examFlow, list: list.filter((p) => p.groups.some((x) => x.steps.length)) };
   if (!protocols.list.length) { warn(`${protocolSource}: protocols: true, but no numbered steps found`); protocols = null; }
 }
