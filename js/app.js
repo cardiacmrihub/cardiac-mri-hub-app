@@ -433,6 +433,32 @@ function saveFlowCustom(id, c) {
   if (c) all[id] = c; else delete all[id];
   prefs.set("flowCustom", all);
 }
+// Protocols made on the device ("+ New protocol"): prefs "flowOwn" = [{ id, name, from }]. One made from a copy
+// keeps the standard protocol it came from (from) and works like an edited copy of it; a blank one starts with the
+// localizers and a contrast step. Their steps, order and names are saved in flowCustom like any edited protocol.
+const flowOwnList = () => prefs.get("flowOwn", []);
+function blankProtocol(id, name) {
+  const loc = state.data.protocols.list[0].groups.find((g) => g.label === "Localizers");
+  return {
+    id, name, groups: [
+      ...(loc ? [loc] : []),
+      { label: "Before contrast", steps: [] },
+      { label: "Contrast", steps: [{ key: "contrast-in", html: "Contrast injection", contrast: true, atMin: null }] },
+      { label: "After contrast", steps: [] },
+    ],
+  };
+}
+function findProtocol(id) {
+  const P = state.data?.protocols;
+  if (!P) return null;
+  const std = P.list.find((x) => x.id === id);
+  if (std) return std;
+  const own = flowOwnList().find((x) => x.id === id);
+  if (!own) return null;
+  const src = own.from && P.list.find((x) => x.id === own.from);
+  return src ? { ...src, id: own.id, name: own.name, own: true, from: src.id } : { ...blankProtocol(own.id, own.name), own: true, from: null };
+}
+
 // Same wording rule as the build: "10 minutes after contrast" times a step.
 const TIMED_STEP = /(\d+)(?:\s*[–-]\s*\d+)?\s*min(?:ute)?s?\s+after\s+(?:the\s+)?(?:stress\s+|first\s+)?(?:contrast|injection)/i;
 function addedStep(key, text) {
@@ -483,7 +509,7 @@ function flowCardHtml() {
   const P = state.data?.protocols;
   if (!P?.flow) return "";
   const f = flowState();
-  const base = P.list.find((x) => x.id === f.protocol);
+  const base = findProtocol(f.protocol);
   const p = base ? effectiveProtocol(base) : null;
   let title = "Exam flow";
   let sub = "Tick off each step, with a clock that starts when you inject contrast";
@@ -500,7 +526,7 @@ function flowCardHtml() {
 function flowProtocol(f = flowState()) {
   const P = state.data?.protocols;
   if (!P) return null;
-  const base = P.list.find((x) => x.id === f.protocol) || P.list[0];
+  const base = findProtocol(f.protocol) || P.list[0];
   return effectiveProtocol(base);
 }
 // A timed step's minutes can be changed on the device (each site runs its own timing); kept until changed back.
@@ -537,14 +563,17 @@ function renderFlow() {
   const f = flowState();
   const p = flowProtocol(f);
   if (state.flowEdit === p.id) { renderFlowEdit(p); return; }
+  if (state.flowNew) { renderFlowNew(p); return; }
   setTopbar(`${backButton()}<h1 class="topbar-title">Exam flow</h1>`);
   const nameOf = (x) => flowCustom(x.id)?.name || x.name;
+  const own = flowOwnList().map((o) => findProtocol(o.id)).filter(Boolean);
+  const all = [...own, ...P.list];
+  const opt = (x) => `<option value="${esc(x.id)}"${x.id === p.id ? " selected" : ""}>${esc(nameOf(x))}</option>`;
   // A few protocols fit as chips; a longer list goes in a dropdown so the steps stay near the top.
-  const pick = P.list.length > 6
-    ? `<label class="flow-select"><span>Protocol</span><span class="flow-select-box"><select data-flow-pick>${P.list.map((x) => `<option value="${esc(x.id)}"${x.id === p.id ? " selected" : ""}>${esc(nameOf(x))}</option>`).join("")}</select></span></label>`
-    : P.list.length > 1
-    ? `<div class="chips flow-pick">${P.list.map((x) => `<button class="chip" type="button" data-action="flow-pick" data-id="${esc(x.id)}" aria-pressed="${x.id === p.id}">${esc(nameOf(x))}</button>`).join("")}</div>`
-    : "";
+  const pick = (all.length > 6
+    ? `<label class="flow-select"><span>Protocol</span><span class="flow-select-box"><select data-flow-pick>${own.length ? `<optgroup label="Your protocols">${own.map(opt).join("")}</optgroup><optgroup label="Standard (SCMR)">${P.list.map(opt).join("")}</optgroup>` : P.list.map(opt).join("")}</select></span></label>`
+    : `<div class="chips flow-pick">${all.map((x) => `<button class="chip" type="button" data-action="flow-pick" data-id="${esc(x.id)}" aria-pressed="${x.id === p.id}">${esc(nameOf(x))}</button>`).join("")}</div>`) +
+    `<p class="flow-new-link"><button class="text-btn" type="button" data-action="fn-open">+ New protocol</button></p>`;
   let n = 0;
   const steps = p.groups.filter((gr) => gr.steps.some((x) => !x.hidden)).map((gr) => `${gr.label ? `<h2 class="flow-group">${esc(gr.label)}</h2>` : ""}<ol class="flow">${gr.steps.filter((x) => !x.hidden).map((s) => {
     const i = n++;
@@ -565,8 +594,11 @@ function renderFlow() {
     }
     return `<li class="flow-step${done ? " done" : ""}"><button type="button" class="tick" data-action="flow-tick" data-key="${s.key}" aria-pressed="${done}" aria-label="Step ${i + 1} done">${ICON.check}</button><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${html}${timing}${contrast}</div></li>`;
   }).join("")}</ol>`).join("");
-  const edited = p.edited ? `<p class="flow-edited">Your version, on this device · <button class="text-btn" type="button" data-action="fe-open">Edit</button></p>` : "";
-  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>${cap(clockFrom(p))} in</strong> when you inject, and the clock counts up to the timed steps.</p>${edited}</div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${link.guide(P.slug)}#${esc(p.id)}">Protocol notes</a> · <button class="text-btn" type="button" data-action="fe-open">Customize</button> · <button class="text-btn" type="button" data-action="flow-reset">Start over</button></p>`;
+  const edited = p.own
+    ? `<p class="flow-edited">Your protocol, on this device · <button class="text-btn" type="button" data-action="fe-open">Edit</button></p>`
+    : p.edited ? `<p class="flow-edited">Your version, on this device · <button class="text-btn" type="button" data-action="fe-open">Edit</button></p>` : "";
+  const notes = p.own ? (p.from ? `${link.guide(P.slug)}#${esc(p.from)}` : link.guide(P.slug)) : `${link.guide(P.slug)}#${esc(p.id)}`;
+  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>${cap(clockFrom(p))} in</strong> when you inject, and the clock counts up to the timed steps.</p>${edited}</div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${notes}">${p.own && !p.from ? "Protocols" : "Protocol notes"}</a> · <button class="text-btn" type="button" data-action="fe-open">Customize</button> · <button class="text-btn" type="button" data-action="flow-reset">Start over</button></p>`;
   tickFlowClock();
   clearInterval(state.flowTimer);
   state.flowTimer = setInterval(() => {
@@ -595,11 +627,51 @@ function renderFlowEdit(p) {
       : `<div class="fe-add"><button class="text-btn" type="button" data-action="fe-add-open" data-g="${gi}">+ Add a step here</button></div>`;
     return `${g.label ? `<h2 class="flow-group">${esc(g.label)}</h2>` : ""}<ol class="fe-list">${rows || `<li class="fe-empty">No steps here</li>`}</ol>${add}`;
   }).join("");
-  view.innerHTML = `<div class="flow-head fe-head"><div><h1 class="guide-title">${esc(p.base.name)}</h1><p class="guide-meta">Your version stays on this device. Untick steps you don't run, move steps with the arrows, and add your own. To time a step you add, word it like "15 minutes after contrast".</p></div><button class="btn" type="button" data-action="fe-done">Done</button></div>` +
-    `<label class="flow-select fe-name"><span>Name on this device</span><input type="text" data-flow-name value="${esc(p.name)}" placeholder="${esc(p.base.name)}" maxlength="60" autocomplete="off"></label>` +
+  view.innerHTML = `<div class="flow-head fe-head"><div><h1 class="guide-title">${esc(p.own ? p.name : p.base.name)}</h1><p class="guide-meta">Your version stays on this device. Untick steps you don't run, move steps with the arrows, and add your own. To time a step you add, word it like "15 minutes after contrast".</p></div><button class="btn" type="button" data-action="fe-done">Done</button></div>` +
+    `<label class="flow-select fe-name"><span>${p.own ? "Name" : "Name on this device"}</span><input type="text" data-flow-name value="${esc(p.name)}" placeholder="${esc(p.base.name)}" maxlength="60" autocomplete="off"></label>` +
     groups +
-    `<div class="fe-foot"><button class="btn" type="button" data-action="fe-done">Done</button>${p.edited ? `<button class="text-btn" type="button" data-action="fe-reset">${state.flowResetArmed ? "Tap again to go back to the standard protocol" : "Back to the standard protocol"}</button>` : ""}</div>`;
+    `<div class="fe-foot"><button class="btn" type="button" data-action="fe-done">Done</button>${p.own
+      ? `<button class="text-btn fe-danger" type="button" data-action="fe-delete">${state.flowResetArmed ? "Tap again to delete this protocol" : "Delete this protocol"}</button>`
+      : p.edited ? `<button class="text-btn" type="button" data-action="fe-reset">${state.flowResetArmed ? "Tap again to go back to the standard protocol" : "Back to the standard protocol"}</button>` : ""}</div>`;
   if (state.flowAddGroup != null) $(`input[data-flow-add="${state.flowAddGroup}"]`)?.focus();
+}
+
+// "+ New protocol": a name, and blank or a copy of any protocol (with this device's changes to it).
+function renderFlowNew(current) {
+  clearInterval(state.flowTimer);
+  setTopbar(`${backButton()}<h1 class="topbar-title">New protocol</h1>`);
+  const P = state.data.protocols;
+  const nameOf = (x) => flowCustom(x.id)?.name || x.name;
+  const own = flowOwnList().map((o) => findProtocol(o.id)).filter(Boolean);
+  const opt = (x) => `<option value="${esc(x.id)}"${x.id === current.id ? " selected" : ""}>${esc(nameOf(x))}</option>`;
+  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">New protocol</h1><p class="guide-meta">For an exam your site runs that isn't here, or your own take on one that is. It stays on this device, listed under Your protocols.</p></div>` +
+    `<label class="flow-select fe-name"><span>Name</span><input type="text" data-flow-new-name maxlength="60" autocomplete="off" placeholder="e.g. Athlete's heart" enterkeyhint="done"></label>` +
+    `<label class="flow-select"><span>Start from</span><span class="flow-select-box"><select data-flow-new-from>` +
+    `<option value="">Blank: the localizers and a contrast step</option>` +
+    (own.length ? `<optgroup label="A copy of one of yours">${own.map(opt).join("")}</optgroup>` : "") +
+    `<optgroup label="A copy of a standard protocol">${P.list.map(opt).join("")}</optgroup></select></span></label>` +
+    `<div class="fe-foot"><button class="btn" type="button" data-action="fn-create">Create and edit</button><button class="text-btn" type="button" data-action="fn-cancel">Cancel</button></div>`;
+  $("input[data-flow-new-name]")?.focus();
+}
+function createFlowProtocol() {
+  const name = $("input[data-flow-new-name]")?.value.trim() || "";
+  const fromId = $("select[data-flow-new-from]")?.value || "";
+  const src = fromId ? findProtocol(fromId) : null;
+  const id = `own-${Date.now().toString(36)}`;
+  const srcName = src ? flowCustom(src.id)?.name || src.name : "";
+  const finalName = name || (src ? `${srcName} (copy)` : "My protocol");
+  prefs.set("flowOwn", [...flowOwnList(), { id, name: finalName, from: src ? (src.own ? src.from : src.id) : null }]);
+  // A copy brings this device's changes to the protocol it came from, under the new name.
+  const c = src ? flowCustom(src.id) : null;
+  if (c) saveFlowCustom(id, { ...JSON.parse(JSON.stringify(c)), name: undefined });
+  saveFlow({ protocol: id, done: [], contrastAt: null });
+  state.flowNew = false;
+  state.flowEdit = id;
+  state.flowAddGroup = null;
+  state.flowResetArmed = false;
+  renderFlow();
+  window.scrollTo(0, 0);
+  toast("Protocol created");
 }
 
 function tickFlowClock() {
@@ -742,6 +814,7 @@ function route() {
   const { section, arg, params } = parseRoute();
   // Leaving the exam flow closes its edit mode (the name field saves on the way out).
   if (section !== "flow" && state.flowEdit) { saveFlowName(); state.flowEdit = null; state.flowAddGroup = null; }
+  if (section !== "flow") state.flowNew = false;
   const tab = { undefined: "home", topics: "topics", topic: "topics", search: "search", saved: "saved", plan: "plan", parameters: "plan", cards: "plan", flow: "plan", about: "home" }[section] || "";
   document.querySelectorAll("#tabbar a").forEach((a) => {
     if (a.dataset.tab === tab) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
@@ -925,6 +998,41 @@ document.addEventListener("click", async (e) => {
     case "flow-pick": {
       saveFlow({ protocol: btn.dataset.id, done: [], contrastAt: null });
       renderFlow();
+      break;
+    }
+    // ----- New protocol -----
+    case "fn-open":
+      state.flowNew = true;
+      renderFlow();
+      window.scrollTo(0, 0);
+      break;
+    case "fn-cancel":
+      state.flowNew = false;
+      renderFlow();
+      break;
+    case "fn-create":
+      createFlowProtocol();
+      break;
+    case "fe-delete": {
+      if (!state.flowResetArmed) {
+        state.flowResetArmed = true;
+        renderFlow();
+        setTimeout(() => { if (state.flowResetArmed) { state.flowResetArmed = false; if (state.flowEdit) renderFlow(); } }, 4000);
+        break;
+      }
+      state.flowResetArmed = false;
+      const p = flowProtocol();
+      prefs.set("flowOwn", flowOwnList().filter((x) => x.id !== p.id));
+      saveFlowCustom(p.id, null);
+      const times = { ...prefs.get("flowTimes", {}) };
+      for (const k of Object.keys(times)) if (k.startsWith(`${p.id}:`)) delete times[k];
+      prefs.set("flowTimes", times);
+      if (prefs.get("flowLast", null) === p.id) prefs.set("flowLast", null);
+      state.flowEdit = null;
+      saveFlow({ protocol: state.data.protocols.list[0].id, done: [], contrastAt: null });
+      renderFlow();
+      window.scrollTo(0, 0);
+      toast("Protocol deleted");
       break;
     }
     // ----- My protocol (edit mode) -----
@@ -1120,6 +1228,7 @@ document.addEventListener("keydown", (e) => {
   const add = e.target.closest?.("input[data-flow-add]");
   if (add) { e.preventDefault(); addFlowStep(Number(add.dataset.flowAdd)); return; }
   if (e.target.closest?.("input[data-flow-name]")) { e.preventDefault(); e.target.blur(); }
+  if (e.target.closest?.("input[data-flow-new-name]")) { e.preventDefault(); createFlowProtocol(); }
 });
 
 document.addEventListener("change", (e) => {

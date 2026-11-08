@@ -12,6 +12,7 @@
   --accent-ink: #8A5A00;  /* amber dark enough for text on light */
   --lightbox: #1C2630;    /* backdrop behind scanner images */
   --mark: #FBE7B5;
+  --danger: #B3261E;
 
   --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-title: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
@@ -39,6 +40,8 @@
     --accent-ink: #F2B33D;
     --lightbox: #0F151B;
     --mark: #5A4413;
+  --danger: #FF8A80;
+    --danger: #FF8A80;
     color-scheme: dark;
   }
 }
@@ -577,6 +580,9 @@ button.row {
 }
 .fe-empty { color: var(--ink-2); padding: 10px 0; font-style: italic; }
 .fe-foot { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin: 26px 0 0; }
+.fe-danger { color: var(--danger); }
+.flow-new-link { margin: 8px 0 0; }
+.flow-new-link .text-btn { padding: 6px 2px; }
 .flow-foot .text-btn { padding: 4px 2px; }
 
 /* ---------- abbreviation meaning at the top of search results ---------- */
