@@ -17,11 +17,11 @@ For through-plane flow, place the slice across the middle of the vessel, square 
 
 ## Aorta (LVOT)
 
-1. **On a long-axis view of the LVOT and aorta,** place the line across the ascending aorta at the sinotubular junction (STJ), square to the aorta.
+1. **On the 3-chamber,** place the line across the ascending aorta at the sinotubular junction (STJ), square to the aorta.
 
 ![Lines  show planning of through plane LVOT at the level of the sinotubular junction (STJ).](../images/51892d_7e5d2650c390451c95ecc85b218473c4-mv2.webp "Lines show planning of through plane LVOT at the level of the sinotubular junction (STJ).")
 
-2. **On the 3-chamber,** keep the line at the STJ and angle it square to the fastest flow. The cine shows where the jet runs.
+2. **Fine-tune on the 3-chamber:** keep the line at the STJ and angle it square to the fastest flow. The cine shows where the jet runs.
 
 ![Tip plan line perpendicular to area of high flow. See video below.](../images/51892d_7c998586419f4763afe225f08ad9bd31-mv2.webp "Tip plan line perpendicular to area of high flow. See video below.")
 

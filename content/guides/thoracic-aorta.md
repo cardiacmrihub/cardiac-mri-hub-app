@@ -27,11 +27,11 @@ Planning with 3 points instead? The arch goes on an axial through the arch, and 
 
 - The whole thoracic aorta is in the slice: the root, the ascending aorta, the arch and the descending aorta.
 - The slice runs through the middle of the aorta all the way along. If part of the aorta looks narrow or drops out of the slice, the plane is off its midline there: re-angle it through the middle of the ascending and descending aorta on the axial.
-- The aortic root is included, not just the arch and the descending aorta.
+- The aortic root is included, not just the arch and the descending aorta. If it's cut off, check on an axial at the level of the root that the slices run through it, as in the last picture below.
 
 ![Sag Obl (Candy Cane) image shown above.](../images/51892d_292a19e08ac54bdb9696846dae45dda4-mv2.webp "Sag Obl (Candy Cane) image shown above.")
 
-![Anatomy to include shown (Aortic Root)](../images/51892d_cad27afcd3a94244b740698b610991f8-mv2.webp "Anatomy to include shown (Aortic Root)")
+![Axial image at the level of the aortic root with the sagittal oblique slices running through the aortic root and the descending aorta](../images/thoracic-aorta-root-axial-plan.webp "Anatomy to include shown (Aortic Root)")
 
 # Key settings
 

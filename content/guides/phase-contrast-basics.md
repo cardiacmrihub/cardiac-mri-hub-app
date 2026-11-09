@@ -82,13 +82,12 @@ Set the plane perpendicular to the vessel or the direction of flow, planned from
 
 # Tips
 
-- **VENC:** choose it from the velocity you expect. Too low causes aliasing; too high loses sensitivity. Common starting points:
-  - Ascending or descending aorta: 150–200 cm/s
-  - Aortic valve with stenosis: 250–400 cm/s
-  - Mitral valve: 80–120 cm/s
-  - Pulmonary artery: 80–150 cm/s
-  - IVC and SVC: 40–80 cm/s
-  - Great veins: 30–60 cm/s
+- **VENC:** choose it from the velocity you expect. Too low causes aliasing; too high loses sensitivity. Use the lowest VENC that doesn't alias, and raise it if the phase images alias.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/) Aim for about 10% above the fastest flow you expect, and no more than 25% above. Starting points from the 4D flow consensus:[\[Bissell 2023\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC10357639/)
+  - Aorta and pulmonary artery: 150 cm/s
+  - Inside the heart: 100–150 cm/s
+  - Veins: 50–80 cm/s
+  - False lumen of a dissection: 50–150 cm/s
+  - Suspected stenosis with no earlier flow study: start at 250 cm/s
 - **Breath-holds:** use them when you can, to cut motion artifacts.
 - **ECG gating:** gate to the heartbeat for accurate timing.
 - **Check before you finish:** look for aliasing, misalignment and artifacts before the patient leaves.
@@ -98,5 +97,5 @@ Set the plane perpendicular to the vessel or the direction of flow, planned from
 
 Phase contrast measures blood flow: its speed, direction and volume. Cines show anatomy and motion, and mapping shows tissue; phase contrast adds the flow.
 
-Use it for valve regurgitation, shunts, cardiac output and vessel disease. Choose the VENC for the velocity you expect (30–60 cm/s for great veins up to 250–400 cm/s for a stenotic aortic valve), keep the plane perpendicular to flow, use breath-holds and ECG gating, and check for aliasing before the patient leaves.
+Use it for valve regurgitation, shunts, cardiac output and vessel disease. Choose the VENC for the velocity you expect (from 50–80 cm/s for veins to a 250 cm/s start for a suspected stenosis), keep the plane perpendicular to flow, use breath-holds and ECG gating, and check for aliasing before the patient leaves.
 
