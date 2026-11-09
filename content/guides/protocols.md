@@ -107,7 +107,7 @@ Every exam starts with the same localizers and ends with the same close-out chec
 
 # Stress perfusion
 
-Only the localizers and maps run before the stress injection; the cines fill the wait for LGE. The clock starts at the stress injection. Perfusion timing depends on the stress agent and your site: here it's 1 minute after the stress injection, and you can change it on your device in the exam flow. How to plan and run it, with the stress agents: [stress perfusion](/guide/stress-perfusion/).
+This follows SCMR 2020's order, with rest perfusion before LGE. Only the localizers and maps run before the stress injection; the cines fill the washout between stress and rest. The clock starts at the stress injection. Perfusion timing depends on the stress agent: here it's 1 minute after the stress injection, and you can change it on your device in the exam flow. Rest perfusion comes at least 10 minutes after the stress contrast, and LGE at least 5 minutes after rest. Some sites leave rest perfusion out or run it at the end: hide or move it with **Customize**. How to plan and run it, with the stress agents: [stress perfusion](/guide/stress-perfusion/).
 
 **Before stress**
 
@@ -120,17 +120,20 @@ Only the localizers and maps run before the stress injection; the cines fill the
 1. Stress agent injection, by your department's protocol with the supervising physician
 2. Stress perfusion: short-axis samples, 1 minute after the stress injection, during the contrast injection
 
-**After stress perfusion**
+**During the washout**
 
 1. Cine [2-chamber](/guide/lv-2-chamber/), [3-chamber](/guide/lv-3-chamber/) and [4-chamber](/guide/lv-4-chamber/)
 2. Cine [short-axis stack](/guide/lv-short-axis/), base to apex
-3. TI scout, 10 minutes after the perfusion contrast (11 minutes after the stress injection). See [choosing the TI time](/guide/psir-ti-time/).
-4. LGE PSIR: short-axis stack, then 2-, 3- and 4-chamber
 
-**Rest perfusion and flows**
+**Rest perfusion**
 
-1. Rest perfusion: same short-axis samples, during a second contrast injection
-2. Flows (phase contrast), if ordered. See [phase contrast planning](/guide/phase-contrast-planning/).
+1. Rest perfusion: same short-axis samples and contrast dose, 11 minutes after the stress injection (at least 10 minutes after the stress contrast), during a second contrast injection
+
+**After rest perfusion**
+
+1. TI scout, 16 minutes after the stress injection (5 minutes after rest perfusion). See [choosing the TI time](/guide/psir-ti-time/).
+2. LGE PSIR: short-axis stack, then 2-, 3- and 4-chamber
+3. Flows (phase contrast), if ordered. See [phase contrast planning](/guide/phase-contrast-planning/).
 
 # Hypertrophic cardiomyopathy
 

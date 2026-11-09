@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.14.0";
+const APP_VERSION = "1.14.1";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
