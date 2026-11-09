@@ -19,6 +19,6 @@
     { "guide": "pulmonary-valve", "images": [0, 1] },
     { "guide": "atrial-short-axis", "images": [0] },
     { "guide": "bicaval-views", "images": [0, 1, 2, 3] },
-    { "guide": "thoracic-aorta", "images": [3, 1, 2, 0] }
+    { "guide": "thoracic-aorta", "images": [3, 1, 2, 0, 4] }
   ]
 }

@@ -41,7 +41,7 @@ Planning with 3 points instead? The arch goes on an axial through the arch, and 
 - **MRA timing:** a test bolus or bolus tracking, or fast time-resolved 3D runs; then at least two runs after the injection.
 - **Gating:** ECG-gate the MRA if your scanner can.
 
-MRA and 4D flow are under More detail, and the full sequence list is on the [Protocols](/guide/protocols/) page.
+MRA, phase contrast levels and 4D flow are under More detail, and the full sequence list is on the [Protocols](/guide/protocols/) page.
 
 # More detail
 
@@ -90,7 +90,13 @@ The sagittal oblique (candy cane) view shows the whole thoracic aorta in one pla
 - **Anatomy:** the whole thoracic aorta, from the root through the arch to the descending aorta, with its branches and any anomalies.
 - **Disease:** structural changes, abnormal wall motion and other signs of aortic disease.
 
-# 5. 4D flow
+# 5. Phase contrast levels
+
+Through-plane flow along the aorta is planned on the candy cane. The picture shows four levels: the proximal, mid and distal ascending aorta (AAo) and the proximal descending aorta (DAo). Place each line across the aorta, square to it on the candy cane and on a second view at right angles.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/) The VENC and the other flow settings are in [phase contrast planning](/guide/phase-contrast-planning/).
+
+![Sagittal oblique (candy cane) view of the thoracic aorta with through-plane phase contrast lines at the proximal, mid and distal ascending aorta and the proximal descending aorta](../images/thoracic-aorta-flow-levels.webp "Phase contrast levels on the candy cane: proximal, mid and distal ascending aorta (AAo) and proximal descending aorta (DAo).")
+
+# 6. 4D flow
 
 MRA with 4D flow measures blood flow through the heart and vessels in three dimensions over the whole cardiac cycle.
 

@@ -444,6 +444,7 @@ button.row {
 .card-plane { margin: 0; font-size: 15px; line-height: 1.4; }
 .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .card-grid.n1 { grid-template-columns: 1fr; }
+.card-grid.n5 figure:first-child { grid-column: 1 / -1; }
 .card-grid figure { margin: 0; min-width: 0; }
 .card-grid img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: contain; background: #000; border-radius: 8px; }
 .card-grid figcaption { font-size: 13px; line-height: 1.35; color: var(--ink-2); margin-top: 6px; }
@@ -464,7 +465,8 @@ button.row {
   tr, figure { break-inside: avoid; }
   .cards-intro { display: none !important; }
   /* One card per Letter page, images filling whatever the heading and footer leave:
-     1 image fills the page, 2 stack, 3 = one large on top and two below, 4 = a 2×2 grid. */
+     1 image fills the page, 2 stack, 3 = one large on top and two below, 4 = a 2×2 grid,
+     5 = one across the top and a 2×2 grid below. */
   .card {
     height: 10in; display: flex; flex-direction: column; overflow: hidden;
     break-after: page; break-inside: avoid; border: 0; border-radius: 0; padding: 0; margin: 0; background: #fff !important;
@@ -476,6 +478,7 @@ button.row {
   .card-grid.n2 { grid-template-columns: 1fr; }
   .card-grid.n3 { grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr); }
   .card-grid.n3 figure:first-child { grid-column: 1 / -1; }
+  .card-grid.n5 { grid-template-rows: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); }
   /* An image keeps its full width and shrinks only when its cell is too short; image and caption sit centred in the cell. */
   .card-grid figure { display: flex; flex-direction: column; justify-content: center; min-height: 0; }
   .card-grid img {

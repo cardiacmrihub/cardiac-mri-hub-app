@@ -666,7 +666,7 @@ if (existsSync(cardsPath)) {
     const g = bySlugAll.get(c.guide);
     if (!g) { warn(`cards.json: no guide "${c.guide}"`); continue; }
     const imgs = g.figures.filter((f) => f.type === "image");
-    const picks = (c.images || imgs.map((_, i) => i)).map((i) => imgs[i]).filter(Boolean).slice(0, 4);
+    const picks = (c.images || imgs.map((_, i) => i)).map((i) => imgs[i]).filter(Boolean).slice(0, 5);
     if (!picks.length) { warn(`cards.json: no images for ${c.guide}`); continue; }
     const topic = topics.find((t) => t.slug === g.topics[0]);
     const plane = orientation.get(g.slug);
