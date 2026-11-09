@@ -1,6 +1,6 @@
 ---
 title: "Atrial Short Axis"
-summary: "Learn atrial short axis imaging in cardiac MRI. Optimize planning techniques to evaluate atrial morphology, identify structural abnormalities, and assess upper chamber function accurately."
+summary: "How to plan the atrial short axis in cardiac MRI, for the size, shape and structure of both atria."
 topics: [special-views]
 published: 2025-11-25
 updated: 2025-12-01
@@ -9,7 +9,7 @@ order: 1
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/atrial-short-axis
 ---
 
-The short axis view of the atria is a valuable imaging plane in cardiac MRI, providing a unique window into the structure and function of the heart’s upper chambers. As cardiac MRI continues to advance, optimized planning of the atrial short axis is increasingly important for both diagnosing and monitoring a variety of cardiac conditions. This perspective helps clinicians and technologists evaluate atrial morphology, identify subtle structural abnormalities, and accurately assess pathologies that might otherwise be missed with standard views.
+The atrial short axis shows both atria in cross-section. It's used to assess their size and shape, and to find structural abnormalities that standard views can miss.
 
 # Atrial Short Axis Planning
 
@@ -17,28 +17,25 @@ The short axis view of the atria is a valuable imaging plane in cardiac MRI, pro
 
 # Short Axis Planning of the Atria in Cardiac MRI
 
-The short axis view of the atria is an important imaging perspective in cardiac MRI, offering crucial insights into the anatomy and function of the heart's upper chambers. This view primarily focuses on the left and right atria, facilitating a comprehensive evaluation of their structure and any potential pathologies.
+The atrial short axis shows the left and right atria, for their structure and any abnormalities.
 
 ## Key Considerations for Planning
 
-- **Orientation:** The short axis view is typically acquired from a plane that slices horizontally through both the left and right atria, ensuring optimal visualization of their anatomy.
-- **Slice Thickness:** Employing a thinner slice thickness is recommended to enhance image clarity and detail.
-- **Field of View:** The field of view must be adequately sized to encompass both atria, ensuring that no significant structures are overlooked.
-- **Timing:** Image acquisition should be synchronized with the cardiac cycle, ideally during diastole, to maximize visualization of atrial sizes and functions.
-- **Contrast Agents:** Consider the use of contrast agents to improve the delineation of atrial tissue and enhance diagnostic accuracy.
+- **Orientation:** a plane that cuts horizontally through both atria.
+- **Slice thickness:** thinner slices for more detail.
+- **Field of view:** both atria.
+- **Timing:** ECG-gated, ideally imaged in diastole, to show atrial size and function.
+- **Contrast:** if it's part of the exam, contrast helps outline the atrial walls.
 
-## Clinical Applications
+## What it's used for
 
-- Evaluation of atrial size and function.
-- Assessment of atrial dimensions and morphology.
-- Identification of atrial structural abnormalities.
-- Monitoring of atrial enlargement or other changes over time.
+- Atrial size and function.
+- Atrial shape.
+- Structural abnormalities of the atria.
+- Follow-up of atrial enlargement or other changes.
 
-## Key Features of the Short Axis View
+## What the view shows
 
-- **Left Atrium:** In-depth analysis of left atrial size and any structural irregularities.
-- **Right Atrium:** Assessment of right atrial volume, wall motion, and overall cardiac function.
+- **Left atrium:** size and structural abnormalities.
+- **Right atrium:** volume, wall motion and function.
 
-## Conclusion
-
-The atrial short axis view in cardiac MRI is essential for evaluating atrial anatomy and function. With proper planning and imaging technique, this perspective enables accurate detection and monitoring of atrial abnormalities, supporting better diagnosis and patient care.

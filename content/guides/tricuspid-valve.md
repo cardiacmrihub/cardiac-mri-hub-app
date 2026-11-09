@@ -1,6 +1,6 @@
 ---
 title: "Tricuspid Valve"
-summary: "Master tricuspid valve imaging in cardiac MRI. Learn essential techniques for assessing valve morphology, hemodynamics, and pathology including regurgitation, stenosis, and structural abnormalities."
+summary: "How to image the tricuspid valve in cardiac MRI, for its shape, regurgitation, stenosis and structural abnormalities."
 topics: [valves]
 published: 2025-11-25
 updated: 2025-12-01
@@ -9,7 +9,7 @@ order: 3
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/tricuspid-valve
 ---
 
-The tricuspid valve, often overlooked in favor of its left-sided counterparts, plays a vital role in maintaining proper cardiac function. Located between the right atrium and right ventricle, this three-leaflet valve ensures unidirectional blood flow through the heart's right side. When tricuspid valve disease occurs—whether from regurgitation, stenosis, or structural abnormalities—accurate imaging becomes essential for diagnosis and treatment planning. Cardiac MRI has emerged as a gold standard for evaluating tricuspid valve pathology, offering superior soft tissue contrast and comprehensive assessment of both valve morphology and hemodynamic consequences. This guide explores the technical considerations and best practices for optimizing tricuspid valve imaging in cardiac MRI.
+The tricuspid valve sits between the right atrium and right ventricle and keeps blood flowing one way through the right heart. Cardiac MRI shows the valve's shape and the effects of regurgitation, stenosis or structural abnormalities on the right heart. This guide covers how to plan it.
 
 # Tricuspid Valve Planning
 
@@ -19,28 +19,25 @@ The tricuspid valve, often overlooked in favor of its left-sided counterparts, p
 
 # Tricuspid Valve Cardiac MRI Planning
 
-The planning of cardiac MRI for the tricuspid valve is crucial for understanding its anatomy and function. This imaging approach allows for a comprehensive evaluation of the tricuspid valve, right atrium, and right ventricle, facilitating the diagnosis of various cardiac conditions.
+Tricuspid valve imaging shows the valve, the right atrium and the right ventricle.
 
 ## Key Considerations for Planning
 
-- **Orientation:** The imaging plane should be carefully aligned to capture the tricuspid valve in a manner that allows for optimal visualization of its leaflets and surrounding structures.
-- **Slice Thickness:** Employing a thinner slice thickness is recommended to enhance the resolution and clarity of the images, allowing for better assessment of the valve's morphology.
-- **Field of View:** The field of view must be sufficiently large to include the tricuspid valve, right atrium, and right ventricle, ensuring that no critical anatomical details are missed.
-- **Timing:** Image acquisition should be timed with the cardiac cycle, ideally during diastole, to provide the best visualization of the valve's opening and closure dynamics.
-- **Contrast Agents:** Utilizing contrast agents may enhance the delineation of the tricuspid valve and surrounding myocardial tissue, improving diagnostic accuracy.
+- **Orientation:** line the plane up to show the leaflets and the structures around them.
+- **Slice thickness:** thinner slices for more detail of the valve.
+- **Field of view:** the tricuspid valve, right atrium and right ventricle.
+- **Timing:** ECG-gated through the cardiac cycle, to show the valve opening and closing.
+- **Contrast:** if it's part of the exam, contrast helps outline the valve and the myocardium around it.
 
-## Clinical Applications
+## What it's used for
 
-- Assessment of tricuspid valve morphology and function.
-- Evaluation of right atrial and right ventricular dimensions.
-- Detection of tricuspid regurgitation and other valvular heart diseases.
-- Monitoring changes in tricuspid valve function over time.
+- Tricuspid valve shape and function.
+- Right atrial and right ventricular size.
+- Tricuspid regurgitation and other valve disease.
+- Follow-up of the valve over time.
 
-## Key Features of the Tricuspid Valve Imaging
+## What the view shows
 
-- **Tricuspid Valve Leaflets:** Detailed examination of the valve leaflets for any abnormalities, such as thickening or prolapse.
-- **Right Atrium and Ventricle:** Assessment of the size and function of the right atrium and ventricle, providing insights into the overall hemodynamic status.
+- **Leaflets:** thickening, prolapse or other abnormalities.
+- **Right atrium and ventricle:** size and function, which reflect how the valve is affecting the heart.
 
-# Conclusion
-
-Optimizing tricuspid valve imaging requires careful attention to orientation, slice thickness, field of view, and cardiac timing. By following these technical guidelines, imaging professionals can obtain high-quality images that accurately assess valve morphology and function, ultimately supporting better diagnosis and treatment planning for patients with tricuspid valve disease.

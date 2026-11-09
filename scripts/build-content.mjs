@@ -434,6 +434,34 @@ for (const g of guides) {
 // Every table row in the guide marked `glossary: true` (Abbreviation | Stands for | Notes). Search shows
 // the meaning when someone types an abbreviation on its own.
 let glossary = null;
+// The first use of each abbreviation in a guide becomes <abbr title data-abbr>: a hover shows the meaning, and in
+// the app a tap opens it with the note. Links, headings, captions and code are left alone, and abbreviations with
+// two common meanings in cardiac MRI (AS, PV, MR, CS) are skipped so a tap never shows the wrong one.
+const ABBR_SKIP = new Set(["MRI", "CINE", "AS", "PV", "MR", "CS"]);
+function markAbbreviations(html, entries) {
+  const forms = new Map();
+  for (const e of entries) for (const f of e.abbr.split(/,\s*/)) if (f && !ABBR_SKIP.has(f)) forms.set(f, e);
+  const alts = [...forms.keys()].sort((a, b) => b.length - a.length).map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  if (!alts.length) return html;
+  const re = new RegExp(`(?<![A-Za-z0-9-])(${alts.join("|")})(?![A-Za-z0-9])`, "g");
+  const SKIP = /^(a|abbr|h[1-6]|figcaption|code|pre|button|th|script|style)$/i;
+  const seen = new Set();
+  let depth = 0;
+  return html.split(/(<[^>]+>)/).map((part) => {
+    if (part.startsWith("<")) {
+      const m = /^<(\/?)([a-z0-9]+)/i.exec(part);
+      if (m && SKIP.test(m[2]) && !part.endsWith("/>")) depth = Math.max(0, depth + (m[1] ? -1 : 1));
+      return part;
+    }
+    if (depth || !part.trim()) return part;
+    return part.replace(re, (w) => {
+      const e = forms.get(w);
+      if (!e || seen.has(e)) return w;
+      seen.add(e);
+      return `<abbr title="${esc(e.meaning)}" data-abbr="${esc(w)}" tabindex="0">${w}</abbr>`;
+    });
+  }).join("");
+}
 if (glossarySource) {
   const g = guides.find((x) => x.slug === glossarySource);
   const cells = (l) => l.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
@@ -456,6 +484,7 @@ if (glossarySource) {
     });
   }
   glossary = { slug: g.slug, title: g.shortTitle || g.title, entries };
+  for (const x of guides) if (x.slug !== glossarySource) x.html = markAbbreviations(x.html, entries);
 }
 
 // ---------- Protocols and the exam flow ----------
@@ -683,7 +712,7 @@ const listTitle = (g) => {
 const topicBySlug = new Map(topics.map((t) => [t.slug, t]));
 const byUpdated = (a, b) =>
   (b.updated || b.published || "").localeCompare(a.updated || a.published || "") || (b.published || "").localeCompare(a.published || "");
-const titleClass = (g) => `guide-title${g.title.length > 60 ? " long" : ""}`;
+const titleClass = (g) => `guide-title${listTitle(g).length > 60 ? " long" : ""}`;
 const inTopic = (slug) =>
   guides
     .filter((g) => g.topics.includes(slug))
@@ -799,7 +828,7 @@ function guideView(g) {
     const next = [...list.slice(at + 1), ...list.slice(0, Math.max(0, at))].slice(0, 3);
     if (next.length) more = `<div class="guide-foot"><h2 class="section">More in ${esc(gTopics[0].label)}</h2>${rowsHtml(next)}</div>`;
   }
-  return `<article>${gTopics.length ? `<ul class="guide-topics">${gTopics.map((t) => `<li><a href="${link.topic(t.slug)}">${esc(t.label)}</a></li>`).join("")}</ul>` : ""}<h1 class="${titleClass(g)}">${esc(g.title)}</h1><p class="guide-meta">${meta.join(", ")}</p>${planButton(g)}${g.landmarksHtml || ""}${toc}<div class="prose">${g.cover && g.coverWide && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}${g.html}</div>${pagerHtml(g)}${paramsXref(g)}${guideNoteHtml(g)}${more}</article>`;
+  return `<article>${gTopics.length ? `<ul class="guide-topics">${gTopics.map((t) => `<li><a href="${link.topic(t.slug)}">${esc(t.label)}</a></li>`).join("")}</ul>` : ""}<h1 class="${titleClass(g)}">${esc(listTitle(g))}</h1><p class="guide-meta">${meta.join(", ")}</p>${planButton(g)}${g.landmarksHtml || ""}${toc}<div class="prose">${g.cover && g.coverWide && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}${g.html}</div>${pagerHtml(g)}${paramsXref(g)}${guideNoteHtml(g)}${more}</article>`;
 }
 
 const template = readFileSync(join(ROOT, "index.html"), "utf8");

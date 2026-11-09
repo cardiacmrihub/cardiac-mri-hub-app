@@ -1,6 +1,6 @@
 ---
 title: "Phase Contrast Planning"
-summary: "Master phase contrast imaging and VENC selection in cardiac MRI. Learn optimal planning techniques for blood flow quantification, velocity encoding, and hemodynamic assessment in cardiac exams."
+summary: "How to plan phase contrast flow in cardiac MRI: choosing the VENC, through-plane and in-plane flow, and where to place the plane for each valve and vessel."
 topics: [phase-contrast]
 published: 2025-11-23
 updated: 2025-12-12
@@ -11,19 +11,19 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/phase-contrast
 
 # Phase Contrast and VENC Imaging in Cardiac MRI
 
-Cardiac MRI is a powerful diagnostic tool that provides detailed images of the heart's structure and function. For MRI technologists, mastering phase contrast imaging is critical to obtaining high-quality images that accurately reflect cardiovascular hemodynamics. Phase contrast imaging encompasses both through-plane and in-plane techniques, each serving distinct clinical purposes in the comprehensive assessment of blood flow patterns.
+Phase contrast imaging measures blood flow in the heart and great vessels. There are two kinds: through-plane, which measures flow volume, and in-plane, which shows flow patterns. Each answers different clinical questions.
 
-Precise planning is the foundation of a successful cardiac MRI examination. Unlike other MRI protocols, cardiac imaging demands meticulous timing and positioning due to the heart's constant motion and complex anatomy. Inadequate planning can result in motion artifacts, incomplete coverage, or missed pathology, compromising diagnostic accuracy.
+Planning matters more for flow than for most MRI: the heart moves constantly and the anatomy is complex. A poorly placed plane gives motion artifacts, misses part of the flow, or misses disease.
 
-## Understanding Phase Contrast Imaging
+## How phase contrast works
 
-Phase contrast imaging exploits the principles of magnetic resonance to visualize and quantify blood flow within the heart and great vessels. By detecting phase shifts in the magnetic field caused by moving blood, this technique enables non-invasive assessment of hemodynamics without requiring contrast agents. The technique provides both qualitative visualization of flow patterns and quantitative velocity measurements.
+Moving blood shifts the phase of the MR signal. Phase contrast measures that shift to show and measure blood flow, without contrast. It gives both a picture of the flow pattern and velocity measurements.
 
-## VENC (Velocity Encoding) in Cardiac MRI
+## VENC (velocity encoding)
 
-Velocity Encoding (VENC) is a critical parameter in phase contrast imaging that defines the maximum velocity that can be accurately quantified. Optimal VENC selection is essential: setting the VENC too low causes aliasing artifacts in high-velocity flows, while an excessively high VENC reduces sensitivity to slower flows and decreases velocity-to-noise ratio. The VENC should be set approximately 20-30% higher than the expected peak velocity to avoid aliasing while maintaining adequate sensitivity.
+The VENC is the highest velocity the sequence can measure correctly. Set it too low and fast flow aliases; set it too high and slow flow is measured less accurately, with more noise. Set it about 20–30% above the expected peak velocity.
 
-Typical VENC values for cardiac phase contrast imaging:
+Typical VENC values:
 
 - Aortic flow (LVOT): 150-250 cm/s
 - Pulmonary flow (RVOT): 100-150 cm/s
@@ -31,37 +31,33 @@ Typical VENC values for cardiac phase contrast imaging:
 - Pulmonary veins: 50-100 cm/s
 - IVC/SVC: 30-50 cm/s
 
-## Through-Plane Imaging Technique
+## Through-plane flow
 
-Through-plane phase contrast imaging measures blood flow perpendicular to the imaging plane, enabling quantification of flow volume and velocity as blood passes through the plane. The imaging plane is positioned perpendicular to the vessel or cardiac chamber of interest, creating a "slice" through which blood flow is measured throughout the cardiac cycle. This technique is the most common application of phase contrast imaging and provides quantitative hemodynamic data that is essential for clinical decision-making.
+Through-plane flow measures blood passing through the slice, perpendicular to it, which gives flow volume and velocity. The plane sits across the vessel or valve, and flow is measured through the whole cardiac cycle. It's the most common use of phase contrast, and the one that gives the numbers used for clinical decisions. It measures:
 
-- Blood flow across valves, helping to identify regurgitation or stenosis.
-- Flow patterns in the left and right ventricles, which can indicate heart function and potential pathologies.
-- Vascular flow in major arteries, including the aorta and pulmonary arteries.
+- Flow across the valves, for regurgitation or stenosis.
+- Flow in the left and right ventricles, which reflects heart function.
+- Flow in the major arteries, including the aorta and pulmonary arteries.
 
-## In-Plane Phase Contrast Imaging Technique
+## In-plane flow
 
-In-plane phase contrast imaging measures blood flow parallel to the imaging plane, providing visualization of flow patterns within the plane itself rather than through it. Unlike through-plane imaging, which quantifies flow volume, in-plane imaging excels at depicting flow direction, vortices, and complex flow patterns within cardiac chambers and along vessel walls. This technique is particularly valuable for visualizing:
+In-plane flow measures flow along the slice, so it shows flow direction, vortices and complex patterns in the chambers and along vessel walls, rather than flow volume. It's useful for showing:
 
-- Flow vortices and rotational patterns within the left ventricle during diastole
-- Abnormal flow jets associated with valvular regurgitation or stenosis
-- Complex flow patterns in the ascending aorta and pulmonary artery
-- Intracardiac shunts and abnormal communications
-- Flow separation and recirculation zones that may indicate pathology
+- Vortices in the left ventricle during diastole
+- Jets from regurgitant or stenotic valves
+- Complex flow in the ascending aorta and pulmonary artery
+- Shunts and abnormal connections inside the heart
+- Areas where flow separates or recirculates
 
-In-plane imaging requires careful planning with the imaging slice positioned along the expected direction of flow. Multiple velocity encoding directions may be acquired simultaneously to capture all components of in-plane flow. While in-plane phase contrast provides excellent qualitative assessment of flow patterns, quantitative measurements are more challenging compared to through-plane techniques due to the need to integrate flow across the entire image plane.
+Place the slice along the expected direction of flow. Several velocity directions can be encoded at once to capture all of the in-plane flow. In-plane flow is good for seeing patterns, but harder to measure than through-plane flow.
 
-## Clinical Applications
+## What it's used for
 
-Phase contrast imaging has several clinical applications, including:
+Phase contrast is used for:
 
-- Evaluating congenital heart disease by assessing abnormal flow patterns.
-- Monitoring patients with known cardiovascular diseases to track changes in hemodynamics over time.
-- Guiding treatment decisions by providing quantitative data on blood flow and cardiac function.
-
-## Conclusion
-
-Phase contrast imaging with proper VENC selection represents a sophisticated and essential approach to understanding cardiac hemodynamics. Both through-plane and in-plane techniques offer complementary information: through-plane imaging provides quantitative flow measurements and volume calculations, while in-plane imaging visualizes complex flow patterns and vortices that may indicate underlying pathology. Mastery of these techniques, combined with precise planning and appropriate parameter selection, enables MRI technologists to produce high-quality images that are vital for accurate diagnosis and effective patient management.
+- Congenital heart disease, by showing abnormal flow.
+- Following known heart and vessel disease over time.
+- Treatment decisions, with measurements of flow and cardiac function.
 
 ![For any inplane just copy image position and enter VENC. (3ch inplane magnitude image shown)](../images/51892d_a9e117a7f79245b79edb1e0c894125bc-mv2.webp "For any inplane just copy image position and enter VENC. (3ch inplane magnitude image shown)")
 
@@ -95,7 +91,7 @@ Phase contrast imaging with proper VENC selection represents a sophisticated and
 
 ![Sagittal right ventricular outflow tract (RVOT) view with the pulmonary valve labeled and the through-plane planning line](../images/51892d_0033926da7d3428485f72517b0821f56-mv2.webp)
 
-Lines shown to right and left show through plane planning for the RVOT or main pulmonary artery.
+The lines on the right and left show through-plane planning for the RVOT or main pulmonary artery.
 
 ![Image above shows through plane image at level of RVOT. (Magnitude image shown)](../images/51892d_2ad5c06fa396485bbb9789e436e8ecf5-mv2.webp "Image above shows through plane image at level of RVOT. (Magnitude image shown)")
 

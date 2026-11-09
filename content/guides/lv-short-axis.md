@@ -1,7 +1,7 @@
 ---
-title: "Understanding the Left Ventricle Short Axis View: Comprehensive Cardiac MRI Planning for Technologists"
+title: "How to Plan the Left Ventricle Short-Axis Stack in Cardiac MRI"
 shortTitle: "LV short-axis view"
-summary: "Master left ventricle short axis imaging in cardiac MRI. Learn 2-chamber and 4-chamber planning techniques to optimize ventricular function assessment and volumetric analysis."
+summary: "How to plan the left ventricle short-axis stack in cardiac MRI from the 2-chamber and 4-chamber views, for volumes, function and wall motion."
 topics: [left-ventricle]
 published: 2025-11-25
 updated: 2025-12-01
@@ -10,7 +10,7 @@ order: 4
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-short-axis-view-comprehensive-cardiac-mri-planning-for-technologis
 ---
 
-The short axis (SAX) stack is the definitive approach for evaluating the LV in cardiac MRI. The left ventricle short-axis cine stack is acquired perpendicular to the long axis of the heart, extending contiguously from the mitral valve plane at the base down to the true apex. Coverage should allow complete assessment of the LV myocardium and accurate volumetric analysis in both end-diastole and end-systole.
+The short-axis (SAX) stack is the main way to measure the LV in cardiac MRI. The cine stack runs perpendicular to the long axis of the heart, with no gaps, from the mitral valve plane at the base to the true apex. It has to cover the whole LV so volumes are accurate at both end-diastole and end-systole.
 
 # Short Axis Planning
 
@@ -18,7 +18,7 @@ The short axis (SAX) stack is the definitive approach for evaluating the LV in c
 
 ![Short-axis stack planned on the four-chamber view: parallel lines from the base to the apex](../images/51892d_c46fc13971bb4e5ca84cc523950cef02-mv2.webp)
 
-The short axis view will align perpendicular to the long axis of the left ventricle. Plan on 2 chamber and 4 chamber.
+The short axis runs perpendicular to the long axis of the left ventricle. Plan it on the 2-chamber and 4-chamber.
 
 ![Twelve short-axis cine slices covering the left ventricle from base to apex](../images/51892d_5a5aad2a43df480ebb4840d5cad6793c-mv2.webp)
 
@@ -26,95 +26,92 @@ The short axis view will align perpendicular to the long axis of the left ventri
 
 **Short Axis Planning**
 
-**Overview:** The left ventricle short axis (SAX) stack visualizes cross-sectional slices of the (LV) left ventricle, (RV) right ventricle, (IVS) interventricular septum, (LW) lateral wall, (AW) anterior wall, (PW) posterior wall, (ISW) inferoseptal wall, and papillary muscles. Each slice offers a complete circumferential view, essential for quantifying structure and function. This view is fundamental for precise volumetric analysis, accurate wall motion tracking, comprehensive tissue characterization, and crucial in identifying a broad spectrum of cardiac pathology.
+**Overview:** Each short-axis slice is a cross-section through the left ventricle (LV), right ventricle (RV), interventricular septum (IVS), lateral wall (LW), anterior wall (AW), posterior wall (PW), inferoseptal wall (ISW) and papillary muscles. The stack is used for volumes, wall motion and tissue characterization, and shows a wide range of heart disease.
 
-# 1. Purpose and Clinical Value
+# 1. What it's used for
 
-- **Volumetric Analysis**
-  - Gold standard for calculating LV and RV volumes, mass, and ejection fraction.
-  - Essential for monitoring heart failure, hypertrophy, and cardiomyopathy progression.
-- **Wall Motion and Regional Function**
-  - Enables detailed regional wall motion assessment, facilitating detection of ischemia, infarction, and dyskinesis.
-  - Papillary muscle evaluation supports mitral valve and subvalvular apparatus analysis.
-- **Tissue Characterization**
-  - Allows for segmental LGE, T1, and T2 mapping; ideal for detecting fibrosis, scarring, edema, or infiltration.
-- **Disease Monitoring**
-  - Serial imaging for temporal changes in myocardial structure/function in conditions like myocarditis, amyloidosis, and chemotherapy effects.
+- **Volumes**
+  - The reference method for LV and RV volumes, mass and ejection fraction.
+  - Used to follow heart failure, hypertrophy and cardiomyopathy.
+- **Wall motion**
+  - Shows regional wall motion, for ischemia, infarction and dyskinesis.
+  - The papillary muscles help assess the mitral valve and the structures under it.
+- **Tissue characterization**
+  - LGE, T1 and T2 mapping by segment: fibrosis, scar, edema or infiltration.
+- **Follow-up**
+  - Repeat scans to track myocarditis, amyloidosis and the effects of chemotherapy.
 
-# 2. Planning and Acquisition Techniques
+# 2. Planning and acquisition
 
-- **Orientation and Planning**
-  - SAX slices are oriented perpendicular to the long axis of the LV, from the mitral annulus (base) to true apex on 2ch & 4ch views.
-  - Stack should avoid LV outflow tract on basal images and reliably bisect the mid-ventricle and papillary muscles.
-  - Accuracy matters: Cross-reference with 2ch and 4ch views to avoid foreshortening.
+- **Orientation and planning**
+  - Slices run perpendicular to the long axis of the LV, from the mitral annulus (base) to the true apex on the 2ch and 4ch.
+  - Keep the LV outflow tract out of the basal slices, and make sure the stack cuts cleanly through the mid-ventricle and papillary muscles.
+  - Check against the 2ch and 4ch so the LV isn't foreshortened.
 - **Coverage**
-  - Slices should span entire LV: basal (mitral valve plane), mid (papillary muscles), apical (just above apex).
-  - Ensure RV inclusion for complete RV volumetric analysis where required.
-- **Patient Positioning & Immobilization**
-  - Supine position with arms appropriately positioned to minimize coil artifact.
-  - Ensure breath-hold capability—practice with patients prior to scanning if possible.
-- **Slice Thickness & Resolution**
-  - Cine: 6–8 mm slices, ideally with no gap, provide high-fidelity functional assessment.
-  - High-resolution/LGE: <6 mm slices for optimal tissue characterization.
-- **Field of View (FOV)**
-  - Standard adult FOV: 280–350 mm, adjusted for body habitus; phase FOV ideally ≥75%.
-  - Ensure complete coverage of LV and adjacent structures across all slices.
-- **Timing and Synchronization**
-  - Retrospective ECG gating recommended to capture full cardiac cycle (25–30 phases/cycle).
-  - For tissue characterization, target mid-diastole or best phase for reduced motion.
-- **Common Pitfalls**
-  - Base of the heart not fully included—leading to underestimated end-diastolic volume.
-  - Slices too thick or with too large a gap—miss small infarcts or hypertrophy areas.
-  - Stack not perpendicular to the true LV axis—affecting quantification and image interpretation.
+  - Cover the whole LV: basal (mitral valve plane), mid (papillary muscles) and apical (just above the apex).
+  - Include the RV when RV volumes are needed.
+- **Patient positioning**
+  - Supine, arms positioned to avoid coil artifact.
+  - Check the patient can hold their breath; practice before scanning if you can.
+- **Slice thickness and resolution**
+  - Cines: 6–8 mm slices, ideally with no gap, for function.
+  - High resolution or LGE: slices under 6 mm for tissue characterization.
+- **Field of view (FOV)**
+  - Standard adult FOV: 280–350 mm, adjusted for body size; phase FOV ideally 75% or more.
+  - Check the LV and nearby structures are covered on every slice.
+- **Timing**
+  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases).
+  - For tissue characterization, target mid-diastole or the phase with the least motion.
+- **Common pitfalls**
+  - Base not fully included: end-diastolic volume comes out too low.
+  - Slices too thick or gaps too large: small infarcts or areas of hypertrophy are missed.
+  - Stack not perpendicular to the true LV axis: measurements and reading suffer.
 
-# 3. Advanced Contrast and Tissue Characterization
+# 3. Contrast and tissue characterization
 
-- **Gadolinium-Based Contrast**
-  - LGE sequences enable detection of infarction, fibrosis, and non-ischemic scar, with multi-slice coverage for segmental quantification. When arrhythmias occur, consider single-shot or motion-corrected methods.
-  - Precise timing (7–15 minutes post-injection) and optimized inversion recovery are vital to distinguish myocardium from blood pool.
-- **Supplementary Imaging (T1/T2 Mapping, Perfusion)**
-  - Consider T1, T2, and extracellular volume mapping for in-depth tissue characterization, especially important in diffuse processes (amyloidosis, myocarditis).
+- **Gadolinium contrast**
+  - LGE shows infarction, fibrosis and non-ischemic scar, with enough slices to measure it by segment. With arrhythmia, consider single-shot or motion-corrected LGE.
+  - Timing (7–15 minutes after injection) and a well-set inversion time separate myocardium from the blood pool.
+- **Other sequences (T1 and T2 mapping, perfusion)**
+  - Consider T1, T2 and extracellular volume (ECV) mapping, especially for diffuse disease such as amyloidosis and myocarditis.
 
-# 4. Troubleshooting & Optimization Tips
+# 4. Troubleshooting
 
-- **Imaging Artifacts**
-  - Motion: Use respiratory gating for challenging breath-holds or free breathing with motion correction algorithms.
-  - Arrhythmias: Adaptive gating/arrhythmia rejection or single-shot sequences may help. Applying compressed sensing if available, may be beneficial.
-  - Coil Placement: Isocenter the coil on heart for highest SNR, utilize multiple coil arrays for improved signal.
-- **Realtime Monitoring**
-  - Continuously monitor ECG signal for gating; address poor R-wave detection promptly (skin prep, lead repositioning, or change leads).
-  - Communicate with the patient throughout to ensure comfort and minimal movement.
-- **Protocol Customization**
-  - Collaborate with radiologists for case-specific needs, especially complex congenital heart disease.
-  - Adjust slice number, thickness, and imaging sequences based on the clinical indication and patient's tolerance.
+- **Artifacts**
+  - Motion: respiratory gating for patients who struggle with breath-holds, or free breathing with motion correction.
+  - Arrhythmia: arrhythmia rejection or single-shot sequences. Compressed sensing helps if you have it.
+  - Coil placement: center the coil over the heart for the best SNR, and use multiple coil arrays for more signal.
+- **Watch during the scan**
+  - Keep an eye on the ECG trace. Fix poor R-wave detection right away: skin prep, move the leads or change leads.
+  - Talk with the patient throughout to keep them comfortable and still.
+- **Adjusting the protocol**
+  - Check with the radiologist on complex cases, especially congenital heart disease.
+  - Adjust the number of slices, thickness and sequences to the clinical question and what the patient can tolerate.
 
-# 5. Post-Processing and Analysis
+# 5. Post-processing
 
-- **Volumetric and Functional Analysis**
-  - Use advanced post-processing for calculation of LV/RV volumes, EF, and myocardial mass.
-  - Region-specific wall motion and scar quantification enable tailored therapy planning.
+- **Volumes and function**
+  - Analysis software calculates LV and RV volumes, EF and myocardial mass.
+  - Wall motion and scar are measured by region, which guides treatment.
 - **Reporting**
-  - Standardized templates improve consistency; include chamber sizes, volumes, EF, scar location/extent, and any abnormal findings (e.g., hypertrophy, delayed enhancement).
+  - Standard templates keep reports consistent: chamber sizes, volumes, EF, where the scar is and how much, and any abnormal findings (for example hypertrophy or delayed enhancement).
 
-# 6. Clinical Scenarios and Pearls
+# 6. Clinical pointers
 
-- **Segmental Wall Motion**
-  - Vital for ischemia mapping, viability studies, and post-infarct monitoring.
-- **Hypertrophy and Remodeling**
-  - Precise mass and thickness measurements for cardiomyopathy staging and therapy response.
-- **Papillary Muscles/Subvalvular Apparatus**
-  - Thorough evaluation of mitral mechanics and functional MR sources.
+- **Wall motion by segment**
+  - Used for ischemia, viability and follow-up after a heart attack.
+- **Hypertrophy and remodeling**
+  - Mass and wall thickness for staging cardiomyopathy and checking response to treatment.
+- **Papillary muscles**
+  - Show how the mitral valve works and where functional mitral regurgitation comes from.
 
-# 7. Educational Takeaways and Best Practices
+# 7. Good habits
 
-- **Attention to Planning**
-  - Absolute perpendicularity to LV long axis is essential for reproducible geometry and volumetrics.
-- **Protocol Adaptation**
-  - Tailor technique for each patient and clinical indication; one size does not fit all. Adjust slice thickness, gap, and sequence parameters to match clinical indication and patient anatomy.
-- **Team Collaboration**
-  - Teamwork between technologist, radiologist, and referring clinician yields the highest quality diagnostic data to answer clinical questions.
+- Keep the stack truly perpendicular to the LV long axis, so measurements can be repeated.
+- Adapt slice thickness, gap and sequence settings to the clinical question and the patient's anatomy.
+- Ask the radiologist or referring clinician when the clinical question isn't clear.
 
-# Summary Table: Essential Parameters for LV Short Axis Planning
+# Summary Table: Short-Axis Settings
 
 | Parameter | Recommendation (Adult) |
 |---|---|
@@ -133,4 +130,3 @@ The short axis view will align perpendicular to the long axis of the left ventri
 | Immobilization | Supine, coil centered over heart. |
 | Breath-hold | 8-12 sec preferred. |
 
-**Conclusion:** Mastering LV short axis planning is the foundation for cardiac MRI’s quantitative excellence—enabling high-fidelity volumetric and functional analysis, nuanced tissue characterization, and robust clinical insights. Tailor each acquisition, communicate within your care team, and apply best practices to deliver optimal patient outcomes.

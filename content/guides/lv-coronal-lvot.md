@@ -1,7 +1,7 @@
 ---
-title: "Understanding the Left Ventricle Coronal Aortic Outflow Tract View: Comprehensive Cardiac MRI Planning for Technologists"
+title: "How to Plan the Coronal LVOT (Aortic Outflow) View in Cardiac MRI"
 shortTitle: "Coronal LVOT view"
-summary: "Master coronal left ventricle outflow tract (LVOT) imaging in cardiac MRI. Learn planning techniques for comprehensive cardiovascular assessment and functional evaluation."
+summary: "How to plan the coronal left ventricle outflow tract (LVOT) view in cardiac MRI, through the aortic valve and ascending aorta: the plane, the settings and the common pitfalls."
 topics: [left-ventricle]
 published: 2025-11-25
 updated: 2026-11-02
@@ -10,7 +10,7 @@ order: 7
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-coronal-aortic-outflow-tract-view-comprehensive-cardiac-mri-planni
 ---
 
-Mastering the coronal left ventricle outflow tract (LVOT) view is essential for cardiac MRI technologists performing comprehensive cardiovascular imaging. This specialized plane provides critical anatomical and functional information for evaluating valvular disease, hypertrophic cardiomyopathy, congenital heart conditions, and procedural planning. Whether you're establishing a new cardiac MRI program or refining your existing protocols, this comprehensive guide will walk you through the precise planning techniques, optimal acquisition parameters, and clinical applications that ensure diagnostic-quality imaging for every patient.
+The coronal left ventricle outflow tract (LVOT) view runs through the LVOT, aortic valve and ascending aorta. It's used for valve disease, hypertrophic cardiomyopathy, congenital heart disease and planning procedures. This guide covers how to plan it, the settings, and what it's used for.
 
 # Coronal Aortic (LVOT) Planning
 
@@ -42,100 +42,97 @@ PPM: Posterior papillary muscle
 
 ![Resulting coronal LVOT view showing the outflow tract, aortic valve and ascending aorta](../images/51892d_95c7836cf4b34838918f3a56f87ca0be-mv2.webp)
 
-Line on left shows planning for the coronal aortic view, bisecting aortic valve and ascending aorta view shown to the right.
+The line on the left shows the planning for the coronal aortic view, through the aortic valve and ascending aorta. The resulting view is on the right.
 
 ![Coronal LVOT cine shown above.](../videos/84904b_f6bdb7fd84ad4c18882dca66d52b6921.mp4 "Coronal LVOT cine shown above.")
 
-**Overview:** The coronal LVOT view is a specialized cardiac MRI plane, essential for anatomical and dynamic evaluation of the LV outflow tract, aortic valve, and root. This view provides unobstructed assessment of the outflow relationship to adjacent myocardial structures.
+**Overview:** The coronal LVOT view shows the LV outflow tract, aortic valve and aortic root, and how the outflow tract sits against the surrounding myocardium.
 
-# 1. Purpose and Clinical Value
+# 1. What it's used for
 
-- **Outflow Tract Assessment**
-  - Direct visualization of the LVOT from basal septum to the aortic valve and proximal aorta.
-  - Key for detecting subvalvular or supravalvular obstruction (e.g., septal hypertrophy, membrane, or post-surgical changes).
-- **Valve Analysis**
-  - Precise imaging of aortic and mitral valves, with ability to evaluate morphology, opening dynamics, and regurgitant jets.
-  - Cine imaging facilitates identification of aortic stenosis, bicuspid or unicuspid valve features, and prosthesis assessment.
-- **Congenital and Structural Disease**
-  - Useful for identifying abnormal connections, outflow tract anomalies, and following up after surgical or transcatheter interventions.
-  - Aids in diagnosis and monitoring of hypertrophic cardiomyopathy and outflow gradients.
-- **Disease Monitoring**
-  - Serial imaging for evaluation of progression in valvular heart disease, hypertrophic cardiomyopathy (HCM) , or after valve replacement/repair.
+- **Outflow tract**
+  - Shows the LVOT from the basal septum to the aortic valve and proximal aorta.
+  - Shows obstruction below or above the valve (for example septal hypertrophy, a membrane or post-surgical changes).
+- **Valves**
+  - Aortic and mitral valve shape, opening and regurgitant jets.
+  - Cines show aortic stenosis, bicuspid or unicuspid valves, and prosthetic valves.
+- **Congenital and structural disease**
+  - Abnormal connections, outflow tract anomalies, and follow-up after surgery or transcatheter procedures.
+  - Helps diagnose and follow hypertrophic cardiomyopathy and outflow gradients.
+- **Follow-up**
+  - Repeat scans of valve disease, hypertrophic cardiomyopathy (HCM), or after valve replacement or repair.
 
-# 2. Planning and Acquisition Techniques
+# 2. Planning and acquisition
 
-- **Orientation and Planning**
-  - The coronal LVOT plane should be oriented vertically through the LV apex, passing longitudinally through the center of the LVOT, aortic valve, and ascending aorta on 3ch view.
-  - Cross-reference with 3ch and 4ch views to ensure alignment through mitral-aortic continuity and the maximal outflow diameter.
+- **Orientation and planning**
+  - On the 3ch, the coronal LVOT plane runs through the LV apex and straight up the center of the LVOT, aortic valve and ascending aorta.
+  - Check it against the 3ch and 4ch so it passes through where the mitral and aortic valves meet, at the widest part of the outflow tract.
 - **Coverage**
-  - Extend coverage from the LV apex to above the sinotubular junction of the ascending aorta.
-  - Preserve visualization of the LV cavity, outflow tract, and proximal aorta.
-- **Patient Positioning & Immobilization**
-  - Supine position with arms appropriately positioned to minimize coil artifact.
-  - Ensure breath-hold capability—practice with patients prior to scanning if possible.
-- **Slice Thickness & Resolution**
-  - Cine imaging: 6–8 mm slices recommended for chamber and valve motion.
-  - High-resolution/LGE: <6 mm preferred for tissue characterization when outflow tract pathology is present.
-- **Field of View (FOV)**
-  - Standard adult FOV: 280–350 mm, encompassing LV, LVOT, and AA.
-  - Always verify that left ventricle, LVOT, and ascending aorta are captured, avoiding excess that dilutes detail.
-- **Timing and Synchronization**
-  - Retrospective ECG gating (25–30 phases/cycle) recommended for analysis of dynamic outflow tract.
-  - For tissue characterization, target mid-diastole or best phase for reduced motion.
-- Common Pitfalls
-  - Avoid foreshortening of valvular dimensions by checking angle of slice passing through true apex and center of aortic valve.
-  - For patients with arrhythmia or poor breath-hold capability, be ready to use real-time (non-gated or compressed sensing) cine sequences and adapt your protocol accordingly.
+  - From the LV apex to above the sinotubular junction of the ascending aorta.
+  - Keep the LV cavity, outflow tract and proximal aorta in view.
+- **Patient positioning**
+  - Supine, arms positioned to avoid coil artifact.
+  - Check the patient can hold their breath; practice before scanning if you can.
+- **Slice thickness and resolution**
+  - Cines: 6–8 mm slices for chamber and valve motion.
+  - High resolution or LGE: under 6 mm for tissue characterization when the outflow tract is abnormal.
+- **Field of view (FOV)**
+  - Standard adult FOV: 280–350 mm, covering the LV, LVOT and ascending aorta.
+  - Check the left ventricle, LVOT and ascending aorta are all in the image, without extra space that lowers detail.
+- **Timing**
+  - Retrospective ECG gating (25–30 phases) to see the outflow tract move.
+  - For tissue characterization, target mid-diastole or the phase with the least motion.
+- **Common pitfalls**
+  - Valve measurements come out short if the slice isn't through the true apex and the center of the aortic valve. Check the angle.
+  - Arrhythmia or poor breath-holds: be ready to switch to real-time cines (non-gated or compressed sensing).
 
-# 3. Advanced Contrast and Tissue Characterization
+# 3. Contrast and tissue characterization
 
-- **Gadolinium-Based Contrast**
-  - LGE sequences visualize subvalvular, valvular, and peri-aortic fibrosis, scarring, or postsurgical changes.
-  - Accurate inversion timing (7–15 minutes post-injection) is critical to differentiate myocardium from lumen and adjacent aorta.
-- **Supplementary Imaging**
-  - T1/T2 mapping bolsters the assessment of outflow tract involvement in infiltrative, inflammatory, or congenital processes.
+- **Gadolinium contrast**
+  - LGE shows fibrosis, scar and post-surgical changes below, at and around the valve and aorta.
+  - LGE timing (7–15 minutes after injection) and an accurate inversion time separate myocardium from the blood and the aorta.
+- **Other sequences**
+  - T1 and T2 mapping help when the outflow tract is involved in infiltrative, inflammatory or congenital disease.
 
-# 4. Troubleshooting & Optimization Tips
+# 4. Troubleshooting
 
-- **Imaging Artifacts**
-  - Motion: Use respiratory gating for challenging breath-holds or free breathing with motion correction algorithms.
-  - Arrhythmias: Adaptive gating/arrhythmia rejection or single-shot sequences may help. Applying compressed sensing if available, may be beneficial.
-  - Coil Placement: Isocenter the coil on heart for highest SNR, utilize multiple coil arrays for improved signal, critical for imaging at root level.
-- **Realtime Monitoring**
-  - Continuously monitor ECG signal for gating; address poor R-wave detection promptly (skin prep, lead repositioning, or change leads).
-  - Communicate with the patient throughout to ensure comfort and minimal movement.
-- **Protocol Customization**
-  - Collaborate with radiologists for case-specific needs, especially complex congenital heart disease.
-  - Adjust slice number, thickness, and imaging sequences based on the clinical indication and patient's tolerance.
+- **Artifacts**
+  - Motion: respiratory gating for patients who struggle with breath-holds, or free breathing with motion correction.
+  - Arrhythmia: arrhythmia rejection or single-shot sequences. Compressed sensing helps if you have it.
+  - Coil placement: center the coil over the heart for the best SNR, and use multiple coil arrays for more signal.
+- **Watch during the scan**
+  - Keep an eye on the ECG trace. Fix poor R-wave detection right away: skin prep, move the leads or change leads.
+  - Talk with the patient throughout to keep them comfortable and still.
+- **Adjusting the protocol**
+  - Check with the radiologist on complex cases, especially congenital heart disease.
+  - Adjust the number of slices, thickness and sequences to the clinical question and what the patient can tolerate.
 
-# 5. Post-Processing and Analysis
+# 5. Post-processing
 
-- **Functional and Anatomical Analysis**
-  - Use cardiac post-processing tools to measure LVOT area, aortic root dimensions, and outflow gradients.
-  - Evaluate valve morphology and motion; review for dynamic obstruction, stenosis, or regurgitation.
+- **Function and anatomy**
+  - Measure LVOT area, aortic root size and outflow gradients.
+  - Review valve shape and motion for dynamic obstruction, stenosis or regurgitation.
 - **Reporting**
-  - Structured reports covering LVOT dimensions, valve morphology, functional findings, and identification of obstruction or regurgitant pathologies.
+  - Structured reports cover LVOT size, valve shape, function, and any obstruction or regurgitation.
 
-# 6. Clinical Scenarios and Pearls
+# 6. Clinical pointers
 
-- **Hypertrophic Cardiomyopathy**
-  - Required for measuring septal thickness and outflow tract narrowing.
-  - Guide for surgical, ablative, or transcatheter planning.
-- **Aortic Valve Disease**
-  - Characterize stenosis, regurgitation, and congenital valve variants.
-  - Follow prosthetic valve function and perivalvular leaks.
-- **Congenital Heart Disease**
-  - Direct visualization for diagnosing conotruncal defects and following complex repairs.
+- **Hypertrophic cardiomyopathy**
+  - Septal thickness and outflow tract narrowing.
+  - Guides surgery, ablation or transcatheter procedures.
+- **Aortic valve disease**
+  - Stenosis, regurgitation and congenital valve variants.
+  - Follow-up of prosthetic valves and leaks around them.
+- **Congenital heart disease**
+  - Conotruncal defects and follow-up after complex repairs.
 
-# 7. Educational Takeaways and Best Practices
+# 7. Good habits
 
-- **Planning Excellence**
-  - Precise coronal LVOT planning ensures reproducible and clinically impactful imaging for aortic and LVOT pathology.
-- **Protocol Adaptation**
-  - Tailor technique and slice coverage for each patient and clinical indication; one size does not fit all.
-- **Team Collaboration**
-  - Interact closely with radiologists, referring clinicians to understand clinical questions and optimize scan protocols.
+- Plan the coronal LVOT carefully every time, so images are consistent from exam to exam.
+- Adapt the technique and coverage to each patient and clinical question.
+- Ask the radiologist or referring clinician when the clinical question isn't clear.
 
-# Summary Table: Essential Parameters for Coronal Aortic LVOT Planning
+# Summary Table: Coronal LVOT Settings
 
 | Parameter | Recommendation (Adult) |
 |---|---|
@@ -154,4 +151,3 @@ Line on left shows planning for the coronal aortic view, bisecting aortic valve 
 | Immobilization | Supine, coil centered over heart. |
 | Breath-hold | 8-12 sec preferred. |
 
-**Conclusion:** Mastery of coronal LVOT view planning is a cornerstone in advanced cardiac MRI, providing exceptional anatomic and functional data on valvular, outflow tract, and aortic disease. Tailor your approach for each patient and clinical scenario, utilize collaborative expertise, and apply best practices to maximize diagnostic impact and patient care.

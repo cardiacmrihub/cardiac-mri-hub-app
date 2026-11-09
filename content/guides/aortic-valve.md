@@ -1,6 +1,6 @@
 ---
 title: "Aortic Valve"
-summary: "Learn essential cardiac MRI techniques for imaging the aortic valve. Discover optimal planning strategies for short axis and aortic valve views to ensure comprehensive visualization of valve anatomy and function."
+summary: "How to plan the aortic valve views in cardiac MRI, including the valve short axis, for valve anatomy and function."
 topics: [valves]
 published: 2025-11-25
 updated: 2025-12-13
@@ -9,7 +9,7 @@ order: 1
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/aortic-valve
 ---
 
-Cardiac MRI is a crucial tool for assessing the aortic valve and its associated structures. The planning for imaging the aortic valve involves specific techniques to ensure optimal visualization of the aortic valve itself and the surrounding structures which provides comprehensive insights into its anatomy and function.
+Cardiac MRI shows the aortic valve and the structures around it. This guide covers how to plan the views that show the valve's anatomy and function.
 
 # Aortic Valve Planning
 
@@ -31,25 +31,22 @@ Cardiac MRI is a crucial tool for assessing the aortic valve and its associated 
 
 ## Key Considerations for Aortic Valve Imaging
 
-- Orientation: The imaging plane should be aligned to capture the aortic valve in a clear view, typically oriented perpendicular to the valve plane for optimal assessment.
-- Slice Thickness: A thinner slice thickness is recommended to improve spatial resolution, allowing for better visualization of the aortic valve and surrounding structures.
-- Field of View: The field of view must encompass the aortic valve and adjacent anatomical landmarks to ensure comprehensive evaluation.
-- Timing: Image acquisition should be timed with the cardiac cycle, ideally during diastole, to enhance the clarity of the valve opening and closing dynamics.
-- Contrast Agents: Utilizing contrast agents may be beneficial to improve the differentiation of the aortic valve and surrounding myocardial tissue, aiding in diagnostic accuracy.
+- **Orientation:** line the plane up so it shows the valve clearly, usually perpendicular to the valve plane.
+- **Slice thickness:** thinner slices give better spatial resolution of the valve and nearby structures.
+- **Field of view:** the aortic valve and the landmarks around it.
+- **Timing:** ECG-gated through the cardiac cycle, to show the valve opening and closing.
+- **Contrast:** if it's part of the exam, contrast helps separate the valve from the surrounding myocardium.
 
-## Clinical Applications of Aortic Valve Imaging
+## What it's used for
 
-- Assessment of aortic valve morphology and function.
-- Evaluation of aortic stenosis or regurgitation severity.
-- Identification of associated structural abnormalities.
-- Monitoring changes in aortic valve function over time.
+- Aortic valve shape and function.
+- How severe aortic stenosis or regurgitation is.
+- Related structural abnormalities.
+- Follow-up of the aortic valve over time.
 
-## Key Features of the Short Axis View
+## What the short-axis view shows
 
-- Aortic Valve Leaflets: Detailed visualization of the aortic valve leaflets to assess their structure and movement.
-- Annular Dimensions: Measurement of the aortic annulus for evaluating potential interventions.
-- Surrounding Structures: Assessment of the relationship between the aortic valve and adjacent structures, such as the left ventricle and ascending aorta.
+- **Leaflets:** their structure and movement.
+- **Annulus:** its size, measured for possible procedures.
+- **Surrounding structures:** how the valve sits against the left ventricle and ascending aorta.
 
-# Conclusion
-
-Accurate aortic valve imaging is essential for comprehensive cardiac assessment. Proper planning techniques, including careful attention to orientation, slice thickness, field of view, and timing, ensure optimal visualization of valve morphology and function. By understanding the key features of both the aortic valve and short axis views including detailed leaflet assessment and precise annular measurement, MRI technologists can provide high-quality images that enable cardiologists to make accurate diagnoses and informed treatment decisions for a wide range of aortic valve pathologies.

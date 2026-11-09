@@ -1,7 +1,7 @@
 ---
-title: "Understanding the Left Ventricle Four-Chamber View: Comprehensive Cardiac MRI Planning for Technologists"
+title: "How to Plan the Left Ventricle Four-Chamber View in Cardiac MRI"
 shortTitle: "LV four-chamber view"
-summary: "Master the left ventricle four-chamber (4ch) view in cardiac MRI. Learn optimal planning techniques for simultaneous visualization of all cardiac chambers and comprehensive functional assessment."
+summary: "How to plan the left ventricle four-chamber (4ch) view in cardiac MRI: where the plane goes, the settings, and the common pitfalls."
 topics: [left-ventricle]
 published: 2025-11-23
 updated: 2025-12-01
@@ -10,7 +10,7 @@ order: 3
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/updated-understanding-the-left-ventricle-four-chamber-view-comprehensive-cardiac-mri-planning-for
 ---
 
-**Overview:** The left ventricular four-chamber (LV 4ch) view is a cornerstone in cardiac MRI, enabling simultaneous visualization of all chambers—left ventricle (LV), left atrium (LA), right ventricle (RV), and right atrium (RA). Its use is pivotal for functional assessment, disease evaluation, and complex congenital workups.
+**Overview:** The left ventricle four-chamber (LV 4ch) view shows all four chambers at once: left ventricle (LV), left atrium (LA), right ventricle (RV) and right atrium (RA). It's used to assess function, evaluate disease and work up congenital heart disease.
 
 # 4 Chamber Planning
 
@@ -30,92 +30,89 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/updated-unders
 
 ![](../videos/51892d_79e0ee6ea14c4a419b701323ff3a7a95.mp4)
 
-# 1. Purpose and Clinical Value
+# 1. What it's used for
 
-- **Functional Assessment**
-  - Precise quantification of LV and RV function, including ejection fraction and wall motion.
-  - Detection of global enlargement or hypertrophy, crucial for staging heart failure and cardiomyopathies.
-- **Valvular Evaluation**
-  - Direct visualization of mitral and tricuspid valve morphology and competence.
-  - Enables assessment of regurgitation jets and stenosis with phase contrast imaging or cine sequences.
-- **Congenital and Structural Disease**
-  - Identification of atrial and ventricular septal defects (ASD/VSD).
-  - Evaluation of unusual connections, anomalous veins, and post-surgical anatomy.
-- **Disease Monitoring**
-  - Serial imaging for progression or resolution of cardiac conditions such as myocarditis, amyloidosis, or chemotherapy-related cardiomyopathy.
+- **Function**
+  - LV and RV function, including ejection fraction and wall motion.
+  - Enlarged or thickened chambers, which matter for staging heart failure and cardiomyopathy.
+- **Valves**
+  - Mitral and tricuspid valve shape and how well they close.
+  - Regurgitation jets and stenosis, on cines or with phase contrast.
+- **Congenital and structural disease**
+  - Atrial and ventricular septal defects (ASD, VSD).
+  - Unusual connections, anomalous veins and post-surgical anatomy.
+- **Follow-up**
+  - Repeat scans to track conditions such as myocarditis, amyloidosis or cardiomyopathy from chemotherapy.
 
-# 2. Planning and Acquisition Techniques
+# 2. Planning and acquisition
 
-- **Orientation and Planning**
-  - The 4ch plane should bisect both mitral and tricuspid valves and pass through the LV apex. Avoid LVOT on basal short axis slice.
-  - Accuracy matters: Cross-reference with 2ch and 3ch views to avoid foreshortening.
-- **Patient Positioning & Immobilization**
-  - Supine position with arms appropriately positioned in a comfortable position.
-  - Verify that the patient understands breathing instructions clearly. If possible practice breath holds with patient before exam to evaluate capabilities.
-- **Slice Thickness & Resolution**
-  - Cine imaging: 6–8 mm slices balance resolution and SNR. LGE same slice thickness as cine images.
-  - High-resolution: <6 mm slices preferred for high resolution.
-- **Field of View (FOV)**
-  - Standard adult FOV: 280–350 mm, adjusted for body habitus.
-  - Always verify that both ventricles, atria, and septum are captured, avoiding excess that dilutes detail.
-- **Timing and Synchronization**
-  - Retrospective ECG gating recommended to capture full cardiac cycle (25–30 phases/cycle). Temporal resolution 45ms or less (Real time 60ms or less).
-  - For tissue characterization, target mid-diastole or best phase for reduced motion.
-- Common Pitfalls
-  - Avoid misalignment by choosing angle of imaging plane that cuts through the apex, reference on short axis and 2ch.
-  - Avoid outflow tract by using mid ventricle slice.
-  - For patients with arrhythmia or poor breath-hold capability, be ready to use real-time (non-gated or compressed sensing) cine sequences and adapt your protocol accordingly.
+- **Orientation and planning**
+  - The 4ch plane cuts through both the mitral and tricuspid valves and the LV apex. Avoid the LVOT on the basal short-axis slice.
+  - Check it against the 2ch and 3ch views so the LV isn't foreshortened.
+- **Patient positioning**
+  - Supine, arms in a comfortable position.
+  - Make sure the patient understands the breathing instructions. If you can, practice breath-holds before the exam to see what they can do.
+- **Slice thickness and resolution**
+  - Cines: 6–8 mm slices balance resolution and SNR. LGE uses the same slice thickness as the cines.
+  - Use slices under 6 mm when you need higher resolution.
+- **Field of view (FOV)**
+  - Standard adult FOV: 280–350 mm, adjusted for body size.
+  - Make sure both ventricles, both atria and the septum are in the image, without extra space that lowers detail.
+- **Timing**
+  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases). Temporal resolution 45 ms or less (real time 60 ms or less).
+  - For tissue characterization, target mid-diastole or the phase with the least motion.
+- **Common pitfalls**
+  - Misalignment: angle the plane through the apex, checking it on the short axis and the 2ch.
+  - The outflow tract: plan from a mid-ventricle slice to avoid it.
+  - Arrhythmia or poor breath-holds: be ready to switch to real-time cines (non-gated or compressed sensing).
 
-# 3. Advanced Contrast and Tissue Characterization
+# 3. Contrast and tissue characterization
 
-- **Gadolinium-Based Contrast**
-  - LGE sequences post-contrast visualize infarction, fibrosis, and infiltrative disease.
-  - Precise timing (7–10 minutes post-injection) and optimized inversion recovery are crucial for visualizing myocardial scarring.
-- **Supplementary Imaging (T1/T2 Mapping, Perfusion)**
-  - Consider T1, T2, and extracellular volume mapping for in-depth tissue characterization, especially for myocarditis or infiltrative disorders.
+- **Gadolinium contrast**
+  - LGE after contrast shows infarction, fibrosis and infiltrative disease.
+  - Timing (7–10 minutes after injection) and a well-set inversion time are what make scar visible.
+- **Other sequences (T1 and T2 mapping, perfusion)**
+  - Consider T1, T2 and extracellular volume (ECV) mapping for tissue characterization, especially for myocarditis and infiltrative disease.
 
-# 4. Troubleshooting & Optimization Tips
+# 4. Troubleshooting
 
-- **Imaging Artifacts**
-  - Motion: Use respiratory gating for challenging breath-holds or free breathing with motion correction algorithms.
-  - Arrhythmias: Adaptive gating/arrhythmia rejection or single-shot sequences may help. Applying compressed sensing if available, may be beneficial.
-  - Coil Placement: Isocenter the coil on heart for highest SNR, utilize multiple coil arrays for improved signal.
-- **Realtime Monitoring**
-  - Continuously monitor ECG signal for gating; address poor R-wave detection promptly (skin prep, lead repositioning, or change leads).
-  - Communicate with the patient throughout to ensure comfort and minimal movement.
-- **Protocol Customization**
-  - Collaborate with radiologists for case-specific needs, especially complex congenital heart disease.
-  - Adjust slice number, thickness, and imaging sequences based on the clinical indication and patient's tolerance.
+- **Artifacts**
+  - Motion: respiratory gating for patients who struggle with breath-holds, or free breathing with motion correction.
+  - Arrhythmia: arrhythmia rejection or single-shot sequences. Compressed sensing helps if you have it.
+  - Coil placement: center the coil over the heart for the best SNR, and use multiple coil arrays for more signal.
+- **Watch during the scan**
+  - Keep an eye on the ECG trace. Fix poor R-wave detection right away: skin prep, move the leads or change leads.
+  - Talk with the patient throughout to keep them comfortable and still.
+- **Adjusting the protocol**
+  - Check with the radiologist on complex cases, especially congenital heart disease.
+  - Adjust the number of slices, thickness and sequences to the clinical question and what the patient can tolerate.
 
-# 5. Post-Processing and Analysis
+# 5. Post-processing
 
-- **Volumetric and Functional Analysis**
-  - Use advanced software for 3D reconstruction, ventricular volume calculations, and ejection fraction estimation.
-  - LV/RV mass and atrial size quantification can be automated or manually refined for accuracy.
+- **Volumes and function**
+  - Analysis software calculates ventricular volumes and ejection fraction.
+  - LV and RV mass and atrial size can be measured automatically, then checked and corrected by hand.
 - **Reporting**
-  - Standardized templates improve consistency; include chamber sizes, function, and any abnormal findings (e.g., hypertrophy, delayed enhancement).
+  - Standard templates keep reports consistent: chamber sizes, function and any abnormal findings (for example hypertrophy or delayed enhancement).
 
-# 6. Clinical Scenarios and Pearls
+# 6. Clinical pointers
 
-- **Left Atrium**
-  - Enlargement: Evaluate in heart failure, AFib.
-  - Pressure markers: Diastolic dysfunction indicators.
-- **Left Ventricle**
-  - Regional wall motion: Identify ischemia or infarction.
-  - Scar mapping: Guide management in arrhythmia and post-MI patients.
-- **Right-Sided Chambers**
-  - Assess for pulmonary hypertension, congenital shunt impact.
+- **Left atrium**
+  - Enlargement: seen in heart failure and AFib.
+  - A sign of diastolic dysfunction.
+- **Left ventricle**
+  - Regional wall motion: shows ischemia or infarction.
+  - Scar: guides treatment in arrhythmia and after a heart attack.
+- **Right side**
+  - Look for pulmonary hypertension and the effects of a shunt.
 
-# 7. Educational Takeaways & Best Practices
+# 7. Good habits
 
-- **Attention to Planning**
-  - Mastering LV 4ch view planning ensures reproducible, diagnostically important images for evaluating cardiac health.
-- **Protocol Adaptation**
-  - Tailor technique for each patient and clinical indication; one size does not fit all, be ready to adapt.
-- **Team Collaboration**
-  - Interact closely with radiologists and referring clinicians to understand clinical questions and optimize scan protocols.
+- Plan the 4ch carefully every time, so images are consistent from exam to exam.
+- Adapt the technique to each patient and clinical question.
+- Ask the radiologist or referring clinician when the clinical question isn't clear.
 
-# Summary Table: Essential Parameters for Left Ventricle Four Chamber Planning
+# Summary Table: Four-Chamber Settings
 
 | Parameter | Recommendation (Adult) |
 |---|---|
@@ -134,4 +131,3 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/updated-unders
 | Immobilization | Supine, coil centered over heart. |
 | Breath-hold | 8-12 sec preferred. |
 
-**In conclusion:** Mastery of LV 4ch view planning amplifies the diagnostic value of cardiac MRI and drives excellence in patient care. Empower yourself with expert knowledge and protocol customization for every case.

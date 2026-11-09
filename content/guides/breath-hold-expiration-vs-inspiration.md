@@ -1,107 +1,106 @@
 ---
-title: "End-Expiration vs End-Inspiration Breathing Techniques in Cardiac MRI What the Evidence Reveals"
+title: "Breath-Holds in Cardiac MRI: End-Expiration vs End-Inspiration"
 shortTitle: "Breath-holds: end-expiration vs end-inspiration"
-summary: "Cardiac MRI depends on carefully controlled breath-holds to freeze motion. The choice between end-inspiration and end-expiration has a measurable impact on motion artifacts, reproducibility and scan quality."
+summary: "Why end-expiration is the better breath-hold for cardiac MRI: fewer motion artifacts, more consistent slices and volumes, plus how compressed sensing and AI help patients who can't hold their breath."
 topics: [technique]
 published: 2026-04-12
 cover: ../images/51892d_cf70bad820124f51ababd978af849a01-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/end-expiration-vs-end-inspiration-breathing-techniques-in-cardiac-mri-what-the-evidence-reveals
 ---
 
-Cardiac MRI Breath-Holds: Why End-Expiration (and Modern AI Techniques) Matter Most for Image Quality
 
-Cardiac MRI depends on carefully controlled breath-holds to freeze motion and produce diagnostic images. The choice between end-inspiration and end-expiration has a measurable impact on motion artifacts, reproducibility, and overall scan quality—and newer AI and compressed sensing methods are reshaping how breath-holds are used in practice.[\[ajronline\]](https://ajronline.org/doi/10.2214/AJR.18.20239)
+Cardiac MRI relies on breath-holds to freeze motion. Whether the patient holds at end-inspiration or end-expiration makes a measurable difference to motion artifacts, consistency and image quality. Compressed sensing and AI are also changing how breath-holds are used.[\[ajronline\]](https://ajronline.org/doi/10.2214/AJR.18.20239)
 
 ![Illustration of a patient lying on the table of an MRI scanner](../images/51892d_cf70bad820124f51ababd978af849a01-mv2.webp)
 
 # Why Breathing Phase Matters
 
-During cardiac MRI, respiratory motion shifts the diaphragm, chest wall, and heart, degrading endocardial border definition and quantitative measurements. Asking patients to hold their breath reduces this motion, but the specific phase—full inspiration versus relaxed expiration—changes how stable the heart's position remains during acquisition.[\[ajronline\]](https://ajronline.org/doi/10.2214/AJR.18.20239)
+Breathing moves the diaphragm, chest wall and heart, which blurs the endocardial border and throws off measurements. A breath-hold stops most of that, but the phase you hold in changes how still the heart stays.[\[ajronline\]](https://ajronline.org/doi/10.2214/AJR.18.20239)
 
-- End-inspiration breath-hold is performed with fully inflated lungs and a high, actively contracted diaphragm.
-- End-expiration breath-hold follows a comfortable exhalation, with the diaphragm lower and more relaxed.
+- End-inspiration: lungs full, diaphragm actively contracted.
+- End-expiration: after a normal breath out, diaphragm lower and relaxed.
 
-Because these positions differ mechanically, they lead to different patterns of cardiac motion and artifact burden in cine and T1-weighted imaging.[\[ajronline\]](https://ajronline.org/doi/10.2214/AJR.18.20239)
+The two positions behave differently, so they produce different heart motion and different amounts of artifact on cines and T1-weighted images.[\[ajronline\]](https://ajronline.org/doi/10.2214/AJR.18.20239)
 
-# Quantitative Advantage of End-Expiration
+# Why end-expiration works better
 
-Multiple comparative studies show that end-expiration breath-holds consistently outperform end-inspiration for motion robustness and diagnostic quality.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+Studies comparing the two consistently find fewer motion problems and better images at end-expiration.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
 
-- In T1-weighted liver and thoracoabdominal MRI used as a model for cardiothoracic motion, end-expiration achieved a mean motion score of 3.35 vs 2.80 for end-inspiration (p < 0.00001), with radiologists preferring end-expiration images in 59% of direct comparisons versus 20% for end-inspiration.\[ajronline\]
-- Nearly 45% of end-expiration sequences scored 4–5 (minimal or no motion), compared with 23% at end-inspiration, translating clinically into fewer repeat acquisitions and more consistently diagnostic stacks.\[ajronline\]
-- In free-breathing real-time cardiac cine reconstructions separated by respiratory phase, end-expiration heartbeats showed higher frame-to-frame similarity, with correlation coefficients around 0.94 vs 0.90 for end-inspiration and expert readers rating image quality same or better at end-expiration in over 80% of cases.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- In T1-weighted liver and chest MRI, used as a model for motion in the chest, end-expiration scored 3.35 for motion against 2.80 for end-inspiration (p < 0.00001). Radiologists preferred the end-expiration images in 59% of direct comparisons, against 20% for end-inspiration.\[ajronline\]
+- Nearly 45% of end-expiration sequences scored 4–5 (little or no motion), against 23% at end-inspiration. In practice that means fewer repeats and more usable stacks.\[ajronline\]
+- In free-breathing real-time cines sorted by breathing phase, end-expiration heartbeats were more alike from frame to frame (correlation about 0.94 against 0.90), and experts rated image quality the same or better at end-expiration in over 80% of cases.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
 
-These findings support end-expiration as the more reproducible and motion-stable phase for cardiac MRI acquisitions.
+So end-expiration is the more consistent, steadier phase for cardiac MRI.
 
 ![Illustration of the lungs, heart and diaphragm, with arrows showing how diaphragm position moves the heart](../images/51892d_5c33ec6ffe7840df9f14308d3d34eee6-mv2.webp)
 
-# Mechanism: Diaphragm, Heart Motion, and Artifacts
+# Why: the diaphragm and the heart
 
-The key difference lies in how the diaphragm and respiratory muscles behave during a sustained breath-hold.
+The difference is in what the diaphragm does during the hold.
 
-- At end-inspiration, the diaphragm and accessory muscles are actively contracted; during the hold they undergo involuntary relaxation ("creep"), causing the diaphragm to drift upward with velocities initially around several mm/sec and cumulative displacements of roughly 1 cm over typical 15–20 second breath-holds.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- Because the pericardium is mechanically linked to the diaphragm, this gradual shift translates into beat-to-beat changes in cardiac position and subtle boundary blur on ECG-gated images.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- At end-expiration, the diaphragm sits in a more relaxed, mechanically stable position, with much slower and more linear motion over time.
-- This stability keeps the heart's position more consistent across consecutive cardiac cycles, improving endocardial delineation and reducing respiratory ghosting.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- At end-inspiration, the diaphragm and accessory muscles are contracted. During the hold they slowly relax ("creep"), so the diaphragm drifts up, at first by several mm per second and about 1 cm over a 15–20 second hold.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- The pericardium is attached to the diaphragm, so this drift moves the heart from beat to beat and blurs its borders on gated images.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- At end-expiration, the diaphragm is relaxed and stable, and moves much more slowly and steadily.
+- The heart stays in the same place from beat to beat, so borders are sharper and there's less breathing ghosting.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
 
-This physiologic behavior underpins the observed improvements in motion artifact scores and radiologist preference for end-expiration.\[ajronline\]
+That's why motion scores are better and radiologists prefer end-expiration.\[ajronline\]
 
-# Role of AI and Compressed Sensing in Breath-Hold Strategy
+# Compressed sensing and AI
 
-Advances in compressed sensing (CS) and AI reconstruction are changing how breath-holds are used, particularly for patients who struggle with traditional 10–15 second holds.
+Compressed sensing (CS) and AI reconstruction are changing breath-holds, especially for patients who can't manage 10–15 seconds.
 
-- Compressed sensing cine can significantly shorten breath-holds (often by 40–50%) while preserving ventricular volume and function measurements, making end-expiration holds more achievable for sicker patients[.\[pubmed.ncbi.nlm.nih\]](https://pubmed.ncbi.nlm.nih.gov/33566124/)
-- Free-breathing CS cine and perfusion with in-line motion correction allows acquisition throughout the respiratory cycle and sorts or corrects data to end-expiration-like phases, effectively mimicking the stability of a good expiration breath-hold without requiring patient cooperation.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- AI/deep learning reconstructions can denoise and sharpen undersampled or motion-degraded data, improving image quality from very short or imperfect breath-holds and enhancing reproducibility across field strengths and vendors.[\[nature\]](https://www.nature.com/articles/s41598-024-62294-7)
+- CS cines can shorten breath-holds by 40–50% while keeping volume and function measurements the same, so sicker patients can manage an end-expiration hold.[\[pubmed.ncbi.nlm.nih\]](https://pubmed.ncbi.nlm.nih.gov/33566124/)
+- Free-breathing CS cine and perfusion with in-line motion correction acquire through the whole breathing cycle and sort or correct the data to an expiration-like position. That gives the steadiness of a good breath-hold without the patient having to hold.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- AI (deep learning) reconstruction removes noise and sharpens undersampled or motion-blurred data, improving images from very short or imperfect breath-holds, across field strengths and vendors.[\[nature\]](https://www.nature.com/articles/s41598-024-62294-7)
 
-In practice, most modern CS and AI cardiac MRI protocols still favor end-expiration when a breath-hold is required (cine, mapping, perfusion), and use respiratory navigation or phase binning that targets expiration for free-breathing 3D whole-heart and real-time cine[.\[usa.philips\]](https://www.usa.philips.com/healthcare/clinical-article/compressed-sense-clinical-cardiac-mri)
+Most current CS and AI protocols still use end-expiration when a breath-hold is needed (cine, mapping, perfusion), and use respiratory navigators or phase sorting that targets expiration for free-breathing 3D whole-heart and real-time cines.[\[usa.philips\]](https://www.usa.philips.com/healthcare/clinical-article/compressed-sense-clinical-cardiac-mri)
 
 ![Illustration of a technologist positioning a patient on the MRI table](../images/51892d_3295744617a24a429f4a5fb1ff534650-mv2.webp)
 
-# Practical Takeaways for Cardiac MRI Practice
+# At the scanner
 
-For technologists and radiologists, integrating this evidence into daily workflow can improve both efficiency and diagnostic confidence.
+How to put this into practice:
 
-- Standardize end-expiration as the default breath-hold phase for routine cines, mapping, and contrast-enhanced sequences. Use clear, simple coaching: "Breathe out normally and hold your breath there"—avoid forcing maximal expiration.\[ajronline\]
-- Coach patients to use the same comfortable end-expiration depth for all breath-holds in a stack; avoid alternating inspiration/expiration across slices, which causes slice misregistration.
-- Confirm diaphragm position on localizers: at true end-expiration, the diaphragm appears lower (more caudal) on coronal/sagittal scouts compared to inspiration. Consistent positioning = better reproducibility.
-- For patients with limited breath-hold capacity (heart failure, dyspnea, arrhythmias), shift toward CS cine, AI-accelerated cine, and free-breathing gated protocols rather than relying on suboptimal inspiration or inconsistent short holds.[\[pmc.ncbi.nlm.nih](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)\]
+- Make end-expiration the default for cines, maps and contrast sequences. Keep the coaching simple: "Breathe out normally and hold your breath there." Don't push for a maximal breath out.\[ajronline\]
+- Coach the same comfortable breath out for every breath-hold in a stack. Switching between inspiration and expiration across slices causes slices that don't line up.
+- Check the diaphragm on the localizers: at true end-expiration it sits lower on coronal and sagittal scouts than at inspiration. The same position each time means more consistent images.
+- For patients who can't hold their breath (heart failure, shortness of breath, arrhythmia), switch to CS cines, AI-accelerated cines or free-breathing gated sequences rather than poor inspiration holds or inconsistent short holds.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
 
-Focusing on end-expiration breath-holds—supported by modern CS and AI methods where needed—offers a straightforward, evidence-based way to elevate cardiac MRI image quality and reduce motion-related repeat imaging[.\[cardiovascularbusiness\]](https://cardiovascularbusiness.com/topics/cardiac-imaging/exploring-major-breakthroughs-cardiac-imaging)
+End-expiration breath-holds, with CS and AI where needed, are a simple way to improve image quality and cut repeats.[\[cardiovascularbusiness\]](https://cardiovascularbusiness.com/topics/cardiac-imaging/exploring-major-breakthroughs-cardiac-imaging)
 
-# Left Ventricular Volume Differences: End-Expiration vs End-Inspiration
+# How breathing phase changes LV volumes
 
-Beyond image quality and motion artifacts, the phase of breathing at which cardiac MRI data is acquired has a direct and physiologically important effect on measured left ventricular (LV) volumes. Understanding this relationship is critical for accurate and reproducible quantification of LV end-diastolic volume (EDV), end-systolic volume (ESV), stroke volume (SV), and ejection fraction (EF).
+The breathing phase also changes the measured left ventricular (LV) volumes. That matters for consistent end-diastolic volume (EDV), end-systolic volume (ESV), stroke volume (SV) and ejection fraction (EF).
 
-## The Reciprocal Effect of Respiration on LV and RV Volumes
+## LV and RV volumes move in opposite directions
 
-Respiration creates a reciprocal, opposing relationship between right ventricular (RV) and left ventricular (LV) volumes. Real-time cardiac MRI studies demonstrate that during normal inspiration, RV end-diastolic volume increases by approximately 18% while LV volumes decrease — and this relationship reverses during expiration, with LV volumes reaching their maximum at end-expiration. This opposing behavior is driven by ventricular interdependence and changes in intrathoracic pressure throughout the respiratory cycle[.\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+Breathing makes RV and LV volumes move in opposite directions. Real-time cardiac MRI shows that during a normal breath in, RV end-diastolic volume rises by about 18% while LV volumes fall. The reverse happens on the breath out, and LV volumes peak at end-expiration. This comes from the ventricles sharing space and from pressure changes in the chest as you breathe.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
 
-## Quantitative Impact on LV EDV, ESV, and EF
+## The effect on EDV, ESV and EF
 
-Research using real-time cardiac MRI quantifies the effect clearly. When LV volumes are compared between end-inspiration and end-expiration breath-hold acquisitions:
+Real-time cardiac MRI shows the size of the effect. Comparing end-inspiration with end-expiration breath-holds:
 
-- LV EDV is significantly higher at end-inspiration compared to end-expiration. Studies report that end-inspiratory LV EDV is approximately 9 mL higher than breath-held or end-expiratory measurements (p = 0.02), meaning inspiration artificially inflates the measured LV cavity size[.\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- LV Ejection Fraction (EF) is lower at end-inspiration than at end-expiration. The end-expiration LV EF was approximately 3.9% higher than end-inspiration values (p < 0.01), a clinically meaningful difference that can affect diagnostic interpretation and risk stratification.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- LV Stroke Volume (SV) is reduced at peak inspiration due to transient pooling of blood in the pulmonary vasculature and reduced LV preload, while LV SV is greatest at end-expiration when venous return to the left heart is maximized.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- LV ESV shows smaller respiratory-phase variation than EDV, with a bias of approximately 0 mL between end-expiration and end-inspiration at rest, meaning the major volume difference is driven primarily by diastolic filling changes.[\[nature](https://www.nature.com/articles/s41598-024-62294-7)\]
+- LV EDV is higher at end-inspiration: about 9 mL more than breath-held or end-expiration measurements (p = 0.02), so inspiration makes the LV cavity look bigger.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- LV EF is lower at end-inspiration: about 3.9% higher at end-expiration (p < 0.01), enough to affect the reading and risk assessment.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- LV SV drops at peak inspiration, as blood pools briefly in the lungs and less reaches the LV. It's highest at end-expiration, when return to the left heart is greatest.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- LV ESV changes less than EDV, with a bias of about 0 mL between end-expiration and end-inspiration at rest. Most of the difference comes from filling in diastole.[\[nature\]](https://www.nature.com/articles/s41598-024-62294-7)
 
-## Mechanism: Ventricular Interdependence and Septal Shift
+## Why: the ventricles share the pericardium
 
-The mechanism behind respiratory-phase LV volume variation is ventricular interdependence within the shared pericardial space. During inspiration, negative intrathoracic pressure increases venous return to the right ventricle, causing RV filling and expansion. This shifts the interventricular septum leftward, compressing the LV cavity and reducing its diastolic filling. During expiration, RV volumes decrease, the septum returns to its normal position, and LV filling is restored — resulting in larger LV EDV and higher LV EF at end-expiration.[\[radiopaedia](https://radiopaedia.org/articles/ventricular-interdependence?lang=us)\]
+The two ventricles share the pericardial space. On a breath in, lower pressure in the chest draws more blood into the right ventricle, which fills and expands. That pushes the septum to the left, squeezing the LV and reducing its filling. On the breath out, the RV gets smaller, the septum moves back, and the LV fills normally, so LV EDV and EF are higher at end-expiration.[\[radiopaedia\]](https://radiopaedia.org/articles/ventricular-interdependence?lang=us)
 
-## Clinical Relevance for Cardiac MRI Quantification
+## What it means for measurements
 
-These respiratory-phase volume differences have direct implications for standardization in cardiac MRI reporting and longitudinal follow-up:
+These differences matter for consistent reporting and follow-up:
 
-- Always acquire all breath-hold sequences in the same respiratory phase — ideally end-expiration — for every study. Mixing breath-hold phases across slices or sequences within the same exam creates slice-to-slice misregistration and introduces systematic volume measurement errors.\[ajronline\]
-- When comparing serial studies (e.g., pre- and post-treatment LV function), the same breathing phase must be used consistently. A shift from end-inspiration to end-expiration between exams could introduce a falsely apparent improvement in LV EF of nearly 4%, which exceeds the threshold for clinical significance in some follow-up protocols.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- Normal reference ranges for LV EDV, ESV, and EF in CMR literature are predominantly established from end-expiration breath-hold acquisitions. Comparing end-inspiration acquisitions to these references may lead to overestimation of EDV and underestimation of EF, potentially causing false positive or borderline findings[.\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- For free-breathing or real-time cine protocols, analysis should consistently target end-expiration cardiac cycles. Most modern software and CS reconstruction platforms can retrospectively bin or select end-expiratory cardiac phases to ensure standardized volumetric analysis.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- Acquire every breath-hold sequence in the same breathing phase, ideally end-expiration, on every exam. Mixing phases across slices or sequences causes misregistered slices and wrong volumes.\[ajronline\]
+- Use the same breathing phase when comparing exams (for example before and after treatment). Switching from end-inspiration to end-expiration between exams can make LV EF look nearly 4% better when nothing changed, more than some follow-up protocols count as significant.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- Normal ranges for LV EDV, ESV and EF in CMR come mostly from end-expiration breath-holds. Measuring at end-inspiration and comparing with those ranges can overestimate EDV and underestimate EF, giving false or borderline results.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- For free-breathing or real-time cines, analyze end-expiration heartbeats. Most current software and CS reconstructions can sort out the end-expiration beats afterwards.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
 
-In summary, end-expiration is not only the preferred phase for motion artifact reduction — it is also the physiologically correct phase for accurate and reproducible LV volume quantification. EF is highest, and the cardiac position is most stable at end-expiration. Standardizing breath-holds and free-breathing gating to end-expiration ensures that measured LV volumes align with established reference norms and that serial comparisons remain valid over time.
+In short, end-expiration isn't just better for motion: it's the right phase for accurate, repeatable LV volumes. EF is highest and the heart is steadiest at end-expiration. Standardizing on it keeps measurements in line with normal ranges and follow-up exams comparable.
 
-# Key Evidence Summary
+# The evidence at a glance
 
 | Metric | End-Expiration | End-Inspiration | Statistical Significance |
 |---|---|---|---|
@@ -111,19 +110,19 @@ In summary, end-expiration is not only the preferred phase for motion artifact r
 | Frame-to-frame correlation | 0.94 | 0.90 | p ≤ 0.01 ​ |
 | Diaphragm drift during breath-hold | ~3 mm, predominantly linear | ~11 mm, variable and larger | 3.7-fold difference​ |
 
-# Bottom Line for Technologists
+# Bottom line
 
-End-expiration is the preferred breath-hold phase for cardiac MRI because:
+End-expiration is the better breath-hold for cardiac MRI because:
 
-1. The diaphragm is relaxed and stable (not actively contracted)
-2. The heart stays in a more consistent position beat-to-beat
-3. Motion artifacts are significantly reduced
-4. Image quality is higher and more reproducible
-5. Fewer repeat scans are needed
-6. More accurate LV volume quantification
+1. The diaphragm is relaxed and stable, not contracted
+2. The heart stays in the same place from beat to beat
+3. There are fewer motion artifacts
+4. Image quality is higher and more consistent
+5. Fewer repeats are needed
+6. LV volumes are more accurate
 
-Simple patient script to memorize:
+A simple script to use:
 
 "Take a breath in... now breathe out normally... and hold your breath right there. Stay still and relaxed."
 
-For advanced cases (CS cine with 2–3 beat holds, free-breathing perfusion), the same principle applies: reconstruction algorithms target an expiration-like cardiac position for optimal stability.
+With CS cines (2–3 beat holds) and free-breathing perfusion, the same idea applies: the reconstruction targets an expiration-like position.

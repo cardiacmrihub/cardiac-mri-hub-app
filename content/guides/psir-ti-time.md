@@ -1,7 +1,7 @@
 ---
-title: "Choosing the Right TI Time for PSIR Imaging in Cardiac MRI: Understanding LGE and EGE Techniques"
+title: "Choosing the TI for LGE and EGE (PSIR) in Cardiac MRI"
 shortTitle: "Choosing the TI time for PSIR"
-summary: "How to choose the right inversion time (TI) for PSIR sequences in LGE and EGE imaging, and why it matters for image quality and for identifying myocardial scar or fibrosis."
+summary: "How to choose the inversion time (TI) for PSIR in LGE and EGE imaging, how LGE and EGE differ, and why a TI around 600 ms is used right after injection."
 topics: [technique]
 published: 2025-12-04
 updated: 2025-12-12
@@ -9,67 +9,67 @@ cover: ../images/51892d_62f8008801954f4d8a8ba16d82a81d38-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/choosing-the-right-ti-time-for-psir-imaging-in-cardiac-mri-understanding-lge-and-ege-techniques
 ---
 
-Cardiac MRI technologists face a critical challenge when performing late gadolinium enhancement (LGE) and early gadolinium enhancement (EGE) imaging: selecting the appropriate inversion time (TI) for phase-sensitive inversion recovery (PSIR) sequences. The TI time directly affects image quality and diagnostic accuracy, especially when identifying myocardial scar or fibrosis. This post explains how to choose the right TI time for PSIR imaging, clarifies the differences between LGE and EGE, and discusses why a TI of 600 ms can be used immediately after contrast injection.
+Choosing the inversion time (TI) for phase-sensitive inversion recovery (PSIR) is one of the trickier parts of late gadolinium enhancement (LGE) and early gadolinium enhancement (EGE). The TI decides whether scar or fibrosis stands out. This guide covers how to choose it, how LGE and EGE differ, and why a TI of 600 ms can be used right after injection.
 
 ![Close-up view of cardiac MRI scanner console showing TI time settings](../images/51892d_fcd363820a744125b63e2dbd8b945ba1-mv2.webp)
 
-# Understanding TI Time in Cardiac MRI
+# What the TI does
 
-TI time is the delay between the inversion pulse and data acquisition in an inversion recovery sequence. It controls the nulling of specific tissues based on their T1 relaxation times. In cardiac MRI, TI is adjusted to null the signal from normal myocardium, making areas of fibrosis or scar stand out as bright regions.
+The TI is the delay between the inversion pulse and the readout. It decides which tissue is nulled (black), based on its T1. In cardiac MRI it's set to null normal myocardium, so fibrosis and scar show up bright.
 
-- **Too short TI**: Normal myocardium appears bright, reducing contrast with scar tissue.
-- **Too long TI**: Scar tissue signal may be suppressed, leading to missed pathology.
+- **TI too short:** normal myocardium looks bright, so there's less contrast with scar.
+- **TI too long:** scar signal can be suppressed, and disease can be missed.
 
-PSIR sequences improve image contrast by reconstructing phase information, making TI selection less sensitive but still important for optimal results.
+PSIR uses the phase information to improve contrast, so the exact TI matters less. It still matters.
 
 ![Short axis images shown above top row TI 600 and bottom row TI nulled to myocardium, images on left are magnitude images and PSIR on right.](../images/51892d_0f11c65e77f546798ca7f6e4fc66937b-mv2.webp "Short axis images shown above top row TI 600 and bottom row TI nulled to myocardium, images on left are magnitude images and PSIR on right.")
 
 ![Short axis LGE image above showing enhancement magnitude image on left and PSIR on right,](../images/51892d_9bb10fcc5e634e98bec61177d7e08f1c-mv2.webp "Short axis LGE image above showing enhancement magnitude image on left and PSIR on right,")
 
-# Differences Between LGE and EGE Imaging
+# LGE and EGE
 
 ## Late Gadolinium Enhancement (LGE)
 
-LGE imaging is performed 10 to 20 minutes after gadolinium contrast injection. At this stage, gadolinium accumulates in areas of myocardial injury or fibrosis, which have increased extracellular space. The contrast agent shortens T1 relaxation times in these regions, causing them to appear bright on images.
+LGE is done 10 to 20 minutes after gadolinium. By then, gadolinium has collected where the myocardium is damaged or fibrotic, because there's more extracellular space. It shortens T1 there, so those areas look bright.
 
-- **Purpose**: Detect myocardial infarction, fibrosis, and scar.
-- **TI selection**: TI is chosen to null normal myocardium, typically ranging from 250 to 350 ms depending on the scanner and patient.
+- **Purpose:** infarction, fibrosis and scar.
+- **TI:** set to null normal myocardium, usually 250–350 ms depending on the scanner and the patient.
 
 ## Early Gadolinium Enhancement (EGE)
 
-EGE imaging occurs within the first few minutes after contrast injection, usually within 1 to 3 minutes. It captures the initial distribution of gadolinium in the blood pool and myocardium.
+EGE is done in the first few minutes after injection, usually 1–3 minutes. It shows the early distribution of gadolinium in the blood and myocardium.
 
-- **Purpose**: Assess myocardial perfusion and inflammation.
-- **TI selection**: TI is often fixed around 600 ms immediately after injection to null blood pool signal and highlight areas of hyperemia or edema.
+- **Purpose:** perfusion and inflammation.
+- **TI:** often fixed around 600 ms right after injection, to null the blood pool and show hyperemia or edema.
 
 ![Eye-level view of cardiac MRI scan showing LGE image with bright scar tissue](../images/51892d_e87312e0691d4e1983567806a160835a-mv2.webp)
 
-# Why Use TI 600 ms Right After Injection?
+# Why TI 600 ms right after injection
 
-Immediately after gadolinium injection, the blood pool has a very short T1 due to high contrast concentration. Setting TI around 600 ms helps null the blood signal, which is crucial for EGE imaging to differentiate blood from myocardium.
+Right after injection, the blood has a very short T1 because the contrast is concentrated. A TI around 600 ms nulls the blood signal, which EGE needs to separate blood from myocardium.
 
-- **Blood pool nulling**: TI 600 ms suppresses blood signal, improving visualization of myocardial enhancement.
-- **Myocardial signal**: At this early stage, myocardium has longer T1 than blood, so it appears brighter relative to nulled blood.
-- **Consistency**: Using a fixed TI of 600 ms simplifies protocol and reduces scan time during the critical early phase.
-- **Thrombus and MVO detection: TI 600 ms is particularly valuable for identifying** acute thrombus and microvascular obstruction (MVO) in patients with recent myocardial infarction, as these appear dark (hypointense) against the bright blood pool and enhanced myocardium.
+- **Blood pool nulling:** TI 600 ms suppresses the blood, so myocardial enhancement is easier to see.
+- **Myocardium:** early on, myocardium has a longer T1 than blood, so it looks brighter than the nulled blood.
+- **Consistency:** a fixed 600 ms keeps the protocol simple and quick in the early phase.
+- **Thrombus and MVO:** TI 600 ms is especially useful for acute thrombus and microvascular obstruction (MVO) after a recent heart attack. They look dark against the bright blood pool and enhanced myocardium.
 
-This approach contrasts with LGE imaging, where TI is adjusted individually to null normal myocardium after contrast has washed out from the blood pool.
+LGE is different: the TI is set for each patient to null normal myocardium, after the contrast has washed out of the blood.
 
-# Practical Tips for Choosing TI Time in PSIR Imaging
+# Tips for choosing the TI
 
-1. **Start with Look-Locker or TI scout**  
-   Use a TI scout sequence to find the optimal TI that nulls normal myocardium. This is especially important for LGE imaging.
-   - For EGE (within 3 minutes), use TI ~600 ms to null blood pool.
-   - For LGE (10-20 minutes post-injection), adjust TI to null myocardium, usually 250-350 ms.
-2. **Adjust TI based on time after contrast injection**
-3. **Consider patient-specific factors**
-   - Renal function and contrast clearance affect T1 times.
-   - Heart rate and rhythm may influence timing and image quality.
-4. **Use PSIR sequences to reduce TI sensitivity**  
-   PSIR imaging reconstructs phase information, making images less dependent on exact TI. This allows some flexibility but does not replace proper TI selection.
-5. **Verify image quality immediately**  
-   Check images for proper nulling of myocardium or blood pool. If needed, repeat TI scout or adjust TI manually.
+1. **Start with a TI scout (Look-Locker)**  
+   Use it to find the TI that nulls normal myocardium, especially for LGE.
+   - EGE (within 3 minutes): TI about 600 ms to null the blood pool.
+   - LGE (10–20 minutes after injection): set the TI to null myocardium, usually 250–350 ms.
+2. **Adjust the TI as time passes after injection**
+3. **Consider the patient**
+   - Kidney function and contrast clearance change T1.
+   - Heart rate and rhythm affect timing and image quality.
+4. **Use PSIR to reduce TI sensitivity**  
+   PSIR depends less on the exact TI. That gives some leeway, but doesn't replace choosing the TI properly.
+5. **Check the images right away**  
+   Make sure the myocardium or blood pool is properly nulled. If not, repeat the TI scout or adjust the TI by hand.
 
-# Summary
+# In short
 
-Selecting the optimal TI time in PSIR imaging is fundamental to achieving high-quality cardiac MRI images that clearly differentiate pathology from normal tissue. For LGE imaging performed 10-20 minutes post-contrast, TI should be individually adjusted (typically 250-350 ms) to null normal myocardium and highlight scar tissue. In contrast, EGE imaging within 1-3 minutes after injection uses a fixed TI of approximately 600 ms to null the blood pool, enabling visualization of early myocardial perfusion defects, inflammation, and importantly, acute thrombus and microvascular obstruction. By understanding these timing-dependent differences and applying proper TI scout techniques, cardiac MRI technologists can consistently produce diagnostic-quality images that support accurate clinical decision-making and improve patient outcomes.
+For LGE at 10–20 minutes, set the TI for each patient (usually 250–350 ms) to null normal myocardium so scar stands out. For EGE at 1–3 minutes, a fixed TI around 600 ms nulls the blood pool and shows early perfusion defects, inflammation, and especially acute thrombus and microvascular obstruction. Use the TI scout, and check the nulling before moving on.

@@ -621,3 +621,23 @@ button.row {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* Tap an abbreviation for its meaning */
+abbr[data-abbr] {
+  text-decoration: underline dotted; text-decoration-color: var(--accent); text-decoration-thickness: 2px;
+  text-underline-offset: 3px; cursor: help;
+}
+abbr[data-abbr]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.abbr-pop {
+  position: fixed; left: 12px; right: 12px; bottom: calc(var(--tabbar-h) + var(--safe-b) + 12px); z-index: 60;
+  display: flex; gap: 10px; align-items: flex-start; max-width: 560px; margin: 0 auto; padding: 14px 10px 14px 16px;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+  border-radius: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, .18); font-size: calc(16px * var(--ts)); line-height: 1.4;
+}
+.abbr-pop > div { flex: 1; min-width: 0; }
+.abbr-pop strong { font: 700 calc(18px * var(--ts))/1.2 var(--font-title); margin-right: 4px; }
+.abbr-pop p { margin: 6px 0 0; color: var(--ink-2); font-size: calc(15px * var(--ts)); }
+.abbr-pop a { display: inline-block; margin-top: 8px; font-weight: 700; }
+.abbr-pop .icon-btn { flex: none; }
+.abbr-pop svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+@media print { .abbr-pop { display: none; } abbr[data-abbr] { text-decoration: none; } }

@@ -1,7 +1,7 @@
 ---
 title: "Left Ventricle Quick Plan"
 shortTitle: "LV quick plan"
-summary: "Learn rapid left ventricle quick plan techniques in cardiac MRI. Master efficient protocols for fast exam setup, automated planning tools, and streamlined workflow for high-quality cardiac imaging."
+summary: "A quick plan for the left ventricle in cardiac MRI: the 2-chamber, 3-chamber, 4-chamber, short-axis and coronal LVOT views, with the planning images for each."
 topics: [left-ventricle, getting-started]
 published: 2025-11-08
 updated: 2025-12-01
@@ -12,37 +12,35 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/left-ventricle
 
 # Cardiac MRI of the Left Ventricle
 
-This section outlines a structured approach for planning cardiac MRI specifically for assessing the left ventricle. Key components include:
+A quick plan for the left ventricle, view by view. It covers:
 
 ## Critical Views
 
-Four essential views are highlighted for thorough evaluation:
+Four views make up the standard LV exam:
 
-- **Two-Chamber View:** Assesses anterior and inferior walls.
-- **Four-Chamber View:** Evaluates overall function and structure of the left and right ventricles and atria.
-- **Three-Chamber View:** Focuses on the left ventricular outflow tract and aortic valve.
-- **Short-Axis Views:** Analyzed at basal, mid, and apical levels for wall motion and thickness.
+- **Two-chamber:** the anterior and inferior walls.
+- **Four-chamber:** function and structure of both ventricles and both atria.
+- **Three-chamber:** the left ventricular outflow tract and aortic valve.
+- **Short axis:** basal, mid and apical levels for wall motion and thickness.
 
 ## Image Acquisition Techniques
 
-Key techniques for optimal imaging include:
+The basics:
 
-- **Sequence Selection:** Cine imaging for assessment of cardiac motion, structure, and morphology; late gadolinium enhancement for myocardial scarring.
-- Slice Thickness and Spacing: Typically 6-8mm slice thickness with no gap; adjust based on patient size and clinical indication to balance resolution and scan time.
-- **Timing of Acquisition:** ECG gating during diastole for image clarity.
-- **Post-Processing Techniques:** Utilization of 3D reconstruction for enhanced analysis and interpretability.
+- **Sequences:** cines for motion, structure and shape; late gadolinium enhancement (LGE) for scar.
+- **Slice thickness and spacing:** usually 6–8 mm with no gap, adjusted for patient size and the clinical question to balance resolution and scan time.
+- **Timing:** ECG gating, imaging in diastole for the sharpest images.
+- **Post-processing:** 3D reconstruction where it helps the analysis.
 
 ## Planning Steps
 
-Essential steps for effective planning involve:
+Before you plan:
 
-- **Patient Preparation:** Ensure understanding of the procedure.
-- **Positioning:** Comfortably position the patient supine.
-- **Imaging Parameters:** Set to achieve optimal quality.
-- **Contrast Administration:** Administer safely according to site policy.
-- **Monitoring:** Continuously check the patient's condition during exam.
-
-Effective planning and execution of these steps enhance the diagnostic capabilities of cardiac MRI for the left ventricle, improving patient management.
+- **Patient preparation:** make sure the patient understands the exam.
+- **Positioning:** supine and comfortable.
+- **Imaging settings:** set for good image quality.
+- **Contrast:** give it safely, following your site's policy.
+- **Monitoring:** keep checking on the patient during the exam.
 
 # 2 Chamber Planning
 
@@ -54,24 +52,24 @@ Effective planning and execution of these steps enhance the diagnostic capabilit
 
 # Left Ventricle Two-Chamber View Planning
 
-The two-chamber view of the left ventricle in cardiac MRI provides essential insights into the anatomy and functionality of the left atrium and left ventricle, allowing detailed assessment of their structure and potential abnormalities.
+The two-chamber view shows the left atrium and left ventricle, for their structure and any abnormalities.
 
 ## Key Considerations for Planning
 
-- **Orientation:** Obtain from a plane slicing through the left atrium and ventricle for clear visualization.
-- **Field of View:** Capture the left atrium and ventricle without missing critical structures.
+- **Orientation:** a plane through the left atrium and left ventricle.
+- **Field of view:** the whole left atrium and ventricle.
 
 ## Clinical Applications
 
-- Evaluate left ventricular size and function.
-- Assess left atrial dimensions and morphology.
-- Identify structural heart disease.
-- Monitor left ventricular hypertrophy or dilation over time.
+- Left ventricular size and function.
+- Left atrial size and shape.
+- Structural heart disease.
+- Follow-up of left ventricular hypertrophy or dilation.
 
 ## Key Features of the Two-Chamber View
 
-- **Left Atrium:** Analyze size and structural abnormalities.
-- **Left Ventricle:** Assess volume, wall motion, and cardiac function.
+- **Left atrium:** size and structural abnormalities.
+- **Left ventricle:** volume, wall motion and function.
 
 # 3 Chamber Planning
 
@@ -83,29 +81,29 @@ The two-chamber view of the left ventricle in cardiac MRI provides essential ins
 
 ![Two-chamber view with a planning line along the long axis from the mitral valve to the left ventricular apex](../images/51892d_26910326e5444f27b0e85828f6427f4c-mv2.webp)
 
-Pictures to right and left showing orientations on 2ch & 4ch for the left ventricular 3ch.
+The images on the right and left show where the 3ch plane sits on the 2ch and 4ch.
 
 # Left Ventricle Three-Chamber View Planning
 
-The three-chamber view in cardiac MRI provides critical insights into the heart's anatomy and function, including the left atrium, left ventricle, and aorta, aiding in the assessment of cardiac conditions.
+The three-chamber view shows the left atrium, left ventricle and aorta.
 
 ## Key Considerations for Planning
 
-- **Orientation:** Align the plane with the left ventricle and aorta for optimal visualization of the outflow tract.
-- **Field of View:** Include the left ventricle, left atrium, and proximal aorta.
+- **Orientation:** line the plane up with the left ventricle and aorta to show the outflow tract.
+- **Field of view:** the left ventricle, left atrium and proximal aorta.
 
 ## Clinical Applications
 
-- Evaluate left ventricular function and wall motion.
-- Assess mitral valve function and morphology.
-- Identify left atrial enlargement.
-- Monitor conditions like hypertrophy or ischemia.
+- Left ventricular function and wall motion.
+- Mitral valve function and shape.
+- Left atrial enlargement.
+- Follow-up of hypertrophy or ischemia.
 
 ## Key Features of the Three-Chamber View
 
-- **Left Atrium:** Assess size and abnormalities.
-- **Left Ventricle:** Evaluate volume, wall motion, and function.
-- **Aorta:** Examine the aortic root and proximal aorta.
+- **Left atrium:** size and abnormalities.
+- **Left ventricle:** volume, wall motion and function.
+- **Aorta:** the aortic root and proximal aorta.
 
 # 4 Chamber Planning
 
@@ -117,26 +115,26 @@ The three-chamber view in cardiac MRI provides critical insights into the heart'
 
 # Left Ventricle Four-Chamber View Planning
 
-The four-chamber view in cardiac MRI is crucial for assessing the heart's structure and function, covering the left and right atria and ventricles for a comprehensive evaluation of cardiac conditions.
+The four-chamber view shows both atria and both ventricles.
 
 ## Key Considerations for Planning
 
-- **Orientation:** Obtained from a plane bisecting the heart to show all chambers and the inter-ventricular septum.
-- **Field of View:** Should include both ventricles and atria.
+- **Orientation:** a plane through the heart showing all four chambers and the interventricular septum.
+- **Field of view:** both ventricles and both atria.
 
 ## Clinical Applications
 
-- Assessment of cardiac function and chamber sizes.
-- Evaluation of valvular heart disease.
-- Identification of congenital heart defects.
-- Monitoring cardiac conditions over time.
+- Function and chamber sizes.
+- Valve disease.
+- Congenital heart defects.
+- Follow-up over time.
 
 ## Key Features of the Four-Chamber View
 
-- **Left Atrium:** Analysis of size and morphology.
-- **Left Ventricle:** Evaluation of volume, wall motion, and function.
-- **Right Atrium:** Assessment of size and abnormalities.
-- **Right Ventricle:** Examination of size and function.
+- **Left atrium:** size and shape.
+- **Left ventricle:** volume, wall motion and function.
+- **Right atrium:** size and abnormalities.
+- **Right ventricle:** size and function.
 
 # Short Axis Planning
 
@@ -148,26 +146,26 @@ The four-chamber view in cardiac MRI is crucial for assessing the heart's struct
 
 # Left Ventricle Short Axis View Planning
 
-The short axis view of the left ventricle in cardiac MRI is essential for assessing heart structure and function, focusing on myocardial characteristics and wall motion.
+The short-axis view shows the left ventricle in cross-section, for the myocardium and wall motion.
 
 ## Key Considerations for Planning
 
-- **Orientation:** Acquired perpendicular to the long axis for optimal visualization of ventricular walls and papillary muscles.
-- **Field of View:** Should encompass the entire left ventricle and adjacent structures.
+- **Orientation:** perpendicular to the long axis, to show the ventricular walls and papillary muscles.
+- **Field of view:** the whole left ventricle and nearby structures.
 
 ## Clinical Applications
 
-- Assessing left ventricular function and wall motion abnormalities.
-- Evaluating myocardial ischemia and scar tissue.
-- Identifying hypertrophic cardiomyopathy and other structural diseases.
-- Monitoring cardiac condition changes over time.
+- Left ventricular function and wall motion abnormalities.
+- Ischemia and scar.
+- Hypertrophic cardiomyopathy and other structural disease.
+- Follow-up over time.
 
 ## Key Features of the Short Axis View
 
-- **Ventricular Walls:** Evaluates wall thickness and motion.
-- **Left Ventricular Volume:** Assesses end-diastolic and end-systolic volumes.
-- **Papillary Muscles:** Examines morphology and position.
-- **Myocardial Perfusion:** Analyzes perfusion defects.
+- **Ventricular walls:** thickness and motion.
+- **Left ventricular volume:** end-diastolic and end-systolic volumes.
+- **Papillary muscles:** shape and position.
+- **Perfusion:** perfusion defects.
 
 # Short Axis Sample (Base Mid Apex)
 
@@ -177,11 +175,11 @@ The short axis view of the left ventricle in cardiac MRI is essential for assess
 
 ## Short Axis View Alignment
 
-The short axis view, aligned perpendicular to the left ventricle's long axis, is vital for assessing its structure and function at different levels:
+The short axis runs perpendicular to the left ventricle's long axis. Each level shows something different:
 
-- **Base:** Captures the inflow tract and mitral valve, providing insights into the left atrium and aortic outflow tract.
-- **Mid:** Evaluates overall left ventricle function, including wall motion and thickness.
-- **Apex:** Focuses on the apex for detailed assessment of regional wall motion and potential ischemic changes.
+- **Base:** the inflow tract and mitral valve, near the left atrium and aortic outflow tract.
+- **Mid:** overall LV function, wall motion and thickness.
+- **Apex:** regional wall motion and ischemic changes at the apex.
 
 # Coronal Aortic (LVOT) Planning
 
@@ -191,23 +189,23 @@ The short axis view, aligned perpendicular to the left ventricle's long axis, is
 
 # Coronal Aortic Left Ventricular Outflow Tract Imaging
 
-The coronal view of the left ventricular outflow tract in cardiac MRI is vital to diagnosing conditions like aortic stenosis and valvular disease.
+The coronal view of the left ventricular outflow tract is used for aortic stenosis and other valve disease.
 
 ## Key Considerations for Imaging
 
-- **Orientation:** Align the imaging slice to intersect the aorta at its root for effective visualization.
-- **Field of View:** Ensure it covers the entire outflow tract and ascending aorta.
+- **Orientation:** angle the slice through the aortic root.
+- **Field of view:** the whole outflow tract and ascending aorta.
 
 ## Clinical Applications
 
-- Evaluate outflow tract and aortic valve function.
-- Assess aortic stenosis and regurgitation.
-- Identify congenital anomalies.
-- Monitor aortic or valvular conditions.
+- Outflow tract and aortic valve function.
+- Aortic stenosis and regurgitation.
+- Congenital anomalies.
+- Follow-up of aortic or valve disease.
 
 ## Key Features of the Coronal View
 
-- **Left Ventricular Outflow Tract:** Examine dimensions and morphology.
-- **Aortic Valve:** Assess structure and function, noting calcification, regurgitation, or stenosis.
-- **Ascending Aorta:** Check for dilation or abnormalities.
-- **Surrounding Structures:** Analyze adjacent structures like the pulmonary artery and left atrium.
+- **Left ventricular outflow tract:** size and shape.
+- **Aortic valve:** structure and function, including calcification, regurgitation or stenosis.
+- **Ascending aorta:** dilation or other abnormalities.
+- **Nearby structures:** the pulmonary artery and left atrium.

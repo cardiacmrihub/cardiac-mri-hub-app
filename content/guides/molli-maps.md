@@ -1,7 +1,7 @@
 ---
-title: "Understanding the Role of MOLLI Maps in Cardiac MRI and When They Are Unnecessary"
+title: "MOLLI T1 Maps in Cardiac MRI: When to Run Them and When to Skip Them"
 shortTitle: "MOLLI maps: when you need them"
-summary: "Understand when MOLLI (Modified Look-Locker Inversion Recovery) T1 mapping is clinically valuable in cardiac MRI and situations where these sequences may be unnecessary for routine exams."
+summary: "When MOLLI (modified Look-Locker inversion recovery) T1 mapping adds value in cardiac MRI, where to plan it, how T2 and T2* mapping fit in, and when you can skip it."
 topics: [technique]
 published: 2025-11-23
 updated: 2025-12-01
@@ -9,89 +9,86 @@ cover: ../images/51892d_ebe96082eb8f4333ae3f7037bfd17179-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-role-of-molli-maps-in-cardiac-mri-and-when-they-are-unnecessary
 ---
 
-Cardiac MRI has become a vital tool for diagnosing and managing heart diseases. Among the various imaging techniques, MOLLI (Modified Look-Locker Inversion recovery) mapping stands out for its ability to provide detailed tissue characterization. But why do cardiac MRI technologists run MOLLI maps, and when might these maps not be needed? This post explores the purpose of MOLLI maps, their clinical value, and situations where skipping them makes sense.
+MOLLI (modified Look-Locker inversion recovery) maps measure T1 in the myocardium, for tissue characterization. This guide covers why they're run, where to plan them, and when you can skip them.
 
 ![Close-up view of a cardiac MRI scanner displaying MOLLI mapping images](../images/51892d_d7c8b226ae3b46eebdfb1ab1dae0c31e-mv2.webp "Cardiac MRI scanner showing MOLLI maps on screen")
 
-# What Are MOLLI Maps and Why Are They Important?
+# What MOLLI maps show
 
-MOLLI maps measure the T1 relaxation time of myocardial tissue. This quantitative data helps identify abnormalities such as fibrosis, edema, or infiltration that may not be visible on standard MRI sequences. By capturing T1 values before and after contrast administration, MOLLI maps allow clinicians to calculate extracellular volume (ECV), which reflects the amount of fibrosis or scarring in the heart muscle.
+MOLLI maps measure the T1 of the myocardium. The values show fibrosis, edema or infiltration that standard images can miss. With T1 before and after contrast, the reader can calculate extracellular volume (ECV), which reflects how much fibrosis or scar is in the heart muscle.
 
-For cardiac MRI technologists, running MOLLI sequences is essential when the clinical question involves tissue characterization. For example:
+Run MOLLI when the clinical question is about the tissue itself, for example:
 
-- Detecting diffuse myocardial fibrosis in cardiomyopathies
-- Assessing myocarditis or inflammatory changes
-- Evaluating amyloidosis or other infiltrative diseases
-- Monitoring treatment response in heart failure patients
+- Diffuse fibrosis in cardiomyopathy
+- Myocarditis or inflammation
+- Amyloidosis and other infiltrative disease
+- Treatment response in heart failure
 
-The quantitative nature of MOLLI maps provides objective data that supports diagnosis and guides patient management. Without these maps, subtle changes in myocardial tissue might be missed, leading to incomplete assessments.
+The numbers give an objective measure that supports the diagnosis. Without them, subtle tissue changes can be missed.
 
-# How MOLLI Mapping Works in Practice
+# How it works
 
-MOLLI sequences use a series of inversion recovery pulses to sample the longitudinal relaxation of myocardial tissue. The resulting images are processed to generate pixel-wise T1 maps. These maps display color-coded T1 values, making it easier to spot abnormal areas.
+MOLLI uses a series of inversion pulses to sample how the myocardium recovers. The images are combined into a pixel-by-pixel T1 map, usually color-coded so abnormal areas stand out.
 
-From a technologist’s perspective, acquiring MOLLI maps requires careful timing and patient cooperation. Breath-holding is often necessary to reduce motion artifacts. The technologist must also select the correct imaging planes, usually short-axis views of the left ventricle, to capture relevant myocardial segments.
+At the scanner, MOLLI needs good timing and a cooperative patient. Breath-holds are usually needed to avoid motion. Plan the right slices, usually short-axis views of the left ventricle.
 
-The post-processing software then calculates native T1 values and, if contrast is used, post-contrast T1 and ECV. These numbers help cardiologists interpret the underlying pathology.
+The software then calculates native T1 and, if contrast was given, post-contrast T1 and ECV.
 
-# Best Imaging Planes for MOLLI Maps
+# Where to plan them
 
-MOLLI maps are typically acquired in short-axis views of the left ventricle, which provide the most comprehensive myocardial coverage and are essential for accurate T1 mapping. The standard approach includes three short-axis slices:
+MOLLI maps are usually acquired as three short-axis slices of the left ventricle:
 
-- Basal slice (near the mitral valve)
-- Mid-ventricular slice (at the papillary muscle level)
-- Apical slice (beyond the papillary muscles)
+- Base (near the mitral valve)
+- Mid-ventricle (at the papillary muscles)
+- Apex (past the papillary muscles)
 
-These views match the standard cardiac imaging planes used for cine imaging, making it easier to correlate T1 mapping findings with functional assessments. However, while cine images show cardiac motion and function throughout the cardiac cycle, MOLLI maps provide static tissue characterization by measuring T1 relaxation times. This makes MOLLI maps particularly valuable for detecting diffuse myocardial changes like fibrosis or inflammation that may not alter wall motion visible on cine sequences.
+These match the cine slices, so T1 findings line up with function. Cines show motion; MOLLI measures the tissue, which is why it can show diffuse fibrosis or inflammation that doesn't change wall motion.
 
-In some cases, long-axis views (2-chamber, 3-chamber, or 4-chamber) may be added to evaluate specific regions of interest or to assess focal abnormalities identified on other sequences. The key is selecting views that capture the area of clinical concern while maintaining consistent slice positioning for pre- and post-contrast comparisons.
+Long-axis views (2-, 3- or 4-chamber) can be added for a specific area or a focal finding seen on other images. Keep the same slice positions before and after contrast.
 
-# Beyond T1: T2 and T2\* Mapping in Cardiac MRI
+# T2 and T2\* mapping
 
-While T1 mapping with MOLLI is the most commonly used parametric mapping technique in cardiac MRI, T2 and T2\* mapping provide complementary information that's essential in certain clinical scenarios.
+T1 mapping with MOLLI is the most common map, but T2 and T2\* maps answer other questions.
 
-T2 mapping measures the transverse relaxation time and is particularly valuable for detecting myocardial edema, which appears as elevated T2 values. This makes T2 mapping crucial for:
+T2 mapping measures transverse relaxation and shows edema as higher T2. Use it for:
 
-- Diagnosing acute myocarditis or myocardial inflammation
-- Identifying the area at risk in acute myocardial infarction
-- Assessing active inflammation in cardiac sarcoidosis
-- Evaluating transplant rejection
+- Acute myocarditis or inflammation
+- The area at risk in an acute heart attack
+- Active inflammation in cardiac sarcoidosis
+- Transplant rejection
 
-T2\* (T2-star) mapping is specialized for detecting iron deposition in the myocardium. Decreased T2\* values indicate iron overload, making this technique essential for monitoring patients with conditions such as thalassemia, hemochromatosis, or multiple blood transfusions. Iron overload cardiomyopathy is a serious complication that requires regular monitoring, and T2\* mapping at 1.5T is the gold standard for assessing cardiac iron.
+T2\* (T2-star) mapping detects iron in the myocardium: low T2\* means iron overload. It's used to follow patients with thalassemia, hemochromatosis or many blood transfusions. Iron overload cardiomyopathy is serious and needs regular checks, and T2\* at 1.5 T is the reference method.
 
-Like MOLLI maps, both T2 and T2\* mapping are typically acquired in short-axis views matching the standard cardiac imaging planes. Technologists should be familiar with these additional mapping techniques as they complement T1 mapping to provide a comprehensive tissue characterization assessment when clinically indicated.
+Like MOLLI, T2 and T2\* maps are usually acquired in the same short-axis planes.
 
-# When MOLLI Maps Are Not Needed
+# When you can skip MOLLI
 
-While MOLLI mapping offers valuable insights, it is not required in every cardiac MRI exam. Skipping MOLLI sequences can save time and reduce patient discomfort when tissue characterization is not the primary goal.
+MOLLI isn't needed in every exam. Skipping it saves time and spares the patient when tissue characterization isn't the question.
 
-Situations where MOLLI maps may be unnecessary include:
+MOLLI may not be needed for:
 
-- Routine assessment of cardiac function and morphology without suspicion of myocardial disease
-- Evaluation of congenital heart defects where anatomy is the main focus
-- Cases where late gadolinium enhancement (LGE) imaging alone provides sufficient information
-- Patients unable to hold their breath or cooperate for MOLLI acquisition, leading to poor image quality
+- Routine function and anatomy with no suspicion of myocardial disease
+- Congenital heart disease when the anatomy is the question
+- Exams where LGE alone answers the question
+- Patients who can't hold their breath or cooperate, when the maps would be poor quality anyway
 
-In these cases, technologists can prioritize other sequences such as cine imaging, perfusion, or LGE to answer the clinical question efficiently.
+In those cases, put the time into cines, perfusion or LGE.
 
-# Practical Tips for Cardiac MRI Technologists
+# Tips
 
-To make the best use of MOLLI maps, technologists should:
+To get good MOLLI maps:
 
-- Confirm the clinical indication for MOLLI mapping before scanning
-- Optimize patient positioning and breath-hold instructions to minimize motion artifacts
-- Use standardized imaging planes to ensure reproducibility
-- Communicate with radiologists or cardiologists about image quality and any challenges during acquisition
-- Be aware of contraindications such as severe arrhythmias that may affect MOLLI accuracy
-
-By following these practices, technologists can improve the diagnostic value of MOLLI maps and contribute to better patient outcomes.
+- Confirm MOLLI is indicated before you scan
+- Position the patient well and coach the breath-holds to avoid motion
+- Use the standard planes so maps can be repeated and compared
+- Tell the radiologist or cardiologist about any image quality problems
+- Watch for severe arrhythmia, which makes MOLLI less accurate
 
 ![Eye-level view of a cardiac MRI technologist adjusting the scanner controls](../images/51892d_7638ec64d2c249968fbfea7fe13bd84a-mv2.webp "Short axis mid ventricle post T1 map shown above.")
 
-# Summary
+# In short
 
-MOLLI maps play a crucial role in cardiac MRI by providing detailed tissue characterization through T1 mapping. They help detect fibrosis, inflammation, and infiltration that standard imaging might miss. Cardiac MRI technologists run MOLLI sequences when the clinical question requires this level of detail.
+MOLLI maps measure T1 for tissue characterization: fibrosis, inflammation and infiltration that standard images can miss. Run them when the clinical question needs it.
 
-However, MOLLI maps are not always necessary. For exams focused on anatomy, function, or when patient cooperation is limited, skipping MOLLI can save time without compromising diagnostic quality. Understanding when to use MOLLI maps helps technologists tailor scans to each patient’s needs and supports accurate diagnosis.
+Skip them for exams about anatomy or function, or when the patient can't cooperate. Knowing when to run them keeps each exam focused on its question.
 
-For technologists, mastering MOLLI acquisition techniques and knowing when to apply them ensures cardiac MRI remains a powerful tool in heart disease evaluation. If you are involved in cardiac MRI, consider how MOLLI mapping fits into your workflow and discuss with your clinical team when it adds value.

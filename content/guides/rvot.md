@@ -1,7 +1,7 @@
 ---
 title: "Right Ventricular Outflow Tract View"
 shortTitle: "RVOT view"
-summary: "Master cardiac MRI RVOT imaging techniques. Learn optimal planning for sagittal and coronal views to evaluate right ventricular function, detect abnormalities, and assess pulmonary vasculature."
+summary: "How to plan the right ventricular outflow tract (RVOT) in cardiac MRI: the sagittal RVOT view and the coronal pulmonary artery view."
 topics: [right-ventricle]
 published: 2025-11-25
 updated: 2025-12-01
@@ -10,7 +10,7 @@ order: 6
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricular-outflow-tract-view
 ---
 
-The right ventricular outflow tract (RVOT) is a critical anatomical region connecting the right ventricle to the pulmonary artery. Accurate visualization of this area is essential for evaluating right ventricular function, detecting outflow tract abnormalities, and assessing the pulmonary vasculature. In cardiac MRI, obtaining optimal sagittal and coronal views requires careful planning and precise positioning. This guide covers key planning techniques for both the sagittal RVOT view and the coronal pulmonary artery view to ensure comprehensive evaluation of right heart structures.
+The right ventricular outflow tract (RVOT) connects the right ventricle to the pulmonary artery. Imaging it shows RV function, outflow tract abnormalities and the pulmonary arteries. This guide covers planning the sagittal RVOT view and the coronal pulmonary artery view.
 
 # Sag RVOT Planning
 
@@ -32,32 +32,29 @@ The right ventricular outflow tract (RVOT) is a critical anatomical region conne
 
 ## Key Considerations for Planning
 
-- **Orientation:** The sagittal right ventricular outflow view is typically obtained from a plane that intersects the right ventricle and its outflow tract, ensuring optimal visualization of these areas.
-- **Field of View:** The field of view should encompass the entire right ventricle and outflow tract, ensuring that no critical anatomical structures are overlooked.
-- **Timing:** Image acquisition should be aligned with the cardiac cycle, to enhance the visualization of the right ventricular outflow dynamics.
-- **Contrast Agents:** The use of contrast agents may be beneficial for better differentiation of myocardial tissue and improved diagnostic accuracy.
+- **Orientation:** a plane through the right ventricle and its outflow tract.
+- **Field of view:** the whole right ventricle and outflow tract.
+- **Timing:** ECG-gated, to show how the outflow tract moves.
+- **Contrast:** if it's part of the exam, contrast helps separate the myocardium from the blood.
 
 ## Clinical Applications
 
-- Evaluation of right ventricular size and function.
-- Assessment of the right ventricular outflow tract and pulmonary artery.
-- Identification of congenital heart defects.
-- Monitoring of right ventricular hypertrophy or dilation over time.
+- Right ventricular size and function.
+- The right ventricular outflow tract and pulmonary artery.
+- Congenital heart defects.
+- Follow-up of right ventricular hypertrophy or dilation.
 
 ## Key Features of the Sagittal Right Ventricular Outflow View
 
-- **Right Ventricle:** Detailed evaluation of right ventricular size, wall motion, and overall function.
-- **Outflow Tract:** Assessment of the right ventricular outflow tract and its relationship with the pulmonary artery.
+- **Right ventricle:** size, wall motion and function.
+- **Outflow tract:** the outflow tract and how it joins the pulmonary artery.
 
 # Cardiac MRI Planning: Coronal Pulmonary Artery View
 
-The coronal pulmonary artery view is essential for assessing the main pulmonary artery and its branches. This view provides valuable information regarding vascular anatomy and any potential anomalies or obstructions. Effective planning for the coronal view involves the following steps:
+The coronal pulmonary artery view shows the main pulmonary artery and its branches, for anatomy, anomalies and narrowing. To plan it:
 
-- Utilize preliminary imaging to locate the pulmonary artery and its branches.
-- Position the imaging plane perpendicular to the main pulmonary artery to capture a comprehensive view.
-- Synchronize the imaging with the cardiac cycle, to optimize clarity and minimize motion artifacts.
-- Adjust imaging parameters, including spatial resolution and contrast, to enhance vascular detail.
+- Find the pulmonary artery and its branches on the localizers.
+- Set the plane perpendicular to the main pulmonary artery.
+- Use ECG gating to keep motion artifacts down.
+- Adjust spatial resolution and contrast to show the vessels clearly.
 
-## Conclusion
-
-Proper planning of the sagittal right ventricular outflow tract and coronal pulmonary artery views is essential for comprehensive cardiac MRI evaluation. Accurate imaging plane positioning, synchronization with the cardiac cycle, and optimized parameters ensure precise assessment of right heart structures and pulmonary vasculature. These views are crucial for diagnosing congenital heart defects, evaluating right ventricular function, and detecting RVOT and pulmonary artery abnormalities. Mastering these techniques enhances diagnostic confidence and improves patient outcomes.

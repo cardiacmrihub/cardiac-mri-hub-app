@@ -1,6 +1,6 @@
 ---
 title: "Mitral Valve Scallops"
-summary: "Learn mitral valve scallops imaging using Carpentier classification. Master A1-A3 and P1-P3 segments in cardiac MRI to localize pathology and guide interventional procedures effectively."
+summary: "How to image the mitral valve scallops (A1–A3, P1–P3, Carpentier classification) in cardiac MRI to show where prolapse or regurgitation comes from."
 topics: [valves]
 published: 2025-11-25
 updated: 2025-12-01
@@ -9,7 +9,7 @@ order: 2
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/mitral-valve-planning
 ---
 
-The mitral valve scallops view is an essential imaging technique in cardiac MRI that provides detailed visualization of the mitral valve's complex anatomy. Using the Carpentier classification system, the mitral valve is divided into six distinct segments or scallops, three anterior (A1, A2, A3) and three posterior (P1, P2, P3) which allows for precise localization of valvular pathology. This imaging approach is particularly valuable for evaluating mitral valve prolapse, regurgitation, and structural abnormalities, making it crucial for pre-surgical planning and guiding interventional procedures. By systematically imaging each scallop segment, technologists can provide clinicians with comprehensive information about leaflet motion, coaptation defects, and chordal apparatus integrity.
+The mitral valve scallops view shows the mitral valve leaflets segment by segment. The Carpentier classification divides the valve into six scallops: three anterior (A1, A2, A3) and three posterior (P1, P2, P3). Imaging each one shows exactly where prolapse, regurgitation or other damage is, which matters for surgery and catheter procedures. It also shows how the leaflets move, where they fail to meet, and the chordae.
 
 # Mitral Valve Scallops Planning
 
@@ -29,28 +29,25 @@ The mitral valve scallops view is an essential imaging technique in cardiac MRI 
 
 ## Key Considerations for Planning
 
-- **Orientation:** The scallops view is typically acquired from a plane that optimally captures the mitral valve's scallops, ensuring clear visualization of the valve leaflets and their relationship to the surrounding structures.
-- **Slice Thickness:** A thinner slice thickness is recommended to enhance the resolution and detail of the mitral valve structures.
-- **Field of View:** The field of view should encompass the entire mitral valve apparatus, including the annulus, leaflets, and chordae tendineae, to avoid missing critical features.
-- **Timing:** Image acquisition should be timed with the cardiac cycle, ideally during diastole, to optimize visualization of the mitral valve's opening and closing dynamics.
-- **Contrast Agents:** The use of contrast agents may be beneficial to improve the delineation of the mitral valve structures and enhance diagnostic accuracy.
+- **Orientation:** a plane that shows the scallops clearly, with the leaflets and the structures around them.
+- **Slice thickness:** thinner slices for more detail of the valve.
+- **Field of view:** the whole mitral apparatus: annulus, leaflets and chordae tendineae.
+- **Timing:** ECG-gated through the cardiac cycle, to show the valve opening and closing.
+- **Contrast:** if it's part of the exam, contrast helps outline the valve.
 
-## Clinical Applications
+## What it's used for
 
-- Assessment of mitral valve morphology and function.
-- Identification of mitral valve prolapse or regurgitation.
-- Evaluation of associated left atrial and ventricular changes.
-- Monitoring of mitral valve disease progression over time.
+- Mitral valve shape and function.
+- Mitral valve prolapse or regurgitation.
+- Related changes in the left atrium and ventricle.
+- Follow-up of mitral valve disease.
 
-## Key Features of the Mitral Valve Scallops View
+## What the view shows
 
-- **Mitral Annulus**: Evaluation of annular dimensions, shape, and calcification to assess for annular dilatation or restriction, which can contribute to mitral regurgitation.
-- **Mitral Leaflets:** Detailed analysis of the anterior and posterior leaflets, including their motion and any structural abnormalities.
-- **Scallop Segmentati**on: Systematic evaluation of each individual scallop (A1, A2, A3, P1, P2, P3) to precisely localize areas of prolapse, restricted motion, or perforation using the Carpentier classification.
-- **Coaptation Zone:** Evaluation of the leaflet coaptation line and length to detect coaptation defects, malcoaptation, or excessive coaptation depth that may indicate prolapse or restriction patterns.
-- **Papillary Muscles:** Assessment of papillary muscle positioning, alignment, and morphology to identify dysfunction or displacement that may affect leaflet coaptation.
-- **Chordae Tendineae:** Assessment of the chordae tendineae for rupture or elongation, which may impact valve function.
+- **Annulus:** size, shape and calcification; a dilated or restricted annulus can cause mitral regurgitation.
+- **Leaflets:** the anterior and posterior leaflets, their motion and any abnormalities.
+- **Scallops:** each scallop (A1, A2, A3, P1, P2, P3) in turn, to find prolapse, restricted motion or a perforation.
+- **Coaptation:** where and how much the leaflets meet, to spot gaps, poor closure or prolapse.
+- **Papillary muscles:** position, alignment and shape, which affect how the leaflets meet.
+- **Chordae tendineae:** rupture or stretching that affects valve function.
 
-## Conclusion
-
-The mitral valve scallops view is a fundamental component of comprehensive cardiac MRI protocols, enabling precise anatomical assessment and functional evaluation of the mitral valve apparatus. By systematically imaging each scallop segment using the Carpentier classification, MRI technologists provide essential diagnostic information that guides clinical decision-making for patients with mitral valve disease. Proper planning techniques, including optimal slice orientation, appropriate timing within the cardiac cycle, and adequate field of view, ensure high-quality images that accurately depict leaflet morphology, coaptation dynamics, and associated structural abnormalities. Mastery of this imaging approach enhances the value of cardiac MRI in pre-procedural planning, surgical guidance, and longitudinal monitoring of mitral valve pathology.

@@ -1,7 +1,7 @@
 ---
 title: "GRE vs True FISP Aortic Valve Artifacts: A Case Study"
 shortTitle: "GRE vs TrueFISP: aortic valve artifacts"
-summary: "Learn how True FISP artifacts can obscure critical aortic valve pathology in cardiac MRI. Real case study demonstrates why GRE sequences provide superior visualization for accurate diagnosis."
+summary: "A case where TrueFISP banding hid a forme fruste bicuspid aortic valve that GRE showed clearly, and what to do when you see banding over the valve."
 topics: [valves, technique]
 published: 2025-11-24
 updated: 2025-12-11
@@ -24,19 +24,19 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/gre-vs-true-fi
 
 # GRE vs True FISP: Sequence Selection and Artifact Considerations
 
-Choosing the appropriate imaging sequence is critical when evaluating the aortic valve. The comparison between Gradient Recalled Echo (GRE) and True Fast Imaging with Steady-state Precession (True FISP) sequences reveals important trade-offs that directly impact diagnostic quality.
+The sequence you choose matters for the aortic valve. Gradient recalled echo (GRE) and TrueFISP (balanced SSFP) each have trade-offs that change what the reader can see.
 
-## GRE Sequences: Advantages for Aortic Valve Imaging
+## GRE for the aortic valve
 
-GRE sequences provide excellent spatial resolution and clear delineation of valve leaflets, making them ideal for assessing aortic valve morphology. The images demonstrate sharp anatomical detail with minimal flow-related artifacts. This sequence is particularly valuable when precise measurements of valve dimensions are required, as it offers consistent image quality across different cardiac phases.
+GRE gives sharp valve leaflets with few flow artifacts, which makes it a good choice for valve shape. It's especially useful when valve size has to be measured, because image quality stays consistent across the cardiac phases.
 
-## True FISP Sequences: Benefits and Limitations
+## TrueFISP: strengths and limits
 
-True FISP (also known as balanced SSFP or TrueFISP) offers superior blood-to-myocardium contrast and faster acquisition times. However, as evident in the comparison images above, True FISP sequences are susceptible to dark band artifacts, particularly over the aortic valve region. These artifacts result from local magnetic field inhomogeneities and can obscure critical anatomical details.
+TrueFISP (balanced SSFP) has better blood-to-myocardium contrast and is faster. But as the images above show, it's prone to dark bands, especially over the aortic valve. The bands come from small differences in the magnetic field and can hide the anatomy.
 
-## Clinical Implications
+## Why it matters
 
-The presence of artifacts in True FISP imaging directly affects diagnostic confidence. When dark band artifacts overlay the valve leaflets, subtle pathology such as vegetations, small perforations, or leaflet calcifications may be missed. For this reason, GRE sequences are often preferred for dedicated aortic valve assessment, despite longer acquisition times.
+A dark band over the leaflets can hide vegetations, small perforations or calcification. That's why GRE is often preferred for dedicated aortic valve imaging, even though it takes longer.
 
 ![SSFP systole short axis view of aortic valve with prominent dark band artifact obscuring valve leaflets](../images/51892d_db487e51500148ec97d694eccae06f5d-mv2.webp "SSFP systole aortic valve.")
 
@@ -46,55 +46,52 @@ The presence of artifacts in True FISP imaging directly affects diagnostic confi
 
 ![GRE diastole short axis view confirming forme fruste bicuspid valve morphology with artifact-free visualization](../images/51892d_05939e92dbbb446c878e324ee08ad5e9-mv2.webp "GRE aortic valve diastole.")
 
-## Clinical Case Example: How Artifacts Obscure Critical Pathology
+## Case: banding hiding a valve abnormality
 
-The images above demonstrate a critical scenario where True FISP (SSFP) artifacts can completely obscure significant valve pathology, emphasizing why technologists must maintain attentiveness during image acquisition and quality review.
+The images above show TrueFISP (SSFP) banding completely hiding a significant valve abnormality. It's why watching the images during the scan, and reviewing them before the patient leaves, matters.
 
-### The SSFP Systole Image Problem
+### SSFP in systole
 
-Examine the SSFP systole image (upper left). A prominent dark band artifact runs directly across the aortic valve, completely obscuring the valve leaflet anatomy. This artifact results from local field inhomogeneities and appears as a dark signal void that makes accurate morphological assessment impossible. In this critical systolic phase when the valve is open, the pathology is entirely hidden.
+In the SSFP systole image (upper left), a dark band runs right across the aortic valve and hides the leaflets. It comes from small field differences, and it makes the valve's shape impossible to judge. In systole, with the valve open, the abnormality is completely hidden.
 
-### The SSFP Diastole Image
+### SSFP in diastole
 
-The SSFP diastole image (upper right) shows improved visualization with minimal artifact present during this cardiac phase. However, relying solely on diastolic images would miss crucial information about valve opening dynamics and systolic morphology.
+The SSFP diastole image (upper right) has little artifact. But diastole alone would miss how the valve opens and its shape in systole.
 
-### The GRE Images Reveal the Pathology
+### GRE shows the abnormality
 
-Now examine the GRE systole image (lower left). Without any artifact interference, this image clearly reveals a forme fruste bicuspid aortic valve with partial fusion of the right and left coronary cusps. This congenital variant represents incomplete separation of two cusps, creating a raphe (indicated by the arrow on the image). The valve maintains a functional trileaflet appearance but has an underlying bicuspid anatomy.
+The GRE systole image (lower left) has no banding, and it clearly shows a forme fruste bicuspid aortic valve: the right and left coronary cusps are partly fused. The cusps never fully separated, leaving a raphe (arrow). The valve works like a three-leaflet valve but is bicuspid underneath.
 
-The GRE diastole image (lower right) provides artifact-free visualization of the closed valve position, confirming the abnormal cusp morphology across all cardiac phases.
+The GRE diastole image (lower right) shows the closed valve without artifact and confirms the abnormal cusps in both phases.
 
-## Clinical Significance and Technologist Responsibility
+## The technologist's part
 
-This case illustrates a scenario where critical pathology would be completely missed if:
+The abnormality would have been missed completely if:
 
-- The technologist did not recognize the SSFP artifact during scanning
-- Supplementary GRE images were not acquired
-- Image quality was not reviewed before the patient left the scanner
-- The radiologist only received SSFP sequences
+- The banding hadn't been recognized during the scan
+- GRE images hadn't been added
+- The images hadn't been reviewed before the patient left
+- The radiologist had received only the SSFP images
 
-Forme fruste bicuspid aortic valves are clinically significant because they:
+A forme fruste bicuspid valve matters because it:
 
-- Carry similar risks to true bicuspid valves including accelerated degeneration
-- May develop aortic stenosis or regurgitation earlier than normal tricuspid valves
-- Require long-term surveillance
-- May influence decisions about prophylactic valve replacement timing
-- Are often underdiagnosed on echocardiography
+- Carries similar risks to a true bicuspid valve, including faster wear
+- Can develop aortic stenosis or regurgitation earlier than a normal three-leaflet valve
+- Needs long-term follow-up
+- Can affect when a valve is replaced
+- Is often missed on echo
 
-This pathology would remain undetected without the technologist's decision to acquire GRE sequences when artifact was present, potentially delaying appropriate patient management and surveillance protocols.
+Without the decision to add GRE when banding appeared, this would have gone undetected, delaying the right follow-up.
 
-## Practical Recommendations
+## What to do
 
-- Use GRE sequences as the primary method for detailed aortic valve morphology assessment
-- Consider True FISP for functional evaluation when artifacts are minimal
-- Adjust shim settings and center frequency to minimize True FISP artifacts when necessary
-- When True FISP artifacts are present, always acquire supplementary GRE images
-- Document sequence selection and any artifacts in the imaging report
+- Use GRE as the main sequence for detailed aortic valve shape
+- Use TrueFISP for function when there's little banding
+- Adjust the shim and center frequency to reduce TrueFISP banding when needed
+- When banding is over the valve, always add GRE images
+- Note the sequences used and any artifacts for the report
 
-# Conclusion
+## The takeaway
 
-Understanding the differences between GRE and True FISP sequences is essential for cardiac MRI technologists performing aortic valve imaging. While True FISP offers faster acquisition times and superior blood-myocardium contrast, its susceptibility to dark band artifacts can completely obscure critical valve pathology, as demonstrated in the clinical case of the forme fruste bicuspid valve presented above.
+TrueFISP is fast and has great contrast, but banding can hide valve disease completely. When you see a band over the valve, add GRE: the extra minute is worth far more than a missed diagnosis.
 
-The technologist's role extends far beyond simply executing predetermined protocols. Active image quality monitoring, artifact recognition, and the clinical judgment to acquire supplementary GRE sequences when True FISP artifacts are present are critical skills that directly impact patient outcomes. A missed diagnosis of forme fruste bicuspid valve pathology can delay appropriate surveillance protocols and long-term management strategies.
-
-By following the practical recommendations provided in this post, such as prioritizing GRE for morphological assessment, optimizing shim settings, acquiring additional sequences when artifacts are present, and documenting findings, technologists ensure a thorough diagnostic evaluation. Keep in mind that the extra time spent obtaining images free from artifacts is greatly outweighed by the clinical benefits of accurate pathology detection and appropriate patient care.

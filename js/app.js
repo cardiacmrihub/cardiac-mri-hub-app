@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.8.0";
+const APP_VERSION = "1.9.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -102,7 +102,7 @@ function listTitle(g) {
 }
 const byUpdated = (a, b) =>
   (b.updated || b.published || "").localeCompare(a.updated || a.published || "") || (b.published || "").localeCompare(a.published || "");
-const titleClass = (g) => `guide-title${g.title.length > 60 ? " long" : ""}`;
+const titleClass = (g) => `guide-title${listTitle(g).length > 60 ? " long" : ""}`;
 const fmtDate = (iso) => {
   if (!iso) return "";
   const d = new Date(iso.length === 10 ? `${iso}T12:00:00` : iso);
@@ -181,6 +181,7 @@ const defineHtml = (d) =>
   d ? `<div class="define"><p><strong>${esc(d.abbr)}</strong> ${d.meaning}</p>${d.note ? `<p class="define-note">${d.note}</p>` : ""}<a href="${esc(d.href)}">All abbreviations</a></div>` : "";
 
 /* ---------------- views ---------------- */
+const returningUser = () => isStandalone() || prefs.get("launches", 0) >= 3;
 function renderHome() {
   setTopbar(`<span class="brand">${LOGO}Cardiac MRI Hub</span><a class="icon-btn" href="${link.settings}" aria-label="Settings">${ICON.settings}</a>`);
   let html = `<a class="search-launch" href="${link.search()}">${ICON.search}<span>Search guides or type 4ch, SAX, LVOT</span></a>${noticesHtml()}`;
@@ -193,16 +194,20 @@ function renderHome() {
   const exam = flowActive();
   if (exam) html += flowCardHtml();
   const last = d.bySlug.get(prefs.get("lastGuide", ""));
-  if (last) html += `<h2 class="section">Continue reading</h2>${rowsHtml([last])}`;
+  const cont = last ? `<h2 class="section">Continue reading</h2>${rowsHtml([last])}` : "";
   const start = d.guides.filter((g) => g.startHere && g !== last).sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+  let startHtml = "";
   if (start.length) {
-    html += `<h2 class="section">Start here</h2>`;
+    startHtml += `<h2 class="section">Start here</h2>`;
     for (const g of start) {
       const media = g.cover ? `<img src="${esc(g.cover)}" alt="">` : glyph(glyphFor(topicOf(g)));
-      html += `<a class="feature" href="${link.guide(g.slug)}"><div class="feature-media">${media}</div><h3>${esc(listTitle(g))}</h3><p>${esc(g.summary)}</p></a>`;
+      startHtml += `<a class="feature" href="${link.guide(g.slug)}"><div class="feature-media">${media}</div><h3>${esc(listTitle(g))}</h3><p>${esc(g.summary)}</p></a>`;
     }
   }
-  html += atScannerHtml(exam ? "" : flowCardHtml());
+  const scanner = atScannerHtml(exam ? "" : flowCardHtml());
+  // Newcomers (and Google) see Start here first; people who keep coming back, or installed the app, get the
+  // scanner tools first and the beginner's guide further down.
+  html += returningUser() ? scanner + cont + startHtml : cont + startHtml + scanner;
   const topics = topicsWithGuides();
   if (topics.length) {
     html += `<h2 class="section">Topics</h2><div class="tiles">`;
@@ -292,7 +297,7 @@ function renderGuide(slug) {
 
   view.innerHTML = `<article>
     ${topics.length ? `<ul class="guide-topics">${topics.map((t) => `<li><a href="${link.topic(t.slug)}">${esc(t.label)}</a></li>`).join("")}</ul>` : ""}
-    <h1 class="${titleClass(g)}">${esc(g.title)}</h1>
+    <h1 class="${titleClass(g)}">${esc(listTitle(g))}</h1>
     <p class="guide-meta">${meta.join(", ")}</p>
     ${planButton(g)}
     ${g.landmarksHtml || ""}
@@ -904,6 +909,7 @@ function pageTitle(section, arg) {
 }
 
 function route() {
+  closeAbbr();
   const { section, arg, params } = parseRoute();
   // Leaving the exam flow closes its edit mode (the name field saves on the way out).
   if (section !== "flow" && state.flowEdit) { saveFlowName(); state.flowEdit = null; state.flowAddGroup = null; }
@@ -973,7 +979,30 @@ function toast(msg) {
 
 const TEXT_SIZES = [["s", "Small"], ["m", "Medium"], ["l", "Large"], ["xl", "Largest"]];
 
+// Tap an abbreviation in a guide (marked by the build) to see what it stands for.
+function abbrEntry(form) {
+  return state.data?.glossary?.entries.find((x) => x.abbr.split(/,\s*/).includes(form)) || null;
+}
+function closeAbbr() { $("#abbr-pop")?.remove(); }
+function showAbbr(el) {
+  const entry = abbrEntry(el.dataset.abbr);
+  if (!entry) return;
+  closeAbbr();
+  const pop = document.createElement("div");
+  pop.id = "abbr-pop";
+  pop.className = "abbr-pop";
+  pop.setAttribute("role", "dialog");
+  pop.setAttribute("aria-label", `${el.dataset.abbr}: ${entry.meaning}`);
+  pop.innerHTML = `<div><strong>${esc(el.dataset.abbr)}</strong> <span>${esc(entry.meaning)}</span>${entry.note ? `<p>${esc(entry.note)}</p>` : ""}<a href="${esc(entry.href)}">All abbreviations</a></div><button class="icon-btn" type="button" data-action="abbr-close" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>`;
+  document.body.append(pop);
+  pop.querySelector("button")?.focus({ preventScroll: true });
+}
+
 document.addEventListener("click", async (e) => {
+  const ab = e.target.closest?.("abbr[data-abbr]");
+  if (ab) { e.preventDefault(); showAbbr(ab); return; }
+  if ($("#abbr-pop") && !e.target.closest?.("#abbr-pop")) closeAbbr();
+  if (e.target.closest?.('[data-action="abbr-close"]')) { closeAbbr(); return; }
   const jump = e.target.closest("[data-jump]");
   if (jump) {
     e.preventDefault();
@@ -1355,6 +1384,8 @@ document.addEventListener("change", async (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && $("#abbr-pop")) { closeAbbr(); return; }
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches?.("abbr[data-abbr]")) { e.preventDefault(); showAbbr(e.target); return; }
   if (!lightbox.hidden) { if (e.key === "Escape") history.back(); return; }
   if (!deck.hidden) {
     if (e.key === "Escape") history.back();
@@ -1528,6 +1559,8 @@ document.addEventListener("visibilitychange", async () => {
 // guide list has loaded, rather than flashing "Loading…". (When offline, the saved home page
 // can stand in for another address, so only trust content written for this address.)
 const prerendered = view.dataset.prerendered === location.pathname;
+// Counts app launches, so Home can put the scanner tools first for people who keep coming back.
+prefs.set("launches", (prefs.get("launches", 0) || 0) + 1);
 if (!prerendered) route();
 await loadContent();
 state.lastCheck = Date.now();
