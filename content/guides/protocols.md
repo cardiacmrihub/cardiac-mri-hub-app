@@ -9,7 +9,7 @@ protocols: true
 examFlow: true    # true turns on the exam-flow checklist and contrast clock in the Plan tab
 ---
 
-Each protocol lists the sequences in the order you run them, with links to how each view is planned. They follow the Society for Cardiovascular Magnetic Resonance's [standardized protocols (2020 update)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/), except amyloidosis, which those don't cover: it follows the [multisociety expert consensus on imaging cardiac amyloidosis](https://doi.org/10.1007/s12350-019-01760-6) that SCMR endorsed. Your department's protocol may differ, and it's the one to follow. Stress agents and contrast doses aren't listed here: they follow your department's protocol and the supervising physician.
+Each protocol lists the sequences in the order you run them, with links to how each view is planned. They follow the Society for Cardiovascular Magnetic Resonance's [standardized protocols (2020 update)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/), except amyloidosis, which those don't cover: it follows the [multisociety expert consensus on imaging cardiac amyloidosis](https://doi.org/10.1007/s12350-019-01760-6) that SCMR endorsed. Your department's protocol may differ, and it's the one to follow. Contrast doses aren't listed here. SCMR's reference doses for the stress agents, and the perfusion injector settings, are in the [stress perfusion guide](/guide/stress-perfusion/); the agent and dose follow your department's protocol and the supervising physician.
 
 Every exam starts with the same localizers and ends with the same close-out checks; the exam flow adds both to every protocol. The order here runs the cines before contrast; some sites give contrast earlier and run the cines while they wait for LGE. At the scanner, open the [exam flow](/flow/) to tick the steps off as you go, with a clock that starts when you inject contrast. To match how your site runs a protocol, tap **Customize** in the exam flow: hide steps, move them, add your own and rename it. For an exam that isn't here, tap **New protocol** and start blank or from a copy. Both stay on your device.
 
@@ -107,7 +107,7 @@ Every exam starts with the same localizers and ends with the same close-out chec
 
 # Stress perfusion
 
-Only the localizers and maps run before the stress injection; the cines fill the wait for LGE. The clock starts at the stress injection. Perfusion timing depends on the stress agent and your site: here it's 1 minute after the stress injection, and you can change it on your device in the exam flow.
+Only the localizers and maps run before the stress injection; the cines fill the wait for LGE. The clock starts at the stress injection. Perfusion timing depends on the stress agent and your site: here it's 1 minute after the stress injection, and you can change it on your device in the exam flow. How to plan and run it, with the stress agents: [stress perfusion](/guide/stress-perfusion/).
 
 **Before stress**
 

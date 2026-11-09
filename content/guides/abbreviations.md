@@ -31,6 +31,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | ARVC | Arrhythmogenic right ventricular cardiomyopathy | Now often called arrhythmogenic cardiomyopathy, since it can involve the LV too. |
 | AS | Anteroseptal wall | On labelled images. Elsewhere often aortic stenosis. |
 | ASD | Atrial septal defect | |
+| ATP | Adenosine triphosphate | A vasodilator stress agent, given like adenosine. |
 | AV | Aortic valve | |
 | AW | Anterior wall | |
 
@@ -64,6 +65,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | EDV | End-diastolic volume | The ventricle's volume when it's fullest. |
 | EF | Ejection fraction | Stroke volume divided by EDV, as a percentage. |
 | EGE | Early gadolinium enhancement | Images in the first few minutes after contrast, mainly to look for thrombus and MVO. |
+| EPI | Echo-planar imaging | A fast readout; GRE-EPI is one of the perfusion readouts. |
 | ESC | European Society of Cardiology | |
 | ESV | End-systolic volume | The ventricle's volume at the end of contraction. |
 
