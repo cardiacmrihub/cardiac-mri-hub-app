@@ -69,7 +69,7 @@ The images on the right and left show where the 3ch plane sits on the 2ch and 4c
 
 - **Gadolinium contrast**
   - LGE after contrast shows fibrosis, infarction and changes around the valves.
-  - Timing (7–15 minutes after injection) and the right inversion time separate myocardium from the blood pool.
+  - Timing (10 minutes after injection) and the right inversion time separate myocardium from the blood pool.
 - **Other sequences**
   - T1 and T2 mapping and perfusion add tissue detail, especially for basal septal or infiltrative disease.
 

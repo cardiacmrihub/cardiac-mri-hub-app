@@ -38,10 +38,10 @@ So end-expiration is the more consistent, steadier phase for cardiac MRI.
 
 The difference is in what the diaphragm does during the hold.
 
-- At end-inspiration, the diaphragm and accessory muscles are contracted. During the hold they slowly relax ("creep"), so the diaphragm drifts up, at first by several mm per second and about 1 cm over a 15–20 second hold.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- The pericardium is attached to the diaphragm, so this drift moves the heart from beat to beat and blurs its borders on gated images.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- At end-inspiration, the diaphragm and accessory muscles are contracted. During the hold they slowly relax ("creep"), so the diaphragm drifts up, at first by several mm per second and about 1 cm over a 15–20 second hold.
+- The pericardium is attached to the diaphragm, so this drift moves the heart from beat to beat and blurs its borders on gated images.
 - At end-expiration, the diaphragm is relaxed and stable, and moves much more slowly and steadily.
-- The heart stays in the same place from beat to beat, so borders are sharper and there's less breathing ghosting.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- The heart stays in the same place from beat to beat, so borders are sharper and there's less breathing ghosting.
 
 That's why motion scores are better and radiologists prefer end-expiration.\[ajronline\]
 
@@ -70,35 +70,34 @@ End-expiration breath-holds, with CS and AI where needed, are a simple way to im
 
 # How breathing phase changes LV volumes
 
-The breathing phase also changes the measured left ventricular (LV) volumes. That matters for consistent end-diastolic volume (EDV), end-systolic volume (ESV), stroke volume (SV) and ejection fraction (EF).
+The breathing phase also changes the measured left ventricular (LV) volumes and ejection fraction (EF). That matters for consistent measurements from exam to exam.
 
 ## LV and RV volumes move in opposite directions
 
-Breathing makes RV and LV volumes move in opposite directions. Real-time cardiac MRI shows that during a normal breath in, RV end-diastolic volume rises by about 18% while LV volumes fall. The reverse happens on the breath out, and LV volumes peak at end-expiration. This comes from the ventricles sharing space and from pressure changes in the chest as you breathe.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+Breathing makes RV and LV volumes move in opposite directions. In a real-time cardiac MRI study of healthy volunteers breathing normally, RV end-diastolic volume rose by about 18% on the breath in while LV volumes fell, and the reverse happened on the breath out. This comes from the ventricles sharing space and from pressure changes in the chest as you breathe.[\[Claessen 2014\]](https://repository.uantwerpen.be/link/irua/137827)
 
-## The effect on EDV, ESV and EF
+## The effect on EDV and EF
 
-Real-time cardiac MRI shows the size of the effect. Comparing end-inspiration with end-expiration breath-holds:
+Studies don't fully agree on which way LV end-diastolic volume (EDV) moves, but they agree the breathing phase changes the numbers:
 
-- LV EDV is higher at end-inspiration: about 9 mL more than breath-held or end-expiration measurements (p = 0.02), so inspiration makes the LV cavity look bigger.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- LV EF is lower at end-inspiration: about 3.9% higher at end-expiration (p < 0.01), enough to affect the reading and risk assessment.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- LV SV drops at peak inspiration, as blood pools briefly in the lungs and less reaches the LV. It's highest at end-expiration, when return to the left heart is greatest.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- LV ESV changes less than EDV, with a bias of about 0 mL between end-expiration and end-inspiration at rest. Most of the difference comes from filling in diastole.[\[nature\]](https://www.nature.com/articles/s41598-024-62294-7)
+- In a small real-time MRI study of 7 patients, LV EDV was about 9 mL higher (p = 0.02) and EF about 3.9% lower (p < 0.01) at end-inspiration than in a breath-hold.[\[Contijoch 2016\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC5032536/)
+- In the same study, during free breathing, EF was about 3.9% higher at end-expiration than at end-inspiration (p < 0.01), with no significant difference in EDV between the two.[\[Contijoch 2016\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC5032536/)
+- What's consistent: EF reads about 4% lower at end-inspiration. Use the same breathing phase, ideally end-expiration, every time.
 
 ## Why: the ventricles share the pericardium
 
-The two ventricles share the pericardial space. On a breath in, lower pressure in the chest draws more blood into the right ventricle, which fills and expands. That pushes the septum to the left, squeezing the LV and reducing its filling. On the breath out, the RV gets smaller, the septum moves back, and the LV fills normally, so LV EDV and EF are higher at end-expiration.[\[radiopaedia\]](https://radiopaedia.org/articles/ventricular-interdependence?lang=us)
+The two ventricles share the pericardial space. On a breath in, lower pressure in the chest draws more blood into the right ventricle, which fills and expands. That pushes the septum to the left, squeezing the LV and reducing its filling. On the breath out, the RV gets smaller, the septum moves back, and the LV fills normally.[\[radiopaedia\]](https://radiopaedia.org/articles/ventricular-interdependence?lang=us)
 
 ## What it means for measurements
 
 These differences matter for consistent reporting and follow-up:
 
 - Acquire every breath-hold sequence in the same breathing phase, ideally end-expiration, on every exam. Mixing phases across slices or sequences causes misregistered slices and wrong volumes.\[ajronline\]
-- Use the same breathing phase when comparing exams (for example before and after treatment). Switching from end-inspiration to end-expiration between exams can make LV EF look nearly 4% better when nothing changed, more than some follow-up protocols count as significant.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- Normal ranges for LV EDV, ESV and EF in CMR come mostly from end-expiration breath-holds. Measuring at end-inspiration and comparing with those ranges can overestimate EDV and underestimate EF, giving false or borderline results.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
-- For free-breathing or real-time cines, analyze end-expiration heartbeats. Most current software and CS reconstructions can sort out the end-expiration beats afterwards.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
+- Use the same breathing phase when comparing exams (for example before and after treatment). Switching from end-inspiration to end-expiration between exams can make LV EF look nearly 4% better when nothing changed.[\[Contijoch 2016\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC5032536/)
+- Normal ranges for LV volumes and EF come from breath-hold cines, usually at end-expiration. Measuring at end-inspiration and comparing with those ranges can make EF look lower than it is.
+- For free-breathing or real-time cines, analyze end-expiration heartbeats. Current software and CS reconstructions can sort out the end-expiration beats afterwards.[\[pmc.ncbi.nlm.nih\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)
 
-In short, end-expiration isn't just better for motion: it's the right phase for accurate, repeatable LV volumes. EF is highest and the heart is steadiest at end-expiration. Standardizing on it keeps measurements in line with normal ranges and follow-up exams comparable.
+In short, end-expiration isn't just better for motion: EF reads higher there and the heart is steadiest. Standardizing on it keeps measurements in line with normal ranges and follow-up exams comparable.
 
 # The evidence at a glance
 

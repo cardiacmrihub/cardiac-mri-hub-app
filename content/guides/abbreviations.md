@@ -102,7 +102,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 |---|---|---|
 | LA | Left atrium | |
 | LAA | Left atrial appendage | |
-| LGE | Late gadolinium enhancement | Images taken about 10 to 20 minutes after contrast, when scar and fibrosis show bright. |
+| LGE | Late gadolinium enhancement | Images taken 10 minutes after contrast, when scar and fibrosis show bright. |
 | LPA | Left pulmonary artery | |
 | LV | Left ventricle | |
 | LVOT | Left ventricular outflow tract | |

@@ -71,7 +71,7 @@ The short axis runs perpendicular to the long axis of the left ventricle. Plan i
 
 - **Gadolinium contrast**
   - LGE shows infarction, fibrosis and non-ischemic scar, with enough slices to measure it by segment. With arrhythmia, consider single-shot or motion-corrected LGE.
-  - Timing (7–15 minutes after injection) and a well-set inversion time separate myocardium from the blood pool.
+  - Timing (10 minutes after injection) and a well-set inversion time separate myocardium from the blood pool.
 - **Other sequences (T1 and T2 mapping, perfusion)**
   - Consider T1, T2 and extracellular volume (ECV) mapping, especially for diffuse disease such as amyloidosis and myocarditis.
 

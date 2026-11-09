@@ -90,7 +90,7 @@ The line on the left shows the planning for the coronal aortic view, through the
 
 - **Gadolinium contrast**
   - LGE shows fibrosis, scar and post-surgical changes below, at and around the valve and aorta.
-  - LGE timing (7–15 minutes after injection) and an accurate inversion time separate myocardium from the blood and the aorta.
+  - LGE timing (10 minutes after injection) and an accurate inversion time separate myocardium from the blood and the aorta.
 - **Other sequences**
   - T1 and T2 mapping help when the outflow tract is involved in infiltrative, inflammatory or congenital disease.
 

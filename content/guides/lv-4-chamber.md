@@ -70,7 +70,7 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/updated-unders
 
 - **Gadolinium contrast**
   - LGE after contrast shows infarction, fibrosis and infiltrative disease.
-  - Timing (7–10 minutes after injection) and a well-set inversion time are what make scar visible.
+  - Timing (10 minutes after injection) and a well-set inversion time are what make scar visible.
 - **Other sequences (T1 and T2 mapping, perfusion)**
   - Consider T1, T2 and extracellular volume (ECV) mapping for tissue characterization, especially for myocarditis and infiltrative disease.
 
