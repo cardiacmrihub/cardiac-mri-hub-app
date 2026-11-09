@@ -16,12 +16,12 @@ A troubleshooting guide is on the way: a short card for each common artifact, wi
 - **LGE and the TI scout:** the wrong TI, ghosting, fat that looks like enhancement, coil shading
 - **Perfusion:** dark rim, breathing during the first pass, missed slices at high heart rates
 - **Flow:** velocity aliasing, background phase offset, signal loss in jets
-- **Maps:** motion between images, banding at 3 T, heart rate effects
+- **Maps:** motion between images, banding, heart rate effects
 - **Metal, devices and the room:** sternal wires, valves and clips, ICDs and pacemakers, slow flow on dark-blood images, RF zippers
 
 # Already in the guides
 
-- **Banding at 3 T:** [GRE vs TrueFISP for the aortic valve](/guide/gre-vs-truefisp-aortic-valve/)
+- **Banding:** [GRE vs TrueFISP for the aortic valve](/guide/gre-vs-truefisp-aortic-valve/)
 - **Breathing ghosts and slices that don't line up:** [breath-holds at expiration vs inspiration](/guide/breath-hold-expiration-vs-inspiration/)
 - **The wrong TI:** [choosing the TI time](/guide/psir-ti-time/)
 - **Velocity aliasing:** [phase contrast basics](/guide/phase-contrast-basics/) and [phase contrast planning](/guide/phase-contrast-planning/)
