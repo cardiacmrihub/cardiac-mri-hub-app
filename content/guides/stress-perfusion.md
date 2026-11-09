@@ -14,7 +14,7 @@ Stress perfusion shows blood flow to the heart muscle while a vasodilator opens 
 
 1. **On the 2-chamber,** place three short-axis slices at the base, mid and apex, perpendicular to the long axis of the LV, as for the [short-axis samples](/guide/lv-short-axis-samples/).[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
 
-![Short axis left ventricle sample (Base, Mid, Apex) slices shown above.](../images/51892d_a7947fa9ed3841d990f9c8276d4b0313-mv2.webp "Short axis left ventricle sample (Base, Mid, Apex) slices shown above.")
+![Two-chamber view with three short-axis lines at the base, mid and apex](../images/51892d_a7947fa9ed3841d990f9c8276d4b0313-mv2.webp "The three short-axis slices (base, mid, apex) planned on the 2-chamber.")
 
 2. **Base:** at the mitral annulus, with the LVOT out of the slice. **Mid:** on the papillary muscles. **Apex:** at the narrow end of the LV cavity, not overlapping the mid slice.
 3. **In the sequence,** check that all three slices fit in each heartbeat at the heart rate you expect under stress. The heart speeds up with a vasodilator, and SCMR wants every slice imaged every heartbeat if possible.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)

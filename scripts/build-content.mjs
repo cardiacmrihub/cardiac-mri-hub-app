@@ -646,7 +646,7 @@ if (existsSync(paramsPath)) {
 
 // ---------- Printable planning cards (content/cards.json) ----------
 // One page per view: chosen images from the guide with their captions (or descriptions), plus the
-// LV views' orientation line from the parameters tables.
+// LV views' orientation line from the parameters tables and any extra "lines" ({label, text}) from cards.json.
 let cards = null;
 const cardsPath = join(CONTENT, "cards.json");
 if (existsSync(cardsPath)) {
@@ -678,7 +678,7 @@ if (existsSync(cardsPath)) {
       const cap = f.captionHtml || esc(f.alt || "");
       return `<figure><img src="${esc(f.src)}" alt="${esc(f.alt || plain(f.captionHtml || ""))}"${f.w ? ` width="${f.w}" height="${f.h}"` : ""} loading="lazy">${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`;
     }).join("");
-    html += `<section class="card" aria-labelledby="card-${esc(g.slug)}"><header class="card-head">${topic ? `<span class="card-topic">${esc(topic.label)}</span>` : ""}<h2 id="card-${esc(g.slug)}">${esc(short(g))}</h2>${plane ? `<p class="card-plane"><strong>Orientation:</strong> ${inline(plane, { file: "cards.json", images: new Set(), videos: new Set(), headings: [], figures: [], section: "" })}</p>` : ""}${lm ? `<p class="card-plane"><strong>3-point:</strong> ${landmarkText(lm)}</p>` : ""}</header><div class="card-grid n${picks.length}">${figs}</div><footer class="card-foot"><span>${esc(site.name)} · ${esc(site.url.replace(/^https?:\/\//, ""))}/guide/${esc(g.slug)}/</span><span>For education only. Follow your department's protocols.</span></footer></section>`;
+    html += `<section class="card" aria-labelledby="card-${esc(g.slug)}"><header class="card-head">${topic ? `<span class="card-topic">${esc(topic.label)}</span>` : ""}<h2 id="card-${esc(g.slug)}">${esc(short(g))}</h2>${plane ? `<p class="card-plane"><strong>Orientation:</strong> ${inline(plane, { file: "cards.json", images: new Set(), videos: new Set(), headings: [], figures: [], section: "" })}</p>` : ""}${lm ? `<p class="card-plane"><strong>3-point:</strong> ${landmarkText(lm)}</p>` : ""}${(c.lines || []).map((l) => `<p class="card-plane"><strong>${esc(l.label)}:</strong> ${inline(l.text, { file: "cards.json", images: new Set(), videos: new Set(), headings: [], figures: [], section: "" })}</p>`).join("")}</header><div class="card-grid n${picks.length}">${figs}</div><footer class="card-foot"><span>${esc(site.name)} · ${esc(site.url.replace(/^https?:\/\//, ""))}/guide/${esc(g.slug)}/</span><span>For education only. Follow your department's protocols.</span></footer></section>`;
     count++;
   }
   cards = { title: cfg.title, description: cfg.intro || "", html, count };

@@ -8,6 +8,7 @@
     { "guide": "lv-short-axis", "images": [0, 1, 2] },
     { "guide": "lv-short-axis-samples", "images": [1, 2, 3, 6] },
     { "guide": "lv-coronal-lvot", "images": [3, 0] },
+    { "guide": "stress-perfusion", "images": [0, 2, 1], "lines": [{"label": "Slices", "text": "3 short-axis (base, mid, apex), 8–10 mm, every heartbeat at the stress heart rate"}, {"label": "Injector", "text": "contrast 0.05–0.1 mmol/kg at 3–7 ml/s, then at least 30 ml saline at 3–7 ml/s"}, {"label": "Timing", "text": "adenosine: contrast in the last minute of the infusion; regadenoson: contrast 45–60 s after the bolus. Start the breath-hold before contrast reaches the LV; image at least 50–60 beats"}, {"label": "Order", "text": "stress → at least 10 min washout (cines) → rest, same dose → LGE at least 5 min after rest (SCMR 2020)"} ] },
     { "guide": "rv-axial", "images": [0] },
     { "guide": "rv-2-chamber", "images": [2, 0, 1] },
     { "guide": "rv-inflow", "images": [2, 0, 1] },
