@@ -511,10 +511,12 @@ if (protocolSource) {
   const g = guides.find((x) => x.slug === protocolSource);
   const list = [];
   const common = { groups: [] }; // "# Every exam starts with": steps that open every protocol
+  const closing = { groups: [] }; // "# Every exam ends with": close-out steps that end every protocol
   let cur = null;
   let group = null;
   for (const line of bodies.get(protocolSource).split(/\r?\n/)) {
     const h = /^#\s+(.*)$/.exec(line);
+    if (h && /^(every exam|all exams)\s+(ends|finish)/i.test(h[1].trim())) { cur = closing; group = null; continue; }
     if (h && /^(every exam|all exams)/i.test(h[1].trim())) { cur = common; group = null; continue; }
     if (h) {
       const name = h[1].trim();
@@ -545,8 +547,9 @@ if (protocolSource) {
     }
   }
   const opening = common.groups.map((x) => ({ ...x, label: x.label || "Localizers" }));
+  const ending = closing.groups.map((x) => ({ ...x, label: x.label || "Close out" }));
   for (const p of list) {
-    p.groups = [...opening, ...p.groups];
+    p.groups = [...opening, ...p.groups, ...ending];
     delete p.hasContrast;
     // Two steps with the same words in one protocol get distinct keys.
     const seen = new Map();

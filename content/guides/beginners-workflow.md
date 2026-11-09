@@ -4,6 +4,7 @@ shortTitle: "Beginner's guide to the cardiac MRI workflow"
 summary: "The cardiac MRI exam step by step for new technologists: gating, breath-holds, patient prep, scanner setup, localizers, sequences and troubleshooting."
 topics: [getting-started]
 published: 2025-12-01
+updated: 2026-11-09
 cover: ../images/standard-views.webp
 order: 1
 startHere: true
@@ -20,15 +21,15 @@ This guide breaks the cardiac workflow into steps. It's for new graduates and fo
 
 The goal of cardiac MRI is sharp, motion-free images of the heart's structure, function, blood flow and tissue. That means timing the images to two moving targets: the heartbeat and breathing.
 
-The heart beats 60–100 times a minute and moves with every breath. Cardiac sequences "freeze" it at set points in the cardiac cycle while keeping breathing artifacts down. That's why ECG gating, breath-holds and timing matter so much.
+At rest, an adult heart usually beats 60–100 times a minute,[\[Mayo Clinic\]](https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979) and it moves with every breath. Cardiac sequences "freeze" it at set points in the cardiac cycle while keeping breathing artifacts down. That's why ECG gating, breath-holds and timing matter so much.
 
 The heart has four chambers (left and right ventricles and atria), four valves (mitral, tricuspid, aortic and pulmonary), the coronary arteries, the great vessels (aorta and pulmonary arteries) and the pericardium. Each may need its own sequences and planning. Learn basic cardiac anatomy, the phases of the cardiac cycle (systole and diastole) and how blood flows through the heart; planning the views gets much easier once you do.
 
 Three things to know:
 
 - **ECG gating is the foundation.** Prospective or retrospective gating times the images to the cardiac cycle. The ECG triggers the scanner to image in diastole (when the heart is relaxed), or across the whole cycle for cines. Without good gating, images are blurred and unusable. Learn R-wave detection, trigger delay and arrhythmia rejection, because that's how you fix gating problems.
-- **Each sequence answers a different question.** Cines (usually balanced steady-state free precession, TrueFISP) show motion and function. T1-weighted sequences (such as inversion recovery) show anatomy and fat. T2-weighted sequences show edema and inflammation. Phase contrast measures blood flow. Late gadolinium enhancement (LGE) shows scar and fibrosis. You'll learn which to use for each indication as you go.
-- **The patient's breath-holds decide image quality.** Most sequences need a 10–20 second breath-hold. Unlike general MRI, the patient has to take part. Practice the breath-hold with the patient before you start, with the same clear words each time: "Breathe in, breathe out, and hold your breath." For patients who can't hold their breath (heart failure, anxiety or other reasons), use navigator-gated or free-breathing sequences, which take longer and may look a little worse. Coaching well matters as much as scanning well.
+- **Each sequence answers a different question.** Cines (usually balanced steady-state free precession, TrueFISP) show motion and function. Black-blood T1-weighted images show anatomy and fat. T2-weighted sequences show edema and inflammation. Phase contrast measures blood flow. Late gadolinium enhancement (LGE) shows scar and fibrosis. You'll learn which to use for each indication as you go.
+- **The patient's breath-holds decide image quality.** A standard cine needs a breath-hold of about 10 seconds, and a short-axis stack can take 7–11 of them.[\[Wang 2024\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC10856388/) Unlike general MRI, the patient has to take part. Practice the breath-hold with the patient before you start, with the same clear words each time: "Breathe in, breathe out, and hold your breath." For patients who can't hold their breath (heart failure, anxiety or other reasons), use navigator-gated or free-breathing sequences, which take longer and may look a little worse. Coaching well matters as much as scanning well.
 
 # Preparing the patient
 
@@ -68,10 +69,10 @@ Timing to the heartbeat and to breathing is what sets cardiac MRI apart from gen
 
 **ECG gating:** the ECG is the timing reference for every cardiac sequence. The R-wave (the tallest peak) marks ventricular contraction and is the trigger. Prospective gating starts imaging at a set delay after the R-wave; retrospective gating collects data through the whole cycle and sorts it afterwards. Make sure the trace shows a clear, steady R-wave. Poor lead placement, patient movement, interference from the gradients, and the magnetohydrodynamic effect (blood flowing in the magnet creates a voltage) can all spoil the ECG.
 
-**Breath-holds:** gating handles the heartbeat; breath-holds handle breathing. The standard instruction is: "Breathe in, breathe out, and hold your breath." Holding at end-expiration is more comfortable and more repeatable than full inspiration. Keep the breath-hold depth the same for every sequence so the heart stays in the same place, which matters for comparing images and for analysis. Watch for fatigue: breath-holds can get shallower or less consistent as the exam goes on.
+**Breath-holds:** gating handles the heartbeat; breath-holds handle breathing. The standard instruction is: "Breathe in, breathe out, and hold your breath." Holding at end-expiration is more comfortable and more repeatable than full inspiration (see [breath-holds at expiration vs inspiration](/guide/breath-hold-expiration-vs-inspiration/)). Keep the breath-hold depth the same for every sequence so the heart stays in the same place, which matters for comparing images and for analysis. Watch for fatigue: breath-holds can get shallower or less consistent as the exam goes on.
 
 - **ECG gating** times the images to set points in the cardiac cycle, to cut motion blur.
-- **Breath-holds** of 10–20 seconds cut breathing motion.
+- **Breath-holds** (about 10 seconds each for a standard cine) cut breathing motion.
 
 Practice the instructions and timing with the patient.
 
@@ -80,7 +81,7 @@ Practice the instructions and timing with the patient.
 A cardiac exam combines several sequences, chosen by the clinical question: function, viability, valves or congenital disease. The main ones:
 
 - **Cines:** moving images of the beating heart, for function and wall motion.
-- **T1-weighted:** anatomy and fibrosis.
+- **T1-weighted (black blood):** anatomy and fat.
 - **T2-weighted:** edema and inflammation.
 - **Late gadolinium enhancement (LGE):** scar and infarcts, after contrast.
 
@@ -99,7 +100,7 @@ Everyone runs into problems, including experienced technologists. Work through t
 
 # Checking and documenting
 
-Before the patient leaves, review the images:
+Before the patient leaves, review the images (the [exam flow](/flow/) ends with a short close-out checklist):
 
 - All the views you need are there.
 - No artifacts or motion blur.
@@ -108,7 +109,7 @@ Before the patient leaves, review the images:
 
 # Building your skills
 
-Cardiac MRI can feel overwhelming at first; every expert started as a beginner. Expect several months to a year of regular scanning before you feel comfortable, longer than for general MRI. You're learning scanning, plus cardiac anatomy, physiology and disease, and what each sequence shows. What helps:
+Cardiac MRI can feel overwhelming at first; every expert started as a beginner. Expect it to take longer than general MRI before you feel comfortable. You're learning scanning, plus cardiac anatomy, physiology and disease, and what each sequence shows. What helps:
 
 - Watch experienced technologists and ask questions.
 - Review cardiac anatomy and MRI physics regularly.

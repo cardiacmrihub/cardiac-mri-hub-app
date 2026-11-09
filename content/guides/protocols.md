@@ -4,14 +4,14 @@ shortTitle: "Protocols"
 summary: "The sequences to run, in order, for each cardiac MRI indication, from cardiomyopathy and myocarditis to stress perfusion, valves and the aorta, following the SCMR standardized protocols."
 topics: [technique]
 published: 2026-11-04
-updated: 2026-11-07
+updated: 2026-11-09
 protocols: true
 examFlow: true    # true turns on the exam-flow checklist and contrast clock in the Plan tab
 ---
 
 Each protocol lists the sequences in the order you run them, with links to how each view is planned. They follow the Society for Cardiovascular Magnetic Resonance's [standardized protocols (2020 update)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/), except amyloidosis, which those don't cover: it follows the [multisociety expert consensus on imaging cardiac amyloidosis](https://doi.org/10.1007/s12350-019-01760-6) that SCMR endorsed. Your department's protocol may differ, and it's the one to follow. Stress agents and contrast doses aren't listed here: they follow your department's protocol and the supervising physician.
 
-Every exam starts with the same localizers, listed first. The order here runs the cines before contrast; some sites give contrast earlier and run the cines while they wait for LGE. At the scanner, open the [exam flow](/flow/) to tick the steps off as you go, with a clock that starts when you inject contrast. To match how your site runs a protocol, tap **Customize** in the exam flow: hide steps, move them, add your own and rename it. For an exam that isn't here, tap **New protocol** and start blank or from a copy. Both stay on your device.
+Every exam starts with the same localizers and ends with the same close-out checks; the exam flow adds both to every protocol. The order here runs the cines before contrast; some sites give contrast earlier and run the cines while they wait for LGE. At the scanner, open the [exam flow](/flow/) to tick the steps off as you go, with a clock that starts when you inject contrast. To match how your site runs a protocol, tap **Customize** in the exam flow: hide steps, move them, add your own and rename it. For an exam that isn't here, tap **New protocol** and start blank or from a copy. Both stay on your device.
 
 # Every exam starts with
 
@@ -19,6 +19,13 @@ Every exam starts with the same localizers, listed first. The order here runs th
 2. Axial bright-blood stack of the chest
 3. Axial dark-blood stack of the chest
 4. Heart scouts
+
+# Every exam ends with
+
+1. All series sent to PACS and every other destination, such as an analysis workstation
+2. Volumes and flow measured, if techs do them at your site
+3. Notes for the reader: arrhythmia, poor breath-holds, repeats, anything skipped
+4. Contrast documented if given (agent, dose, lot), and charges entered: the exam, plus contrast and flows if run
 
 # Cardiomyopathy
 

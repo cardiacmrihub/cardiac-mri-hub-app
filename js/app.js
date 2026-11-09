@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.13.2";
+const APP_VERSION = "1.14.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -440,16 +440,18 @@ function saveFlowCustom(id, c) {
 }
 // Protocols made on the device ("+ New protocol"): prefs "flowOwn" = [{ id, name, from }]. One made from a copy
 // keeps the standard protocol it came from (from) and works like an edited copy of it; a blank one starts with the
-// localizers and a contrast step. Their steps, order and names are saved in flowCustom like any edited protocol.
+// localizers and a contrast step and ends with the close-out checks. Their steps, order and names are saved in flowCustom like any edited protocol.
 const flowOwnList = () => prefs.get("flowOwn", []);
 function blankProtocol(id, name) {
   const loc = state.data.protocols.list[0].groups.find((g) => g.label === "Localizers");
+  const end = state.data.protocols.list[0].groups.find((g) => g.label === "Close out");
   return {
     id, name, groups: [
       ...(loc ? [loc] : []),
       { label: "Before contrast", steps: [] },
       { label: "Contrast", steps: [{ key: "contrast-in", html: "Contrast injection", contrast: true, atMin: null }] },
       { label: "After contrast", steps: [] },
+      ...(end ? [end] : []),
     ],
   };
 }
@@ -652,7 +654,7 @@ function renderFlowNew(current) {
   view.innerHTML = `<div class="flow-head"><h1 class="guide-title">New protocol</h1><p class="guide-meta">For an exam your site runs that isn't here, or your own take on one that is. It stays on this device, listed under Your protocols.</p></div>` +
     `<label class="flow-select fe-name"><span>Name</span><input type="text" data-flow-new-name maxlength="60" autocomplete="off" placeholder="e.g. Athlete's heart" enterkeyhint="done"></label>` +
     `<label class="flow-select"><span>Start from</span><span class="flow-select-box"><select data-flow-new-from>` +
-    `<option value="">Blank: the localizers and a contrast step</option>` +
+    `<option value="">Blank: the localizers, a contrast step and the close-out checks</option>` +
     (own.length ? `<optgroup label="A copy of one of yours">${own.map(opt).join("")}</optgroup>` : "") +
     `<optgroup label="A copy of a standard protocol">${P.list.map(opt).join("")}</optgroup></select></span></label>` +
     `<div class="fe-foot"><button class="btn" type="button" data-action="fn-create">Create and edit</button><button class="text-btn" type="button" data-action="fn-cancel">Cancel</button></div>`;

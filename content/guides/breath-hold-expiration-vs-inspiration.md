@@ -4,6 +4,7 @@ shortTitle: "Breath-holds: end-expiration vs end-inspiration"
 summary: "Why end-expiration is the better breath-hold for cardiac MRI: fewer motion artifacts, more consistent slices and volumes, plus how compressed sensing and AI help patients who can't hold their breath."
 topics: [technique]
 published: 2026-04-12
+updated: 2026-11-09
 cover: ../images/51892d_cf70bad820124f51ababd978af849a01-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/end-expiration-vs-end-inspiration-breathing-techniques-in-cardiac-mri-what-the-evidence-reveals
 ---
@@ -46,7 +47,7 @@ This steadier diaphragm is the likely reason end-expiration images score better.
 
 # Compressed sensing and AI
 
-Compressed sensing (CS) and AI reconstruction are changing breath-holds, especially for patients who can't manage 10–15 seconds.
+Compressed sensing (CS) and AI reconstruction are changing breath-holds, especially for patients who can't manage the roughly 10-second holds of standard cines.
 
 - **Compressed sensing (CS) cines** shorten breath-holds a lot. In one study of 104 patients, a single-breath-hold CS short-axis stack took about 18 seconds of scan time instead of about 2 minutes. EF came out about 1 point lower than standard cines, a difference the authors judged negligible.[\[Wang 2024\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC10856388/)
 - **Free-breathing real-time cines** can be sorted by breathing phase after the scan, so the end-expiration heartbeats can be used without the patient holding their breath.[\[Shammi 2023\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639450/)

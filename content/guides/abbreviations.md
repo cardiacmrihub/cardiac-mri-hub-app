@@ -4,6 +4,7 @@ shortTitle: "Abbreviations"
 summary: "What the abbreviations used in these guides stand for, A to Z, with a short note on each."
 topics: [getting-started, technique]
 published: 2026-11-04
+updated: 2026-11-09
 order: 3
 glossary: true
 ---
@@ -72,7 +73,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 |---|---|---|
 | FISP | Fast imaging with steady-state precession | See TrueFISP. |
 | FOV | Field of view | |
-| FSE | Fast spin echo | Black-blood images for anatomy and tissue. Siemens calls it TSE. |
+| FSE | Fast spin echo | Black-blood images for anatomy and tissue. Siemens and Philips call it TSE. |
 
 # G
 
@@ -166,7 +167,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | TAVI | Transcatheter aortic valve implantation | Also called TAVR. |
 | TI | Inversion time | The delay after the inversion pulse, set so normal myocardium is black on LGE. |
 | TrueFISP | True fast imaging with steady-state precession | Siemens' name for bSSFP. |
-| TSE | Turbo spin echo | Siemens' name for FSE. |
+| TSE | Turbo spin echo | Siemens' and Philips' name for FSE. |
 | TV | Tricuspid valve | |
 
 # V

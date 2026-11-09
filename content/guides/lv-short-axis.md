@@ -4,7 +4,7 @@ shortTitle: "LV short-axis view"
 summary: "How to plan the left ventricle short-axis stack in cardiac MRI from the 2-chamber and 4-chamber views, for volumes, function and wall motion."
 topics: [left-ventricle]
 published: 2025-11-25
-updated: 2025-12-01
+updated: 2026-11-09
 cover: ../images/84904b_0fb77af252fa42f39cd229242c7e3929-mv2.webp
 order: 4
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-short-axis-view-comprehensive-cardiac-mri-planning-for-technologis
@@ -72,7 +72,7 @@ Each short-axis slice is a cross-section through the left ventricle (LV), right 
   - Supine, arms positioned to avoid coil artifact.
   - Check the patient can hold their breath; practice before scanning if you can.
 - **Slice thickness and resolution**
-  - Cines: 6–8 mm slices, ideally with no gap, for function.
+  - Cines: 6–8 mm slices, with or without a 2–4 mm gap, for function.
   - LGE uses the same slice thickness as the cines.
   - Use slices under 6 mm when you need higher resolution.
 - **Field of view (FOV)**

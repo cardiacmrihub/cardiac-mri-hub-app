@@ -4,13 +4,13 @@ shortTitle: "Protocol optimization tips"
 summary: "Practical ways to improve cardiac MRI protocols: match them to the clinical question, choose sequences and settings, control motion, use contrast well, and keep the workflow moving."
 topics: [technique]
 published: 2025-11-02
-updated: 2025-12-01
+updated: 2026-11-09
 cover: ../images/84904b_89d97d54a1b44f788c49d3d4889cdab3-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/tips-for-optimizing-cardiac-mri-scan-protocols
 ---
 
 
-![Eye-level view of cardiac MRI machine with patient table and coil setup](../images/84904b_89d97d54a1b44f788c49d3d4889cdab3-mv2.webp "Cardiac MRI machine setup showing patient table and coil positioning")
+![Illustration of an MRI scanner room with the patient table](../images/84904b_89d97d54a1b44f788c49d3d4889cdab3-mv2.webp "Cardiac MRI machine setup showing patient table and coil positioning")
 
 # Start with the clinical question
 
@@ -37,9 +37,9 @@ Skip sequences that add time without adding information.
 
 Slice thickness, field of view and temporal resolution all affect image quality and artifacts:
 
-- **Slice thickness:** 6–8 mm for anatomy, balanced against signal-to-noise.
+- **Slice thickness:** 6–8 mm for cines, with or without a 2–4 mm gap (10 mm in all), balanced against signal-to-noise.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
 - **Field of view:** cover the whole heart without extra area that costs scan time.
-- **Temporal resolution:** higher captures fast motion better but can lengthen the scan.
+- **Temporal resolution:** 45 ms or less between cine phases for wall motion.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/) Higher captures fast motion better but can lengthen the scan.
 
 Adjust for patient size and heart rate; faster heart rates may need shorter acquisition windows.
 
@@ -47,7 +47,7 @@ Adjust for patient size and heart rate; faster heart rates may need shorter acqu
 
 Breathing and the heartbeat both blur images. Breath-holds and ECG gating control them:
 
-- **Breath-holds:** usually 10–15 seconds per sequence.
+- **Breath-holds:** a standard segmented cine takes a breath-hold of about 10 seconds; in one study, a short-axis stack took 7–11 of them.[\[Wang 2024\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC10856388/)
 - **ECG gating:** time the images to set phases of the cardiac cycle.
 
 For patients who can't hold their breath, use free-breathing sequences with motion correction, or compressed sensing.

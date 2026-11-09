@@ -4,14 +4,14 @@ shortTitle: "Pathology resources"
 summary: "Where to learn cardiac MRI pathology: textbooks, websites, journals, case libraries, guidelines, analysis software and courses."
 topics: [technique]
 published: 2025-11-02
-updated: 2025-12-01
+updated: 2026-11-09
 cover: ../images/84904b_802631c649e8441cadc97307f2d07a95-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/key-resources-for-cardiac-mri-pathology-explained
 ---
 
 Reading cardiac MRI well means knowing what disease looks like on the images. This guide lists good places to learn it, for technologists, students and anyone else learning cardiac MRI.
 
-![Close-up view of cardiac MRI scan showing detailed heart tissue structure](../images/84904b_802631c649e8441cadc97307f2d07a95-mv2.webp "Detailed cardiac MRI scan highlighting heart tissue and pathology")
+![Illustration of a glowing heart inside an X-ray-style chest](../images/84904b_802631c649e8441cadc97307f2d07a95-mv2.webp)
 
 # What cardiac MRI pathology means
 

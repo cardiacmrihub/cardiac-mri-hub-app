@@ -4,7 +4,7 @@ shortTitle: "GRE vs TrueFISP: aortic valve artifacts"
 summary: "A case where TrueFISP banding hid a forme fruste bicuspid aortic valve that GRE showed clearly, and what to do when you see banding over the valve."
 topics: [valves, technique]
 published: 2025-11-24
-updated: 2025-12-11
+updated: 2026-11-09
 cover: ../images/84904b_9e57d49a3b9a406aaadd55e961a4f644-mv2.webp
 order: 5
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/gre-vs-true-fisp-aortic-valve-artifacts-a-case-study
@@ -28,7 +28,7 @@ The sequence you choose matters for the aortic valve. Gradient recalled echo (GR
 
 ## GRE for the aortic valve
 
-GRE gives sharp valve leaflets with few flow artifacts, which makes it a good choice for valve shape. It's especially useful when valve size has to be measured, because image quality stays consistent across the cardiac phases.
+GRE is much less prone to banding than TrueFISP, so it can show the leaflets where TrueFISP has a dark band over them. SCMR suggests GRE cine when bSSFP has significant artifact, and notes that GRE shows regurgitant jets more readily (for a qualitative look only).[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
 
 ## TrueFISP: strengths and limits
 
@@ -36,7 +36,7 @@ TrueFISP (balanced SSFP) has better blood-to-myocardium contrast and is faster. 
 
 ## Why it matters
 
-A dark band over the leaflets can hide vegetations, small perforations or calcification. That's why GRE is often preferred for dedicated aortic valve imaging, even though it takes longer.
+A dark band over the leaflets can hide vegetations, small perforations or calcification. That's why adding GRE is worth it whenever a band sits over the valve.
 
 ![SSFP systole short axis view of aortic valve with prominent dark band artifact obscuring valve leaflets](../images/51892d_db487e51500148ec97d694eccae06f5d-mv2.webp "SSFP systole aortic valve.")
 
@@ -52,17 +52,17 @@ The images above show TrueFISP (SSFP) banding completely hiding a significant va
 
 ### SSFP in systole
 
-In the SSFP systole image (upper left), a dark band runs right across the aortic valve and hides the leaflets. It comes from small field differences, and it makes the valve's shape impossible to judge. In systole, with the valve open, the abnormality is completely hidden.
+In the SSFP systole image, a dark band runs right across the aortic valve and hides the leaflets. It comes from small field differences, and it makes the valve's shape impossible to judge. In systole, with the valve open, the abnormality is completely hidden.
 
 ### SSFP in diastole
 
-The SSFP diastole image (upper right) has little artifact. But diastole alone would miss how the valve opens and its shape in systole.
+The SSFP diastole image has little artifact. But diastole alone would miss how the valve opens and its shape in systole.
 
 ### GRE shows the abnormality
 
-The GRE systole image (lower left) has no banding, and it clearly shows a forme fruste bicuspid aortic valve: the right and left coronary cusps are partly fused. The cusps never fully separated, leaving a raphe (arrow). The valve works like a three-leaflet valve but is bicuspid underneath.
+The GRE systole image has no banding, and it clearly shows a forme fruste bicuspid aortic valve: the right and left coronary cusps are partly fused. The cusps never fully separated, leaving a raphe (arrow). The valve works like a three-leaflet valve but is bicuspid underneath.
 
-The GRE diastole image (lower right) shows the closed valve without artifact and confirms the abnormal cusps in both phases.
+The GRE diastole image shows the closed valve without artifact and confirms the abnormal cusps in both phases.
 
 ## The technologist's part
 
@@ -73,20 +73,20 @@ The abnormality would have been missed completely if:
 - The images hadn't been reviewed before the patient left
 - The radiologist had received only the SSFP images
 
-A forme fruste bicuspid valve matters because it:
+What the 2021 international consensus on bicuspid valves says about this partial-fusion (forme fruste) valve:[\[Michelena 2021\]](https://doi.org/10.1016/j.athoracsur.2021.05.001)
 
-- Carries similar risks to a true bicuspid valve, including faster wear
-- Can develop aortic stenosis or regurgitation earlier than a normal three-leaflet valve
-- Needs long-term follow-up
-- Can affect when a valve is replaced
-- Is often missed on echo
+- It looks like a normal three-leaflet valve with three sinuses, with less than half of one commissure fused
+- It's usually diagnosed in systole, which is exactly when the banding hid it here
+- Echo can raise the suspicion; 3D transesophageal echo, cardiac MRI or CT confirm it
+- It has been found mostly in patients operated on for a dilated aorta, and may partly explain how often the aorta dilates with bicuspid valves
+- How common it is isn't known yet
 
 Without the decision to add GRE when banding appeared, this would have gone undetected, delaying the right follow-up.
 
 ## What to do
 
-- Use GRE as the main sequence for detailed aortic valve shape
 - Use TrueFISP for function when there's little banding
+- Add GRE for detailed aortic valve shape when TrueFISP has artifact over the valve
 - Adjust the shim and center frequency to reduce TrueFISP banding when needed
 - When banding is over the valve, always add GRE images
 - Note the sequences used and any artifacts for the report

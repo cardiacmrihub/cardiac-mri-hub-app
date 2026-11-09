@@ -4,7 +4,7 @@ shortTitle: "LV quick plan"
 summary: "A quick plan for the left ventricle in cardiac MRI: the 2-chamber, 3-chamber, 4-chamber, short-axis and coronal LVOT views, with the planning images for each."
 topics: [left-ventricle, getting-started]
 published: 2025-11-08
-updated: 2025-12-01
+updated: 2026-11-09
 cover: ../images/84904b_0fb77af252fa42f39cd229242c7e3929-mv2.webp
 order: 1
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/left-ventricle-quick-plan
@@ -28,7 +28,7 @@ Four views make up the standard LV exam:
 The basics:
 
 - **Sequences:** cines for motion, structure and shape; late gadolinium enhancement (LGE) for scar.
-- **Slice thickness and spacing:** usually 6–8 mm with no gap, adjusted for patient size and the clinical question to balance resolution and scan time.
+- **Slice thickness and spacing:** 6–8 mm, with or without a 2–4 mm gap (10 mm in all),[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/) adjusted for patient size and the clinical question to balance resolution and scan time.
 - **Timing:** ECG gating, imaging in diastole for the sharpest images.
 - **Post-processing:** 3D reconstruction where it helps the analysis.
 
@@ -81,7 +81,7 @@ The two-chamber view shows the left atrium and left ventricle, for their structu
 
 ![Two-chamber view with a planning line along the long axis from the mitral valve to the left ventricular apex](../images/51892d_26910326e5444f27b0e85828f6427f4c-mv2.webp)
 
-The images on the right and left show where the 3ch plane sits on the 2ch and 4ch.
+The planning images show where the 3-chamber plane sits on the 2-chamber and 4-chamber.
 
 # Left Ventricle Three-Chamber View Planning
 
