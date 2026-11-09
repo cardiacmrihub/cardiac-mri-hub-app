@@ -23,7 +23,7 @@ The aortic valve views show the valve and its root: a short-axis stack across th
 
 # Check it
 
-- The valve is cut straight across. A normal valve shows three cusps of about the same size when it's closed. If they look uneven or the root looks oval, the slices are tilted: angle them square to the root on the 3-chamber.
+- The valve is cut straight across. A normal valve shows three cusps of about the same size when it's closed. If they look uneven or the root looks oval, the slices are tilted: check them on the coronal aorta (Cor Ao) and angle them square to the root.
 - The stack covers the annulus, the sinus of Valsalva and the STJ.
 - In systole, a slice through the leaflet tips shows the opening. For stenosis, add the stack across the jet (Key settings).
 
@@ -33,7 +33,7 @@ The aortic valve views show the valve and its root: a short-axis stack across th
 
 ![Aortic valve short axis with the left coronary, right coronary and non-coronary cusps labelled](../images/51892d_31ff40c81a4e4325a3847f021161d345-mv2.webp "Right Coronary leaflet is next to the right ventricle and Non Coronary leaflet is next to the interatrial septum")
 
-![Cardiac MRI LVOT view showing ascending aorta, aortic root, and left ventricular outflow tract with anatomical labels](../images/51892d_02f1191859fc47c2ad8c54cc4a71d610-mv2.webp)
+![Cardiac MRI three-chamber view showing ascending aorta, aortic root, and left ventricular outflow tract with anatomical labels](../images/51892d_02f1191859fc47c2ad8c54cc4a71d610-mv2.webp)
 
 ![](../videos/51892d_87f4decc58724d9b9ee0514e85b8921a.mp4)
 

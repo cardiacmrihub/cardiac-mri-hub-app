@@ -28,7 +28,7 @@ That gives this view:
 
 ## Coronal pulmonary artery
 
-1. **On the sagittal RVOT,** run the line along the outflow tract, through the pulmonary valve and up the main pulmonary artery.
+1. **On the sagittal RVOT,** set the line perpendicular to the main pulmonary artery, as in the picture.
 
 ![Planning for coronal pulmonary view shown above.](../images/51892d_d4a3b97bbbaa4aec895c9e8fb2c0d00f-mv2.webp "Planning for coronal pulmonary view shown above.")
 
@@ -40,7 +40,7 @@ That gives this view:
 
 - The outflow tract, pulmonary valve and main pulmonary artery run up the slice in one piece.
 - On the sagittal RVOT, if the pulmonary artery drops out of the slice, the line is off its middle: re-angle it on the axial.
-- On the coronal view, if the outflow tract or valve looks narrow or cut off, re-angle the line along the outflow tract on the sagittal RVOT.
+- On the coronal view, if the main pulmonary artery or its branches look narrow or cut off, recheck that the line is perpendicular to the main pulmonary artery on the sagittal RVOT.
 
 ![Right ventricular outflow tract with an arrow on the pulmonary valve](../images/51892d_4c91a2f74a4d4c81b246ec7a46a922ec-mv2.webp)
 
