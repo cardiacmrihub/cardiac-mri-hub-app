@@ -13,17 +13,17 @@ The aortic valve views show the valve and its root: a short-axis stack across th
 
 # Plan it
 
-1. **On the 3-chamber,** place the short-axis slices across the aortic root, square to it, from the annulus through the sinus of Valsalva to the STJ.
+1. **On the 3-chamber,** find the three levels of the aortic root: the annulus, the sinus of Valsalva and the STJ.
 
 ![Three-chamber view of the aortic root with planning lines at the annulus, sinus of Valsalva and sinotubular junction (STJ)](../images/51892d_01a99db53dd74a02b2c99254fbc39308-mv2.webp)
 
-2. **On the LVOT view,** set the same stack square to the root, from the annulus to the STJ.
+2. **On the 3-chamber,** place the short-axis stack across the aortic root, square to it, from the annulus to the STJ.
 
 ![Planning for short axis stack of aortic valve from annulus to sinotubular junction (STJ).](../images/51892d_5e58096b83b04340878c8a9c80456854-mv2.webp "Planning for short axis stack of aortic valve from annulus to sinotubular junction (STJ).")
 
 # Check it
 
-- The valve is cut straight across. A normal valve shows three cusps of about the same size when it's closed. If they look uneven or the root looks oval, the slices are tilted: angle them square to the root on both views.
+- The valve is cut straight across. A normal valve shows three cusps of about the same size when it's closed. If they look uneven or the root looks oval, the slices are tilted: angle them square to the root on the 3-chamber.
 - The stack covers the annulus, the sinus of Valsalva and the STJ.
 - In systole, a slice through the leaflet tips shows the opening. For stenosis, add the stack across the jet (Key settings).
 
@@ -31,7 +31,7 @@ The aortic valve views show the valve and its root: a short-axis stack across th
 
 ![Cardiac MRI aortic valve in open position showing cusps separated during systole in short axis view](../images/51892d_057d441a9e124ae6b08035a5fcc93d56-mv2.webp "Open")
 
-![Cardiac MRI three chamber view showing left coronary cusp, right coronary cusp, and non-coronary cusp with anatomical labels](../images/51892d_31ff40c81a4e4325a3847f021161d345-mv2.webp "Right Coronary leaflet is next to the right ventricle and Non Coronary leaflet is next to the septum")
+![Aortic valve short axis with the left coronary, right coronary and non-coronary cusps labelled](../images/51892d_31ff40c81a4e4325a3847f021161d345-mv2.webp "Right Coronary leaflet is next to the right ventricle and Non Coronary leaflet is next to the interatrial septum")
 
 ![Cardiac MRI LVOT view showing ascending aorta, aortic root, and left ventricular outflow tract with anatomical labels](../images/51892d_02f1191859fc47c2ad8c54cc4a71d610-mv2.webp)
 
