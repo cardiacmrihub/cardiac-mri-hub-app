@@ -131,7 +131,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | PPM | Posterior papillary muscle | Also called the posteromedial papillary muscle. |
 | PSIR | Phase-sensitive inversion recovery | An LGE reconstruction that is less sensitive to an imperfect TI. |
 | PV | Pulmonary vein | On labelled images. Elsewhere often pulmonary valve. |
-| PW | Posterior wall | An older name for the inferolateral wall. |
+| PW | Posterior wall | An older name, no longer used. The classic posterior wall is the basal part of the inferior wall (the inferobasal segment in the AHA 17-segment model). |
 
 # R
 

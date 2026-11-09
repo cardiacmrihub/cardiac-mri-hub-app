@@ -32,7 +32,7 @@ Planning with 3 points instead? The anterior and inferior walls go on the short 
 
 ![Two-chamber view of the left atrium and left ventricle](../images/51892d_121afd70b40a4eae910c2fd81d78c6a1-mv2.webp)
 
-![LAA: Left atrial appendage, LA: Left atrium, MV: Mitral valve, AS: Anteroseptal wall, PM: Papillary muscle, IL: Inferolateral wall, LV: Left ventricle,](../images/51892d_ae944d3124b74da3be3e64934b3cbaf5-mv2.webp "LAA: Left atrial appendage, LA: Left atrium, MV: Mitral valve, AS: Anteroseptal wall, PM: Papillary muscle, IL: Inferolateral wall, LV: Left ventricle,")
+![LAA: Left atrial appendage, LA: Left atrium, MV: Mitral valve, AW: Anterior wall, PM: Papillary muscle, IW: Inferior wall, LV: Left ventricle](../images/51892d_ae944d3124b74da3be3e64934b3cbaf5-mv2.webp "LAA: Left atrial appendage, LA: Left atrium, MV: Mitral valve, AW: Anterior wall, PM: Papillary muscle, IW: Inferior wall, LV: Left ventricle")
 
 ![](../videos/84904b_59ffef1e1646461789a15c035d78a66f.mp4)
 

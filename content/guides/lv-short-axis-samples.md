@@ -65,7 +65,7 @@ The slice-level table is under More detail.
   - Use: valve shape, basal wall motion, and basal septal hypertrophy. Watch for signal dropout from partial volume.
 - **Mid-ventricle**
   - Plane: at the level of the papillary muscles.
-  - Shows: both papillary muscles in full, the mid LV wall segments (anteroseptal, lateral, inferior, anterior) and a clear border between LV and RV.
+  - Shows: both papillary muscles in full, the six mid LV wall segments (anterior, anteroseptal, inferoseptal, inferior, inferolateral, anterolateral) and a clear border between LV and RV.
   - Use: regional wall motion, the papillary muscles, LV volumes, and ischemia or infarction.
 - **Apex**
   - Plane: just above the true apex, past the mitral valve and papillary muscles.
