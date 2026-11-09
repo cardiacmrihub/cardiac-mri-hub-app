@@ -24,6 +24,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | ACC | American College of Cardiology | |
 | AFib | Atrial fibrillation | An irregular rhythm that makes ECG gating harder. |
 | AHA | American Heart Association | Also the AHA 17-segment model of the LV. |
+| AL | Anterolateral wall | On labelled images: the AHA name for the LV wall opposite the septum in the 4-chamber. Elsewhere AL often means light-chain (AL) amyloidosis. |
 | AN | Annulus | The fibrous ring a valve sits in. |
 | APM | Anterior papillary muscle | Also called the anterolateral papillary muscle. |
 | ARVC | Arrhythmogenic right ventricular cardiomyopathy | Now often called arrhythmogenic cardiomyopathy, since it can involve the LV too. |

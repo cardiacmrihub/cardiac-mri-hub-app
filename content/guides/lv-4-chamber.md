@@ -40,7 +40,7 @@ Planning with 3 points instead? The tricuspid and mitral valves go on the short 
 
 ![Four-chamber view showing the right and left atria and ventricles](../images/51892d_fc8e92f05fa5416b99e88cc73deb20d2-mv2.webp)
 
-![Left ventricle 4ch view shows the (RV) right ventricle, (RA) right atrium, (LV) left ventricle, (LA) left atrium, and (MV) mitral valve, (TV) tricuspid valve, (IVS) inter-ventricular septum, (IAS) inter-atrial septum, (DA) descending aorta, (PV) pulmonary vein, and (LW) lateral wall](../images/51892d_72d4b9597299412594bf8fe96931b379-mv2.webp "Left ventricle 4ch view shows the (RV) right ventricle, (RA) right atrium, (LV) left ventricle, (LA) left atrium, and (MV) mitral valve, (TV) tricuspid valve, (IVS) inter-ventricular septum, (IAS) inter-atrial septum, (DA) descending aorta, (PV) pulmonary vein, and (LW) lateral wall")
+![Left ventricle 4ch view shows the (RV) right ventricle, (RA) right atrium, (LV) left ventricle, (LA) left atrium, and (MV) mitral valve, (TV) tricuspid valve, (IVS) inter-ventricular septum, (IAS) inter-atrial septum, (DA) descending aorta, (PV) pulmonary vein, and (AL) anterolateral wall](../images/51892d_72d4b9597299412594bf8fe96931b379-mv2.webp "Left ventricle 4ch view shows the (RV) right ventricle, (RA) right atrium, (LV) left ventricle, (LA) left atrium, and (MV) mitral valve, (TV) tricuspid valve, (IVS) inter-ventricular septum, (IAS) inter-atrial septum, (DA) descending aorta, (PV) pulmonary vein, and (AL) anterolateral wall")
 
 ![](../videos/51892d_e0407dcbe04543a4b27b4f140b43cc33.mp4)
 

@@ -9,16 +9,16 @@
     { "guide": "lv-short-axis-samples", "images": [1, 2, 3, 6] },
     { "guide": "lv-coronal-lvot", "images": [3, 0] },
     { "guide": "rv-axial", "images": [0] },
-    { "guide": "rv-2-chamber", "images": [0, 1, 2] },
-    { "guide": "rv-inflow", "images": [0, 1, 2] },
-    { "guide": "rv-3-chamber", "images": [0, 1, 2, 3] },
-    { "guide": "rvot", "images": [0, 1, 3, 2] },
-    { "guide": "aortic-valve", "images": [2, 4, 5, 3] },
+    { "guide": "rv-2-chamber", "images": [2, 0, 1] },
+    { "guide": "rv-inflow", "images": [2, 0, 1] },
+    { "guide": "rv-3-chamber", "images": [3, 0, 1, 2] },
+    { "guide": "rvot", "images": [0, 1, 2, 3] },
+    { "guide": "aortic-valve", "images": [5, 0, 1, 4] },
     { "guide": "mitral-valve", "images": [1, 0, 2, 4] },
     { "guide": "tricuspid-valve", "images": [0, 1] },
     { "guide": "pulmonary-valve", "images": [0, 1] },
     { "guide": "atrial-short-axis", "images": [0] },
-    { "guide": "bicaval-views", "images": [0, 1, 2, 3] },
+    { "guide": "bicaval-views", "images": [3, 0, 1, 2] },
     { "guide": "thoracic-aorta", "images": [3, 1, 2, 0, 4] }
   ]
 }
