@@ -10,23 +10,41 @@ order: 4
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-short-axis-view-comprehensive-cardiac-mri-planning-for-technologis
 ---
 
-The short-axis (SAX) stack is the main way to measure the LV in cardiac MRI. The cine stack runs perpendicular to the long axis of the heart, with no gaps, from the mitral valve plane at the base to the true apex. It has to cover the whole LV so volumes are accurate at both end-diastole and end-systole.
+The short-axis (SAX) stack is the main way to measure the LV in cardiac MRI. The slices run perpendicular to the long axis of the LV, from the mitral valve plane at the base to the true apex, and cover the whole LV so volumes are accurate at both end-diastole and end-systole.
 
-# Short Axis Planning
+# Plan it
+
+1. **On the 2-chamber,** place the stack perpendicular to the long axis of the LV, from the mitral valve plane to the apex.
 
 ![Short-axis stack planned on the two-chamber view: parallel lines from the mitral valve plane to the apex](../images/51892d_9671e0be30824d109042106800875822-mv2.webp)
 
+2. **On the 4-chamber,** check the same stack: perpendicular to the long axis, covering the LV from the base to the apex.
+
 ![Short-axis stack planned on the four-chamber view: parallel lines from the base to the apex](../images/51892d_c46fc13971bb4e5ca84cc523950cef02-mv2.webp)
 
-The short axis runs perpendicular to the long axis of the left ventricle. Plan it on the 2-chamber and 4-chamber.
+# Check it
+
+- The stack covers the whole LV, from the mitral valve plane to the true apex. If the base is cut off, end-diastolic volume comes out too low: add slices at the base.
+- The slices are perpendicular to the LV long axis on both the 2-chamber and the 4-chamber. A tilted stack can make the walls look thicker than they are: replan it on both views.
+- Slices aren't too thick and gaps aren't too large, or small infarcts and areas of hypertrophy get missed. Keep to the settings below.
 
 ![Twelve short-axis cine slices covering the left ventricle from base to apex](../images/51892d_5a5aad2a43df480ebb4840d5cad6793c-mv2.webp)
 
 ![](../videos/84904b_cc049b29a63f4243a1ea7f914191f885.mp4)
 
-**Short Axis Planning**
+# Key settings
 
-**Overview:** Each short-axis slice is a cross-section through the left ventricle (LV), right ventricle (RV), interventricular septum (IVS), lateral wall (LW), anterior wall (AW), posterior wall (PW), inferoseptal wall (ISW) and papillary muscles. The stack is used for volumes, wall motion and tissue characterization, and shows a wide range of heart disease.
+- **Slice thickness:** 6–8 mm, with or without a 2–4 mm gap (10 mm in all); LGE uses the same thickness as the cines.
+- **Field of view:** 280–350 mm, adjusted to the patient.
+- **Temporal resolution:** 45 ms or less (real time 60 ms or less).
+- **Gating:** retrospective ECG gating, 25–30 phases.
+- **Breath-hold:** 8–12 seconds.
+
+The full settings table is under More detail.
+
+# More detail
+
+Each short-axis slice is a cross-section through the left ventricle (LV), right ventricle (RV), interventricular septum (IVS), lateral wall (LW), anterior wall (AW), posterior wall (PW), inferoseptal wall (ISW) and papillary muscles.
 
 # 1. What it's used for
 
@@ -55,12 +73,13 @@ The short axis runs perpendicular to the long axis of the left ventricle. Plan i
   - Check the patient can hold their breath; practice before scanning if you can.
 - **Slice thickness and resolution**
   - Cines: 6–8 mm slices, ideally with no gap, for function.
-  - High resolution or LGE: slices under 6 mm for tissue characterization.
+  - LGE uses the same slice thickness as the cines.
+  - Use slices under 6 mm when you need higher resolution.
 - **Field of view (FOV)**
   - Standard adult FOV: 280–350 mm, adjusted for body size; phase FOV ideally 75% or more.
   - Check the LV and nearby structures are covered on every slice.
 - **Timing**
-  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases).
+  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases). Temporal resolution 45 ms or less (real time 60 ms or less).
   - For tissue characterization, target mid-diastole or the phase with the least motion.
 - **Common pitfalls**
   - Base not fully included: end-diastolic volume comes out too low.
@@ -129,4 +148,3 @@ The short axis runs perpendicular to the long axis of the left ventricle. Plan i
 | Contrast | Gadolinium for LGE 10 mins post (delay timing will depend on dose and if stress/rest perfusion performed). Precise timing of TI needed to null myocardium. |
 | Immobilization | Supine, coil centered over heart. |
 | Breath-hold | 8-12 sec preferred. |
-

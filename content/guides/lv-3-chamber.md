@@ -10,25 +10,47 @@ order: 6
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-3-chamber-view-comprehensive-cardiac-mri-planning-for-technologist
 ---
 
-The left ventricle three-chamber (LV 3ch) view shows the LV outflow tract (LVOT), the mitral and aortic valves, and how the left ventricle joins the ascending aorta. It's planned after the 2ch and 4ch, and it's the view for valve disease, outflow obstruction and the basal walls.
+The left ventricle three-chamber (LV 3ch) view shows the LV, left atrium, mitral and aortic valves, the LV outflow tract (LVOT) and the ascending aorta in one plane. It's planned after the 2ch and 4ch, and it's the view for valve disease, outflow obstruction and the basal walls.
 
-# 3 Chamber Planning
+# Plan it
+
+1. **On the basal short axis,** draw the line through the middle of the LVOT and the mitral valve.
+
+![Line planned on basal short axis view showing superior portion of left ventricle and inferior portion of left atrium, bisecting left ventricular outflow tract.](../images/51892d_e49ca3ec025840108c294b26b11a54e3-mv2.webp "Line planned on basal short axis view showing superior portion of left ventricle and inferior portion of left atrium, bisecting left ventricular outflow tract.")
+
+2. **On the 4-chamber,** angle the line through the middle of the mitral valve and the LV apex.
+
+![Four-chamber view with a planning line through the center of the mitral valve and the left ventricular apex](../images/51892d_fa3cc5646296400fbd8abd1a2ffc43d4-mv2.webp)
+
+3. **On the 2-chamber,** check the line runs along the long axis, from the mitral valve to the apex.
+
+![Two-chamber view with a planning line along the long axis from the mitral valve to the left ventricular apex](../images/51892d_26910326e5444f27b0e85828f6427f4c-mv2.webp)
+
+Planning with 3 points instead? The mitral valve and aortic root go on the short axis and the apex on the 2-chamber: see the box above.
+
+# Check it
+
+- The mitral valve, aortic valve, LVOT and aortic root are all in the slice, with the LV and LA.
+- The LV is at full length, with the true apex in the slice. If the LV looks short, the plane is foreshortened: recheck it on the 4-chamber and 2-chamber.
+- The LVOT and aortic valve are cut through the middle. If the valve or root looks narrow or clipped, the line is off center; replan it on the basal short axis.
 
 ![Three-chamber view showing the left atrium, left ventricle, outflow tract and aortic valve](../images/51892d_86dcc820732e47fe89314f1f03aac0e8-mv2.webp)
 
 ![Left ventricle 3ch view shows left atrium, left ventricle, right ventricle, aortic root, aortic valve, left ventricular outflow tract, mitral valve, and the anteroseptal and inferolateral walls of the left ventricle.](../images/51892d_e216bc1c942d4cb795f037587695c491-mv2.webp "Left ventricle 3ch view shows left atrium, left ventricle, right ventricle, aortic root, aortic valve, left ventricular outflow tract, mitral valve, and the anteroseptal and inferolateral walls of the left ventricle.")
 
-![Line planned on basal short axis view showing superior portion of left ventricle and inferior portion of left atrium, bisecting left ventricular outflow tract.](../images/51892d_e49ca3ec025840108c294b26b11a54e3-mv2.webp "Line planned on basal short axis view showing superior portion of left ventricle and inferior portion of left atrium, bisecting left ventricular outflow tract.")
-
-![Four-chamber view with a planning line through the center of the mitral valve and the left ventricular apex](../images/51892d_fa3cc5646296400fbd8abd1a2ffc43d4-mv2.webp)
-
-![Two-chamber view with a planning line along the long axis from the mitral valve to the left ventricular apex](../images/51892d_26910326e5444f27b0e85828f6427f4c-mv2.webp)
-
-The images on the right and left show where the 3ch plane sits on the 2ch and 4ch.
-
 ![](../videos/84904b_0b1c4917da09493dbfcba8e81b633ea6.mp4)
 
-**Overview:** The 3ch view shows the LV, LA, mitral valve, aortic valve, LVOT and ascending aorta in one plane. It's used for valve disease, outflow gradients and regional wall motion.
+# Key settings
+
+- **Slice thickness:** 6–8 mm; LGE uses the same thickness as the cines.
+- **Field of view:** 280–350 mm, adjusted to the patient.
+- **Temporal resolution:** 45 ms or less (real time 60 ms or less).
+- **Gating:** retrospective ECG gating, 25–30 phases.
+- **Breath-hold:** 8–12 seconds.
+
+The full settings table is under More detail.
+
+# More detail
 
 # 1. What it's used for
 
@@ -53,12 +75,13 @@ The images on the right and left show where the 3ch plane sits on the 2ch and 4c
   - Check the patient can hold their breath; practice before scanning if you can.
 - **Slice thickness and resolution**
   - Cines: 6–8 mm slices balance detail and SNR.
-  - High resolution (LGE or valves): slices under 6 mm when you need tissue characterization.
+  - LGE uses the same slice thickness as the cines.
+  - Use slices under 6 mm when you need higher resolution, for example for the valves.
 - **Field of view (FOV)**
   - Standard adult FOV: 280–350 mm, adjusted for body size.
   - Make sure the LV, LA, the whole LVOT and the aortic root are in the image, without extra space that lowers detail.
 - **Timing**
-  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases).
+  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases). Temporal resolution 45 ms or less (real time 60 ms or less).
   - For tissue characterization, target mid-diastole or the phase with the least motion.
 - **Common pitfalls**
   - Check the plane on the 4ch and 2ch every time. An oblique slice can hide disease and makes follow-up scans hard to compare.
@@ -127,4 +150,3 @@ The images on the right and left show where the 3ch plane sits on the 2ch and 4c
 | Contrast | Gadolinium for LGE 10 mins post (delay timing will depend on dose and if stress/rest perfusion performed). Precise timing of TI needed to null myocardium. |
 | Immobilization | Supine, coil centered over heart. |
 | Breath-hold | 8-12 sec preferred. |
-

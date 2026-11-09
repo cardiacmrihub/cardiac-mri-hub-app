@@ -442,7 +442,9 @@ function foldMoreDetail(html) {
   if (!m) return html;
   const rest = html.slice(m.index + m[0].length);
   const sections = (rest.match(/<h2[ >]/g) || []).length;
-  const hint = sections ? `${sections} more ${sections === 1 ? "section" : "sections"}${/<table/.test(rest) ? ", with the full settings table" : ""}` : "";
+  // Only a "… Settings" table is called the settings table (the short-axis samples end with a slice-level table).
+  const table = !/<table/.test(rest) ? "" : /<h2[^>]*>[^<]*settings/i.test(rest) ? ", with the full settings table" : ", with a summary table";
+  const hint = sections ? `${sections} more ${sections === 1 ? "section" : "sections"}${table}` : "";
   return `${html.slice(0, m.index)}<details class="more-detail" id="more-detail"><summary><span class="more-title">More detail</span>${hint ? `<span class="more-hint">${hint}</span>` : ""}</summary>${rest}</details>`;
 }
 

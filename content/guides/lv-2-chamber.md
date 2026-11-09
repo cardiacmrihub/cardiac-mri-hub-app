@@ -10,20 +10,43 @@ order: 2
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-two-chamber-view-comprehensive-cardiac-mri-planning-for-technologi
 ---
 
+The left ventricle two-chamber (LV 2ch) view shows the left atrium, mitral valve and left ventricle, with the anterior and inferior walls. It's used for function, ischemia and infarction, and tissue characterization.
 
-# 2 Chamber Planning
+# Plan it
+
+1. **On the 4-chamber,** draw the line through the middle of the mitral valve and the LV apex.
+
+![Line bisects mitral valve and apex on 4ch view.](../images/51892d_fa3cc5646296400fbd8abd1a2ffc43d4-mv2.webp "Line bisects mitral valve and apex on 4ch view.")
+
+2. **On the mid short axis,** run the line through the middle of the LV, parallel to the interventricular septum.
+
+![Line is parallel to ventricular septum going through mid LV on short axis view.](../images/51892d_b83f7770c35c4f4ba168d8ca5f7b17d3-mv2.webp "Line is parallel to ventricular septum going through mid LV on short axis view.")
+
+Planning with 3 points instead? The anterior and inferior walls go on the short axis and the apex on a sagittal localizer or the 4-chamber: see the box above.
+
+# Check it
+
+- The LA, mitral valve and LV are in the slice, with the anterior wall on one side and the inferior wall on the other.
+- The LV is at full length, with the true apex in the slice. If the LV looks short, the plane is foreshortened: recheck it on the 4-chamber.
+- No septum or RV in the slice. If you see them, the line isn't parallel to the septum; straighten it on the mid short axis.
 
 ![Two-chamber view of the left atrium and left ventricle](../images/51892d_121afd70b40a4eae910c2fd81d78c6a1-mv2.webp)
 
 ![LAA: Left atrial appendage, LA: Left atrium, MV: Mitral valve, AS: Anteroseptal wall, PM: Papillary muscle, IL: Inferolateral wall, LV: Left ventricle,](../images/51892d_ae944d3124b74da3be3e64934b3cbaf5-mv2.webp "LAA: Left atrial appendage, LA: Left atrium, MV: Mitral valve, AS: Anteroseptal wall, PM: Papillary muscle, IL: Inferolateral wall, LV: Left ventricle,")
 
-![Line bisects mitral valve and apex on 4ch view.](../images/51892d_fa3cc5646296400fbd8abd1a2ffc43d4-mv2.webp "Line bisects mitral valve and apex on 4ch view.")
-
-![Line is parallel to ventricular septum going through mid LV on short axis view.](../images/51892d_b83f7770c35c4f4ba168d8ca5f7b17d3-mv2.webp "Line is parallel to ventricular septum going through mid LV on short axis view.")
-
 ![](../videos/84904b_59ffef1e1646461789a15c035d78a66f.mp4)
 
-**Overview:** The left ventricle two-chamber (LV 2ch) view shows the left atrium, left ventricle, mitral valve and the anterior and inferior walls. It's used for measuring function and for assessing ischemia, infarction and tissue characterization.
+# Key settings
+
+- **Slice thickness:** 6–8 mm; LGE uses the same thickness as the cines.
+- **Field of view:** 280–350 mm, adjusted to the patient.
+- **Temporal resolution:** 45 ms or less (real time 60 ms or less).
+- **Gating:** retrospective ECG gating, 25–30 phases.
+- **Breath-hold:** 8–12 seconds.
+
+The full settings table is under More detail.
+
+# More detail
 
 # 1. What it's used for
 
@@ -49,12 +72,13 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-
   - Check the patient can hold their breath; practice before scanning if you can.
 - **Slice thickness and resolution**
   - Cines: 6–8 mm slices balance resolution and SNR.
-  - High resolution or LGE: slices under 6 mm for tissue characterization (for example LGE and fibrosis).
+  - LGE uses the same slice thickness as the cines.
+  - Use slices under 6 mm when you need higher resolution.
 - **Field of view (FOV)**
   - Standard adult FOV: 280–350 mm, adjusted for body size.
   - Include the whole length of the LV and the LA, without extra tissue outside the area of interest.
 - **Timing**
-  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases).
+  - Retrospective ECG gating to cover the whole cardiac cycle (25–30 phases). Temporal resolution 45 ms or less (real time 60 ms or less).
   - For tissue characterization, target mid-diastole or the phase with the least motion.
 - **Common pitfalls**
   - Check the plane on the 4ch and short axis so it runs parallel to the interventricular septum.
@@ -123,4 +147,3 @@ sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-
 | Contrast | Gadolinium for LGE 10 mins post (delay timing will depend on dose and if stress/rest perfusion performed). Precise timing of TI needed to null myocardium |
 | Immobilization | Supine, coil centered over heart. |
 | Breath-hold | 8-12 sec preferred. |
-

@@ -10,43 +10,43 @@ order: 7
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-coronal-aortic-outflow-tract-view-comprehensive-cardiac-mri-planni
 ---
 
-The coronal left ventricle outflow tract (LVOT) view runs through the LVOT, aortic valve and ascending aorta. It's used for valve disease, hypertrophic cardiomyopathy, congenital heart disease and planning procedures. This guide covers how to plan it, the settings, and what it's used for.
+The coronal left ventricle outflow tract (LVOT) view runs through the LVOT, aortic valve and ascending aorta. It's used for valve disease, hypertrophic cardiomyopathy, congenital heart disease and planning procedures.
 
-# Coronal Aortic (LVOT) Planning
+# Plan it
+
+1. **On the 3-chamber,** draw the line straight up the middle of the LVOT, through the aortic valve and along the ascending aorta.
+
+![Long-axis view with a planning line through the aortic valve and ascending aorta for the coronal LVOT view](../images/51892d_bead9384447e419298b3eeed86f1673a-mv2.webp)
+
+That line gives this view:
+
+![Resulting coronal LVOT view showing the outflow tract, aortic valve and ascending aorta](../images/51892d_95c7836cf4b34838918f3a56f87ca0be-mv2.webp)
+
+# Check it
+
+- The LV cavity, LVOT, aortic valve and ascending aorta are all in the slice, up past the sinotubular junction.
+- The outflow tract and aortic valve are cut through the middle, at their widest. If they look narrow or the valve looks short, the line is off center: recheck it on the 3-chamber.
+- The ascending aorta stays in the slice. If it runs out of the image, angle the line along the aorta on the 3-chamber.
 
 ![Coronal view of the left ventricular outflow tract, aortic valve and ascending aorta](../images/51892d_54e4e9776e804226b7ebfc80182fc74b-mv2.webp)
 
 ![Annotated coronal aortic LVOT view showing key anatomical structures.](../images/51892d_38126704480c4290ac8359e2214c547d-mv2.webp "Annotated coronal aortic LVOT view showing key anatomical structures.")
 
-AA: Ascending aorta
-
-PA: Pulmonary artery
-
-STJ: Sino-tubular junction
-
-AV: Aortic valve
-
-AN: Annulus
-
-LVOT: Left Ventricular Outflow Tract
-
-RV: Right Ventricle
-
-LV: Left Ventricle
-
-APM: Anterior papillary muscle
-
-PPM: Posterior papillary muscle
-
-![Long-axis view with a planning line through the aortic valve and ascending aorta for the coronal LVOT view](../images/51892d_bead9384447e419298b3eeed86f1673a-mv2.webp)
-
-![Resulting coronal LVOT view showing the outflow tract, aortic valve and ascending aorta](../images/51892d_95c7836cf4b34838918f3a56f87ca0be-mv2.webp)
-
-The line on the left shows the planning for the coronal aortic view, through the aortic valve and ascending aorta. The resulting view is on the right.
+AA: ascending aorta; PA: pulmonary artery; STJ: sinotubular junction; AV: aortic valve; AN: annulus; LVOT: left ventricular outflow tract; RV: right ventricle; LV: left ventricle; APM: anterior papillary muscle; PPM: posterior papillary muscle.
 
 ![Coronal LVOT cine shown above.](../videos/84904b_f6bdb7fd84ad4c18882dca66d52b6921.mp4 "Coronal LVOT cine shown above.")
 
-**Overview:** The coronal LVOT view shows the LV outflow tract, aortic valve and aortic root, and how the outflow tract sits against the surrounding myocardium.
+# Key settings
+
+- **Slice thickness:** 6–8 mm; LGE uses the same thickness as the cines.
+- **Field of view:** 280–350 mm, adjusted to the patient.
+- **Temporal resolution:** 45 ms or less (real time 60 ms or less).
+- **Gating:** retrospective ECG gating, 25–30 phases.
+- **Breath-hold:** 8–12 seconds.
+
+The full settings table is under More detail.
+
+# More detail
 
 # 1. What it's used for
 
@@ -75,12 +75,13 @@ The line on the left shows the planning for the coronal aortic view, through the
   - Check the patient can hold their breath; practice before scanning if you can.
 - **Slice thickness and resolution**
   - Cines: 6–8 mm slices for chamber and valve motion.
-  - High resolution or LGE: under 6 mm for tissue characterization when the outflow tract is abnormal.
+  - LGE uses the same slice thickness as the cines.
+  - Use slices under 6 mm when you need higher resolution, for example when the outflow tract is abnormal.
 - **Field of view (FOV)**
   - Standard adult FOV: 280–350 mm, covering the LV, LVOT and ascending aorta.
   - Check the left ventricle, LVOT and ascending aorta are all in the image, without extra space that lowers detail.
 - **Timing**
-  - Retrospective ECG gating (25–30 phases) to see the outflow tract move.
+  - Retrospective ECG gating (25–30 phases) to see the outflow tract move. Temporal resolution 45 ms or less (real time 60 ms or less).
   - For tissue characterization, target mid-diastole or the phase with the least motion.
 - **Common pitfalls**
   - Valve measurements come out short if the slice isn't through the true apex and the center of the aortic valve. Check the angle.
@@ -150,4 +151,3 @@ The line on the left shows the planning for the coronal aortic view, through the
 | Contrast | Gadolinium for LGE 10 mins post (delay timing will depend on dose and if stress/rest perfusion performed). Precise timing of TI needed to null myocardium. |
 | Immobilization | Supine, coil centered over heart. |
 | Breath-hold | 8-12 sec preferred. |
-
