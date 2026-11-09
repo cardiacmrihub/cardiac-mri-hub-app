@@ -33,7 +33,7 @@ Every exam starts with the same localizers and ends with the same close-out chec
 
 1. Cine [2-chamber](/guide/lv-2-chamber/), [3-chamber](/guide/lv-3-chamber/) and [4-chamber](/guide/lv-4-chamber/)
 2. Cine [short-axis stack](/guide/lv-short-axis/), base to apex
-3. Cine 4-chamber stack
+3. Cine 4-chamber stack (optional)
 4. T1 map: [short-axis samples](/guide/lv-short-axis-samples/) (base, mid, apex). See [MOLLI maps](/guide/molli-maps/).
 5. T2 map: short-axis samples
 
@@ -46,7 +46,7 @@ Every exam starts with the same localizers and ends with the same close-out chec
 1. TI scout, 10 minutes after contrast. See [choosing the TI time](/guide/psir-ti-time/).
 2. LGE PSIR: 2-, 3- and 4-chamber
 3. LGE PSIR: short-axis stack
-4. LGE PSIR: 4-chamber stack
+4. LGE PSIR: 4-chamber stack (optional)
 5. T1 map: short-axis samples, 15 minutes after contrast, for ECV (optional)
 
 # Myocarditis
