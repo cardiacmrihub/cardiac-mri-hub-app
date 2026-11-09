@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.7.1";
+const APP_VERSION = "1.8.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -627,7 +627,7 @@ function renderFlowEdit(p) {
       : `<div class="fe-add"><button class="text-btn" type="button" data-action="fe-add-open" data-g="${gi}">+ Add a step here</button></div>`;
     return `${g.label ? `<h2 class="flow-group">${esc(g.label)}</h2>` : ""}<ol class="fe-list">${rows || `<li class="fe-empty">No steps here</li>`}</ol>${add}`;
   }).join("");
-  view.innerHTML = `<div class="flow-head fe-head"><div><h1 class="guide-title">${esc(p.own ? p.name : p.base.name)}</h1><p class="guide-meta">Your version stays on this device. Untick steps you don't run, move steps with the arrows, and add your own. To time a step you add, word it like "15 minutes after contrast".</p></div><button class="btn" type="button" data-action="fe-done">Done</button></div>` +
+  view.innerHTML = `<div class="flow-head fe-head"><div><h1 class="guide-title">${esc(p.own ? p.name : p.base.name)}</h1><p class="guide-meta">Your version stays on this device (back it up in <a href="${link.settings}#your-protocols">Settings</a>). Untick steps you don't run, move steps with the arrows, and add your own. To time a step you add, word it like "15 minutes after contrast".</p></div><button class="btn" type="button" data-action="fe-done">Done</button></div>` +
     `<label class="flow-select fe-name"><span>${p.own ? "Name" : "Name on this device"}</span><input type="text" data-flow-name value="${esc(p.name)}" placeholder="${esc(p.base.name)}" maxlength="60" autocomplete="off"></label>` +
     groups +
     `<div class="fe-foot"><button class="btn" type="button" data-action="fe-done">Done</button>${p.own
@@ -737,6 +737,95 @@ function renderSaved() {
     : `<div class="empty"><h2>Nothing saved yet</h2><p>Tap the bookmark at the top of any guide to keep it here for quick access at the scanner.</p><a class="btn secondary" href="${link.home}">Browse guides</a></div>`;
 }
 
+// ---------- Back up and restore protocols (Settings) ----------
+// The file holds what the exam flow keeps on this device: protocols made here, versions of the standard ones and
+// changed step times. Restoring adds the file's protocols; where the file and this device both changed the same
+// protocol, the file's version wins. The same file moves a setup to a new phone or to a coworker.
+const BACKUP_KIND = "cardiac-mri-hub-protocols";
+function protocolCounts() {
+  const own = flowOwnList().length;
+  const edited = Object.keys(flowCustomAll()).filter((id) => state.data?.protocols?.list.some((x) => x.id === id)).length;
+  return { own, edited };
+}
+const countOf = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+function protocolSummary({ own, edited }) {
+  if (!own && !edited) return "Nothing to back up yet. Protocols you change or make in the exam flow (Customize, New protocol) show up here.";
+  const parts = [];
+  if (own) parts.push(countOf(own, "protocol you made", "protocols you made"));
+  if (edited) parts.push(countOf(edited, "standard protocol you changed", "standard protocols you changed"));
+  return `On this device: ${parts.join(" and ")}.`;
+}
+async function backupProtocols() {
+  const data = {
+    kind: BACKUP_KIND, version: 1, exported: new Date().toISOString(), app: APP_VERSION,
+    flowOwn: flowOwnList(), flowCustom: flowCustomAll(), flowTimes: prefs.get("flowTimes", {}),
+  };
+  const d = new Date();
+  const day = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const name = `cardiac-mri-hub-protocols-${day}.json`;
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  // On phones the share sheet can save it to Files, AirDrop it or email it; elsewhere the file downloads.
+  try {
+    const file = new File([blob], name, { type: "application/json" });
+    if (navigator.canShare?.({ files: [file] })) {
+      await navigator.share({ files: [file], title: "Cardiac MRI Hub protocols" });
+      return;
+    }
+  } catch (e) {
+    if (e?.name === "AbortError") return;
+  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+  toast("Backup saved");
+}
+// Checks a backup file and merges it in. Returns counts, or a message saying why it can't be used.
+function restoreProtocols(text) {
+  let d;
+  try { d = JSON.parse(text); } catch { return "That file isn't a Cardiac MRI Hub protocols backup."; }
+  if (d?.kind !== BACKUP_KIND) return "That file isn't a Cardiac MRI Hub protocols backup.";
+  const std = new Set(state.data.protocols.list.map((x) => x.id));
+  const isObj = (x) => !!x && typeof x === "object" && !Array.isArray(x);
+  const own = (Array.isArray(d.flowOwn) ? d.flowOwn : [])
+    .filter((o) => isObj(o) && /^own-[a-z0-9]+$/.test(o.id) && typeof o.name === "string" && o.name.trim())
+    .slice(0, 100)
+    .map((o) => ({ id: o.id, name: o.name.trim().slice(0, 60), from: std.has(o.from) ? o.from : null }));
+  const ownIds = new Set(own.map((o) => o.id));
+  const known = (id) => std.has(id) || ownIds.has(id);
+  const custom = {};
+  for (const [id, c] of Object.entries(isObj(d.flowCustom) ? d.flowCustom : {})) {
+    if (!known(id) || !isObj(c)) continue;
+    const keys = (a) => (Array.isArray(a) ? a.filter((k) => typeof k === "string").slice(0, 300) : []);
+    const v = {};
+    if (typeof c.name === "string" && c.name.trim()) v.name = c.name.trim().slice(0, 60);
+    if (Array.isArray(c.hidden)) v.hidden = keys(c.hidden);
+    if (isObj(c.added)) {
+      v.added = Object.fromEntries(Object.entries(c.added)
+        .filter(([k, t]) => /^c[a-z0-9]+$/.test(k) && typeof t === "string" && t.trim())
+        .slice(0, 300).map(([k, t]) => [k, t.trim().slice(0, 140)]));
+    }
+    if (Array.isArray(c.layout)) {
+      v.layout = c.layout.filter(isObj).slice(0, 40)
+        .map((g) => ({ label: typeof g.label === "string" ? g.label.slice(0, 60) : "", keys: keys(g.keys) }));
+    }
+    custom[id] = v;
+  }
+  const times = {};
+  for (const [k, m] of Object.entries(isObj(d.flowTimes) ? d.flowTimes : {})) {
+    if (known(k.split(":")[0]) && Number.isInteger(m) && m >= FLOW_MIN && m <= FLOW_MAX) times[k] = m;
+  }
+  if (!own.length && !Object.keys(custom).length) return "That backup doesn't have any protocols in it.";
+  prefs.set("flowOwn", [...flowOwnList().filter((o) => !ownIds.has(o.id)), ...own]);
+  prefs.set("flowCustom", { ...flowCustomAll(), ...custom });
+  prefs.set("flowTimes", { ...prefs.get("flowTimes", {}), ...times });
+  return { own: own.length, edited: Object.keys(custom).filter((id) => std.has(id)).length };
+}
+
 function renderSettings() {
   setTopbar(`${backButton()}<h1 class="topbar-title">Settings</h1>`);
   const seg = (name, current, options) =>
@@ -763,6 +852,10 @@ function renderSettings() {
     </section>
     <section class="setting"><h2>Text size</h2><p>Applies across the app: guides, lists, the exam flow and Quick plan captions. The <strong>Aa</strong> button at the top of a guide changes it too.</p>${seg("text", prefs.get("text", "m"), [["s", "Small"], ["m", "Medium"], ["l", "Large"], ["xl", "Largest"]])}</section>
     <section class="setting"><h2>Appearance</h2><p>Dark is easier on the eyes in a dim control room.</p>${seg("theme", prefs.get("theme", "system"), [["system", "Match device"], ["light", "Light"], ["dark", "Dark"]])}</section>
+    ${state.data?.protocols?.flow ? `<section class="setting" id="your-protocols"><h2>Your protocols</h2><p>${esc(protocolSummary(protocolCounts()))}</p>
+      <p>Back up saves a file of the protocols you've made and your versions of the standard ones. Restore loads that file on a new phone, after reinstalling the app, or from a coworker. Restoring adds the file's protocols; if you and the file both changed the same protocol, the file's version replaces yours.</p>
+      <div class="btn-row"><button class="btn" data-action="backup-protocols"${protocolCounts().own || protocolCounts().edited ? "" : " disabled"}>Back up my protocols</button><button class="btn secondary" data-action="restore-protocols">Restore from a file</button></div>
+      <input type="file" accept=".json,application/json" data-restore hidden></section>` : ""}
     <section class="setting"><h2>Install</h2>${install}</section>
     <section class="setting"><h2>Check for new guides</h2><p>${state.data ? `Guides last updated ${fmtDate(state.data.generatedAt)}.` : ""}</p><button class="btn secondary" data-action="refresh">Check now</button></section>
     ${aboutHtml()}`;
@@ -1000,6 +1093,13 @@ document.addEventListener("click", async (e) => {
       renderFlow();
       break;
     }
+    // ----- Back up and restore (Settings) -----
+    case "backup-protocols":
+      backupProtocols();
+      break;
+    case "restore-protocols":
+      $("input[data-restore]")?.click();
+      break;
     // ----- New protocol -----
     case "fn-open":
       state.flowNew = true;
@@ -1231,8 +1331,23 @@ document.addEventListener("keydown", (e) => {
   if (e.target.closest?.("input[data-flow-new-name]")) { e.preventDefault(); createFlowProtocol(); }
 });
 
-document.addEventListener("change", (e) => {
+document.addEventListener("change", async (e) => {
   if (e.target.closest?.("input[data-flow-name]")) { saveFlowName(); return; }
+  const restore = e.target.closest?.("input[data-restore]");
+  if (restore) {
+    const file = restore.files?.[0];
+    restore.value = "";
+    if (!file) return;
+    if (file.size > 1_000_000) { toast("That file is too large to be a protocols backup."); return; }
+    const r = restoreProtocols(await file.text());
+    if (typeof r === "string") { toast(r); return; }
+    const parts = [];
+    if (r.own) parts.push(countOf(r.own, "protocol", "protocols"));
+    if (r.edited) parts.push(countOf(r.edited, "changed standard protocol", "changed standard protocols"));
+    toast(`Restored ${parts.join(" and ")}`);
+    renderSettings();
+    return;
+  }
   const sel = e.target.closest?.("select[data-flow-pick]");
   if (!sel) return;
   saveFlow({ protocol: sel.value, done: [], contrastAt: null });

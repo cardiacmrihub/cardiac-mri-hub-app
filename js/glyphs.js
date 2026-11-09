@@ -5,6 +5,9 @@ const wrap = (body, label = "") =>
   `<svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"${label ? ` role="img" aria-label="${label}"` : ' aria-hidden="true"'}>${body}</svg>`;
 
 const SHAPES = {
+  // Artifact: a short-axis ring, its faint ghost copy, and a wavy amber band across it.
+  artifact: `<circle cx="21" cy="22" r="10"/><circle cx="31" cy="22" r="10" opacity=".35" stroke-dasharray="3 4"/>
+       <path class="plan" d="M6 39c4-4 8-4 12 0s8 4 12 0 8-4 12 0"/>`,
   // Short-axis ring: LV myocardium seen end-on, RV crescent alongside.
   sax: `<circle cx="27" cy="24" r="12"/><circle cx="27" cy="24" r="6.5"/>
         <path d="M15.5 15.5c-4.6 2.2-7 6-7 9.5s2.4 6.7 7 8.5" opacity=".55"/>

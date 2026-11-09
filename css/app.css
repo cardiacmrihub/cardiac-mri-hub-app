@@ -329,6 +329,7 @@ h2.section small { font: 400 calc(14px * var(--ts))/1 var(--font-body); color: v
 .setting:last-child { border-bottom: 0; }
 .setting h2 { font: 600 calc(19px * var(--ts))/1.2 var(--font-title); margin: 0 0 6px; }
 .setting p { margin: 0 0 12px; color: var(--ink-2); font-size: calc(15px * var(--ts)); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 12px; padding: 3px; background: var(--surface); }
 .seg button {
   appearance: none; border: 0; background: none; cursor: pointer; border-radius: 9px;
