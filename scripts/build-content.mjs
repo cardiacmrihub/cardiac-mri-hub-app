@@ -250,7 +250,7 @@ function markdownToHtml(md, ctx) {
       while (i < lines.length) {
         const l = lines[i];
         const m = l.match(listRe);
-        if (m) { items.push({ indent: m[1].replace(/\t/g, "    ").length, ordered: /\d/.test(m[2]), text: m[3] }); i++; continue; }
+        if (m) { items.push({ indent: m[1].replace(/\t/g, "    ").length, ordered: /\d/.test(m[2]), start: parseInt(m[2], 10), text: m[3] }); i++; continue; }
         if (!isBlank(l) && /^\s+\S/.test(l) && items.length) { items[items.length - 1].text += " " + l.trim(); i++; continue; }
         break;
       }
@@ -280,7 +280,8 @@ function renderList(items, ctx) {
     if (!top || it.indent > top.indent) {
       const tag = it.ordered ? "ol" : "ul";
       stack.push({ indent: it.indent, tag });
-      html += `<${tag}><li>`;
+      // A numbered list that picks up after an image ("2. …") keeps counting from where it left off.
+      html += `<${tag}${it.ordered && it.start > 1 ? ` start="${it.start}"` : ""}><li>`;
     } else {
       html += `</li><li>`;
     }
@@ -326,7 +327,7 @@ for (const f of files) {
 
   const ctx = { file: f, images: new Set(), videos: new Set(), headings: [], figures: [], section: "" };
   bodies.set(data.slug || basename(f, ".md"), body);
-  const html = markdownToHtml(body, ctx);
+  const html = foldMoreDetail(markdownToHtml(body, ctx));
   const text = toText(html);
   const words = text.split(" ").filter(Boolean).length;
   const guideTopics = [].concat(data.topics || data.topic || []);
@@ -433,6 +434,18 @@ for (const g of guides) {
 // ---------- Abbreviations ----------
 // Every table row in the guide marked `glossary: true` (Abbreviation | Stands for | Notes). Search shows
 // the meaning when someone types an abbreviation on its own.
+// A "# More detail" heading folds everything after it into a closed section, so a guide can open with the
+// steps a tech needs at the console and keep the background a tap away. The section keeps the heading's id, so
+// "In this guide" links still reach it (the app opens it on the way).
+function foldMoreDetail(html) {
+  const m = /<h2 id="more-detail">More detail<\/h2>/.exec(html);
+  if (!m) return html;
+  const rest = html.slice(m.index + m[0].length);
+  const sections = (rest.match(/<h2[ >]/g) || []).length;
+  const hint = sections ? `${sections} more ${sections === 1 ? "section" : "sections"}${/<table/.test(rest) ? ", with the full settings table" : ""}` : "";
+  return `${html.slice(0, m.index)}<details class="more-detail" id="more-detail"><summary><span class="more-title">More detail</span>${hint ? `<span class="more-hint">${hint}</span>` : ""}</summary>${rest}</details>`;
+}
+
 let glossary = null;
 // The first use of each abbreviation in a guide becomes <abbr title data-abbr>: a hover shows the meaning, and in
 // the app a tap opens it with the note. Links, headings, captions and code are left alone, and abbreviations with

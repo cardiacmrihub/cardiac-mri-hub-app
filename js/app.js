@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.9.1";
+const APP_VERSION = "1.10.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -943,9 +943,14 @@ function showRoute(scrollY) {
   scrollToHashTarget();
 }
 // Addresses like /topics/#all open at that part of the page.
+// Opens any folded section (More detail) that holds the element, so a link into it lands on something visible.
+function reveal(el) {
+  for (let d = el?.closest("details"); d; d = d.parentElement?.closest("details")) d.open = true;
+  return el;
+}
 function scrollToHashTarget() {
   if (location.hash.length > 1 && !location.hash.startsWith("#/")) {
-    document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({ block: "start" });
+    reveal(document.getElementById(decodeURIComponent(location.hash.slice(1))))?.scrollIntoView({ block: "start" });
   }
 }
 
@@ -1006,7 +1011,7 @@ document.addEventListener("click", async (e) => {
   const jump = e.target.closest("[data-jump]");
   if (jump) {
     e.preventDefault();
-    document.getElementById(jump.dataset.jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    reveal(document.getElementById(jump.dataset.jump))?.scrollIntoView({ behavior: "smooth", block: "start" });
     return;
   }
   // Links to the app's own pages change the view in place instead of reloading.

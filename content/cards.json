@@ -4,7 +4,7 @@
   "cards": [
     { "guide": "lv-2-chamber", "images": [1, 2, 3] },
     { "guide": "lv-3-chamber", "images": [1, 2, 3, 4] },
-    { "guide": "lv-4-chamber", "images": [1, 2, 5, 4] },
+    { "guide": "lv-4-chamber", "images": [5, 0, 3, 2] },
     { "guide": "lv-short-axis", "images": [0, 1, 2] },
     { "guide": "lv-short-axis-samples", "images": [1, 2, 3, 6] },
     { "guide": "lv-coronal-lvot", "images": [1, 2] },
