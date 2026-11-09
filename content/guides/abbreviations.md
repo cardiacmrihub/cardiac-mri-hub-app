@@ -95,6 +95,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | ISW | Inferoseptal wall | |
 | IVC | Inferior vena cava | |
 | IVS | Interventricular septum | |
+| IW | Inferior wall | |
 
 # L
 

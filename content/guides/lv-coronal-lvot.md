@@ -65,10 +65,10 @@ The full settings table is under More detail.
 # 2. Planning and acquisition
 
 - **Orientation and planning**
-  - On the 3ch, the coronal LVOT plane runs through the LV apex and straight up the center of the LVOT, aortic valve and ascending aorta.
+  - On the 3ch, the coronal LVOT plane runs straight up the center of the LVOT, aortic valve and ascending aorta.
   - Check it against the 3ch and 4ch so it passes through where the mitral and aortic valves meet, at the widest part of the outflow tract.
 - **Coverage**
-  - From the LV apex to above the sinotubular junction of the ascending aorta.
+  - From the LV cavity to above the sinotubular junction of the ascending aorta.
   - Keep the LV cavity, outflow tract and proximal aorta in view.
 - **Patient positioning**
   - Supine, arms positioned to avoid coil artifact.
@@ -84,7 +84,7 @@ The full settings table is under More detail.
   - Retrospective ECG gating (25–30 phases) to see the outflow tract move. Temporal resolution 45 ms or less (real time 60 ms or less).
   - For tissue characterization, target mid-diastole or the phase with the least motion.
 - **Common pitfalls**
-  - Valve measurements come out short if the slice isn't through the true apex and the center of the aortic valve. Check the angle.
+  - Valve measurements come out short if the slice isn't through the center of the aortic valve. Check the angle.
   - Arrhythmia or poor breath-holds: be ready to switch to real-time cines (non-gated or compressed sensing).
 
 # 3. Contrast and tissue characterization
@@ -137,7 +137,7 @@ The full settings table is under More detail.
 
 | Parameter | Recommendation (Adult) |
 |---|---|
-| Orientation | Vertical plane through LV apex, MV, LVOT, and AA |
+| Orientation | Vertical plane through MV, LVOT, and AA |
 | Slice Thickness | 6–8 mm with or without 2-4mm gap (to make total of 10mm), LGE: Same thickness as cine. |
 | Field of View | 280–350 mm, adjusted to patient. |
 | Phase Oversampling | Adjust to patient/FOV to avoid wrap. |

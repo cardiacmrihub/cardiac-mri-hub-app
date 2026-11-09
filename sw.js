@@ -1,6 +1,6 @@
 // Service worker: makes the app open instantly and work offline.
 // Bump VERSION whenever app files (HTML/CSS/JS/icons) change so devices pick up the update.
-const VERSION = "1.11.0";
+const VERSION = "1.11.1";
 const SHELL_CACHE = `cmh-shell-${VERSION}`;
 const CONTENT_CACHE = "cmh-content"; // guides.json — network first, so new guides show up when online
 const IMAGE_CACHE = "cmh-images";    // guide images — cache first (file names are stable)

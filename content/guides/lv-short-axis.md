@@ -44,7 +44,7 @@ The full settings table is under More detail.
 
 # More detail
 
-Each short-axis slice is a cross-section through the left ventricle (LV), right ventricle (RV), interventricular septum (IVS), lateral wall (LW), anterior wall (AW), posterior wall (PW), inferoseptal wall (ISW) and papillary muscles.
+Each short-axis slice is a cross-section through the left ventricle (LV), right ventricle (RV), interventricular septum (IVS), lateral wall (LW), anterior wall (AW), inferior wall (IW), inferoseptal wall (ISW) and papillary muscles.
 
 # 1. What it's used for
 
