@@ -7,5 +7,5 @@
   { "slug": "thoracic-aorta", "label": "Thoracic aorta", "glyph": "special", "description": "Planning the thoracic aorta." },
   { "slug": "phase-contrast", "label": "Phase contrast", "glyph": "valve", "description": "Flow imaging: how phase contrast works and how to plan it." },
   { "slug": "technique", "label": "Technique and sequences", "glyph": "ecg", "description": "Breath-holds, inversion times, mapping, artifacts and protocol choices." },
-  { "slug": "troubleshooting", "label": "Troubleshooting", "glyph": "artifact", "description": "Artifacts: what they look like, why they happen and how to fix them at the scanner. Coming soon." }
+  { "slug": "troubleshooting", "label": "Troubleshooting", "glyph": "artifact", "description": "Artifacts: what they look like, why they happen and how to fix them at the scanner." }
 ]
