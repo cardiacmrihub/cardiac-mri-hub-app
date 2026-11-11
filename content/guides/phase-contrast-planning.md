@@ -7,6 +7,7 @@ updated: 2025-12-12
 cover: ../images/84904b_38aebabe98c5458897bf0359603a81a2-mv2.webp
 order: 2
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/phase-contrast
+artifacts: flow-phase-contrast
 ---
 
 Phase contrast measures how fast blood moves through a valve or vessel, and how much of it. It's used for valve regurgitation and stenosis, shunts and cardiac output.

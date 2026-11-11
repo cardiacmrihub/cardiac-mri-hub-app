@@ -4,7 +4,7 @@ shortTitle: "Abbreviations"
 summary: "What the abbreviations used in these guides stand for, A to Z, with a short note on each."
 topics: [getting-started, technique]
 published: 2026-11-04
-updated: 2026-11-09
+updated: 2026-11-10
 order: 3
 glossary: true
 ---
@@ -48,6 +48,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | CINE | Cine imaging | Not really an abbreviation: a movie of the heart through the cardiac cycle. |
 | CMR | Cardiovascular magnetic resonance | Another name for cardiac MRI. |
 | CS | Compressed sensing | Acquires less data and still reconstructs the image, for shorter breath-holds. |
+| CSF | Cerebrospinal fluid | The fluid around the spinal cord. Its long T1 can ghost across LGE images. |
 
 # D
 
@@ -74,6 +75,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | Abbreviation | Stands for | Notes |
 |---|---|---|
 | FISP | Fast imaging with steady-state precession | See TrueFISP. |
+| FLASH | Fast low-angle shot | Siemens' spoiled GRE sequence. GE calls it SPGR; Philips, T1 CE-FFE. |
 | FOV | Field of view | |
 | FSE | Fast spin echo | Black-blood images for anatomy and tissue. Siemens and Philips call it TSE. |
 
@@ -88,6 +90,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 
 | Abbreviation | Stands for | Notes |
 |---|---|---|
+| HASTE | Half-Fourier acquisition single-shot turbo spin echo | Siemens' single-shot black-blood sequence. GE calls it SSFSE. |
 | HCM | Hypertrophic cardiomyopathy | |
 
 # I
@@ -135,6 +138,7 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | PPM | Posterior papillary muscle | Also called the posteromedial papillary muscle. |
 | PSIR | Phase-sensitive inversion recovery | An LGE reconstruction that is less sensitive to an imperfect TI. |
 | PV | Pulmonary vein | On labelled images. Elsewhere often pulmonary valve. |
+| PVC | Premature ventricular contraction | An early, extra beat that disturbs ECG gating. |
 | PW | Posterior wall | An older name, no longer used. The classic posterior wall is the basal part of the inferior wall (the inferobasal segment in the AHA 17-segment model). |
 
 # R
@@ -167,7 +171,9 @@ Every abbreviation used in these guides, A to Z. In the app you can also type an
 | T1, T2 | T1 and T2 relaxation times | The tissue properties that mapping sequences measure. |
 | T2* | T2-star | Measures iron in the heart and liver. Run it before contrast. |
 | TAVI | Transcatheter aortic valve implantation | Also called TAVR. |
+| TE | Echo time | Time from excitation to the echo that's read out. |
 | TI | Inversion time | The delay after the inversion pulse, set so normal myocardium is black on LGE. |
+| TR | Repetition time | Time between excitations. A shorter TR spreads TrueFISP's dark bands further apart. |
 | TrueFISP | True fast imaging with steady-state precession | Siemens' name for bSSFP. |
 | TSE | Turbo spin echo | Siemens' and Philips' name for FSE. |
 | TV | Tricuspid valve | |

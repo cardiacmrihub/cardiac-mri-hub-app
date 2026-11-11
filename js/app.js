@@ -7,9 +7,9 @@
 
 import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
-import { searchGuides, highlight, snippetAround, suggestions } from "./search.js";
+import { searchGuides, searchSections, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.14.2";
+const APP_VERSION = "1.15.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -376,7 +376,7 @@ function showResults(q) {
     return;
   }
   const results = searchGuides(state.data.guides, q);
-  const def = defineHtml(glossaryHit(q));
+  const def = defineHtml(glossaryHit(q)) + sectionHitsHtml(searchSections(state.data.guides, q));
   if (!results.length) {
     box.innerHTML = def + `<div class="empty"><h2>No matches for “${esc(q)}”</h2><p>Try a view name such as 4ch or SAX, or browse by topic.</p><a class="btn secondary" href="${link.topics}">Browse topics</a></div>`;
     return;
@@ -387,6 +387,30 @@ function showResults(q) {
       snippet: r.bodyHit ? snippetAround(r.guide.text, r.bodyHit, r.terms) : "",
     }))
     .join("")}</ul>`;
+}
+
+// Cards inside a guide (the artifact cards) that match the search, linked straight to the card.
+function sectionHitsHtml(hits) {
+  if (!hits.length) return "";
+  return `<p class="hint">Jump to ${hits.length === 1 ? "a card" : `${hits.length} cards`}</p><ul class="rows">${hits.slice(0, 6).map(({ guide: g, section: s, terms }) => {
+    const media = g.cover ? `<img src="${esc(g.cover)}" alt="" loading="lazy">` : glyph(glyphFor(topicOf(g)));
+    return `<li><a class="row" href="${link.guide(g.slug)}#${esc(s.id)}"><span class="row-media">${media}</span><span><span class="row-title">${highlight(s.text, terms)}</span><span class="row-meta">${esc(listTitle(g))}${s.also ? ` · also called ${highlight(s.also, terms)}` : ""}</span></span><span class="row-flag"></span></a></li>`;
+  }).join("")}</ul>`;
+}
+
+// Exam-flow steps link to the matching part of the artifact guide.
+const ARTIFACT_GUIDE = "artifact-troubleshooting";
+const ARTIFACT_STEPS = [ // first match wins: "TI scout, 5 minutes after rest perfusion" is an LGE step
+  [/\bTI scout\b|\bLGE\b|\bPSIR\b|\bEGE\b/i, "lge-and-dark-blood"],
+  [/\bperfusion\b/i, "perfusion"],
+  [/\bflows?\b|phase contrast/i, "flow-phase-contrast"],
+  [/\bcines?\b/i, "cines"],
+];
+function artifactLink(step, group) {
+  if (!state.data?.guides?.some((g) => g.slug === ARTIFACT_GUIDE) || /^(localizers|close out)$/i.test(group || "")) return "";
+  const text = step.html.replace(/<[^>]+>/g, " ");
+  const hit = ARTIFACT_STEPS.find(([re]) => re.test(text));
+  return hit ? ` <a class="flow-help" href="${link.guide(ARTIFACT_GUIDE)}#${hit[1]}">Artifacts</a>` : "";
 }
 
 function renderPlan() {
@@ -599,7 +623,7 @@ function renderFlow() {
         `<button class="flow-adj" type="button" data-action="flow-time" data-key="${s.key}" data-d="1" aria-label="One minute later"${m >= FLOW_MAX ? " disabled" : ""}>+</button>` +
         `${m !== s.atMin ? `<button class="text-btn" type="button" data-action="flow-time" data-key="${s.key}" data-d="reset">Back to ${s.atMin}</button>` : ""}</div>`;
     }
-    return `<li class="flow-step${done ? " done" : ""}"><button type="button" class="tick" data-action="flow-tick" data-key="${s.key}" aria-pressed="${done}" aria-label="Step ${i + 1} done">${ICON.check}</button><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${html}${timing}${contrast}</div></li>`;
+    return `<li class="flow-step${done ? " done" : ""}"><button type="button" class="tick" data-action="flow-tick" data-key="${s.key}" aria-pressed="${done}" aria-label="Step ${i + 1} done">${ICON.check}</button><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${html}${artifactLink(s, gr.label)}${timing}${contrast}</div></li>`;
   }).join("")}</ol>`).join("");
   const edited = p.own
     ? `<p class="flow-edited">Your protocol, on this device · <button class="text-btn" type="button" data-action="fe-open">Edit</button></p>`

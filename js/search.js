@@ -80,6 +80,27 @@ export function searchGuides(guides, q) {
   return results.sort((a, b) => b.score - a.score || a.guide.title.localeCompare(b.guide.title));
 }
 
+/** Sections of guides that list them (the artifact cards) whose heading or "also called" words match every term. */
+export function searchSections(guides, q) {
+  const terms = parseQuery(q);
+  if (!terms.length) return [];
+  const hits = [];
+  for (const g of guides) {
+    for (const s of g.sections || []) {
+      let score = 0;
+      let ok = true;
+      for (const t of terms) {
+        const inHead = findTerm(s.text, t);
+        const inAlso = findTerm(s.also || "", t);
+        if (!inHead && !inAlso) { ok = false; break; }
+        score += inHead ? 2 : 1;
+      }
+      if (ok) hits.push({ guide: g, section: s, score, terms });
+    }
+  }
+  return hits.sort((a, b) => b.score - a.score);
+}
+
 const escHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 /** HTML-escaped text with every matched term wrapped in <mark>. */

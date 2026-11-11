@@ -6,6 +6,7 @@ topics: [left-ventricle, technique]
 published: 2026-11-09
 cover: ../images/51892d_a7947fa9ed3841d990f9c8276d4b0313-mv2.webp
 order: 8
+artifacts: perfusion
 ---
 
 Stress perfusion shows blood flow to the heart muscle while a vasodilator opens up the coronary arteries, to look for ischemia. You image three short-axis slices every heartbeat as the contrast passes through the heart, once at stress and, at many sites, again at rest.

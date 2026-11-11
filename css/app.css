@@ -530,6 +530,7 @@ button.row {
   border: 1px solid var(--line); background: var(--surface); font-variant-numeric: tabular-nums;
 }
 .flow-at.due { background: var(--accent); border-color: var(--accent); color: #16212C; }
+.flow-help { font-size: calc(13px * var(--ts)); font-weight: 600; white-space: nowrap; margin-left: 2px; }
 .flow-contrast { margin-top: 10px; color: var(--ink-2); font-size: calc(15px * var(--ts)); }
 .flow-adjust { display: flex; align-items: center; gap: 10px; margin-top: 10px; color: var(--ink-2); font-size: calc(15px * var(--ts)); }
 .flow-adj {

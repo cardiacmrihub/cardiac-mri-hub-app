@@ -134,7 +134,9 @@ function inline(text, ctx) {
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
     const url = href.replace(/&amp;/g, "&");
     const external = /^https?:\/\//.test(url);
-    return `<a href="${esc(url)}"${external ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`;
+    const jump = url.length > 1 && url.startsWith("#") ? ` data-jump="${esc(url.slice(1))}"` : "";
+    // "_" in an address is written as &#95; so the italic rule below can't pair it with another one.
+    return `<a href="${esc(url).replace(/_/g, "&#95;")}"${external ? ' target="_blank" rel="noopener"' : ""}${jump}>${label}</a>`;
   });
   // Bold, then italic.
   s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/__([^_]+)__/g, "<strong>$1</strong>");
@@ -202,6 +204,7 @@ function markdownToHtml(md, ctx) {
       const level = Math.min(6, h[1].length + 1); // # in a guide renders as h2 (the guide title is the page's h1)
       const html = inline(h[2], ctx);
       const id = slugify(h[2]);
+      if (level === 3) ctx.subheadings?.push({ id, text: h[2].replace(/[*_`\\]/g, "") });
       if (level === 2) {
         ctx.headings.push({ id, text: h[2].replace(/[*_`]/g, "") });
         ctx.section = h[2].replace(/[*_`\\]/g, "");
@@ -313,6 +316,38 @@ let examFlow = false;      // its `examFlow: true` turns on the /flow/ checklist
 const NOT_PLANNING = new Set(["technique", "getting-started"]);
 const seen = new Set();
 
+// Every view guide's "Check it" ends with a link to the matching part of the artifact guide
+// (front matter `artifacts: <heading id>` picks the part, `artifacts: false` leaves it out).
+const ARTIFACT_GUIDE = "artifact-troubleshooting";
+const hasArtifactGuide = files.includes(`${ARTIFACT_GUIDE}.md`);
+function withArtifactLink(body, anchor) {
+  const lines = body.split(/\r?\n/);
+  const start = lines.findIndex((l) => /^#\s+Check it\s*$/i.test(l));
+  if (start < 0) return body;
+  let i = start + 1;
+  while (i < lines.length && !lines[i].trim()) i++;
+  let last = -1;
+  while (i < lines.length && (/^\s*[-*+]\s+/.test(lines[i]) || (last >= 0 && /^\s{2,}\S/.test(lines[i])))) last = i++;
+  const item = `- Planned right, but the image still looks wrong? See [artifact troubleshooting](/guide/${ARTIFACT_GUIDE}/#${anchor}).`;
+  if (last >= 0) lines.splice(last + 1, 0, item);
+  else lines.splice(start + 1, 0, "", item);
+  return lines.join("\n");
+}
+// Guides with `searchSections: true` (the artifact cards) list each "##" section for search,
+// with the words of its "*Also called:*" line, so typing "fold-over" finds the wrap card.
+function searchSections(body, subheadings) {
+  const alsoBy = new Map();
+  let cur = null;
+  for (const line of body.split(/\r?\n/)) {
+    const h = line.match(/^##\s+(.*?)\s*#*\s*$/);
+    if (h) { cur = slugify(h[1]); continue; }
+    if (/^#\s/.test(line)) { cur = null; continue; }
+    const a = line.match(/^\*Also called:\*\s*(.+?)\.?\s*$/i);
+    if (a && cur && !alsoBy.has(cur)) alsoBy.set(cur, a[1]);
+  }
+  return subheadings.map((h) => ({ id: h.id, text: h.text, also: alsoBy.get(h.id) || "" }));
+}
+
 for (const f of files) {
   const src = readFileSync(join(GUIDES_DIR, f), "utf8");
   const { data, body } = parseFrontMatter(src, f);
@@ -325,9 +360,10 @@ for (const f of files) {
   if (data.glossary === true) glossarySource = slug;
   if (data.protocols === true) { protocolSource = slug; examFlow = data.examFlow === true; }
 
-  const ctx = { file: f, images: new Set(), videos: new Set(), headings: [], figures: [], section: "" };
+  const ctx = { file: f, images: new Set(), videos: new Set(), headings: [], subheadings: [], figures: [], section: "" };
   bodies.set(data.slug || basename(f, ".md"), body);
-  const html = foldMoreDetail(markdownToHtml(body, ctx));
+  const mdBody = hasArtifactGuide && data.artifacts !== false ? withArtifactLink(body, data.artifacts || "cines") : body;
+  const html = foldMoreDetail(markdownToHtml(mdBody, ctx));
   const text = toText(html);
   const words = text.split(" ").filter(Boolean).length;
   const guideTopics = [].concat(data.topics || data.topic || []);
@@ -368,6 +404,7 @@ for (const f of files) {
         : ctx.figures.length >= 1 && guideTopics.some((t) => !NOT_PLANNING.has(t)),
     html,
     text,
+    ...(data.searchSections === true ? { sections: searchSections(body, ctx.subheadings) } : {}),
   });
 }
 
