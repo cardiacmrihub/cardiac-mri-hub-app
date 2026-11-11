@@ -329,7 +329,7 @@ T1, T2 and T2* maps. More on planning them: [MOLLI maps](/guide/molli-maps/).
 
 **What it looks like:** nothing you can see. On the original MOLLI scheme, long T1 values such as native myocardium shift with heart rate; newer schemes are much less affected.[\[Kellman 2014\]](https://doi.org/10.1186/1532-429X-16-2)
 
-*No picture needed.*
+![Color T1 map of a mid short-axis slice](../images/51892d_7638ec64d2c249968fbfea7fe13bd84a-mv2.webp "A post-contrast T1 map at the mid short axis. The heart rate effect doesn't show on the map; it changes the numbers, most for long T1 such as native myocardium.")
 
 **Why it happens:** MOLLI needs time between its inversions for the signal to recover. At a fast heart rate the recovery heartbeats are shorter, so the signal hasn't recovered as far.[\[Kellman 2014\]](https://doi.org/10.1186/1532-429X-16-2)[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
 
