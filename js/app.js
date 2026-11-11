@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, searchSections, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.15.0";
+const APP_VERSION = "1.15.1";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -401,8 +401,9 @@ function sectionHitsHtml(hits) {
 // Exam-flow steps link to the matching part of the artifact guide.
 const ARTIFACT_GUIDE = "artifact-troubleshooting";
 const ARTIFACT_STEPS = [ // first match wins: "TI scout, 5 minutes after rest perfusion" is an LGE step
-  [/\bTI scout\b|\bLGE\b|\bPSIR\b|\bEGE\b/i, "lge-and-dark-blood"],
+  [/\bTI scout\b|\bLGE\b|\bPSIR\b|\bEGE\b|\b(?:dark|black)-blood\b/i, "lge-and-dark-blood"],
   [/\bperfusion\b/i, "perfusion"],
+  [/\bT[12] maps?\b|\bT2\*|\bMOLLI\b/i, "maps"],
   [/\bflows?\b|phase contrast/i, "flow-phase-contrast"],
   [/\bcines?\b/i, "cines"],
 ];

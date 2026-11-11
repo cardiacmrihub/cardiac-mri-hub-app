@@ -1,7 +1,7 @@
 ---
 title: "Cardiac MRI Artifact Troubleshooting"
 shortTitle: "Artifact troubleshooting"
-summary: "A card for each common cardiac MRI artifact: what it looks like, why it happens and the quickest fix at the scanner, quickest fix first. Banding, breathing ghosts, wrap, mistriggering, arrhythmia, the wrong TI, dark rim, velocity aliasing, metal and more."
+summary: "A card for each common cardiac MRI artifact: what it looks like, why it happens and the fix at the scanner, quickest first. Banding, breathing ghosts, wrap, mistriggering, arrhythmia, the wrong TI, dark rim, velocity aliasing, maps, metal, devices and more."
 topics: [troubleshooting, technique]
 published: 2026-11-08
 updated: 2026-11-10
@@ -14,10 +14,11 @@ A card for each common artifact: what it looks like, why it happens and the fix 
 
 - **Cines:** [Banding](#off-resonance-banding) · [Breathing ghosts](#breathing-ghosts) · [Slices that don't line up](#slice-misregistration) · [Wrap](#wrap) · [Partial volume](#partial-volume-at-the-base-and-apex) · [India ink](#chemical-shift-india-ink)
 - **ECG gating:** [Mistriggering](#mistriggering) · [Arrhythmia](#arrhythmia)
-- **LGE and dark blood:** [Wrong TI](#wrong-ti) · [Flow ghosts](#pulsatile-flow-ghosts)
+- **LGE and dark blood:** [Wrong TI](#wrong-ti) · [Flow ghosts](#pulsatile-flow-ghosts) · [Fat](#fat-that-looks-like-enhancement) · [Blood not suppressed](#incomplete-blood-suppression)
 - **Perfusion:** [Dark rim](#dark-rim)
 - **Flow:** [Velocity aliasing](#velocity-aliasing)
-- **Metal:** [Wires, valves and clips](#metal-wires-valves-and-clips)
+- **Maps:** [Motion](#motion-between-map-images) · [Banding](#banding-on-maps) · [Heart rate](#heart-rate-effect-on-t1)
+- **Metal, devices and the room:** [Wires, valves and clips](#metal-wires-valves-and-clips) · [Pacemakers and ICDs](#pacemakers-and-icds) · [RF zipper](#rf-zipper)
 
 # Cines
 
@@ -209,6 +210,37 @@ More on choosing it: [choosing the TI time](/guide/psir-ti-time/).
 2. Put a saturation band over the source: the vessel, the front of the chest wall, or the spinal canal for CSF.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
 3. On GRE, turn on flow compensation (Siemens: Flow comp.).[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
 
+## Fat that looks like enhancement
+
+*Also called:* epicardial fat, fat vs fibrosis, fatty infiltration.
+
+**What it looks like:** a bright line along the outside of the heart on LGE, or bright spots inside the wall. Subepicardial enhancement can be hard to tell from epicardial fat.[\[Kellman 2012\]](https://doi.org/10.1002/jmri.23605)
+
+*Picture coming.*
+
+**Why it happens:** fat has a short T1, like scar, so it's bright at the TI that nulls normal myocardium. On a standard LGE, fat and fibrosis both look bright.[\[Kellman 2012\]](https://doi.org/10.1002/jmri.23605) Fat also brings chemical shift lines at its borders (see [India ink](#chemical-shift-india-ink)).
+
+**Fix at the scanner**, quickest first:
+
+1. Run a fat–water separated (Dixon) LGE if you have it: it shows fat and scar apart.[\[Kellman 2012\]](https://doi.org/10.1002/jmri.23605)
+2. Add black-blood T1-weighted TSE (GE: FSE) through the area, then the same slices with fat saturation: fat that's bright on the first goes dark on the second. SCMR's ARVC and mass protocols include this pair.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
+
+## Incomplete blood suppression
+
+*Also called:* slow flow artifact, residual blood signal, bright blood on dark-blood images.
+
+**What it looks like:** bright signal in the ventricle on a dark-blood (black-blood) image, often a white layer along the trabeculations. The opposite can happen too: part of the myocardium loses signal.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
+
+*Picture coming.*
+
+**Why it happens:** a dark-blood image inverts the blood and reads out when the blood moving into the slice is nulled. Slow blood that stays in the slice isn't replaced, so it stays bright. If the heart has moved between the inversion and the readout, myocardium that wasn't re-inverted can lose signal instead. A TI that's too long or too short also leaves blood bright.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
+
+**Fix at the scanner**, quickest first:
+
+1. Adjust the trigger delay and the inversion time so the readout falls when the blood is nulled.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
+2. Change the re-inversion slab. It's usually 2–3 times the slice thickness: a thicker slab protects the myocardium but leaves more slow blood bright, so go thinner for slow flow and thicker if the myocardium loses signal.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
+3. If a bright area could be thrombus, an LGE with the TI set to null thrombus (about 500–550 ms at 1.5 T) helps tell thrombus from a mass.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
+
 # Perfusion
 
 ## Dark rim
@@ -254,7 +286,61 @@ Planning and settings: [stress perfusion](/guide/stress-perfusion/).
 
 ![Phase image showing no aliasing](../videos/51892d_c3e2e4e9916448d79613dba6e6ea3ae1.mp4 "After: no aliasing.")
 
-# Metal
+# Maps
+
+T1, T2 and T2* maps. More on planning them: [MOLLI maps](/guide/molli-maps/).
+
+## Motion between map images
+
+*Also called:* motion on maps, misregistered maps, motion correction errors.
+
+**What it looks like:** blurred map edges, with odd values along the borders of the myocardium. On the source images, the diaphragm moves or the heart is caught at different points in the heartbeat.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+*Picture coming.*
+
+**Why it happens:** a map is fitted pixel by pixel from several images taken during one breath-hold. If the heart moves between them, each pixel mixes different tissue. Motion correction fixes in-plane shifts only, not through-plane motion, and it can misalign images.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+**Fix at the scanner**, quickest first:
+
+1. Coach the breath-hold before the map: clear instructions prevent incomplete breath-holds.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+2. Turn on motion correction if you have it, but don't count on it instead of a breath-hold.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+3. Before moving on, look at the motion-corrected source images and the error map, if there is one, and repeat the map if they're off.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+4. Watch for mistriggered or skipped beats during the map; repeat if there were any.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+## Banding on maps
+
+*Also called:* off-resonance on maps, regional T1 error.
+
+**What it looks like:** dark bands across a T1 map, or a patch of T1 that's lower or higher than the rest of the wall, often near the lungs. On T2* maps, the lungs, liver and veins cause susceptibility artifacts.[\[Kellman 2014\]](https://doi.org/10.1186/1532-429X-16-2)[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+*Picture coming.*
+
+**Why it happens:** MOLLI reads out with TrueFISP, so off-resonance causes the same banding as on cines. Even where no band shows, off-resonance shifts T1 by region, and the effect is big enough to matter at 1.5 T.[\[Kellman 2014\]](https://doi.org/10.1186/1532-429X-16-2)
+
+**Fix at the scanner**, quickest first:
+
+1. Shim over the heart before the maps. SCMR's mapping consensus calls heart-focused shimming highly recommended at 1.5 T and essential at 3 T.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+2. Check the center frequency, since off-resonance in it can lower T1. Adjust it as for [banding](#off-resonance-banding) and repeat.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+3. For T2*, draw the measurement in the septum on a mid short-axis map, away from the lungs, liver and veins.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+## Heart rate effect on T1
+
+*Also called:* heart rate dependence, MOLLI heart rate error.
+
+**What it looks like:** nothing you can see. On the original MOLLI scheme, long T1 values such as native myocardium shift with heart rate; newer schemes are much less affected.[\[Kellman 2014\]](https://doi.org/10.1186/1532-429X-16-2)
+
+*No picture needed.*
+
+**Why it happens:** MOLLI needs time between its inversions for the signal to recover. At a fast heart rate the recovery heartbeats are shorter, so the signal hasn't recovered as far.[\[Kellman 2014\]](https://doi.org/10.1186/1532-429X-16-2)[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+**Fix at the scanner**, quickest first:
+
+1. Use a scheme with more recovery between the inversions, such as 5(3)3 or 5s(3s)3s, which counts the recovery in seconds. Both are much less sensitive than the original MOLLI.[\[Kellman 2014\]](https://doi.org/10.1186/1532-429X-16-2)
+2. For tachycardia, use a sequence designed for higher heart rates if you have one. A systolic readout gives robust maps in fast abnormal rhythms but needs its own normal values.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+3. In AFib, repeat the map so the results can be averaged.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+4. Note the heart rate and rhythm for the reader, who has to weigh them when reading the values.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+# Metal, devices and the room
 
 ## Metal: wires, valves and clips
 
@@ -272,11 +358,45 @@ Planning and settings: [stress perfusion](/guide/stress-perfusion/).
 2. For anatomy, black-blood HASTE or TSE (GE: SSFSE or FSE) shows less artifact.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)[\[Bitar 2006\]](https://doi.org/10.1148/rg.262055063)
 3. If dark bands spread from the metal, adjust the frequency and shim as for [banding](#off-resonance-banding).[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
 
-Device safety follows your MR-conditional workflow.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
+## Pacemakers and ICDs
+
+*Also called:* device artifact, defibrillator artifact.
+
+**What it looks like:** a large black void with distorted edges near the generator, and on TrueFISP, dark bands spreading from it.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41) On LGE, an ICD can cause bright artifacts in the anterior and lateral LV wall that can't be read.[\[Rashid 2014\]](https://doi.org/10.1148/radiol.13130942)
+
+*Picture coming.*
+
+**Why it happens:** the generator distorts the magnetic field around it. On LGE, the myocardium near an ICD is so far off-resonance that the standard inversion pulse doesn't invert it, so it shows up bright.[\[Rashid 2014\]](https://doi.org/10.1148/radiol.13130942)
+
+**Before you scan:** safety comes first. Follow the manufacturer's and your institution's guidelines; the device is programmed for the scan and checked before and after it, and the patient is monitored throughout.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
+
+**Fix at the scanner**, quickest first:
+
+1. Raise the arm on the generator side over the head.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
+2. Try breath-holds in deep inspiration, which can improve image quality.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
+3. If TrueFISP cines have significant artifact, switch to GRE cines.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
+4. For LGE, use wideband LGE if you have it, particularly with an ICD.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)[\[Rashid 2014\]](https://doi.org/10.1148/radiol.13130942)
+5. Maps near a device aren't reliable unless special shimming or sequences are used.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+
+## RF zipper
+
+*Also called:* zipper artifact, RF interference, RF noise.
+
+**What it looks like:** a stripe of alternating bright and dark pixels across the whole image, at right angles to the frequency-encode direction.[\[Radiopaedia\]](https://radiopaedia.org/articles/16558)
+
+*Picture coming.*
+
+**Why it happens:** stray radio-frequency signal reaches the receiver: through the scanner room door left open, from electronics brought into the room, or from monitoring equipment such as pulse oximeters. If it keeps happening with the door shut, the RF shielding may be faulty.[\[Radiopaedia\]](https://radiopaedia.org/articles/16558)[\[MRIquestions\]](https://mriquestions.com/zipper-artifact.html)
+
+**Fix at the scanner**, quickest first:
+
+1. Make sure the scanner room door is shut.[\[Radiopaedia\]](https://radiopaedia.org/articles/16558)
+2. Remove electronic devices from the patient and the room.[\[Radiopaedia\]](https://radiopaedia.org/articles/16558) Check monitoring equipment such as pulse oximeters.[\[MRIquestions\]](https://mriquestions.com/zipper-artifact.html)
+3. If it persists, call service: the door contacts or the cable panel may need cleaning or repair.[\[Radiopaedia\]](https://radiopaedia.org/articles/16558)
 
 # Coming next
 
-Parallel imaging artifacts, a cine window too long for the heart rate, LGE ghosting, fat that looks like enhancement, coil shading, breathing during the first pass, missed perfusion slices at high heart rates, background phase offset, jet signal loss, motion and banding on maps, the heart rate effect on T1 maps, devices such as ICDs and pacemakers, incomplete blood suppression and RF zippers.
+Parallel imaging artifacts, a cine window too long for the heart rate, LGE ghosting, coil shading, breathing during the first pass, missed perfusion slices at high heart rates, background phase offset and jet signal loss.
 
 # Help build it
 

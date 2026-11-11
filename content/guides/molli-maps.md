@@ -4,7 +4,7 @@ shortTitle: "MOLLI maps: when you need them"
 summary: "When MOLLI (modified Look-Locker inversion recovery) T1 mapping adds value in cardiac MRI, where to plan it, how T2 and T2* mapping fit in, and when you can skip it."
 topics: [technique]
 published: 2025-11-23
-updated: 2026-11-09
+updated: 2026-11-10
 cover: ../images/51892d_ebe96082eb8f4333ae3f7037bfd17179-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-role-of-molli-maps-in-cardiac-mri-and-when-they-are-unnecessary
 ---
@@ -83,6 +83,7 @@ To get good MOLLI maps:
 - Use the standard planes so maps can be repeated and compared
 - Tell the radiologist or cardiologist about any image quality problems
 - Watch the heart rate and rhythm: MOLLI T1 values shift with heart rate, and severe arrhythmia makes them less accurate[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8)
+- Maps blurred, banded or off with a fast heart rate? See [artifact troubleshooting](/guide/artifact-troubleshooting/#maps)
 
 ![Color post-contrast T1 map of a mid short-axis slice](../images/51892d_7638ec64d2c249968fbfea7fe13bd84a-mv2.webp "A post-contrast T1 map at the mid short axis.")
 
