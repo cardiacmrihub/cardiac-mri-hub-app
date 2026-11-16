@@ -4,7 +4,7 @@ shortTitle: "Artifact troubleshooting"
 summary: "A card for each common cardiac MRI artifact: what it looks like, why it happens and the fix at the scanner, quickest first. Banding, breathing ghosts, wrap, mistriggering, arrhythmia, the wrong TI, dark rim, velocity aliasing, maps, metal, devices and more."
 topics: [troubleshooting, technique]
 published: 2026-11-08
-updated: 2026-11-10
+updated: 2026-11-16
 cover: ../images/51892d_db487e51500148ec97d694eccae06f5d-mv2.webp
 quickPlan: false
 searchSections: true
@@ -83,7 +83,7 @@ A card for each common artifact: what it looks like, why it happens and the fix 
 
 **What it looks like:** an arm, the back or the chest wall folded into the opposite side of the image. Arms wrapping into the chest is a common one.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
 
-*Picture coming.*
+![Axial image at the level of the great arteries, with a band of the patient's back folded onto the top edge](../images/artifact-wrap-back.webp "The patient's back, outside the field of view in the phase-encode direction, wraps onto the top of the image. It doesn't reach the heart, so this one could stay (fix 1).")
 
 **Why it happens:** anything outside the field of view in the phase-encode direction wraps into the opposite edge. The scanner prevents this in the frequency direction at no cost, but not in the phase direction without adding time.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)
 
