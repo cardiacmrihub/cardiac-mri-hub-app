@@ -194,6 +194,33 @@ h2.section small { font: 400 calc(14px * var(--ts))/1 var(--font-body); color: v
 .row-snippet mark, .row-title mark { background: var(--mark); color: inherit; border-radius: 2px; padding: 0 1px; }
 .row-flag svg { width: 18px; height: 18px; fill: var(--accent); stroke: var(--accent); }
 
+/* What's new (home) */
+.news { list-style: none; margin: 0; padding: 0; }
+.news-item {
+  display: grid; grid-template-columns: calc(52px * var(--ts)) 1fr; gap: 12px; align-items: baseline;
+  padding: 11px 0; text-decoration: none; border-bottom: 1px solid var(--line);
+}
+.news li:last-child .news-item { border-bottom: 0; }
+.news-item:active { background: var(--line); }
+.news-date { color: var(--ink-2); font-size: calc(14px * var(--ts)); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.news-item strong { display: block; line-height: 1.3; }
+.news-text { display: block; color: var(--ink-2); font-size: calc(15px * var(--ts)); line-height: 1.4; margin-top: 2px; }
+.news-new {
+  display: inline-block; font: 700 calc(11px * var(--ts))/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase;
+  padding: 3px 7px; border-radius: 999px; background: var(--accent); color: #16212C; vertical-align: 2px; margin-left: 4px;
+}
+.news-more { border-top: 1px solid var(--line); }
+.news-more summary {
+  display: flex; align-items: center; gap: 8px; padding: 12px 0; cursor: pointer; list-style: none;
+  font: 700 calc(15px * var(--ts))/1.2 var(--font-body); color: var(--ink);
+}
+.news-more summary::-webkit-details-marker { display: none; }
+.news-more summary::after {
+  content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform .15s;
+}
+.news-more[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+
 /* topic page */
 .topic-head { display: flex; gap: 14px; align-items: center; margin: 10px 0 6px; }
 .topic-head .glyph { width: 52px; height: 52px; flex: none; }
@@ -282,6 +309,7 @@ h2.section small { font: 400 calc(14px * var(--ts))/1 var(--font-body); color: v
 }
 .guide-note p { margin: 0 0 12px; }
 .guide-note .btn { margin: 0; }
+.guide-note .report-help { margin: 10px 0 0; font-size: calc(13px * var(--ts)); overflow-wrap: anywhere; }
 .setting .fine { color: var(--ink-2); font-size: calc(14px * var(--ts)); margin-top: 10px; }
 .source-link { display: inline-block; margin-top: 18px; color: var(--ink-2); font-size: calc(14px * var(--ts)); }
 
@@ -457,7 +485,7 @@ button.row {
 /* ---------- printing (parameters page, planning cards, guides) ---------- */
 @media print {
   :root { --ts: 1; }
-  .topbar, .tabbar, .skip, .toast, .update-bar, .deck, .lightbox, .notice, .plan-btn, .guide-note .btn, .guide-foot, .toc { display: none !important; }
+  .topbar, .tabbar, .skip, .toast, .update-bar, .deck, .lightbox, .notice, .plan-btn, .guide-note .btn, .guide-note .report-help, .guide-foot, .toc { display: none !important; }
   body { background: #fff !important; color: #000 !important; }
   main { padding: 0 !important; }
   a { color: inherit; text-decoration: none; }
@@ -553,7 +581,26 @@ button.row {
 .flow-clock strong { font: 700 30px/1 var(--font-title); font-variant-numeric: tabular-nums; }
 .flow-clock-label { opacity: .75; }
 .flow-clock .due { color: var(--accent); font-weight: 700; }
-.flow-foot { margin: 18px 0 0; color: var(--ink-2); }
+.flow-foot { margin: 18px 0 0; color: var(--ink-2); line-height: 2; }
+/* Exam notes: one box per exam, above the close-out checks */
+.flow-notes { scroll-margin-top: calc(64px + var(--safe-t)); }
+.flow-notes label { cursor: pointer; }
+.flow-notes-help { margin: 8px 0 0; color: var(--ink-2); font-size: calc(14px * var(--ts)); line-height: 1.45; }
+.flow-notes-help strong { color: var(--ink); }
+.flow-notes .chip { padding: 9px 14px; font-weight: 600; }
+.flow-notes textarea {
+  display: block; width: 100%; min-height: calc(112px * var(--ts)); margin: 12px 0 0; padding: 12px 14px; resize: vertical;
+  font: 400 calc(17px * var(--ts))/1.45 var(--font-body); color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 12px;
+}
+.flow-notes textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.flow-notes .btn-row { margin-top: 12px; align-items: center; }
+.flow-notes .text-btn { padding: 12px 6px; }
+.icon-btn.has-dot { position: relative; }
+.icon-btn.has-dot::after {
+  content: ""; position: absolute; top: 9px; right: 8px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--bg);
+}
 /* My protocol: the device's own version of a protocol */
 .flow-edited { margin: 8px 0 0; color: var(--ink-2); font-size: calc(15px * var(--ts)); }
 .flow-edited .text-btn { padding: 4px 2px; }

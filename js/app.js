@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, searchSections, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.15.3";
+const APP_VERSION = "1.16.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -44,6 +44,7 @@ const ICON = {
   check: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`,
   clock: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4.5l3 2M9.5 2.5h5"/></svg>`,
   clear: `<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>`,
+  note: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1-4.2L16.6 4.2a1.6 1.6 0 0 1 2.3 0l.9.9a1.6 1.6 0 0 1 0 2.3L8.7 18.5z"/><path d="M14.5 6.3l3.2 3.2M12.5 19.5h7"/></svg>`,
   deck: `<svg class="deck-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6.5" width="13" height="13" rx="2"/><path d="M7.5 3.5h11a2 2 0 0 1 2 2v11"/></svg>`,
 };
 
@@ -207,7 +208,7 @@ function renderHome() {
   const scanner = atScannerHtml(exam ? "" : flowCardHtml());
   // Newcomers (and Google) see Start here first; people who keep coming back, or installed the app, get the
   // scanner tools first and the beginner's guide further down.
-  html += returningUser() ? scanner + cont + startHtml : cont + startHtml + scanner;
+  html += returningUser() ? scanner + whatsNewHtml() + cont + startHtml : cont + startHtml + scanner + whatsNewHtml();
   const topics = topicsWithGuides();
   if (topics.length) {
     html += `<h2 class="section">Topics</h2><div class="tiles">`;
@@ -218,6 +219,22 @@ function renderHome() {
   }
   html += recentHtml(d.guides) + aboutFootHtml();
   view.innerHTML = html;
+}
+
+// What's new on Home (content/whats-new.json; the build writes the same markup): the three latest, the rest folded
+// under "Earlier updates". An entry added since this device last opened Home gets a "New" tag for the rest of the
+// visit. Someone new to the app sees no tags; someone who was already using it sees them on the first three.
+function whatsNewHtml() {
+  const news = state.data?.whatsNew || [];
+  if (!news.length) return "";
+  if (state.newsSince === undefined) {
+    const seen = prefs.get("newsSeen", null);
+    state.newsSince = seen ?? (returningUser() ? "" : news[0].date);
+    if (seen !== news[0].date) prefs.set("newsSeen", news[0].date);
+  }
+  const short = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  const item = (n, tag) => `<li><a class="news-item" href="${esc(n.href)}"><span class="news-date">${short(n.date)}</span><span><strong>${esc(n.title)}${tag && n.date > state.newsSince ? ` <em class="news-new">New</em>` : ""}</strong><span class="news-text">${esc(n.text)}</span></span></a></li>`;
+  return `<h2 class="section">What's new</h2><ul class="news">${news.slice(0, 3).map((n) => item(n, true)).join("")}</ul>${news.length > 3 ? `<details class="news-more"><summary>Earlier updates</summary><ul class="news">${news.slice(3).map((n) => item(n, false)).join("")}</ul></details>` : ""}`;
 }
 
 // "Recently updated" on the home page, and every guide A–Z on the Topics page (same markup as the build).
@@ -332,17 +349,23 @@ function pagerHtml(g) {
   return `<nav class="pager" aria-label="Previous and next views">${a(seq[i - 1], "prev", "Previous")}${a(seq[i + 1], "next", "Next")}</nav>`;
 }
 
-// Disclaimer and "Suggest a correction" under every guide. The build writes the same markup
-// into each guide's page, so keep the two in step (scripts/build-content.mjs → guideNoteHtml).
-function guideNoteHtml(g) {
+// Disclaimer and "Report a problem" under every guide and tool page: an email to the hub with the page and app
+// version filled in. The build writes the same markup into each page, so keep the two in step
+// (scripts/build-content.mjs → reportHref, reportHtml, noteHtml).
+function reportHref(title, path) {
+  const site = state.data?.site || {};
+  return `mailto:${esc(site.feedbackEmail)}?subject=${encodeURIComponent(`Problem: ${title}`)}&amp;body=${encodeURIComponent(`Page: ${(site.url || location.origin) + path}\nApp version: ${APP_VERSION}\n\nWhat's wrong? (A wrong fact, a broken picture, something that doesn't work.)\n\n`)}`;
+}
+function reportHtml(title, path) {
+  const mail = state.data?.site?.feedbackEmail;
+  return mail ? `<a class="btn secondary" href="${reportHref(title, path)}">Report a problem</a><p class="report-help">Opens your email app. No email app here? Write to ${esc(mail)}.</p>` : "";
+}
+function noteHtml(title, path) {
   const site = state.data?.site || {};
   if (!site.disclaimer && !site.feedbackEmail) return "";
-  const url = (site.url || location.origin) + link.guide(g.slug);
-  const mail = site.feedbackEmail
-    ? `<a class="btn secondary" href="mailto:${esc(site.feedbackEmail)}?subject=${encodeURIComponent(`Correction: ${g.title}`)}&amp;body=${encodeURIComponent(`Guide: ${url}\n\nWhat should change:\n\n`)}">Suggest a correction</a>`
-    : "";
-  return `<aside class="guide-note">${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${mail}</aside>`;
+  return `<aside class="guide-note">${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${reportHtml(title, path)}</aside>`;
 }
+const guideNoteHtml = (g) => noteHtml(g.title, link.guide(g.slug));
 
 function renderSearch(q) {
   setTopbar(`<h1 class="topbar-title" style="margin-left:8px">Search</h1>`);
@@ -439,18 +462,47 @@ function renderPlan() {
 const FLOW_TTL = 4 * 60 * 60 * 1000;
 function flowState() {
   const f = prefs.get("flow", null);
-  // After 4 hours the ticks and clock are cleared, but the flow still opens on the last protocol run.
-  if (!f || Date.now() - (f.updated || 0) > FLOW_TTL) return { protocol: prefs.get("flowLast", null), done: [], contrastAt: null, updated: Date.now() };
+  // After 4 hours the ticks, clock and notes are cleared, but the flow still opens on the last protocol run.
+  if (!f || Date.now() - (f.updated || 0) > FLOW_TTL) {
+    // Exam notes don't outlive the exam: they're wiped from the device, not just hidden.
+    if (f?.notes) prefs.set("flow", { ...f, notes: "" });
+    return { protocol: prefs.get("flowLast", null), done: [], contrastAt: null, notes: "", updated: Date.now() };
+  }
   return f;
 }
 function saveFlow(f) {
   prefs.set("flow", { ...f, updated: Date.now() });
   if (f.protocol) prefs.set("flowLast", f.protocol);
 }
-// An exam is in progress once a step is ticked or contrast is in, until the 4 hours run out.
+// An exam is in progress once a step is ticked, contrast is in or a note is written, until the 4 hours run out.
 function flowActive() {
   const f = prefs.get("flow", null);
-  return !!f && Date.now() - (f.updated || 0) <= FLOW_TTL && (f.done?.length > 0 || !!f.contrastAt);
+  return !!f && Date.now() - (f.updated || 0) <= FLOW_TTL && (f.done?.length > 0 || !!f.contrastAt || !!f.notes);
+}
+// ---------- Exam notes ----------
+// One box of free text per exam (the TI used, VENCs, heart rate, repeats), kept with the ticks in prefs "flow", so
+// it's cleared by Start over, by picking another protocol and after 4 hours. It never leaves the device, and it
+// isn't in the protocols backup file. The chips add a line each, so most notes need only the numbers typed.
+const NOTES_MAX = 1000;
+const NOTE_CHIPS = [["TI", "TI: "], ["VENC", "VENC: "], ["HR", "HR: "], ["Arrhythmia", "Arrhythmia"], ["Breath-holds", "Poor breath-holds"], ["Repeats", "Repeated: "]];
+const flowNotesBtn = (f = flowState()) =>
+  `<button class="icon-btn${f.notes ? " has-dot" : ""}" type="button" data-action="flow-notes-open" aria-label="${f.notes ? "Exam notes (written)" : "Exam notes"}">${ICON.note}</button>`;
+function flowNotesHtml(f) {
+  return `<section class="flow-notes" id="flow-notes" aria-labelledby="flow-notes-h"><h2 class="flow-group" id="flow-notes-h"><label for="flow-notes-box">Exam notes</label></h2>
+    <p class="flow-notes-help">For the reader or your own record: the TI used, VENCs, heart rate, repeats. Tap a word to start a line.</p>
+    <div class="chips flow-note-chips">${NOTE_CHIPS.map(([label, text]) => `<button class="chip" type="button" data-action="flow-note-add" data-text="${esc(text)}">${label}</button>`).join("")}</div>
+    <textarea id="flow-notes-box" data-flow-notes rows="4" maxlength="${NOTES_MAX}" placeholder="Nothing written yet" autocapitalize="sentences">${esc(f.notes || "")}</textarea>
+    <p class="flow-notes-help"><strong>No patient names, dates of birth or record numbers.</strong> Notes stay on this device, and they clear when you start over, change protocol or after 4 hours.</p>
+    <div class="btn-row"><button class="btn secondary" type="button" data-action="flow-notes-copy">Copy notes</button><button class="text-btn" type="button" data-action="flow-notes-back" hidden>Back to where I was</button></div></section>`;
+}
+function saveFlowNotes(text) {
+  const f = flowState();
+  f.notes = text.slice(0, NOTES_MAX);
+  f.protocol = flowProtocol(f)?.id || null;
+  saveFlow(f);
+  const btn = document.querySelector('[data-action="flow-notes-open"]');
+  btn?.classList.toggle("has-dot", !!f.notes);
+  btn?.setAttribute("aria-label", f.notes ? "Exam notes (written)" : "Exam notes");
 }
 // ---------- My protocol: a device's own version of a protocol ----------
 // Saved in prefs "flowCustom" as { [protocol id]: { name, hidden: [key], added: { key: text }, layout: [{ label, keys }] } }.
@@ -596,7 +648,7 @@ function renderFlow() {
   const p = flowProtocol(f);
   if (state.flowEdit === p.id) { renderFlowEdit(p); return; }
   if (state.flowNew) { renderFlowNew(p); return; }
-  setTopbar(`${backButton()}<h1 class="topbar-title">Exam flow</h1>`);
+  setTopbar(`${backButton()}<h1 class="topbar-title">Exam flow</h1>${flowNotesBtn(f)}`);
   const nameOf = (x) => flowCustom(x.id)?.name || x.name;
   const own = flowOwnList().map((o) => findProtocol(o.id)).filter(Boolean);
   const all = [...own, ...P.list];
@@ -607,7 +659,8 @@ function renderFlow() {
     : `<div class="chips flow-pick">${all.map((x) => `<button class="chip" type="button" data-action="flow-pick" data-id="${esc(x.id)}" aria-pressed="${x.id === p.id}">${esc(nameOf(x))}</button>`).join("")}</div>`) +
     `<p class="flow-new-link"><button class="text-btn" type="button" data-action="fn-open">+ New protocol</button></p>`;
   let n = 0;
-  const steps = p.groups.filter((gr) => gr.steps.some((x) => !x.hidden)).map((gr) => `${gr.label ? `<h2 class="flow-group">${esc(gr.label)}</h2>` : ""}<ol class="flow">${gr.steps.filter((x) => !x.hidden).map((s) => {
+  const shown = p.groups.filter((gr) => gr.steps.some((x) => !x.hidden));
+  const groupsHtml = shown.map((gr) => `${gr.label ? `<h2 class="flow-group">${esc(gr.label)}</h2>` : ""}<ol class="flow">${gr.steps.filter((x) => !x.hidden).map((s) => {
     const i = n++;
     const done = f.done.includes(s.key);
     const contrast = s.contrast
@@ -625,12 +678,18 @@ function renderFlow() {
         `${m !== s.atMin ? `<button class="text-btn" type="button" data-action="flow-time" data-key="${s.key}" data-d="reset">Back to ${s.atMin}</button>` : ""}</div>`;
     }
     return `<li class="flow-step${done ? " done" : ""}"><button type="button" class="tick" data-action="flow-tick" data-key="${s.key}" aria-pressed="${done}" aria-label="Step ${i + 1} done">${ICON.check}</button><div class="flow-text"><span class="flow-num">${i + 1}.</span> ${html}${artifactLink(s, gr.label)}${timing}${contrast}</div></li>`;
-  }).join("")}</ol>`).join("");
+  }).join("")}</ol>`);
+  // The notes box sits just above the close-out checks, where "Notes for the reader" is ticked off.
+  const closeAt = shown.findIndex((gr) => /^close out$/i.test(gr.label || ""));
+  groupsHtml.splice(closeAt < 0 ? groupsHtml.length : closeAt, 0, flowNotesHtml(f));
+  const steps = groupsHtml.join("");
+  const startOver = f.notes && state.flowStartOverArmed ? "Tap again to clear the ticks and notes" : "Start over";
   const edited = p.own
     ? `<p class="flow-edited">Your protocol, on this device · <button class="text-btn" type="button" data-action="fe-open">Edit</button></p>`
     : p.edited ? `<p class="flow-edited">Your version, on this device · <button class="text-btn" type="button" data-action="fe-open">Edit</button></p>` : "";
   const notes = p.own ? (p.from ? `${link.guide(P.slug)}#${esc(p.from)}` : link.guide(P.slug)) : `${link.guide(P.slug)}#${esc(p.id)}`;
-  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>${cap(clockFrom(p))} in</strong> when you inject, and the clock counts up to the timed steps.</p>${edited}</div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${notes}">${p.own && !p.from ? "Protocols" : "Protocol notes"}</a> · <button class="text-btn" type="button" data-action="fe-open">Customize</button> · <button class="text-btn" type="button" data-action="flow-reset">Start over</button></p>`;
+  view.innerHTML = `<div class="flow-head"><h1 class="guide-title">${esc(p.name)}</h1><p class="guide-meta">Tick each step as you go. Tap <strong>${cap(clockFrom(p))} in</strong> when you inject, and the clock counts up to the timed steps.</p>${edited}</div>${pick}<div class="flow-clock" id="flow-clock" role="timer" hidden></div>${steps}<p class="flow-foot"><a href="${notes}">${p.own && !p.from ? "Protocols" : "Protocol notes"}</a> · <button class="text-btn" type="button" data-action="fe-open">Customize</button> · <button class="text-btn" type="button" data-action="flow-reset">${startOver}</button>${state.data.site?.feedbackEmail ? ` · <a href="${reportHref(`Exam flow, ${p.name}`, link.flow)}">Report a problem</a>` : ""}</p>`;
+  state.flowStartOverArmed = false;
   tickFlowClock();
   clearInterval(state.flowTimer);
   state.flowTimer = setInterval(() => {
@@ -746,8 +805,7 @@ function renderAbout() {
   if (!state.data) { view.innerHTML = loadingOrErrorHtml(); return; }
   const a = state.data.about;
   if (!a) { view.innerHTML = notFoundHtml("This page isn't in the app."); return; }
-  const disclaimer = state.data.site?.disclaimer;
-  view.innerHTML = `<article><h1 class="guide-title">${esc(a.title)}</h1><div class="prose">${a.html}</div>${disclaimer ? `<aside class="guide-note"><p>${esc(disclaimer)}</p></aside>` : ""}</article>`;
+  view.innerHTML = `<article><h1 class="guide-title">${esc(a.title)}</h1><div class="prose">${a.html}</div>${noteHtml(a.title, link.about)}</article>`;
   $("#guide-bar-title").textContent = "About";
 }
 
@@ -896,7 +954,7 @@ function renderSettings() {
 function aboutHtml() {
   const site = state.data?.site || {};
   const contact = site.feedbackEmail
-    ? `<p>Spotted an error or have a suggestion? Email <a href="mailto:${esc(site.feedbackEmail)}">${esc(site.feedbackEmail)}</a>.</p>`
+    ? `<p>Spotted an error, or something that doesn't work? <a href="${reportHref("the app", link.settings)}">Report a problem</a>, or email <a href="mailto:${esc(site.feedbackEmail)}">${esc(site.feedbackEmail)}</a>.</p>`
     : "";
   return `<section class="setting"><h2>About</h2>${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${contact}${state.data?.about ? `<p><a href="${link.about}">About Cardiac MRI Hub and its sources</a></p>` : ""}<p class="fine">Cardiac MRI Hub, version ${APP_VERSION}</p></section>`;
 }
@@ -1143,14 +1201,63 @@ document.addEventListener("click", async (e) => {
     }
     case "flow-reset": {
       const p = flowProtocol();
-      saveFlow({ protocol: p?.id || null, done: [], contrastAt: null });
+      // With notes written, Start over takes two taps: the notes can't be brought back.
+      if (flowState().notes && !btn.textContent.startsWith("Tap again")) {
+        state.flowStartOverArmed = true;
+        const y = window.scrollY;
+        renderFlow();
+        window.scrollTo(0, y);
+        break;
+      }
+      saveFlow({ protocol: p?.id || null, done: [], contrastAt: null, notes: "" });
       renderFlow();
       window.scrollTo(0, 0);
       toast("Started over");
       break;
     }
+    // ----- Exam notes -----
+    case "flow-notes-open": {
+      const box = $("#flow-notes-box");
+      if (!box) break;
+      state.flowBackY = window.scrollY;
+      $("#flow-notes").scrollIntoView({ block: "center" });
+      box.focus({ preventScroll: true });
+      box.setSelectionRange(box.value.length, box.value.length);
+      $('[data-action="flow-notes-back"]').hidden = false;
+      break;
+    }
+    case "flow-notes-back": {
+      btn.hidden = true;
+      $("#flow-notes-box")?.blur();
+      window.scrollTo(0, state.flowBackY || 0);
+      break;
+    }
+    case "flow-note-add": {
+      const box = $("#flow-notes-box");
+      if (!box) break;
+      const v = box.value;
+      const next = (v + (!v || v.endsWith("\n") ? "" : "\n") + btn.dataset.text).slice(0, NOTES_MAX);
+      box.value = next;
+      saveFlowNotes(next);
+      box.focus({ preventScroll: true });
+      box.setSelectionRange(next.length, next.length);
+      break;
+    }
+    case "flow-notes-copy": {
+      const text = (flowState().notes || "").trim();
+      if (!text) { toast("No notes to copy yet"); break; }
+      try { await navigator.clipboard.writeText(text); toast("Notes copied"); }
+      catch {
+        // No clipboard access (an old browser, or not a secure page): select the notes so Copy is one tap away.
+        const box = $("#flow-notes-box");
+        box.focus();
+        box.select();
+        toast("Notes selected: tap Copy");
+      }
+      break;
+    }
     case "flow-pick": {
-      saveFlow({ protocol: btn.dataset.id, done: [], contrastAt: null });
+      saveFlow({ protocol: btn.dataset.id, done: [], contrastAt: null, notes: "" });
       renderFlow();
       break;
     }
@@ -1411,8 +1518,13 @@ document.addEventListener("change", async (e) => {
   }
   const sel = e.target.closest?.("select[data-flow-pick]");
   if (!sel) return;
-  saveFlow({ protocol: sel.value, done: [], contrastAt: null });
+  saveFlow({ protocol: sel.value, done: [], contrastAt: null, notes: "" });
   renderFlow();
+});
+// Exam notes are saved as they're typed, so nothing is lost if the phone locks or the app is closed.
+document.addEventListener("input", (e) => {
+  const box = e.target.closest?.("textarea[data-flow-notes]");
+  if (box) saveFlowNotes(box.value);
 });
 
 document.addEventListener("keydown", (e) => {

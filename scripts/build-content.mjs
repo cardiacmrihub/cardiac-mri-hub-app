@@ -434,12 +434,18 @@ function tableUnder(body, headingRe) {
   return { heading: lines[start].replace(/^#+\s*/, ""), header, rows };
 }
 
+// "Report a problem" under every guide and tool page: an email to the hub with the page and app version filled in.
+// js/app.js writes the same link (reportHref, reportHtml); keep the two in step.
+const APP_VERSION = readFileSync(join(ROOT, "sw.js"), "utf8").match(/const VERSION = "([^"]+)"/)?.[1] || "";
+const reportHref = (title, path) =>
+  `mailto:${esc(site.feedbackEmail)}?subject=${encodeURIComponent(`Problem: ${title}`)}&amp;body=${encodeURIComponent(`Page: ${site.url}${path}\nApp version: ${APP_VERSION}\n\nWhat's wrong? (A wrong fact, a broken picture, something that doesn't work.)\n\n`)}`;
+const reportHtml = (title, path) =>
+  site.feedbackEmail
+    ? `<a class="btn secondary" href="${reportHref(title, path)}">Report a problem</a><p class="report-help">Opens your email app. No email app here? Write to ${esc(site.feedbackEmail)}.</p>`
+    : "";
 function noteHtml(title, path) {
   if (!site.disclaimer && !site.feedbackEmail) return "";
-  const mail = site.feedbackEmail
-    ? `<a class="btn secondary" href="mailto:${esc(site.feedbackEmail)}?subject=${encodeURIComponent(`Correction: ${title}`)}&amp;body=${encodeURIComponent(`Page: ${site.url}${path}\n\nWhat should change:\n\n`)}">Suggest a correction</a>`
-    : "";
-  return `<aside class="guide-note">${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${mail}</aside>`;
+  return `<aside class="guide-note">${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${reportHtml(title, path)}</aside>`;
 }
 
 // ---------- 3-point planning landmarks ----------
@@ -730,8 +736,22 @@ if (existsSync(aboutPath)) {
   about = { title: data.title || "About", description: data.summary || "", html: markdownToHtml(body, actx) };
 }
 
+// What's new on Home: content/whats-new.json, newest first: [{ date, title, text, href }]. Every link has to
+// lead to a page in the app, so a renamed guide fails the build instead of leaving a dead link on Home.
+let whatsNew = [];
+const whatsNewPath = join(CONTENT, "whats-new.json");
+if (existsSync(whatsNewPath)) {
+  whatsNew = JSON.parse(readFileSync(whatsNewPath, "utf8"));
+  const pages = new Set(["/", "/flow/", "/plan/", "/topics/", "/cards/", "/parameters/", "/settings/", "/about/", ...guides.map((g) => `/guide/${g.slug}/`)]);
+  whatsNew.forEach((n, i) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(n.date || "") || !n.title || !n.text) throw new Error(`whats-new.json: entry ${i + 1} needs a date (YYYY-MM-DD), a title and a text`);
+    if (!pages.has(n.href)) throw new Error(`whats-new.json: "${n.title}" links to ${n.href}, which isn't a page in the app`);
+    if (i && n.date > whatsNew[i - 1].date) throw new Error(`whats-new.json: "${n.title}" is out of order; newest goes first`);
+  });
+}
+
 const publicSite = { name: site.name, url: site.url, feedbackEmail: site.feedbackEmail || "", disclaimer: site.disclaimer || "" };
-const out = { generatedAt: new Date().toISOString(), site: publicSite, topics, guides, parameters, cards, glossary, protocols, about, landmarkGuide: landmarkSource };
+const out = { generatedAt: new Date().toISOString(), site: publicSite, topics, guides, parameters, cards, glossary, protocols, about, whatsNew, landmarkGuide: landmarkSource };
 writeFileSync(join(CONTENT, "guides.json"), JSON.stringify(out));
 
 const imageCount = new Set(guides.flatMap((g) => g.images)).size;
@@ -784,13 +804,7 @@ const rowHtml = (g, meta) => {
 };
 const rowsHtml = (list, meta) => `<ul class="rows">${list.map((g) => rowHtml(g, typeof meta === "function" ? meta(g) : meta)).join("")}</ul>`;
 
-function guideNoteHtml(g) {
-  if (!site.disclaimer && !site.feedbackEmail) return "";
-  const mail = site.feedbackEmail
-    ? `<a class="btn secondary" href="mailto:${esc(site.feedbackEmail)}?subject=${encodeURIComponent(`Correction: ${g.title}`)}&amp;body=${encodeURIComponent(`Guide: ${abs(link.guide(g.slug))}\n\nWhat should change:\n\n`)}">Suggest a correction</a>`
-    : "";
-  return `<aside class="guide-note">${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${mail}</aside>`;
-}
+const guideNoteHtml = (g) => noteHtml(g.title, link.guide(g.slug));
 
 // Quick plan and parameters pieces (same markup as js/app.js).
 const DECK_ICON = `<svg class="deck-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6.5" width="13" height="13" rx="2"/><path d="M7.5 3.5h11a2 2 0 0 1 2 2v11"/></svg>`;
@@ -821,7 +835,7 @@ function pagerHtml(g) {
 }
 // About link at the foot of the home page (aboutFootHtml in js/app.js).
 const aboutFoot = () => (about ? `<p class="home-foot"><a href="/about/">About Cardiac MRI Hub and its sources</a></p>` : "");
-const aboutView = () => `<article><h1 class="guide-title">${esc(about.title)}</h1><div class="prose">${about.html}</div>${site.disclaimer ? `<aside class="guide-note"><p>${esc(site.disclaimer)}</p></aside>` : ""}</article>`;
+const aboutView = () => `<article><h1 class="guide-title">${esc(about.title)}</h1><div class="prose">${about.html}</div>${noteHtml(about.title, "/about/")}</article>`;
 const toolTile = (slug, kind, label, sub) =>
   slug && guides.some((g) => g.slug === slug) ? `<a class="tile" href="/guide/${slug}/">${glyph(kind)}<strong>${label}</strong><span>${sub}</span></a>` : "";
 const atScannerHtml = () =>
@@ -842,6 +856,14 @@ const planView = () =>
   `<p class="plan-links">${[protocols ? `<a href="/guide/${protocols.slug}/">Protocols</a>` : "", cards ? `<a href="/cards/">Printable planning cards</a>` : "", parameters ? `<a href="/parameters/">LV parameters at a glance</a>` : ""].filter(Boolean).join(" · ")}</p>` +
   planGuides().map(({ t, list }) => `<h2 class="section">${esc(t.label)}</h2><ul class="rows">${list.map(planRowHtml).join("")}</ul>`).join("");
 
+// What's new (whatsNewHtml in js/app.js): the three latest, the rest folded under "Earlier updates".
+const shortDate = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+const newsItem = (n) => `<li><a class="news-item" href="${esc(n.href)}"><span class="news-date">${shortDate(n.date)}</span><span><strong>${esc(n.title)}</strong><span class="news-text">${esc(n.text)}</span></span></a></li>`;
+const whatsNewHtml = () =>
+  whatsNew.length
+    ? `<h2 class="section">What's new</h2><ul class="news">${whatsNew.slice(0, 3).map(newsItem).join("")}</ul>${whatsNew.length > 3 ? `<details class="news-more"><summary>Earlier updates</summary><ul class="news">${whatsNew.slice(3).map(newsItem).join("")}</ul></details>` : ""}`
+    : "";
+
 function homeView() {
   let html = `<a class="search-launch" href="/search/">${SEARCH_ICON}<span>Search guides or type 4ch, SAX, LVOT</span></a>`;
   const start = guides.filter((g) => g.startHere).sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
@@ -852,7 +874,7 @@ function homeView() {
       html += `<a class="feature" href="${link.guide(g.slug)}"><div class="feature-media">${media}</div><h3>${esc(listTitle(g))}</h3><p>${esc(g.summary)}</p></a>`;
     }
   }
-  html += atScannerHtml();
+  html += atScannerHtml() + whatsNewHtml();
   html += `<h2 class="section">Topics</h2><div class="tiles">${liveTopics.map((t) => `<a class="tile" href="${link.topic(t.slug)}">${glyph(glyphFor(t))}<strong>${esc(t.label)}</strong><span>${t.count} ${t.count === 1 ? "guide" : "guides"}</span></a>`).join("")}</div>`;
   const recent = [...guides].sort(byUpdated).slice(0, 5);
   html += `<h2 class="section">Recently updated</h2><ul class="rows">${recent
