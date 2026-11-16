@@ -5,7 +5,7 @@ summary: "Where to place the left ventricle short-axis samples at the base, mid 
 topics: [left-ventricle]
 published: 2025-11-25
 updated: 2026-03-07
-cover: ../images/84904b_0fb77af252fa42f39cd229242c7e3929-mv2.webp
+cover: ../images/51892d_367f47a6560d4e26a3ec8d2723a4e2ea-mv2.webp
 order: 5
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-short-axis-sample-view-comprehensive-cardiac-mri-planning-for-tech
 ---

@@ -5,7 +5,7 @@ summary: "A case where TrueFISP banding hid a forme fruste bicuspid aortic valve
 topics: [valves, technique]
 published: 2025-11-24
 updated: 2026-11-09
-cover: ../images/84904b_9e57d49a3b9a406aaadd55e961a4f644-mv2.webp
+cover: ../images/51892d_7146887a036747879ad89afb93ffbd7c-mv2.webp
 order: 5
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/gre-vs-true-fisp-aortic-valve-artifacts-a-case-study
 ---

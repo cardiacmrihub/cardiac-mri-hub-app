@@ -5,7 +5,7 @@ summary: "A quick plan for the left ventricle in cardiac MRI: the 2-chamber, 3-c
 topics: [left-ventricle, getting-started]
 published: 2025-11-08
 updated: 2026-11-09
-cover: ../images/84904b_0fb77af252fa42f39cd229242c7e3929-mv2.webp
+cover: ../images/51892d_5a1cb0d0a2a24230b116453b839136f3-mv2.webp
 order: 1
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/left-ventricle-quick-plan
 ---

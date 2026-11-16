@@ -4,7 +4,7 @@ shortTitle: "RV axial view"
 summary: "How to plan the right ventricle axial stack in cardiac MRI for RV volumes and function: slice placement, field of view and what it's used for."
 topics: [right-ventricle]
 published: 2025-12-01
-cover: ../images/84904b_774a79f9006d42e5bee27c6cddc903b5-mv2.webp
+cover: ../images/51892d_ee90c20fb2194f40aecfffdb2c64694b-mv2.webp
 order: 2
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricle-axial
 ---

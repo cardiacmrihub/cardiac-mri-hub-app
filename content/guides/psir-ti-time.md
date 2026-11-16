@@ -4,8 +4,8 @@ shortTitle: "Choosing the TI time for PSIR"
 summary: "How to choose the inversion time (TI) for PSIR in LGE and EGE imaging, how LGE and EGE differ, and why a long TI right after injection shows thrombus and MVO."
 topics: [technique]
 published: 2025-12-04
-updated: 2026-11-09
-cover: ../images/51892d_62f8008801954f4d8a8ba16d82a81d38-mv2.webp
+updated: 2026-11-16
+cover: ../images/51892d_fcd363820a744125b63e2dbd8b945ba1-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/choosing-the-right-ti-time-for-psir-imaging-in-cardiac-mri-understanding-lge-and-ege-techniques
 ---
 
@@ -41,8 +41,6 @@ EGE is done in the first few minutes after injection, usually 1–3 minutes, whi
 
 - **Purpose:** thrombus and microvascular obstruction (MVO), especially after a recent heart attack.
 - **TI:** a long, fixed TI set to null thrombus: about 500–550 ms at 1.5 T and 850–900 ms at 3 T.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/) At that TI, tissue with little or no contrast in it, such as thrombus and MVO, is nulled (black), while the blood and myocardium stay bright.
-
-![Illustration of a chest skeleton with the heart and lungs](../images/51892d_e87312e0691d4e1983567806a160835a-mv2.webp)
 
 # Why a long TI right after injection
 

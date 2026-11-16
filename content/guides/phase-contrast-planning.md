@@ -4,7 +4,7 @@ summary: "How to plan phase contrast flow in cardiac MRI: choosing the VENC, thr
 topics: [phase-contrast]
 published: 2025-11-23
 updated: 2025-12-12
-cover: ../images/84904b_38aebabe98c5458897bf0359603a81a2-mv2.webp
+cover: ../images/51892d_3d0648c68fdd4d4c9b0a7d1abdb953da-mv2.webp
 order: 2
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/phase-contrast
 artifacts: flow-phase-contrast

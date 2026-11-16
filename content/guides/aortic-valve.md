@@ -4,7 +4,7 @@ summary: "How to plan the aortic valve views in cardiac MRI, including the valve
 topics: [valves]
 published: 2025-11-25
 updated: 2025-12-13
-cover: ../images/84904b_9e57d49a3b9a406aaadd55e961a4f644-mv2.webp
+cover: ../images/51892d_9f30360805cf4c978ea907514b3b2e77-mv2.webp
 order: 1
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/aortic-valve
 ---

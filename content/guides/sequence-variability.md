@@ -4,7 +4,8 @@ shortTitle: "Why sequences and protocols vary"
 summary: "Why cardiac MRI sequences and protocols differ between scans, patients and sites: the clinical question, the patient, the technology and local preferences."
 topics: [technique]
 published: 2025-12-01
-cover: ../images/51892d_62f8008801954f4d8a8ba16d82a81d38-mv2.webp
+updated: 2026-11-16
+cover: ../images/51892d_1caa159a9833468aac6a0c9ba501c740-mv2.webp
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-variability-in-cardiac-mri-sequences-and-protocol-differences
 ---
 
@@ -36,8 +37,6 @@ The patient also shapes the protocol:
 
 Adjust for these, sometimes choosing sequences that are more robust or faster.
 
-![Eye-level view of cardiac MRI scanner room with patient table and coil setup](../images/51892d_62f8008801954f4d8a8ba16d82a81d38-mv2.webp "Cardiac MRI scanner room showing patient table and coil setup")
-
 # Technical factors
 
 The technology matters too.
@@ -48,6 +47,12 @@ Some sequences are more prone to motion, flow or susceptibility artifacts. For e
 
 - **bSSFP:** excellent blood-to-myocardium contrast, but sensitive to off-resonance (banding).
 - **Spin echo:** less sensitive to field differences, but slower.
+
+The same aortic valve slice with two cine sequences: TrueFISP, a bSSFP sequence, and GRE. More in [GRE vs TrueFISP](/guide/gre-vs-truefisp-aortic-valve/).
+
+![Short-axis view of the aortic valve with a TrueFISP cine, with a dark band over the valve](../images/51892d_7146887a036747879ad89afb93ffbd7c-mv2.webp "TrueFISP: a dark band runs over the valve.")
+
+![Short-axis view of the aortic valve with a GRE cine, at the same slice location, without the band](../images/51892d_1caa159a9833468aac6a0c9ba501c740-mv2.webp "GRE at the same slice location: no band.")
 
 Choose the balance of image quality and artifacts that suits your scanner and how well the patient can cooperate.
 

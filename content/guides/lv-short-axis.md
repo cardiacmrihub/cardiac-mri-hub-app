@@ -5,7 +5,7 @@ summary: "How to plan the left ventricle short-axis stack in cardiac MRI from th
 topics: [left-ventricle]
 published: 2025-11-25
 updated: 2026-11-09
-cover: ../images/84904b_0fb77af252fa42f39cd229242c7e3929-mv2.webp
+cover: ../images/51892d_5a5aad2a43df480ebb4840d5cad6793c-mv2.webp
 order: 4
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/understanding-the-left-ventricle-short-axis-view-comprehensive-cardiac-mri-planning-for-technologis
 ---

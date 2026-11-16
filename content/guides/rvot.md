@@ -5,7 +5,7 @@ summary: "How to plan the right ventricular outflow tract (RVOT) in cardiac MRI:
 topics: [right-ventricle]
 published: 2025-11-25
 updated: 2025-12-01
-cover: ../images/84904b_774a79f9006d42e5bee27c6cddc903b5-mv2.webp
+cover: ../images/51892d_26047a5e488e4c7e9651d43518133ee4-mv2.webp
 order: 6
 sourceUrl: https://cardiacmrihub.wixsite.com/cardiac-mri-hub/post/right-ventricular-outflow-tract-view
 ---
