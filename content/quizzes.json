@@ -212,9 +212,9 @@
       "why": "Next come shimming over the heart only and a shorter TR. A GRE cine is the last step, if the band won't clear."
     },
     {
-      "q": "What's the band of tissue across the top of this image?",
+      "q": "What's the band of tissue that the arrow points to?",
       "image": "artifact-wrap-back.webp",
-      "alt": "Axial image of the chest at the level of the great arteries, with a band of tissue across the top edge",
+      "alt": "Axial image of the chest at the level of the great arteries, with an arrow pointing to a band of tissue across the top edge",
       "right": "Wrap: the patient's back, folded over from outside the field of view",
       "wrong": [
         "Breathing ghosts from the chest wall",
