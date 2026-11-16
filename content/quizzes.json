@@ -1,0 +1,180 @@
+{
+  "lv-2-chamber": [
+    {
+      "q": "This is step 1 of the 2-chamber. Which view is the line drawn on?",
+      "image": "51892d_fa3cc5646296400fbd8abd1a2ffc43d4-mv2.webp",
+      "alt": "A long-axis view of the heart with a planning line through the mitral valve and the LV apex",
+      "right": "The 4-chamber",
+      "wrong": ["The 3-chamber", "The basal short axis"],
+      "why": "Step 1: on the 4-chamber, draw the line through the middle of the mitral valve and the LV apex."
+    },
+    {
+      "q": "This is step 2, on the mid short axis. How should the line run?",
+      "image": "51892d_b83f7770c35c4f4ba168d8ca5f7b17d3-mv2.webp",
+      "alt": "Mid short-axis view with a planning line across the left ventricle",
+      "right": "Through the middle of the LV, parallel to the septum",
+      "wrong": ["Through the middle of the LV and the RV apex", "Through the LVOT and the mitral valve"],
+      "why": "Parallel to the septum gives the 2-chamber. A line through the RV apex gives the 4-chamber."
+    },
+    {
+      "q": "Your 2-chamber shows the septum and part of the RV. What do you fix?",
+      "right": "Straighten the line on the mid short axis, so it's parallel to the septum",
+      "wrong": ["Add slices at the base", "Widen the field of view"],
+      "why": "With the line parallel to the septum, no septum or RV shows in the slice."
+    },
+    {
+      "q": "The LV looks short on your 2-chamber. What's the likely cause?",
+      "right": "The plane is foreshortened: it misses the true apex",
+      "wrong": ["The slice is too thick", "The field of view is too small"],
+      "why": "A full-length LV has the true apex in the slice. Recheck the plane on the 4-chamber."
+    }
+  ],
+  "lv-4-chamber": [
+    {
+      "q": "This is step 1 of the 4-chamber, on the 2-chamber. What does the line go through?",
+      "image": "51892d_26910326e5444f27b0e85828f6427f4c-mv2.webp",
+      "alt": "Two-chamber view with a planning line along the left ventricle",
+      "right": "The middle of the mitral valve and the LV apex",
+      "wrong": ["The aortic valve and the LV apex", "The anterior and inferior walls"],
+      "why": "Step 1: the line runs parallel to the long axis, through the middle of the mitral valve and the LV apex."
+    },
+    {
+      "q": "On the mid short axis, the line goes through the middle of the LV. Where else should it reach?",
+      "image": "51892d_6285d8658c834d7bb423b48f04c4241a-mv2.webp",
+      "alt": "Mid short-axis view with a planning line through the left ventricle, ending at a point marked in blue",
+      "right": "The RV apex",
+      "wrong": ["The LVOT", "The descending aorta"],
+      "why": "Step 4: fine-tune the line so it also reaches the RV apex, shown in blue."
+    },
+    {
+      "q": "Why do you check the line on the basal short axis?",
+      "right": "To keep it clear of the LVOT",
+      "wrong": ["To center it on the aortic valve", "To line it up with the papillary muscles"],
+      "why": "Step 3: on the basal short axis, the line should stay clear of the LVOT."
+    },
+    {
+      "q": "Your 4-chamber shows the LVOT and the aortic valve. What do you do?",
+      "right": "Replan from a mid short-axis slice: the plane is too far toward the base",
+      "wrong": ["Recheck it on the 2-chamber: the plane is foreshortened", "Nothing: a 4-chamber should show them"],
+      "why": "A good 4-chamber shows all four chambers with the mitral and tricuspid valves, and no LVOT or aortic valve."
+    }
+  ],
+  "lv-3-chamber": [
+    {
+      "q": "This is step 1 of the 3-chamber, on the basal short axis. What does the line go through?",
+      "image": "51892d_e49ca3ec025840108c294b26b11a54e3-mv2.webp",
+      "alt": "Basal short-axis view with a planning line across it",
+      "right": "The middle of the LVOT and the mitral valve",
+      "wrong": ["The middle of the LV and the RV apex", "The anterior and inferior walls"],
+      "why": "Step 1: on the basal short axis, draw the line through the middle of the LVOT and the mitral valve."
+    },
+    {
+      "q": "What does a good 3-chamber show that a 2-chamber doesn't?",
+      "image": "51892d_86dcc820732e47fe89314f1f03aac0e8-mv2.webp",
+      "alt": "A finished three-chamber view",
+      "right": "The LVOT, the aortic valve and the aortic root",
+      "wrong": ["The tricuspid valve and the right atrium", "The pulmonary valve"],
+      "why": "The 3-chamber has the mitral valve, aortic valve, LVOT and aortic root in one slice, with the LV and LA."
+    },
+    {
+      "q": "The aortic valve looks narrow or clipped on your 3-chamber. What do you do?",
+      "right": "Replan the line on the basal short axis: it's off center",
+      "wrong": ["Recheck it on the 2-chamber: the plane is foreshortened", "Widen the field of view"],
+      "why": "The LVOT and aortic valve should be cut through the middle. Foreshortening is a different problem: it makes the LV look short."
+    }
+  ],
+  "lv-short-axis": [
+    {
+      "q": "How should the short-axis stack sit on the 2-chamber?",
+      "image": "51892d_9671e0be30824d109042106800875822-mv2.webp",
+      "alt": "Two-chamber view with a stack of parallel planning lines across the left ventricle",
+      "right": "Perpendicular to the long axis of the LV, from the mitral valve plane to the apex",
+      "wrong": ["Parallel to the long axis, through the mitral valve and the apex", "Straight across the chest, like an axial stack"],
+      "why": "Step 1: perpendicular to the long axis, from the mitral valve plane to the apex. Then check the same stack on the 4-chamber."
+    },
+    {
+      "q": "The base is cut off your stack. What happens to the volumes?",
+      "right": "End-diastolic volume comes out too low",
+      "wrong": ["End-diastolic volume comes out too high", "Nothing: the mid slices set the volumes"],
+      "why": "The stack has to cover the whole LV, from the mitral valve plane to the true apex. Add slices at the base."
+    },
+    {
+      "q": "What can a tilted stack do?",
+      "right": "Make the walls look thicker than they are",
+      "wrong": ["Put dark bands across the heart", "Make the breath-hold longer"],
+      "why": "The slices should be perpendicular to the LV long axis on both the 2-chamber and the 4-chamber. Replan on both views."
+    },
+    {
+      "q": "Which slice thickness and gap does the guide give for the cines?",
+      "right": "6–8 mm, with or without a 2–4 mm gap",
+      "wrong": ["3–4 mm with no gap", "10–12 mm with a 5 mm gap"],
+      "why": "6–8 mm, with or without a 2–4 mm gap, 10 mm in all. Thicker slices or larger gaps can miss small infarcts."
+    }
+  ],
+  "lv-short-axis-samples": [
+    {
+      "q": "Which basal slice is placed right?",
+      "pick": {
+        "right": "51892d_9da9d54c19aa4de985c772da9b165175-mv2.webp",
+        "wrong": ["51892d_0bae2cf6238e4ef3ac6edc07409da909-mv2.webp"]
+      },
+      "why": "The right one has a full ring of myocardium, with no aortic root. The other is too close to the LVOT: move it toward the apex."
+    },
+    {
+      "q": "Which level is this short-axis slice?",
+      "image": "51892d_367f47a6560d4e26a3ec8d2723a4e2ea-mv2.webp",
+      "alt": "A short-axis cine slice of the left ventricle",
+      "right": "Mid",
+      "wrong": ["Base", "Apex"],
+      "why": "The papillary muscles are in the slice, which marks the mid level. The apex has a small cavity and no papillary muscles."
+    },
+    {
+      "q": "Which describes a good apical slice?",
+      "image": "51892d_87042b805d9646a5a4c01e07ee62d7ae-mv2.webp",
+      "alt": "An apical short-axis cine slice",
+      "right": "A small LV cavity, no papillary muscles, and no overlap with the mid slice",
+      "wrong": ["Both papillary muscles in full", "The aortic root and a moving valve in the slice"],
+      "why": "The papillary muscles belong to the mid slice. A basal slice shouldn't show the aortic root either."
+    }
+  ],
+  "artifact-troubleshooting": [
+    {
+      "q": "Dark streaks cross this TrueFISP cine of the aortic valve. What's the artifact?",
+      "image": "51892d_db487e51500148ec97d694eccae06f5d-mv2.webp",
+      "alt": "TrueFISP cine frame of the aortic valve with dark streaks across it",
+      "right": "Off-resonance banding",
+      "wrong": ["Wrap", "Velocity aliasing"],
+      "why": "TrueFISP loses signal in dark bands wherever the magnetic field is slightly off the center frequency."
+    },
+    {
+      "q": "The guide lists the fixes for banding quickest first. Which comes first?",
+      "right": "Run a frequency scout and shift the center frequency",
+      "wrong": ["Switch to a GRE cine", "Raise the VENC"],
+      "why": "Next come shimming over the heart only and a shorter TR. A GRE cine is the last step, if the band won't clear."
+    },
+    {
+      "q": "The bright jet on this phase image has a black core. What do you do?",
+      "image": "51892d_f0d721a2fcfe4d8fbc03c44b5a75f85e-mv2.webp",
+      "alt": "Phase image with a bright jet that has a black core",
+      "right": "Raise the VENC and repeat",
+      "wrong": ["Lower the VENC and repeat", "Nothing: software fixes it later"],
+      "why": "It's velocity aliasing: anything faster than the VENC wraps to the opposite color. Use the lowest VENC that doesn't alias."
+    },
+    {
+      "q": "One slice in a stack is smeared. Its neighbors are sharp, and so are the chest wall and liver. What's the likely cause?",
+      "image": "artifact-arrhythmia-blurred.webp",
+      "alt": "A smeared cine slice with stacked arcs along the heart border, marked by an arrow",
+      "right": "Arrhythmia: each frame mixes heartbeats of different lengths",
+      "wrong": ["Breathing: the breath-hold failed", "The wrong TI"],
+      "why": "The chest wall and liver stay sharp, so the breath-hold held. Repeat just the blurred slice first."
+    },
+    {
+      "q": "The same LGE slice at two TIs, with the magnitude images on the left. Which row has the TI set right?",
+      "image": "51892d_0f11c65e77f546798ca7f6e4fc66937b-mv2.webp",
+      "alt": "Four short-axis LGE images in two rows",
+      "right": "The bottom row: normal myocardium is black",
+      "wrong": ["The top row: the myocardium is gray", "Either: the TI doesn't change a magnitude image"],
+      "why": "On magnitude LGE, the right TI nulls normal myocardium, so scar stands out against it. The top row's TI is far too long."
+    }
+  ]
+}

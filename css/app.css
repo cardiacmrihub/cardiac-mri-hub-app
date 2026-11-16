@@ -13,6 +13,9 @@
   --lightbox: #1C2630;    /* backdrop behind scanner images */
   --mark: #FBE7B5;
   --danger: #B3261E;
+  --danger-bg: #FBE9E7;
+  --ok: #1B6E3C;          /* a right answer in a self-check quiz */
+  --ok-bg: #E4F3E9;
 
   --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-title: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
@@ -40,8 +43,10 @@
     --accent-ink: #F2B33D;
     --lightbox: #0F151B;
     --mark: #5A4413;
-  --danger: #FF8A80;
     --danger: #FF8A80;
+    --danger-bg: #3A2221;
+    --ok: #7ED99A;
+    --ok-bg: #1B3326;
     color-scheme: dark;
   }
 }
@@ -55,6 +60,10 @@
   --accent-ink: #F2B33D;
   --lightbox: #0F151B;
   --mark: #5A4413;
+  --danger: #FF8A80;
+  --danger-bg: #3A2221;
+  --ok: #7ED99A;
+  --ok-bg: #1B3326;
   color-scheme: dark;
 }
 
@@ -303,6 +312,70 @@ h2.section small { font: 400 calc(14px * var(--ts))/1 var(--font-body); color: v
 .pager-link.none { visibility: hidden; }
 .pager-link:active { background: var(--line); }
 .guide-foot { margin-top: 30px; border-top: 1px solid var(--line); padding-top: 6px; }
+
+/* ---------- self-check quiz (under a guide) ---------- */
+.quiz {
+  margin: 28px 0 0; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+  border-radius: 12px; scroll-margin-top: calc(64px + var(--safe-t));
+}
+.quiz-title { font: 600 calc(20px * var(--ts))/1.2 var(--font-title); margin: 0 0 6px; }
+.quiz-lede, .quiz-last { margin: 0 0 12px; color: var(--ink-2); font-size: calc(15px * var(--ts)); line-height: 1.45; }
+.quiz-last { color: var(--ink); font-weight: 700; }
+.quiz-step { margin: 8px 0 6px; font: 700 calc(13px * var(--ts))/1.2 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.quiz-q { margin: 0 0 12px; font: 700 calc(18px * var(--ts))/1.35 var(--font-body); }
+.quiz-q:focus, .quiz-feedback:focus, .quiz-score:focus { outline: none; }
+.quiz-figure { margin: 0 0 12px; }
+.quiz-figure img { display: block; width: 100%; height: auto; border-radius: 10px; background: var(--lightbox); cursor: zoom-in; }
+.quiz-options { display: grid; gap: 8px; }
+.quiz-opt {
+  appearance: none; display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 10px 12px;
+  text-align: left; cursor: pointer; font: 400 calc(16px * var(--ts))/1.35 var(--font-body); color: var(--ink);
+  background: var(--bg); border: 2px solid var(--line); border-radius: 12px;
+}
+.quiz-opt:not(:disabled):active { border-color: var(--ink-2); }
+.quiz-opt:disabled { cursor: default; color: var(--ink); }
+.quiz-letter {
+  flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  font: 700 14px/1 var(--font-body); background: var(--surface); border: 1px solid var(--line); color: var(--ink-2);
+}
+.quiz-text { flex: 1; min-width: 0; }
+.quiz-mark { flex: none; display: grid; place-items: center; }
+.quiz-mark svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.quiz-opt.right { border-color: var(--ok); background: var(--ok-bg); }
+.quiz-opt.right .quiz-mark { color: var(--ok); }
+.quiz-opt.wrong { border-color: var(--danger); background: var(--danger-bg); }
+.quiz-opt.wrong .quiz-mark { color: var(--danger); }
+.quiz-opt.dim { opacity: .55; }
+/* answers that are pictures: one above the other on a phone, side by side on a wider screen */
+@media (min-width: 600px) { .quiz-options.pics { grid-template-columns: 1fr 1fr; } }
+.quiz-opt.pic { position: relative; display: block; padding: 0; overflow: hidden; background: var(--lightbox); border-width: 3px; }
+.quiz-opt.pic img { display: block; width: 100%; height: auto; }
+.quiz-opt.pic .quiz-letter { position: absolute; top: 8px; left: 8px; background: #fff; border: 0; color: #16212C; }
+.quiz-tag {
+  position: absolute; left: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px 4px 6px;
+  border-radius: 999px; background: #fff; font: 700 calc(14px * var(--ts))/1.2 var(--font-body);
+}
+.quiz-tag .quiz-mark svg { width: 18px; height: 18px; }
+.quiz-opt.pic.right .quiz-tag, .quiz-opt.pic.right .quiz-mark { color: #1B6E3C; }
+.quiz-opt.pic.wrong .quiz-tag, .quiz-opt.pic.wrong .quiz-mark { color: #B3261E; }
+.quiz-feedback {
+  margin: 12px 0; padding: 12px 14px; background: var(--bg); border-left: 4px solid var(--line); border-radius: 10px;
+  font-size: calc(16px * var(--ts)); line-height: 1.45;
+}
+.quiz-feedback.right { border-left-color: var(--ok); }
+.quiz-feedback.right strong { color: var(--ok); }
+.quiz-feedback.wrong { border-left-color: var(--danger); }
+.quiz-feedback.wrong strong { color: var(--danger); }
+.quiz [data-action="quiz-next"] { scroll-margin-bottom: calc(var(--tabbar-h) + var(--safe-b) + 16px); }
+.quiz-score { margin: 8px 0 6px; font-size: calc(18px * var(--ts)); }
+.quiz-score strong { font: 700 calc(34px * var(--ts))/1 var(--font-title); margin-right: 4px; }
+.quiz-missed { list-style: none; margin: 0 0 14px; padding: 0; }
+.quiz-missed li { padding: 10px 0; border-top: 1px solid var(--line); font-size: calc(15px * var(--ts)); line-height: 1.4; }
+.quiz-missed li:last-child { border-bottom: 1px solid var(--line); }
+.quiz-missed span { display: block; color: var(--ink-2); }
+.quiz-missed strong { display: block; margin-top: 2px; }
+.quiz .btn-row { align-items: center; gap: 16px; }
+.quiz-back { font-weight: 700; }
 .guide-note {
   margin: 28px 0 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px;
   background: var(--surface); font-size: calc(14px * var(--ts)); line-height: 1.5; color: var(--ink-2);
@@ -485,7 +558,7 @@ button.row {
 /* ---------- printing (parameters page, planning cards, guides) ---------- */
 @media print {
   :root { --ts: 1; }
-  .topbar, .tabbar, .skip, .toast, .update-bar, .deck, .lightbox, .notice, .plan-btn, .guide-note .btn, .guide-note .report-help, .guide-foot, .toc { display: none !important; }
+  .topbar, .tabbar, .skip, .toast, .update-bar, .deck, .lightbox, .notice, .plan-btn, .guide-note .btn, .guide-note .report-help, .guide-foot, .toc, .quiz { display: none !important; }
   body { background: #fff !important; color: #000 !important; }
   main { padding: 0 !important; }
   a { color: inherit; text-decoration: none; }

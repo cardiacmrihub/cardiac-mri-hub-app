@@ -736,6 +736,44 @@ if (existsSync(aboutPath)) {
   about = { title: data.title || "About", description: data.summary || "", html: markdownToHtml(body, actx) };
 }
 
+// Self-check quizzes: content/quizzes.json, { "<guide slug>": [question, ...] }. A question is
+//   { q, image?, alt?, right, wrong: [...], why }             text answers, with an optional picture above them
+//   { q, pick: { right: "file", wrong: ["file"] }, why }      the answers are pictures to tap
+// Pictures are file names in content/images. The guide gets `quiz`, with the right answer first in `options`
+// (the app shuffles them on every try), and a "Check yourself" entry in its "In this guide" list.
+const QUIZ_ID = "check-yourself";
+const quizzesPath = join(CONTENT, "quizzes.json");
+if (existsSync(quizzesPath)) {
+  const all = JSON.parse(readFileSync(quizzesPath, "utf8"));
+  for (const [slug, list] of Object.entries(all)) {
+    const g = guides.find((x) => x.slug === slug);
+    if (!g) throw new Error(`quizzes.json: no guide called "${slug}"`);
+    if (!Array.isArray(list) || !list.length) throw new Error(`quizzes.json: "${slug}" has no questions`);
+    const picture = (name, at) => {
+      const img = resolveImage(`../images/${name}`);
+      if (!existsSync(img.local)) throw new Error(`quizzes.json: ${at}: image not found: ${name}`);
+      g.images.includes(img.url) || g.images.push(img.url);
+      return { src: img.url, ...(imageSize(img.local) || {}) };
+    };
+    g.quiz = list.map((x, i) => {
+      const at = `"${slug}" question ${i + 1}`;
+      if (!x.q || !x.why) throw new Error(`quizzes.json: ${at} needs a q and a why`);
+      let options;
+      if (x.pick) {
+        if (!x.pick.right || !x.pick.wrong?.length) throw new Error(`quizzes.json: ${at}: pick needs a right picture and at least one wrong one`);
+        options = [x.pick.right, ...x.pick.wrong].map((name) => picture(name, at));
+      } else {
+        if (!x.right || !Array.isArray(x.wrong) || !x.wrong.length) throw new Error(`quizzes.json: ${at} needs a right answer and at least one wrong one`);
+        options = [x.right, ...x.wrong].map((text) => ({ text }));
+        if (new Set(options.map((o) => o.text)).size !== options.length) throw new Error(`quizzes.json: ${at} has the same answer twice`);
+      }
+      if (x.image && !x.alt) throw new Error(`quizzes.json: ${at}: the picture needs an alt that doesn't give the answer away`);
+      return { q: x.q, ...(x.image ? { image: { ...picture(x.image, at), alt: x.alt } } : {}), options, why: x.why };
+    });
+    g.headings.push({ id: QUIZ_ID, text: "Check yourself" });
+  }
+}
+
 // What's new on Home: content/whats-new.json, newest first: [{ date, title, text, href }]. Every link has to
 // lead to a page in the app, so a renamed guide fails the build instead of leaving a dead link on Home.
 let whatsNew = [];
@@ -745,7 +783,7 @@ if (existsSync(whatsNewPath)) {
   const pages = new Set(["/", "/flow/", "/plan/", "/topics/", "/cards/", "/parameters/", "/settings/", "/about/", ...guides.map((g) => `/guide/${g.slug}/`)]);
   whatsNew.forEach((n, i) => {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(n.date || "") || !n.title || !n.text) throw new Error(`whats-new.json: entry ${i + 1} needs a date (YYYY-MM-DD), a title and a text`);
-    if (!pages.has(n.href)) throw new Error(`whats-new.json: "${n.title}" links to ${n.href}, which isn't a page in the app`);
+    if (!pages.has(String(n.href).split("#")[0])) throw new Error(`whats-new.json: "${n.title}" links to ${n.href}, which isn't a page in the app`);
     if (i && n.date > whatsNew[i - 1].date) throw new Error(`whats-new.json: "${n.title}" is out of order; newest goes first`);
   });
 }
@@ -805,6 +843,11 @@ const rowHtml = (g, meta) => {
 const rowsHtml = (list, meta) => `<ul class="rows">${list.map((g) => rowHtml(g, typeof meta === "function" ? meta(g) : meta)).join("")}</ul>`;
 
 const guideNoteHtml = (g) => noteHtml(g.title, link.guide(g.slug));
+// Self-check quiz under a guide: the first paint is the Start card; the app runs the questions (quizCardHtml in js/app.js).
+const quizCardHtml = (g) =>
+  g.quiz?.length
+    ? `<section class="quiz" id="${QUIZ_ID}" aria-labelledby="quiz-h"><h2 class="quiz-title" id="quiz-h">Check yourself</h2><p class="quiz-lede">${g.quiz.length} quick questions, about a minute. Nothing is graded or sent anywhere.</p><button class="btn" type="button" data-action="quiz-start">Start</button></section>`
+    : "";
 
 // Quick plan and parameters pieces (same markup as js/app.js).
 const DECK_ICON = `<svg class="deck-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6.5" width="13" height="13" rx="2"/><path d="M7.5 3.5h11a2 2 0 0 1 2 2v11"/></svg>`;
@@ -905,7 +948,7 @@ function guideView(g) {
     const next = [...list.slice(at + 1), ...list.slice(0, Math.max(0, at))].slice(0, 3);
     if (next.length) more = `<div class="guide-foot"><h2 class="section">More in ${esc(gTopics[0].label)}</h2>${rowsHtml(next)}</div>`;
   }
-  return `<article>${gTopics.length ? `<ul class="guide-topics">${gTopics.map((t) => `<li><a href="${link.topic(t.slug)}">${esc(t.label)}</a></li>`).join("")}</ul>` : ""}<h1 class="${titleClass(g)}">${esc(listTitle(g))}</h1><p class="guide-meta">${meta.join(", ")}</p>${planButton(g)}${g.landmarksHtml || ""}${toc}<div class="prose">${g.cover && g.coverWide && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}${g.html}</div>${pagerHtml(g)}${paramsXref(g)}${guideNoteHtml(g)}${more}</article>`;
+  return `<article>${gTopics.length ? `<ul class="guide-topics">${gTopics.map((t) => `<li><a href="${link.topic(t.slug)}">${esc(t.label)}</a></li>`).join("")}</ul>` : ""}<h1 class="${titleClass(g)}">${esc(listTitle(g))}</h1><p class="guide-meta">${meta.join(", ")}</p>${planButton(g)}${g.landmarksHtml || ""}${toc}<div class="prose">${g.cover && g.coverWide && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}${g.html}</div>${quizCardHtml(g)}${pagerHtml(g)}${paramsXref(g)}${guideNoteHtml(g)}${more}</article>`;
 }
 
 const template = readFileSync(join(ROOT, "index.html"), "utf8");

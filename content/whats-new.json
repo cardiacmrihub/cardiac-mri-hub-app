@@ -1,9 +1,10 @@
 [
-  { "date": "2026-11-15", "title": "Notes in the exam flow", "text": "Jot the TI, VENC and heart rate as you scan, then copy them at close-out.", "href": "/flow/" },
-  { "date": "2026-11-10", "title": "Artifact troubleshooting", "text": "20 artifacts: what each looks like, why it happens and the fix at the scanner.", "href": "/guide/artifact-troubleshooting/" },
-  { "date": "2026-11-09", "title": "Stress perfusion", "text": "Planning, injector settings, SCMR's order and stress agent doses, with a printable card.", "href": "/guide/stress-perfusion/" },
-  { "date": "2026-11-09", "title": "Close-out checks", "text": "Every exam flow ends with four checks, from images sent to contrast and charges.", "href": "/flow/" },
-  { "date": "2026-11-09", "title": "Steps first in every planning guide", "text": "Each view opens with Plan it, Check it and Key settings.", "href": "/topics/" },
-  { "date": "2026-11-08", "title": "Your own protocols", "text": "Customize a protocol or build one from blank in the exam flow, and back them up in Settings.", "href": "/flow/" },
-  { "date": "2026-11-07", "title": "Protocols by indication", "text": "15 exams following the SCMR 2020 standardized protocols.", "href": "/guide/protocols/" }
+  {"date": "2026-11-15", "title": "Check yourself", "text": "Quick self-check questions under six guides, starting with the LV views. More to come.", "href": "/guide/lv-4-chamber/#check-yourself"},
+  {"date": "2026-11-15", "title": "Notes in the exam flow", "text": "Jot the TI, VENC and heart rate as you scan, then copy them at close-out.", "href": "/flow/"},
+  {"date": "2026-11-10", "title": "Artifact troubleshooting", "text": "20 artifacts: what each looks like, why it happens and the fix at the scanner.", "href": "/guide/artifact-troubleshooting/"},
+  {"date": "2026-11-09", "title": "Stress perfusion", "text": "Planning, injector settings, SCMR's order and stress agent doses, with a printable card.", "href": "/guide/stress-perfusion/"},
+  {"date": "2026-11-09", "title": "Close-out checks", "text": "Every exam flow ends with four checks, from images sent to contrast and charges.", "href": "/flow/"},
+  {"date": "2026-11-09", "title": "Steps first in every planning guide", "text": "Each view opens with Plan it, Check it and Key settings.", "href": "/topics/"},
+  {"date": "2026-11-08", "title": "Your own protocols", "text": "Customize a protocol or build one from blank in the exam flow, and back them up in Settings.", "href": "/flow/"},
+  {"date": "2026-11-07", "title": "Protocols by indication", "text": "15 exams following the SCMR 2020 standardized protocols.", "href": "/guide/protocols/"}
 ]

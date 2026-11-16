@@ -9,7 +9,7 @@ import { prefs } from "./prefs.js";
 import { glyph, glyphFor, LOGO } from "./glyphs.js";
 import { searchGuides, searchSections, highlight, snippetAround, suggestions } from "./search.js";
 
-const APP_VERSION = "1.16.0";
+const APP_VERSION = "1.17.0";
 const IMAGE_CACHE = "cmh-images";
 const VIDEO_CACHE = "cmh-videos";
 const CONTENT_CACHE = "cmh-content"; // same names as in sw.js
@@ -291,6 +291,8 @@ function renderGuide(slug) {
   if (!state.data) { view.innerHTML = loadingOrErrorHtml(); return; }
   if (!g) { view.innerHTML = notFoundHtml("This guide isn't in the app. It may have been renamed or removed."); return; }
   prefs.set("lastGuide", slug);
+  // A quiz in progress is kept if this guide is redrawn; a finished one, or another guide's, starts fresh.
+  if (state.quiz && (state.quiz.slug !== slug || state.quiz.i >= (g.quiz?.length || 0))) state.quiz = null;
 
   const topics = (g.topics || []).map((s) => state.data.topicBySlug.get(s)).filter(Boolean);
   const coverInBody = g.cover && g.html.includes(`src="${g.cover}"`);
@@ -323,6 +325,7 @@ function renderGuide(slug) {
       ${g.cover && g.coverWide !== false && !coverInBody ? `<figure><img src="${esc(g.cover)}" alt=""></figure>` : ""}
       ${g.html}
     </div>
+    ${quizCardHtml(g)}
     ${pagerHtml(g)}
     ${paramsXref(g)}
     ${guideNoteHtml(g)}
@@ -366,6 +369,80 @@ function noteHtml(title, path) {
   return `<aside class="guide-note">${site.disclaimer ? `<p>${esc(site.disclaimer)}</p>` : ""}${reportHtml(title, path)}</aside>`;
 }
 const guideNoteHtml = (g) => noteHtml(g.title, link.guide(g.slug));
+
+/* ---------------- self-check quiz ---------------- */
+// A guide with questions in content/quizzes.json gets a "Check yourself" card under its text. One question at a
+// time: tap an answer, read why, go on. The build puts the right answer first in each question's options; they're
+// shuffled here on every try. Only the last score is kept, on the device (prefs "quiz": { [slug]: { score, of } }).
+// The build writes the Start card into each guide's page (quizCardHtml in scripts/build-content.mjs): keep in step.
+const QUIZ_ID = "check-yourself";
+const QUIZ_MARK = {
+  right: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`,
+  wrong: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>`,
+};
+const shuffled = (n) => {
+  const a = [...Array(n).keys()];
+  for (let i = n - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+};
+const quizOf = (slug) => (state.quiz?.slug === slug ? state.quiz : null);
+const quizScore = (s) => s.picked.filter((x) => x === 0).length;
+function quizCardHtml(g) {
+  return g.quiz?.length ? `<section class="quiz" id="${QUIZ_ID}" aria-labelledby="quiz-h">${quizInnerHtml(g)}</section>` : "";
+}
+function quizInnerHtml(g) {
+  const title = `<h2 class="quiz-title" id="quiz-h">Check yourself</h2>`;
+  const n = g.quiz.length;
+  const s = quizOf(g.slug);
+  if (!s) {
+    const last = prefs.get("quiz", {})[g.slug];
+    return `${title}<p class="quiz-lede">${n} quick questions, about a minute. Nothing is graded or sent anywhere.</p>${last ? `<p class="quiz-last">Last time: ${last.score} of ${last.of} right.</p>` : ""}<button class="btn" type="button" data-action="quiz-start">${last ? "Try again" : "Start"}</button>`;
+  }
+  if (s.i >= n) return title + quizDoneHtml(g, s);
+  const x = g.quiz[s.i];
+  const picked = s.picked[s.i]; // not set until answered; then the option's place in the data, where 0 is the right one
+  const answered = picked !== undefined;
+  const pics = !!x.options[0].src;
+  const opts = s.order[s.i].map((oi, pos) => {
+    const o = x.options[oi];
+    const letter = "ABCD"[pos];
+    const kind = !answered ? "" : oi === 0 ? "right" : oi === picked ? "wrong" : "dim";
+    const mark = kind === "right" || kind === "wrong" ? `<span class="quiz-mark">${QUIZ_MARK[kind]}</span>` : "";
+    const said = kind === "right" ? (picked === 0 ? "your answer, right" : "the right answer") : kind === "wrong" ? "your answer, not right" : "";
+    const body = pics
+      ? `<span class="quiz-letter">${letter}</span><img src="${esc(o.src)}" alt="Picture ${letter}"${o.w ? ` width="${o.w}" height="${o.h}"` : ""}>${mark ? `<span class="quiz-tag">${mark}${kind === "right" ? "Right" : "Not this one"}</span>` : ""}`
+      : `<span class="quiz-letter">${letter}</span><span class="quiz-text">${esc(o.text)}${said ? `<span class="visually-hidden"> (${said})</span>` : ""}</span>${mark}`;
+    return `<button class="quiz-opt${pics ? " pic" : ""}${kind ? ` ${kind}` : ""}" type="button" data-action="quiz-answer" data-pos="${pos}"${answered ? " disabled" : ""}>${body}</button>`;
+  }).join("");
+  const feedback = answered
+    ? `<div class="quiz-feedback ${picked === 0 ? "right" : "wrong"}" id="quiz-focus" tabindex="-1"><strong>${picked === 0 ? "Right." : "Not quite."}</strong> ${esc(x.why)}</div><button class="btn" type="button" data-action="quiz-next">${s.i + 1 < n ? "Next question" : "See your score"}</button>`
+    : "";
+  return `${title}<p class="quiz-step">Question ${s.i + 1} of ${n}</p><p class="quiz-q" id="${answered ? "quiz-q" : "quiz-focus"}" tabindex="-1">${esc(x.q)}</p>` +
+    (x.image ? `<figure class="quiz-figure"><img src="${esc(x.image.src)}" alt="${esc(x.image.alt)}"${x.image.w ? ` width="${x.image.w}" height="${x.image.h}"` : ""}></figure>` : "") +
+    `<div class="quiz-options${pics ? " pics" : ""}" role="group" aria-label="Answers">${opts}</div>${feedback}`;
+}
+function quizDoneHtml(g, s) {
+  const n = g.quiz.length;
+  const score = quizScore(s);
+  const missed = g.quiz.filter((x, i) => s.picked[i] !== 0);
+  const msg = !missed.length ? "All of them right." : missed.length === 1 ? "One to look at again:" : "Worth another look:";
+  // A missed question shows its right answer; for a picture question, the reason says which picture was right.
+  const list = missed.length
+    ? `<ul class="quiz-missed">${missed.map((x) => `<li><span>${esc(x.q)}</span><strong>${esc(x.options[0].text || x.why)}</strong></li>`).join("")}</ul>`
+    : "";
+  const checkIt = g.headings?.some((h) => h.id === "check-it");
+  return `<p class="quiz-score" id="quiz-focus" tabindex="-1"><strong>${score} of ${n}</strong> right</p><p class="quiz-lede">${msg}</p>${list}<div class="btn-row"><button class="btn${missed.length ? "" : " secondary"}" type="button" data-action="quiz-start">Try again</button>${checkIt && missed.length ? `<a class="quiz-back" href="#check-it" data-jump="check-it">Back to Check it</a>` : ""}</div>`;
+}
+// Redraw just the card, so the guide above it doesn't move. After an answer, the reason and the Next button are
+// brought into view; a new question starts at the top of the card.
+function renderQuiz(g, after) {
+  const el = document.getElementById(QUIZ_ID);
+  if (!el) return;
+  el.innerHTML = quizInnerHtml(g);
+  if (after === "answer") el.querySelector('[data-action="quiz-next"]')?.scrollIntoView({ block: "nearest" });
+  else el.scrollIntoView({ block: "start" });
+  el.querySelector("#quiz-focus")?.focus({ preventScroll: true });
+}
 
 function renderSearch(q) {
   setTopbar(`<h1 class="topbar-title" style="margin-left:8px">Search</h1>`);
@@ -1106,7 +1183,7 @@ document.addEventListener("click", async (e) => {
     if (href.startsWith("#/")) { e.preventDefault(); go(hashToPath(href)); return; }
     if (/^\/(?!\/)/.test(href) && !/\.[a-z0-9]+$/i.test(href.split(/[?#]/)[0])) { e.preventDefault(); go(href); return; }
   }
-  const img = e.target.closest(".prose figure img");
+  const img = e.target.closest(".prose figure img, .quiz-figure img");
   if (img) { openLightbox(img); return; }
 
   const chip = e.target.closest("[data-suggest]");
@@ -1213,6 +1290,31 @@ document.addEventListener("click", async (e) => {
       renderFlow();
       window.scrollTo(0, 0);
       toast("Started over");
+      break;
+    }
+    // ----- Self-check quiz -----
+    case "quiz-start": {
+      const g = state.data?.bySlug.get(parseRoute().arg);
+      if (!g?.quiz?.length) break;
+      state.quiz = { slug: g.slug, i: 0, picked: [], order: g.quiz.map((x) => shuffled(x.options.length)) };
+      renderQuiz(g);
+      break;
+    }
+    case "quiz-answer": {
+      const g = state.data?.bySlug.get(parseRoute().arg);
+      const s = g ? quizOf(g.slug) : null;
+      if (!s || s.i >= g.quiz.length || s.picked[s.i] !== undefined) break;
+      s.picked[s.i] = s.order[s.i][Number(btn.dataset.pos)];
+      renderQuiz(g, "answer");
+      break;
+    }
+    case "quiz-next": {
+      const g = state.data?.bySlug.get(parseRoute().arg);
+      const s = g ? quizOf(g.slug) : null;
+      if (!s || s.picked[s.i] === undefined) break;
+      s.i++;
+      if (s.i >= g.quiz.length) prefs.set("quiz", { ...prefs.get("quiz", {}), [g.slug]: { score: quizScore(s), of: g.quiz.length } });
+      renderQuiz(g);
       break;
     }
     // ----- Exam notes -----
