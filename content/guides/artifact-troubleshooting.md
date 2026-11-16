@@ -32,6 +32,10 @@ A card for each common artifact: what it looks like, why it happens and the fix 
 
 **Why it happens:** TrueFISP loses signal wherever the magnetic field is slightly off the scanner's center frequency, and the loss falls in regularly spaced dark bands. The field bends most where tissue meets air, such as the heart against the lungs. The longer the TR, the closer together the bands.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41) Banding is worse at 3 T.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
 
+**On a big field of view**, bands often crowd the edges: the neck, the chest wall, the abdomen. The shim is set over the heart, not the whole body.[\[Messroghli 2017\]](https://doi.org/10.1186/s12968-017-0389-8) Across a whole field of view the field can vary by a few hundred hertz, enough to put bands in the image.[\[Scheffler 2003\]](https://doi.org/10.1007/s00330-003-1957-x) Bands far from the heart can stay. Fix the ones that cross it.
+
+![Large field of view TrueFISP image from the neck to the upper abdomen, with arrows pointing to tight curved dark bands at the neck and the abdomen](../images/artifact-banding-edges.webp "A large field of view TrueFISP image. Tight dark bands crowd the neck and the abdomen (arrows), far from the heart. The heart in the middle is clear, so these can stay.")
+
 **Fix at the scanner**, quickest first. SCMR lists the first three.[\[SCMR 2020\]](https://pmc.ncbi.nlm.nih.gov/articles/PMC7038611/)
 
 1. Run a frequency scout and set the center frequency to the offset that clears the heart. About 50 Hz is often enough. Check that another band hasn't moved in from the other side.[\[Ferreira 2013\]](https://doi.org/10.1186/1532-429X-15-41)

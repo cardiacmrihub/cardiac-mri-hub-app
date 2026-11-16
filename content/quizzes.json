@@ -223,6 +223,17 @@
       "why": "Anything outside the field of view in the phase-encode direction wraps onto the opposite edge. Here it doesn't reach the heart, so it could stay."
     },
     {
+      "q": "The arrows point to tight dark bands at the edges of this TrueFISP image. What are they?",
+      "image": "artifact-banding-edges.webp",
+      "alt": "Large field of view TrueFISP image from the neck to the upper abdomen, with arrows pointing to tight curved dark bands at the neck and the abdomen",
+      "right": "Off-resonance banding, far from the heart where the shim isn't set",
+      "wrong": [
+        "Wrap from outside the field of view",
+        "A parallel imaging (acceleration) artifact"
+      ],
+      "why": "TrueFISP drops signal wherever the field is off the center frequency. The shim is set over the heart, so out at the edges the bands pile up. They can stay; fix a band that crosses the heart."
+    },
+    {
       "q": "The bright jet on this phase image has a black core. What do you do?",
       "image": "51892d_f0d721a2fcfe4d8fbc03c44b5a75f85e-mv2.webp",
       "alt": "Phase image with a bright jet that has a black core",
